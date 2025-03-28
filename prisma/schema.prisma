@@ -17,7 +17,10 @@ datasource db {
 // creating models for the car
 // the models are to be inputted one by one and then linked
 // 1/ The models are being created (Somewhat done)
-// 2/ the models will be linked with each other ()
+// 2/ the models will be linked with each other (What i am currently doing)
+// 3/ test the relationship between these tables
+
+// Chb3a erreurat
 
 enum RegTypes {
   TUN 
@@ -57,35 +60,48 @@ model vehicule {
 
 // currently the phone number supports only the phones in tunisian format only (may support global phone numbers later)
 
-
 model Reservation {
   reservation_id        Int             @id @default(autoincrement())
   mobile_phone          String          @db.VarChar(8)
   date                  Date    
   base_fee              Double? // if there is a fee or not
   repair_status         RepairStatus?  // to both get information about the repair and it's type
+  vehicule_id           String 
+  vehicule              Vehicule        @relation(fields: [vin], refrences: [vehicule_id])
+
   // to test later
-  @@map('reservations')
   @@db.check("mobile_phone ~ '^(2|5|9)[0-9]{7}$'")
 }
 
 model Diagnostic {
   diagnostic_id         Int             @id @default(autoincrement())
-  responsible           Mechanic
+  responsible_id        Int
+  responsible           Mechanic        @relation(fields: [mechanic_id], refrences: [responsible_id])
+  workers_employed      Mechanic[]
+
+  reservation_id        String
+  reservation           Reservation     @relation(fields: [reservation_id], refrences: [reservation_id]) // are names supposed to be the same?
 }
 
 model Repair {
   repair_id             Int             @id @default(autoincrement())
-  responsible           Mechanic
-  total_repair_hours    Int
+  responsible_id        Int
+  responsible           Mechanic        @relation(fields: [mechanic_id], refrences: [responsible_id])
+  workers_employed      Mechanic[]
 
+  reservation_id        String
+  reservation           String          @relation(fields: [reservation_id], refrences: [reservation_id])
+  total_repair_hours    Int
 }
 
 model RepairPart {
   part_id               String          @id
   price                 Double
+  repair_id             Int[]
+  vendor_id             Int[]
 }
 
+// the price is maybe problematic
 model Mechanic {
   mechanic_id           Int             @id
   pay_per_hour          Double
@@ -98,7 +114,8 @@ model Vendor {
 }
 
 
-// test models
+
+// models for TESTING puropses
 model User {
   id                    Int             @id @default(autoincrement())
   email                 String          @unique
