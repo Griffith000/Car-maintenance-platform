@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output = "../templates/prisma"
+  output   = "../templates/prisma"
 }
 
 datasource db {
@@ -29,4 +29,3 @@ model Post {
   authorId  Int
   author    User    @relation(fields: [authorId], references: [id])
 }
-
