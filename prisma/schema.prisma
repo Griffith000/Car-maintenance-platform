@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output = "../templates/prisma"
+  output   = "../templates/prisma"
 }
 
 datasource db {
@@ -23,17 +23,17 @@ datasource db {
 // Chb3a erreurat
 
 enum RegTypes {
-  TUN 
+  TUN
   RS
   TRAC
-  PAT 
+  PAT
   CMD
   CD
   MD
   MC
   CC
   REM
-  AA 
+  AA
   ES
   PE
   IT
@@ -46,89 +46,102 @@ enum RepairStatus {
   FAILURE
 }
 
-model vehicule {
-  vin                   String          @id
-  local                 Boolean //for local in-house vehicules and the not local (imported) vehicules 
-  registation           String // to maybe set automatically when the registration type is selected
+model Vehicule {
+  vin         String  @id
+  local       Boolean //for local in-house vehicules and the not local (imported) vehicules 
+  registation String // to maybe set automatically when the registration type is selected
 
   // define in-house vehicules (nullable)
-  registration_type     RegTypes? // null if local is false
+  registration_type RegTypes? // null if local is false
 
   // define imported vehicules (nullable also) 
-  location              String?
+  location    String?
+  Reservation Reservation[]
+}
+
+model Mechanic {
+  mechanic_id             Int           @id
+  pay_per_hour            Float
+  HeadMechanic            HeadMechanic?
+  Diagnostic              Diagnostic?   @relation(fields: [diagnosticDiagnostic_id], references: [diagnostic_id])
+  diagnosticDiagnostic_id Int?
+  Repair                  Repair?       @relation(fields: [repairRepair_id], references: [repair_id])
+  repairRepair_id         Int?
+}
+
+model HeadMechanic {
+  mechanic_id Int          @unique
+  mechanic    Mechanic     @relation(fields: [mechanic_id], references: [mechanic_id])
+  Diagnostic  Diagnostic[]
+  Repair      Repair[]
 }
 
 // currently the phone number supports only the phones in tunisian format only (may support global phone numbers later)
 
 model Reservation {
-  reservation_id        Int             @id @default(autoincrement())
-  mobile_phone          String          @db.VarChar(8)
-  date                  Date    
-  base_fee              Double? // if there is a fee or not
-  repair_status         RepairStatus?  // to both get information about the repair and it's type
-  vehicule_id           String 
-  vehicule              Vehicule        @relation(fields: [vin], refrences: [vehicule_id])
+  reservation_id Int           @id @default(autoincrement())
+  mobile_phone   String        @db.VarChar(8)
+  date           DateTime
+  base_fee       Float? // if there is a fee or not
+  repair_status  RepairStatus? // to both get information about the repair and it's type
+  vehicule_id    String
+  vehicule       Vehicule      @relation(fields: [vehicule_id], references: [vin])
 
   // to test later
-  @@db.check("mobile_phone ~ '^(2|5|9)[0-9]{7}$'")
+  // need to make this work for later @@db.check("mobile_phone ~ '^(2|5|9)[0-9]{7}$'") 
+  Diagnostic Diagnostic[]
+  Repair     Repair[]
 }
 
 model Diagnostic {
-  diagnostic_id         Int             @id @default(autoincrement())
-  responsible_id        Int
-  responsible           Mechanic        @relation(fields: [mechanic_id], refrences: [responsible_id])
-  workers_employed      Mechanic[]
+  diagnostic_id    Int          @id @default(autoincrement())
+  responsible_id   Int
+  responsible      HeadMechanic @relation(fields: [responsible_id], references: [mechanic_id])
+  workers_employed Mechanic[]
 
-  reservation_id        String
-  reservation           Reservation     @relation(fields: [reservation_id], refrences: [reservation_id]) // are names supposed to be the same?
+  reservation_id Int
+  reservation    Reservation @relation(fields: [reservation_id], references: [reservation_id]) // are names supposed to be the same?
 }
 
 model Repair {
-  repair_id             Int             @id @default(autoincrement())
-  responsible_id        Int
-  responsible           Mechanic        @relation(fields: [mechanic_id], refrences: [responsible_id])
-  workers_employed      Mechanic[]
+  repair_id        Int          @id @default(autoincrement())
+  responsible_id   Int
+  responsible      HeadMechanic @relation(fields: [responsible_id], references: [mechanic_id])
+  workers_employed Mechanic[]
 
-  reservation_id        String
-  reservation           String          @relation(fields: [reservation_id], refrences: [reservation_id])
-  total_repair_hours    Int
+  reservation_id     Int
+  reservation        Reservation @relation(fields: [reservation_id], references: [reservation_id])
+  total_repair_hours Int
 }
 
 model RepairPart {
-  part_id               String          @id
-  price                 Double
-  repair_id             Int[]
-  vendor_id             Int[]
+  part_id   String @id
+  price     Float
+  repair_id Int[]
+  vendor_id Int[]
 }
 
 // the price is maybe problematic
-model Mechanic {
-  mechanic_id           Int             @id
-  pay_per_hour          Double
-}
 
 model Vendor {
-  vendor_id             Int             @id
-  vendor_shop_name      String
-  vendor_shop_address   String
+  vendor_id           Int    @id
+  vendor_shop_name    String
+  vendor_shop_address String
 }
-
-
 
 // models for TESTING puropses
 model User {
-  id                    Int             @id @default(autoincrement())
-  email                 String          @unique
-  name                  String?
-  posts                 Post[]
+  user_id Int     @id @default(autoincrement())
+  email   String  @unique
+  name    String?
+  posts   Post[]
 }
 
 model Post {
-  id                    Int             @id @default(autoincrement())
-  title                 String          @unique
-  content               String?
-  published             Boolean         @default(false)
-  authorId              Int
-  author                User            @relation(fields: [authorId], references: [id])
+  post_id   Int     @id @default(autoincrement())
+  title     String  @unique
+  content   String?
+  published Boolean @default(false)
+  authorId  Int
+  author    User    @relation(fields: [authorId], references: [user_id])
 }
-

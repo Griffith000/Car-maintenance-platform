@@ -117,14 +117,68 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.VehiculeScalarFieldEnum = {
+  vin: 'vin',
+  local: 'local',
+  registation: 'registation',
+  registration_type: 'registration_type',
+  location: 'location'
+};
+
+exports.Prisma.MechanicScalarFieldEnum = {
+  mechanic_id: 'mechanic_id',
+  pay_per_hour: 'pay_per_hour',
+  diagnosticDiagnostic_id: 'diagnosticDiagnostic_id',
+  repairRepair_id: 'repairRepair_id'
+};
+
+exports.Prisma.HeadMechanicScalarFieldEnum = {
+  mechanic_id: 'mechanic_id'
+};
+
+exports.Prisma.ReservationScalarFieldEnum = {
+  reservation_id: 'reservation_id',
+  mobile_phone: 'mobile_phone',
+  date: 'date',
+  base_fee: 'base_fee',
+  repair_status: 'repair_status',
+  vehicule_id: 'vehicule_id'
+};
+
+exports.Prisma.DiagnosticScalarFieldEnum = {
+  diagnostic_id: 'diagnostic_id',
+  responsible_id: 'responsible_id',
+  reservation_id: 'reservation_id'
+};
+
+exports.Prisma.RepairScalarFieldEnum = {
+  repair_id: 'repair_id',
+  responsible_id: 'responsible_id',
+  reservation_id: 'reservation_id',
+  total_repair_hours: 'total_repair_hours'
+};
+
+exports.Prisma.RepairPartScalarFieldEnum = {
+  part_id: 'part_id',
+  price: 'price',
+  repair_id: 'repair_id',
+  vendor_id: 'vendor_id'
+};
+
+exports.Prisma.VendorScalarFieldEnum = {
+  vendor_id: 'vendor_id',
+  vendor_shop_name: 'vendor_shop_name',
+  vendor_shop_address: 'vendor_shop_address'
+};
+
 exports.Prisma.UserScalarFieldEnum = {
-  id: 'id',
+  user_id: 'user_id',
   email: 'email',
   name: 'name'
 };
 
 exports.Prisma.PostScalarFieldEnum = {
-  id: 'id',
+  post_id: 'post_id',
   title: 'title',
   content: 'content',
   published: 'published',
@@ -145,9 +199,39 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.RegTypes = exports.$Enums.RegTypes = {
+  TUN: 'TUN',
+  RS: 'RS',
+  TRAC: 'TRAC',
+  PAT: 'PAT',
+  CMD: 'CMD',
+  CD: 'CD',
+  MD: 'MD',
+  MC: 'MC',
+  CC: 'CC',
+  REM: 'REM',
+  AA: 'AA',
+  ES: 'ES',
+  PE: 'PE',
+  IT: 'IT'
+};
 
+exports.RepairStatus = exports.$Enums.RepairStatus = {
+  DIAGNOSTIC: 'DIAGNOSTIC',
+  REPAIR: 'REPAIR',
+  SUCCESS: 'SUCCESS',
+  FAILURE: 'FAILURE'
+};
 
 exports.Prisma.ModelName = {
+  Vehicule: 'Vehicule',
+  Mechanic: 'Mechanic',
+  HeadMechanic: 'HeadMechanic',
+  Reservation: 'Reservation',
+  Diagnostic: 'Diagnostic',
+  Repair: 'Repair',
+  RepairPart: 'RepairPart',
+  Vendor: 'Vendor',
   User: 'User',
   Post: 'Post'
 };
