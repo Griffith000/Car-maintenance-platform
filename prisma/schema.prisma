@@ -61,19 +61,19 @@ model Vehicule {
 
 model Mechanic {
   mechanicId             Int           @id
-  payPerHour            Float
-  headMechanic            HeadMechanic?
-  diagnostic              Diagnostic?   @relation(fields: [diagnosticDiagnosticId], references: [diagnosticId])
-  diagnosticDiagnosticId  Int?
-  repair                  Repair?       @relation(fields: [repairRepairId], references: [repairId])
-  repairRepairId          Int?
+  payPerHour             Float
+  headMechanic           HeadMechanic?
+  diagnostic             Diagnostic?   @relation(fields: [diagnosticDiagnosticId], references: [diagnosticId])
+  diagnosticDiagnosticId Int?
+  repair                 Repair?       @relation(fields: [repairRepairId], references: [repairId])
+  repairRepairId         Int?
 }
 
 model HeadMechanic {
   mechanicId Int          @unique
-  mechanic    Mechanic     @relation(fields: [mechanicId], references: [mechanicId])
-  diagnostic  Diagnostic[]
-  repair      Repair[]
+  mechanic   Mechanic     @relation(fields: [mechanicId], references: [mechanicId])
+  diagnostic Diagnostic[]
+  repair     Repair[]
 }
 
 // currently the phone number supports only the phones in tunisian format only (may support global phone numbers later)
@@ -81,11 +81,11 @@ model HeadMechanic {
 model Reservation {
   reservationId Int           @id @default(autoincrement())
   mobilePhone   String        @db.VarChar(8)
-  date           DateTime
+  date          DateTime
   baseFee       Float? // if there is a fee or not
   repairStatus  RepairStatus? // to both get information about the repair and it's type
   vehiculeId    String
-  vehicule       Vehicule      @relation(fields: [vehiculeId], references: [vin])
+  vehicule      Vehicule      @relation(fields: [vehiculeId], references: [vin])
 
   // to test later
   // need to make this work for later @@db.check("mobile_phone ~ '^(2|5|9)[0-9]{7}$'") 
@@ -96,27 +96,27 @@ model Reservation {
 model Diagnostic {
   diagnosticId    Int          @id @default(autoincrement())
   responsibleId   Int
-  responsible      HeadMechanic @relation(fields: [responsibleId], references: [mechanicId])
+  responsible     HeadMechanic @relation(fields: [responsibleId], references: [mechanicId])
   workersEmployed Mechanic[]
 
   reservationId Int
-  reservation    Reservation @relation(fields: [reservationId], references: [reservationId]) // are names supposed to be the same?
+  reservation   Reservation @relation(fields: [reservationId], references: [reservationId]) // are names supposed to be the same?
 }
 
 model Repair {
   repairId        Int          @id @default(autoincrement())
   responsibleId   Int
-  responsible      HeadMechanic @relation(fields: [responsibleId], references: [mechanicId])
+  responsible     HeadMechanic @relation(fields: [responsibleId], references: [mechanicId])
   workersEmployed Mechanic[]
 
-  reservationId     Int
-  reservation        Reservation @relation(fields: [reservationId], references: [reservationId])
+  reservationId    Int
+  reservation      Reservation @relation(fields: [reservationId], references: [reservationId])
   totalRepairHours Int
 }
 
 model RepairPart {
   partId   String @id
-  price     Float
+  price    Float
   repairId Int[]
   vendorId Int[]
 }
@@ -124,7 +124,7 @@ model RepairPart {
 // the price is maybe problematic
 
 model Vendor {
-  vendorId           Int    @id
+  vendorId          Int    @id
   vendorShopName    String
   vendorShopAddress String
 }
@@ -132,13 +132,13 @@ model Vendor {
 // models for TESTING puropses
 model User {
   userId Int     @id @default(autoincrement())
-  email   String  @unique
-  name    String?
-  posts   Post[]
+  email  String  @unique
+  name   String?
+  posts  Post[]
 }
 
 model Post {
-  postId   Int     @id @default(autoincrement())
+  postId    Int     @id @default(autoincrement())
   title     String  @unique
   content   String?
   published Boolean @default(false)
