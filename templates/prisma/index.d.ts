@@ -1731,11 +1731,11 @@ export namespace Prisma {
    */
 
   export type VehiculeCountOutputType = {
-    Reservation: number
+    reservation: number
   }
 
   export type VehiculeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Reservation?: boolean | VehiculeCountOutputTypeCountReservationArgs
+    reservation?: boolean | VehiculeCountOutputTypeCountReservationArgs
   }
 
   // Custom InputTypes
@@ -1762,13 +1762,13 @@ export namespace Prisma {
    */
 
   export type HeadMechanicCountOutputType = {
-    Diagnostic: number
-    Repair: number
+    diagnostic: number
+    repair: number
   }
 
   export type HeadMechanicCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Diagnostic?: boolean | HeadMechanicCountOutputTypeCountDiagnosticArgs
-    Repair?: boolean | HeadMechanicCountOutputTypeCountRepairArgs
+    diagnostic?: boolean | HeadMechanicCountOutputTypeCountDiagnosticArgs
+    repair?: boolean | HeadMechanicCountOutputTypeCountRepairArgs
   }
 
   // Custom InputTypes
@@ -1802,13 +1802,13 @@ export namespace Prisma {
    */
 
   export type ReservationCountOutputType = {
-    Diagnostic: number
-    Repair: number
+    diagnostic: number
+    repair: number
   }
 
   export type ReservationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Diagnostic?: boolean | ReservationCountOutputTypeCountDiagnosticArgs
-    Repair?: boolean | ReservationCountOutputTypeCountRepairArgs
+    diagnostic?: boolean | ReservationCountOutputTypeCountDiagnosticArgs
+    repair?: boolean | ReservationCountOutputTypeCountRepairArgs
   }
 
   // Custom InputTypes
@@ -1842,11 +1842,11 @@ export namespace Prisma {
    */
 
   export type DiagnosticCountOutputType = {
-    workers_employed: number
+    workersEmployed: number
   }
 
   export type DiagnosticCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    workers_employed?: boolean | DiagnosticCountOutputTypeCountWorkers_employedArgs
+    workersEmployed?: boolean | DiagnosticCountOutputTypeCountWorkersEmployedArgs
   }
 
   // Custom InputTypes
@@ -1863,7 +1863,7 @@ export namespace Prisma {
   /**
    * DiagnosticCountOutputType without action
    */
-  export type DiagnosticCountOutputTypeCountWorkers_employedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DiagnosticCountOutputTypeCountWorkersEmployedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MechanicWhereInput
   }
 
@@ -1873,11 +1873,11 @@ export namespace Prisma {
    */
 
   export type RepairCountOutputType = {
-    workers_employed: number
+    workersEmployed: number
   }
 
   export type RepairCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    workers_employed?: boolean | RepairCountOutputTypeCountWorkers_employedArgs
+    workersEmployed?: boolean | RepairCountOutputTypeCountWorkersEmployedArgs
   }
 
   // Custom InputTypes
@@ -1894,7 +1894,7 @@ export namespace Prisma {
   /**
    * RepairCountOutputType without action
    */
-  export type RepairCountOutputTypeCountWorkers_employedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RepairCountOutputTypeCountWorkersEmployedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MechanicWhereInput
   }
 
@@ -1948,7 +1948,7 @@ export namespace Prisma {
     vin: string | null
     local: boolean | null
     registation: string | null
-    registration_type: $Enums.RegTypes | null
+    registrationType: $Enums.RegTypes | null
     location: string | null
   }
 
@@ -1956,7 +1956,7 @@ export namespace Prisma {
     vin: string | null
     local: boolean | null
     registation: string | null
-    registration_type: $Enums.RegTypes | null
+    registrationType: $Enums.RegTypes | null
     location: string | null
   }
 
@@ -1964,7 +1964,7 @@ export namespace Prisma {
     vin: number
     local: number
     registation: number
-    registration_type: number
+    registrationType: number
     location: number
     _all: number
   }
@@ -1974,7 +1974,7 @@ export namespace Prisma {
     vin?: true
     local?: true
     registation?: true
-    registration_type?: true
+    registrationType?: true
     location?: true
   }
 
@@ -1982,7 +1982,7 @@ export namespace Prisma {
     vin?: true
     local?: true
     registation?: true
-    registration_type?: true
+    registrationType?: true
     location?: true
   }
 
@@ -1990,7 +1990,7 @@ export namespace Prisma {
     vin?: true
     local?: true
     registation?: true
-    registration_type?: true
+    registrationType?: true
     location?: true
     _all?: true
   }
@@ -2071,7 +2071,7 @@ export namespace Prisma {
     vin: string
     local: boolean
     registation: string
-    registration_type: $Enums.RegTypes | null
+    registrationType: $Enums.RegTypes | null
     location: string | null
     _count: VehiculeCountAggregateOutputType | null
     _min: VehiculeMinAggregateOutputType | null
@@ -2096,9 +2096,9 @@ export namespace Prisma {
     vin?: boolean
     local?: boolean
     registation?: boolean
-    registration_type?: boolean
+    registrationType?: boolean
     location?: boolean
-    Reservation?: boolean | Vehicule$ReservationArgs<ExtArgs>
+    reservation?: boolean | Vehicule$reservationArgs<ExtArgs>
     _count?: boolean | VehiculeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["vehicule"]>
 
@@ -2106,7 +2106,7 @@ export namespace Prisma {
     vin?: boolean
     local?: boolean
     registation?: boolean
-    registration_type?: boolean
+    registrationType?: boolean
     location?: boolean
   }, ExtArgs["result"]["vehicule"]>
 
@@ -2114,7 +2114,7 @@ export namespace Prisma {
     vin?: boolean
     local?: boolean
     registation?: boolean
-    registration_type?: boolean
+    registrationType?: boolean
     location?: boolean
   }, ExtArgs["result"]["vehicule"]>
 
@@ -2122,13 +2122,13 @@ export namespace Prisma {
     vin?: boolean
     local?: boolean
     registation?: boolean
-    registration_type?: boolean
+    registrationType?: boolean
     location?: boolean
   }
 
-  export type VehiculeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"vin" | "local" | "registation" | "registration_type" | "location", ExtArgs["result"]["vehicule"]>
+  export type VehiculeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"vin" | "local" | "registation" | "registrationType" | "location", ExtArgs["result"]["vehicule"]>
   export type VehiculeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Reservation?: boolean | Vehicule$ReservationArgs<ExtArgs>
+    reservation?: boolean | Vehicule$reservationArgs<ExtArgs>
     _count?: boolean | VehiculeCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type VehiculeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2137,13 +2137,13 @@ export namespace Prisma {
   export type $VehiculePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Vehicule"
     objects: {
-      Reservation: Prisma.$ReservationPayload<ExtArgs>[]
+      reservation: Prisma.$ReservationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       vin: string
       local: boolean
       registation: string
-      registration_type: $Enums.RegTypes | null
+      registrationType: $Enums.RegTypes | null
       location: string | null
     }, ExtArgs["result"]["vehicule"]>
     composites: {}
@@ -2539,7 +2539,7 @@ export namespace Prisma {
    */
   export interface Prisma__VehiculeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Reservation<T extends Vehicule$ReservationArgs<ExtArgs> = {}>(args?: Subset<T, Vehicule$ReservationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReservationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reservation<T extends Vehicule$reservationArgs<ExtArgs> = {}>(args?: Subset<T, Vehicule$reservationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReservationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2572,7 +2572,7 @@ export namespace Prisma {
     readonly vin: FieldRef<"Vehicule", 'String'>
     readonly local: FieldRef<"Vehicule", 'Boolean'>
     readonly registation: FieldRef<"Vehicule", 'String'>
-    readonly registration_type: FieldRef<"Vehicule", 'RegTypes'>
+    readonly registrationType: FieldRef<"Vehicule", 'RegTypes'>
     readonly location: FieldRef<"Vehicule", 'String'>
   }
     
@@ -2962,9 +2962,9 @@ export namespace Prisma {
   }
 
   /**
-   * Vehicule.Reservation
+   * Vehicule.reservation
    */
-  export type Vehicule$ReservationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Vehicule$reservationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Reservation
      */
@@ -3017,75 +3017,75 @@ export namespace Prisma {
   }
 
   export type MechanicAvgAggregateOutputType = {
-    mechanic_id: number | null
-    pay_per_hour: number | null
-    diagnosticDiagnostic_id: number | null
-    repairRepair_id: number | null
+    mechanicId: number | null
+    payPerHour: number | null
+    diagnosticDiagnosticId: number | null
+    repairRepairId: number | null
   }
 
   export type MechanicSumAggregateOutputType = {
-    mechanic_id: number | null
-    pay_per_hour: number | null
-    diagnosticDiagnostic_id: number | null
-    repairRepair_id: number | null
+    mechanicId: number | null
+    payPerHour: number | null
+    diagnosticDiagnosticId: number | null
+    repairRepairId: number | null
   }
 
   export type MechanicMinAggregateOutputType = {
-    mechanic_id: number | null
-    pay_per_hour: number | null
-    diagnosticDiagnostic_id: number | null
-    repairRepair_id: number | null
+    mechanicId: number | null
+    payPerHour: number | null
+    diagnosticDiagnosticId: number | null
+    repairRepairId: number | null
   }
 
   export type MechanicMaxAggregateOutputType = {
-    mechanic_id: number | null
-    pay_per_hour: number | null
-    diagnosticDiagnostic_id: number | null
-    repairRepair_id: number | null
+    mechanicId: number | null
+    payPerHour: number | null
+    diagnosticDiagnosticId: number | null
+    repairRepairId: number | null
   }
 
   export type MechanicCountAggregateOutputType = {
-    mechanic_id: number
-    pay_per_hour: number
-    diagnosticDiagnostic_id: number
-    repairRepair_id: number
+    mechanicId: number
+    payPerHour: number
+    diagnosticDiagnosticId: number
+    repairRepairId: number
     _all: number
   }
 
 
   export type MechanicAvgAggregateInputType = {
-    mechanic_id?: true
-    pay_per_hour?: true
-    diagnosticDiagnostic_id?: true
-    repairRepair_id?: true
+    mechanicId?: true
+    payPerHour?: true
+    diagnosticDiagnosticId?: true
+    repairRepairId?: true
   }
 
   export type MechanicSumAggregateInputType = {
-    mechanic_id?: true
-    pay_per_hour?: true
-    diagnosticDiagnostic_id?: true
-    repairRepair_id?: true
+    mechanicId?: true
+    payPerHour?: true
+    diagnosticDiagnosticId?: true
+    repairRepairId?: true
   }
 
   export type MechanicMinAggregateInputType = {
-    mechanic_id?: true
-    pay_per_hour?: true
-    diagnosticDiagnostic_id?: true
-    repairRepair_id?: true
+    mechanicId?: true
+    payPerHour?: true
+    diagnosticDiagnosticId?: true
+    repairRepairId?: true
   }
 
   export type MechanicMaxAggregateInputType = {
-    mechanic_id?: true
-    pay_per_hour?: true
-    diagnosticDiagnostic_id?: true
-    repairRepair_id?: true
+    mechanicId?: true
+    payPerHour?: true
+    diagnosticDiagnosticId?: true
+    repairRepairId?: true
   }
 
   export type MechanicCountAggregateInputType = {
-    mechanic_id?: true
-    pay_per_hour?: true
-    diagnosticDiagnostic_id?: true
-    repairRepair_id?: true
+    mechanicId?: true
+    payPerHour?: true
+    diagnosticDiagnosticId?: true
+    repairRepairId?: true
     _all?: true
   }
 
@@ -3176,10 +3176,10 @@ export namespace Prisma {
   }
 
   export type MechanicGroupByOutputType = {
-    mechanic_id: number
-    pay_per_hour: number
-    diagnosticDiagnostic_id: number | null
-    repairRepair_id: number | null
+    mechanicId: number
+    payPerHour: number
+    diagnosticDiagnosticId: number | null
+    repairRepairId: number | null
     _count: MechanicCountAggregateOutputType | null
     _avg: MechanicAvgAggregateOutputType | null
     _sum: MechanicSumAggregateOutputType | null
@@ -3202,67 +3202,67 @@ export namespace Prisma {
 
 
   export type MechanicSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    mechanic_id?: boolean
-    pay_per_hour?: boolean
-    diagnosticDiagnostic_id?: boolean
-    repairRepair_id?: boolean
-    HeadMechanic?: boolean | Mechanic$HeadMechanicArgs<ExtArgs>
-    Diagnostic?: boolean | Mechanic$DiagnosticArgs<ExtArgs>
-    Repair?: boolean | Mechanic$RepairArgs<ExtArgs>
+    mechanicId?: boolean
+    payPerHour?: boolean
+    diagnosticDiagnosticId?: boolean
+    repairRepairId?: boolean
+    headMechanic?: boolean | Mechanic$headMechanicArgs<ExtArgs>
+    diagnostic?: boolean | Mechanic$diagnosticArgs<ExtArgs>
+    repair?: boolean | Mechanic$repairArgs<ExtArgs>
   }, ExtArgs["result"]["mechanic"]>
 
   export type MechanicSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    mechanic_id?: boolean
-    pay_per_hour?: boolean
-    diagnosticDiagnostic_id?: boolean
-    repairRepair_id?: boolean
-    Diagnostic?: boolean | Mechanic$DiagnosticArgs<ExtArgs>
-    Repair?: boolean | Mechanic$RepairArgs<ExtArgs>
+    mechanicId?: boolean
+    payPerHour?: boolean
+    diagnosticDiagnosticId?: boolean
+    repairRepairId?: boolean
+    diagnostic?: boolean | Mechanic$diagnosticArgs<ExtArgs>
+    repair?: boolean | Mechanic$repairArgs<ExtArgs>
   }, ExtArgs["result"]["mechanic"]>
 
   export type MechanicSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    mechanic_id?: boolean
-    pay_per_hour?: boolean
-    diagnosticDiagnostic_id?: boolean
-    repairRepair_id?: boolean
-    Diagnostic?: boolean | Mechanic$DiagnosticArgs<ExtArgs>
-    Repair?: boolean | Mechanic$RepairArgs<ExtArgs>
+    mechanicId?: boolean
+    payPerHour?: boolean
+    diagnosticDiagnosticId?: boolean
+    repairRepairId?: boolean
+    diagnostic?: boolean | Mechanic$diagnosticArgs<ExtArgs>
+    repair?: boolean | Mechanic$repairArgs<ExtArgs>
   }, ExtArgs["result"]["mechanic"]>
 
   export type MechanicSelectScalar = {
-    mechanic_id?: boolean
-    pay_per_hour?: boolean
-    diagnosticDiagnostic_id?: boolean
-    repairRepair_id?: boolean
+    mechanicId?: boolean
+    payPerHour?: boolean
+    diagnosticDiagnosticId?: boolean
+    repairRepairId?: boolean
   }
 
-  export type MechanicOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"mechanic_id" | "pay_per_hour" | "diagnosticDiagnostic_id" | "repairRepair_id", ExtArgs["result"]["mechanic"]>
+  export type MechanicOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"mechanicId" | "payPerHour" | "diagnosticDiagnosticId" | "repairRepairId", ExtArgs["result"]["mechanic"]>
   export type MechanicInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    HeadMechanic?: boolean | Mechanic$HeadMechanicArgs<ExtArgs>
-    Diagnostic?: boolean | Mechanic$DiagnosticArgs<ExtArgs>
-    Repair?: boolean | Mechanic$RepairArgs<ExtArgs>
+    headMechanic?: boolean | Mechanic$headMechanicArgs<ExtArgs>
+    diagnostic?: boolean | Mechanic$diagnosticArgs<ExtArgs>
+    repair?: boolean | Mechanic$repairArgs<ExtArgs>
   }
   export type MechanicIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Diagnostic?: boolean | Mechanic$DiagnosticArgs<ExtArgs>
-    Repair?: boolean | Mechanic$RepairArgs<ExtArgs>
+    diagnostic?: boolean | Mechanic$diagnosticArgs<ExtArgs>
+    repair?: boolean | Mechanic$repairArgs<ExtArgs>
   }
   export type MechanicIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Diagnostic?: boolean | Mechanic$DiagnosticArgs<ExtArgs>
-    Repair?: boolean | Mechanic$RepairArgs<ExtArgs>
+    diagnostic?: boolean | Mechanic$diagnosticArgs<ExtArgs>
+    repair?: boolean | Mechanic$repairArgs<ExtArgs>
   }
 
   export type $MechanicPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Mechanic"
     objects: {
-      HeadMechanic: Prisma.$HeadMechanicPayload<ExtArgs> | null
-      Diagnostic: Prisma.$DiagnosticPayload<ExtArgs> | null
-      Repair: Prisma.$RepairPayload<ExtArgs> | null
+      headMechanic: Prisma.$HeadMechanicPayload<ExtArgs> | null
+      diagnostic: Prisma.$DiagnosticPayload<ExtArgs> | null
+      repair: Prisma.$RepairPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
-      mechanic_id: number
-      pay_per_hour: number
-      diagnosticDiagnostic_id: number | null
-      repairRepair_id: number | null
+      mechanicId: number
+      payPerHour: number
+      diagnosticDiagnosticId: number | null
+      repairRepairId: number | null
     }, ExtArgs["result"]["mechanic"]>
     composites: {}
   }
@@ -3346,8 +3346,8 @@ export namespace Prisma {
      * // Get first 10 Mechanics
      * const mechanics = await prisma.mechanic.findMany({ take: 10 })
      * 
-     * // Only select the `mechanic_id`
-     * const mechanicWithMechanic_idOnly = await prisma.mechanic.findMany({ select: { mechanic_id: true } })
+     * // Only select the `mechanicId`
+     * const mechanicWithMechanicIdOnly = await prisma.mechanic.findMany({ select: { mechanicId: true } })
      * 
      */
     findMany<T extends MechanicFindManyArgs>(args?: SelectSubset<T, MechanicFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MechanicPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -3391,9 +3391,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Mechanics and only return the `mechanic_id`
-     * const mechanicWithMechanic_idOnly = await prisma.mechanic.createManyAndReturn({
-     *   select: { mechanic_id: true },
+     * // Create many Mechanics and only return the `mechanicId`
+     * const mechanicWithMechanicIdOnly = await prisma.mechanic.createManyAndReturn({
+     *   select: { mechanicId: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -3482,9 +3482,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Mechanics and only return the `mechanic_id`
-     * const mechanicWithMechanic_idOnly = await prisma.mechanic.updateManyAndReturn({
-     *   select: { mechanic_id: true },
+     * // Update zero or more Mechanics and only return the `mechanicId`
+     * const mechanicWithMechanicIdOnly = await prisma.mechanic.updateManyAndReturn({
+     *   select: { mechanicId: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3657,9 +3657,9 @@ export namespace Prisma {
    */
   export interface Prisma__MechanicClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    HeadMechanic<T extends Mechanic$HeadMechanicArgs<ExtArgs> = {}>(args?: Subset<T, Mechanic$HeadMechanicArgs<ExtArgs>>): Prisma__HeadMechanicClient<$Result.GetResult<Prisma.$HeadMechanicPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    Diagnostic<T extends Mechanic$DiagnosticArgs<ExtArgs> = {}>(args?: Subset<T, Mechanic$DiagnosticArgs<ExtArgs>>): Prisma__DiagnosticClient<$Result.GetResult<Prisma.$DiagnosticPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    Repair<T extends Mechanic$RepairArgs<ExtArgs> = {}>(args?: Subset<T, Mechanic$RepairArgs<ExtArgs>>): Prisma__RepairClient<$Result.GetResult<Prisma.$RepairPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    headMechanic<T extends Mechanic$headMechanicArgs<ExtArgs> = {}>(args?: Subset<T, Mechanic$headMechanicArgs<ExtArgs>>): Prisma__HeadMechanicClient<$Result.GetResult<Prisma.$HeadMechanicPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    diagnostic<T extends Mechanic$diagnosticArgs<ExtArgs> = {}>(args?: Subset<T, Mechanic$diagnosticArgs<ExtArgs>>): Prisma__DiagnosticClient<$Result.GetResult<Prisma.$DiagnosticPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    repair<T extends Mechanic$repairArgs<ExtArgs> = {}>(args?: Subset<T, Mechanic$repairArgs<ExtArgs>>): Prisma__RepairClient<$Result.GetResult<Prisma.$RepairPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3689,10 +3689,10 @@ export namespace Prisma {
    * Fields of the Mechanic model
    */ 
   interface MechanicFieldRefs {
-    readonly mechanic_id: FieldRef<"Mechanic", 'Int'>
-    readonly pay_per_hour: FieldRef<"Mechanic", 'Float'>
-    readonly diagnosticDiagnostic_id: FieldRef<"Mechanic", 'Int'>
-    readonly repairRepair_id: FieldRef<"Mechanic", 'Int'>
+    readonly mechanicId: FieldRef<"Mechanic", 'Int'>
+    readonly payPerHour: FieldRef<"Mechanic", 'Float'>
+    readonly diagnosticDiagnosticId: FieldRef<"Mechanic", 'Int'>
+    readonly repairRepairId: FieldRef<"Mechanic", 'Int'>
   }
     
 
@@ -4089,9 +4089,9 @@ export namespace Prisma {
   }
 
   /**
-   * Mechanic.HeadMechanic
+   * Mechanic.headMechanic
    */
-  export type Mechanic$HeadMechanicArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Mechanic$headMechanicArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the HeadMechanic
      */
@@ -4108,9 +4108,9 @@ export namespace Prisma {
   }
 
   /**
-   * Mechanic.Diagnostic
+   * Mechanic.diagnostic
    */
-  export type Mechanic$DiagnosticArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Mechanic$diagnosticArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Diagnostic
      */
@@ -4127,9 +4127,9 @@ export namespace Prisma {
   }
 
   /**
-   * Mechanic.Repair
+   * Mechanic.repair
    */
-  export type Mechanic$RepairArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Mechanic$repairArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Repair
      */
@@ -4177,45 +4177,45 @@ export namespace Prisma {
   }
 
   export type HeadMechanicAvgAggregateOutputType = {
-    mechanic_id: number | null
+    mechanicId: number | null
   }
 
   export type HeadMechanicSumAggregateOutputType = {
-    mechanic_id: number | null
+    mechanicId: number | null
   }
 
   export type HeadMechanicMinAggregateOutputType = {
-    mechanic_id: number | null
+    mechanicId: number | null
   }
 
   export type HeadMechanicMaxAggregateOutputType = {
-    mechanic_id: number | null
+    mechanicId: number | null
   }
 
   export type HeadMechanicCountAggregateOutputType = {
-    mechanic_id: number
+    mechanicId: number
     _all: number
   }
 
 
   export type HeadMechanicAvgAggregateInputType = {
-    mechanic_id?: true
+    mechanicId?: true
   }
 
   export type HeadMechanicSumAggregateInputType = {
-    mechanic_id?: true
+    mechanicId?: true
   }
 
   export type HeadMechanicMinAggregateInputType = {
-    mechanic_id?: true
+    mechanicId?: true
   }
 
   export type HeadMechanicMaxAggregateInputType = {
-    mechanic_id?: true
+    mechanicId?: true
   }
 
   export type HeadMechanicCountAggregateInputType = {
-    mechanic_id?: true
+    mechanicId?: true
     _all?: true
   }
 
@@ -4306,7 +4306,7 @@ export namespace Prisma {
   }
 
   export type HeadMechanicGroupByOutputType = {
-    mechanic_id: number
+    mechanicId: number
     _count: HeadMechanicCountAggregateOutputType | null
     _avg: HeadMechanicAvgAggregateOutputType | null
     _sum: HeadMechanicSumAggregateOutputType | null
@@ -4329,32 +4329,32 @@ export namespace Prisma {
 
 
   export type HeadMechanicSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    mechanic_id?: boolean
+    mechanicId?: boolean
     mechanic?: boolean | MechanicDefaultArgs<ExtArgs>
-    Diagnostic?: boolean | HeadMechanic$DiagnosticArgs<ExtArgs>
-    Repair?: boolean | HeadMechanic$RepairArgs<ExtArgs>
+    diagnostic?: boolean | HeadMechanic$diagnosticArgs<ExtArgs>
+    repair?: boolean | HeadMechanic$repairArgs<ExtArgs>
     _count?: boolean | HeadMechanicCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["headMechanic"]>
 
   export type HeadMechanicSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    mechanic_id?: boolean
+    mechanicId?: boolean
     mechanic?: boolean | MechanicDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["headMechanic"]>
 
   export type HeadMechanicSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    mechanic_id?: boolean
+    mechanicId?: boolean
     mechanic?: boolean | MechanicDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["headMechanic"]>
 
   export type HeadMechanicSelectScalar = {
-    mechanic_id?: boolean
+    mechanicId?: boolean
   }
 
-  export type HeadMechanicOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"mechanic_id", ExtArgs["result"]["headMechanic"]>
+  export type HeadMechanicOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"mechanicId", ExtArgs["result"]["headMechanic"]>
   export type HeadMechanicInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     mechanic?: boolean | MechanicDefaultArgs<ExtArgs>
-    Diagnostic?: boolean | HeadMechanic$DiagnosticArgs<ExtArgs>
-    Repair?: boolean | HeadMechanic$RepairArgs<ExtArgs>
+    diagnostic?: boolean | HeadMechanic$diagnosticArgs<ExtArgs>
+    repair?: boolean | HeadMechanic$repairArgs<ExtArgs>
     _count?: boolean | HeadMechanicCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type HeadMechanicIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4368,11 +4368,11 @@ export namespace Prisma {
     name: "HeadMechanic"
     objects: {
       mechanic: Prisma.$MechanicPayload<ExtArgs>
-      Diagnostic: Prisma.$DiagnosticPayload<ExtArgs>[]
-      Repair: Prisma.$RepairPayload<ExtArgs>[]
+      diagnostic: Prisma.$DiagnosticPayload<ExtArgs>[]
+      repair: Prisma.$RepairPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      mechanic_id: number
+      mechanicId: number
     }, ExtArgs["result"]["headMechanic"]>
     composites: {}
   }
@@ -4456,8 +4456,8 @@ export namespace Prisma {
      * // Get first 10 HeadMechanics
      * const headMechanics = await prisma.headMechanic.findMany({ take: 10 })
      * 
-     * // Only select the `mechanic_id`
-     * const headMechanicWithMechanic_idOnly = await prisma.headMechanic.findMany({ select: { mechanic_id: true } })
+     * // Only select the `mechanicId`
+     * const headMechanicWithMechanicIdOnly = await prisma.headMechanic.findMany({ select: { mechanicId: true } })
      * 
      */
     findMany<T extends HeadMechanicFindManyArgs>(args?: SelectSubset<T, HeadMechanicFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HeadMechanicPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -4501,9 +4501,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many HeadMechanics and only return the `mechanic_id`
-     * const headMechanicWithMechanic_idOnly = await prisma.headMechanic.createManyAndReturn({
-     *   select: { mechanic_id: true },
+     * // Create many HeadMechanics and only return the `mechanicId`
+     * const headMechanicWithMechanicIdOnly = await prisma.headMechanic.createManyAndReturn({
+     *   select: { mechanicId: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -4592,9 +4592,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more HeadMechanics and only return the `mechanic_id`
-     * const headMechanicWithMechanic_idOnly = await prisma.headMechanic.updateManyAndReturn({
-     *   select: { mechanic_id: true },
+     * // Update zero or more HeadMechanics and only return the `mechanicId`
+     * const headMechanicWithMechanicIdOnly = await prisma.headMechanic.updateManyAndReturn({
+     *   select: { mechanicId: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4768,8 +4768,8 @@ export namespace Prisma {
   export interface Prisma__HeadMechanicClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     mechanic<T extends MechanicDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MechanicDefaultArgs<ExtArgs>>): Prisma__MechanicClient<$Result.GetResult<Prisma.$MechanicPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    Diagnostic<T extends HeadMechanic$DiagnosticArgs<ExtArgs> = {}>(args?: Subset<T, HeadMechanic$DiagnosticArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiagnosticPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    Repair<T extends HeadMechanic$RepairArgs<ExtArgs> = {}>(args?: Subset<T, HeadMechanic$RepairArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RepairPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    diagnostic<T extends HeadMechanic$diagnosticArgs<ExtArgs> = {}>(args?: Subset<T, HeadMechanic$diagnosticArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiagnosticPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    repair<T extends HeadMechanic$repairArgs<ExtArgs> = {}>(args?: Subset<T, HeadMechanic$repairArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RepairPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4799,7 +4799,7 @@ export namespace Prisma {
    * Fields of the HeadMechanic model
    */ 
   interface HeadMechanicFieldRefs {
-    readonly mechanic_id: FieldRef<"HeadMechanic", 'Int'>
+    readonly mechanicId: FieldRef<"HeadMechanic", 'Int'>
   }
     
 
@@ -5196,9 +5196,9 @@ export namespace Prisma {
   }
 
   /**
-   * HeadMechanic.Diagnostic
+   * HeadMechanic.diagnostic
    */
-  export type HeadMechanic$DiagnosticArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type HeadMechanic$diagnosticArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Diagnostic
      */
@@ -5220,9 +5220,9 @@ export namespace Prisma {
   }
 
   /**
-   * HeadMechanic.Repair
+   * HeadMechanic.repair
    */
-  export type HeadMechanic$RepairArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type HeadMechanic$repairArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Repair
      */
@@ -5275,79 +5275,79 @@ export namespace Prisma {
   }
 
   export type ReservationAvgAggregateOutputType = {
-    reservation_id: number | null
-    base_fee: number | null
+    reservationId: number | null
+    baseFee: number | null
   }
 
   export type ReservationSumAggregateOutputType = {
-    reservation_id: number | null
-    base_fee: number | null
+    reservationId: number | null
+    baseFee: number | null
   }
 
   export type ReservationMinAggregateOutputType = {
-    reservation_id: number | null
-    mobile_phone: string | null
+    reservationId: number | null
+    mobilePhone: string | null
     date: Date | null
-    base_fee: number | null
-    repair_status: $Enums.RepairStatus | null
-    vehicule_id: string | null
+    baseFee: number | null
+    repairStatus: $Enums.RepairStatus | null
+    vehiculeId: string | null
   }
 
   export type ReservationMaxAggregateOutputType = {
-    reservation_id: number | null
-    mobile_phone: string | null
+    reservationId: number | null
+    mobilePhone: string | null
     date: Date | null
-    base_fee: number | null
-    repair_status: $Enums.RepairStatus | null
-    vehicule_id: string | null
+    baseFee: number | null
+    repairStatus: $Enums.RepairStatus | null
+    vehiculeId: string | null
   }
 
   export type ReservationCountAggregateOutputType = {
-    reservation_id: number
-    mobile_phone: number
+    reservationId: number
+    mobilePhone: number
     date: number
-    base_fee: number
-    repair_status: number
-    vehicule_id: number
+    baseFee: number
+    repairStatus: number
+    vehiculeId: number
     _all: number
   }
 
 
   export type ReservationAvgAggregateInputType = {
-    reservation_id?: true
-    base_fee?: true
+    reservationId?: true
+    baseFee?: true
   }
 
   export type ReservationSumAggregateInputType = {
-    reservation_id?: true
-    base_fee?: true
+    reservationId?: true
+    baseFee?: true
   }
 
   export type ReservationMinAggregateInputType = {
-    reservation_id?: true
-    mobile_phone?: true
+    reservationId?: true
+    mobilePhone?: true
     date?: true
-    base_fee?: true
-    repair_status?: true
-    vehicule_id?: true
+    baseFee?: true
+    repairStatus?: true
+    vehiculeId?: true
   }
 
   export type ReservationMaxAggregateInputType = {
-    reservation_id?: true
-    mobile_phone?: true
+    reservationId?: true
+    mobilePhone?: true
     date?: true
-    base_fee?: true
-    repair_status?: true
-    vehicule_id?: true
+    baseFee?: true
+    repairStatus?: true
+    vehiculeId?: true
   }
 
   export type ReservationCountAggregateInputType = {
-    reservation_id?: true
-    mobile_phone?: true
+    reservationId?: true
+    mobilePhone?: true
     date?: true
-    base_fee?: true
-    repair_status?: true
-    vehicule_id?: true
+    baseFee?: true
+    repairStatus?: true
+    vehiculeId?: true
     _all?: true
   }
 
@@ -5438,12 +5438,12 @@ export namespace Prisma {
   }
 
   export type ReservationGroupByOutputType = {
-    reservation_id: number
-    mobile_phone: string
+    reservationId: number
+    mobilePhone: string
     date: Date
-    base_fee: number | null
-    repair_status: $Enums.RepairStatus | null
-    vehicule_id: string
+    baseFee: number | null
+    repairStatus: $Enums.RepairStatus | null
+    vehiculeId: string
     _count: ReservationCountAggregateOutputType | null
     _avg: ReservationAvgAggregateOutputType | null
     _sum: ReservationSumAggregateOutputType | null
@@ -5466,52 +5466,52 @@ export namespace Prisma {
 
 
   export type ReservationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    reservation_id?: boolean
-    mobile_phone?: boolean
+    reservationId?: boolean
+    mobilePhone?: boolean
     date?: boolean
-    base_fee?: boolean
-    repair_status?: boolean
-    vehicule_id?: boolean
+    baseFee?: boolean
+    repairStatus?: boolean
+    vehiculeId?: boolean
     vehicule?: boolean | VehiculeDefaultArgs<ExtArgs>
-    Diagnostic?: boolean | Reservation$DiagnosticArgs<ExtArgs>
-    Repair?: boolean | Reservation$RepairArgs<ExtArgs>
+    diagnostic?: boolean | Reservation$diagnosticArgs<ExtArgs>
+    repair?: boolean | Reservation$repairArgs<ExtArgs>
     _count?: boolean | ReservationCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reservation"]>
 
   export type ReservationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    reservation_id?: boolean
-    mobile_phone?: boolean
+    reservationId?: boolean
+    mobilePhone?: boolean
     date?: boolean
-    base_fee?: boolean
-    repair_status?: boolean
-    vehicule_id?: boolean
+    baseFee?: boolean
+    repairStatus?: boolean
+    vehiculeId?: boolean
     vehicule?: boolean | VehiculeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reservation"]>
 
   export type ReservationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    reservation_id?: boolean
-    mobile_phone?: boolean
+    reservationId?: boolean
+    mobilePhone?: boolean
     date?: boolean
-    base_fee?: boolean
-    repair_status?: boolean
-    vehicule_id?: boolean
+    baseFee?: boolean
+    repairStatus?: boolean
+    vehiculeId?: boolean
     vehicule?: boolean | VehiculeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reservation"]>
 
   export type ReservationSelectScalar = {
-    reservation_id?: boolean
-    mobile_phone?: boolean
+    reservationId?: boolean
+    mobilePhone?: boolean
     date?: boolean
-    base_fee?: boolean
-    repair_status?: boolean
-    vehicule_id?: boolean
+    baseFee?: boolean
+    repairStatus?: boolean
+    vehiculeId?: boolean
   }
 
-  export type ReservationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"reservation_id" | "mobile_phone" | "date" | "base_fee" | "repair_status" | "vehicule_id", ExtArgs["result"]["reservation"]>
+  export type ReservationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"reservationId" | "mobilePhone" | "date" | "baseFee" | "repairStatus" | "vehiculeId", ExtArgs["result"]["reservation"]>
   export type ReservationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     vehicule?: boolean | VehiculeDefaultArgs<ExtArgs>
-    Diagnostic?: boolean | Reservation$DiagnosticArgs<ExtArgs>
-    Repair?: boolean | Reservation$RepairArgs<ExtArgs>
+    diagnostic?: boolean | Reservation$diagnosticArgs<ExtArgs>
+    repair?: boolean | Reservation$repairArgs<ExtArgs>
     _count?: boolean | ReservationCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ReservationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5525,16 +5525,16 @@ export namespace Prisma {
     name: "Reservation"
     objects: {
       vehicule: Prisma.$VehiculePayload<ExtArgs>
-      Diagnostic: Prisma.$DiagnosticPayload<ExtArgs>[]
-      Repair: Prisma.$RepairPayload<ExtArgs>[]
+      diagnostic: Prisma.$DiagnosticPayload<ExtArgs>[]
+      repair: Prisma.$RepairPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      reservation_id: number
-      mobile_phone: string
+      reservationId: number
+      mobilePhone: string
       date: Date
-      base_fee: number | null
-      repair_status: $Enums.RepairStatus | null
-      vehicule_id: string
+      baseFee: number | null
+      repairStatus: $Enums.RepairStatus | null
+      vehiculeId: string
     }, ExtArgs["result"]["reservation"]>
     composites: {}
   }
@@ -5618,8 +5618,8 @@ export namespace Prisma {
      * // Get first 10 Reservations
      * const reservations = await prisma.reservation.findMany({ take: 10 })
      * 
-     * // Only select the `reservation_id`
-     * const reservationWithReservation_idOnly = await prisma.reservation.findMany({ select: { reservation_id: true } })
+     * // Only select the `reservationId`
+     * const reservationWithReservationIdOnly = await prisma.reservation.findMany({ select: { reservationId: true } })
      * 
      */
     findMany<T extends ReservationFindManyArgs>(args?: SelectSubset<T, ReservationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReservationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -5663,9 +5663,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Reservations and only return the `reservation_id`
-     * const reservationWithReservation_idOnly = await prisma.reservation.createManyAndReturn({
-     *   select: { reservation_id: true },
+     * // Create many Reservations and only return the `reservationId`
+     * const reservationWithReservationIdOnly = await prisma.reservation.createManyAndReturn({
+     *   select: { reservationId: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -5754,9 +5754,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Reservations and only return the `reservation_id`
-     * const reservationWithReservation_idOnly = await prisma.reservation.updateManyAndReturn({
-     *   select: { reservation_id: true },
+     * // Update zero or more Reservations and only return the `reservationId`
+     * const reservationWithReservationIdOnly = await prisma.reservation.updateManyAndReturn({
+     *   select: { reservationId: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5930,8 +5930,8 @@ export namespace Prisma {
   export interface Prisma__ReservationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     vehicule<T extends VehiculeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VehiculeDefaultArgs<ExtArgs>>): Prisma__VehiculeClient<$Result.GetResult<Prisma.$VehiculePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    Diagnostic<T extends Reservation$DiagnosticArgs<ExtArgs> = {}>(args?: Subset<T, Reservation$DiagnosticArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiagnosticPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    Repair<T extends Reservation$RepairArgs<ExtArgs> = {}>(args?: Subset<T, Reservation$RepairArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RepairPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    diagnostic<T extends Reservation$diagnosticArgs<ExtArgs> = {}>(args?: Subset<T, Reservation$diagnosticArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiagnosticPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    repair<T extends Reservation$repairArgs<ExtArgs> = {}>(args?: Subset<T, Reservation$repairArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RepairPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5961,12 +5961,12 @@ export namespace Prisma {
    * Fields of the Reservation model
    */ 
   interface ReservationFieldRefs {
-    readonly reservation_id: FieldRef<"Reservation", 'Int'>
-    readonly mobile_phone: FieldRef<"Reservation", 'String'>
+    readonly reservationId: FieldRef<"Reservation", 'Int'>
+    readonly mobilePhone: FieldRef<"Reservation", 'String'>
     readonly date: FieldRef<"Reservation", 'DateTime'>
-    readonly base_fee: FieldRef<"Reservation", 'Float'>
-    readonly repair_status: FieldRef<"Reservation", 'RepairStatus'>
-    readonly vehicule_id: FieldRef<"Reservation", 'String'>
+    readonly baseFee: FieldRef<"Reservation", 'Float'>
+    readonly repairStatus: FieldRef<"Reservation", 'RepairStatus'>
+    readonly vehiculeId: FieldRef<"Reservation", 'String'>
   }
     
 
@@ -6363,9 +6363,9 @@ export namespace Prisma {
   }
 
   /**
-   * Reservation.Diagnostic
+   * Reservation.diagnostic
    */
-  export type Reservation$DiagnosticArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Reservation$diagnosticArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Diagnostic
      */
@@ -6387,9 +6387,9 @@ export namespace Prisma {
   }
 
   /**
-   * Reservation.Repair
+   * Reservation.repair
    */
-  export type Reservation$RepairArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Reservation$repairArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Repair
      */
@@ -6442,65 +6442,65 @@ export namespace Prisma {
   }
 
   export type DiagnosticAvgAggregateOutputType = {
-    diagnostic_id: number | null
-    responsible_id: number | null
-    reservation_id: number | null
+    diagnosticId: number | null
+    responsibleId: number | null
+    reservationId: number | null
   }
 
   export type DiagnosticSumAggregateOutputType = {
-    diagnostic_id: number | null
-    responsible_id: number | null
-    reservation_id: number | null
+    diagnosticId: number | null
+    responsibleId: number | null
+    reservationId: number | null
   }
 
   export type DiagnosticMinAggregateOutputType = {
-    diagnostic_id: number | null
-    responsible_id: number | null
-    reservation_id: number | null
+    diagnosticId: number | null
+    responsibleId: number | null
+    reservationId: number | null
   }
 
   export type DiagnosticMaxAggregateOutputType = {
-    diagnostic_id: number | null
-    responsible_id: number | null
-    reservation_id: number | null
+    diagnosticId: number | null
+    responsibleId: number | null
+    reservationId: number | null
   }
 
   export type DiagnosticCountAggregateOutputType = {
-    diagnostic_id: number
-    responsible_id: number
-    reservation_id: number
+    diagnosticId: number
+    responsibleId: number
+    reservationId: number
     _all: number
   }
 
 
   export type DiagnosticAvgAggregateInputType = {
-    diagnostic_id?: true
-    responsible_id?: true
-    reservation_id?: true
+    diagnosticId?: true
+    responsibleId?: true
+    reservationId?: true
   }
 
   export type DiagnosticSumAggregateInputType = {
-    diagnostic_id?: true
-    responsible_id?: true
-    reservation_id?: true
+    diagnosticId?: true
+    responsibleId?: true
+    reservationId?: true
   }
 
   export type DiagnosticMinAggregateInputType = {
-    diagnostic_id?: true
-    responsible_id?: true
-    reservation_id?: true
+    diagnosticId?: true
+    responsibleId?: true
+    reservationId?: true
   }
 
   export type DiagnosticMaxAggregateInputType = {
-    diagnostic_id?: true
-    responsible_id?: true
-    reservation_id?: true
+    diagnosticId?: true
+    responsibleId?: true
+    reservationId?: true
   }
 
   export type DiagnosticCountAggregateInputType = {
-    diagnostic_id?: true
-    responsible_id?: true
-    reservation_id?: true
+    diagnosticId?: true
+    responsibleId?: true
+    reservationId?: true
     _all?: true
   }
 
@@ -6591,9 +6591,9 @@ export namespace Prisma {
   }
 
   export type DiagnosticGroupByOutputType = {
-    diagnostic_id: number
-    responsible_id: number
-    reservation_id: number
+    diagnosticId: number
+    responsibleId: number
+    reservationId: number
     _count: DiagnosticCountAggregateOutputType | null
     _avg: DiagnosticAvgAggregateOutputType | null
     _sum: DiagnosticSumAggregateOutputType | null
@@ -6616,41 +6616,41 @@ export namespace Prisma {
 
 
   export type DiagnosticSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    diagnostic_id?: boolean
-    responsible_id?: boolean
-    reservation_id?: boolean
+    diagnosticId?: boolean
+    responsibleId?: boolean
+    reservationId?: boolean
     responsible?: boolean | HeadMechanicDefaultArgs<ExtArgs>
-    workers_employed?: boolean | Diagnostic$workers_employedArgs<ExtArgs>
+    workersEmployed?: boolean | Diagnostic$workersEmployedArgs<ExtArgs>
     reservation?: boolean | ReservationDefaultArgs<ExtArgs>
     _count?: boolean | DiagnosticCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["diagnostic"]>
 
   export type DiagnosticSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    diagnostic_id?: boolean
-    responsible_id?: boolean
-    reservation_id?: boolean
+    diagnosticId?: boolean
+    responsibleId?: boolean
+    reservationId?: boolean
     responsible?: boolean | HeadMechanicDefaultArgs<ExtArgs>
     reservation?: boolean | ReservationDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["diagnostic"]>
 
   export type DiagnosticSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    diagnostic_id?: boolean
-    responsible_id?: boolean
-    reservation_id?: boolean
+    diagnosticId?: boolean
+    responsibleId?: boolean
+    reservationId?: boolean
     responsible?: boolean | HeadMechanicDefaultArgs<ExtArgs>
     reservation?: boolean | ReservationDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["diagnostic"]>
 
   export type DiagnosticSelectScalar = {
-    diagnostic_id?: boolean
-    responsible_id?: boolean
-    reservation_id?: boolean
+    diagnosticId?: boolean
+    responsibleId?: boolean
+    reservationId?: boolean
   }
 
-  export type DiagnosticOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"diagnostic_id" | "responsible_id" | "reservation_id", ExtArgs["result"]["diagnostic"]>
+  export type DiagnosticOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"diagnosticId" | "responsibleId" | "reservationId", ExtArgs["result"]["diagnostic"]>
   export type DiagnosticInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     responsible?: boolean | HeadMechanicDefaultArgs<ExtArgs>
-    workers_employed?: boolean | Diagnostic$workers_employedArgs<ExtArgs>
+    workersEmployed?: boolean | Diagnostic$workersEmployedArgs<ExtArgs>
     reservation?: boolean | ReservationDefaultArgs<ExtArgs>
     _count?: boolean | DiagnosticCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -6667,13 +6667,13 @@ export namespace Prisma {
     name: "Diagnostic"
     objects: {
       responsible: Prisma.$HeadMechanicPayload<ExtArgs>
-      workers_employed: Prisma.$MechanicPayload<ExtArgs>[]
+      workersEmployed: Prisma.$MechanicPayload<ExtArgs>[]
       reservation: Prisma.$ReservationPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      diagnostic_id: number
-      responsible_id: number
-      reservation_id: number
+      diagnosticId: number
+      responsibleId: number
+      reservationId: number
     }, ExtArgs["result"]["diagnostic"]>
     composites: {}
   }
@@ -6757,8 +6757,8 @@ export namespace Prisma {
      * // Get first 10 Diagnostics
      * const diagnostics = await prisma.diagnostic.findMany({ take: 10 })
      * 
-     * // Only select the `diagnostic_id`
-     * const diagnosticWithDiagnostic_idOnly = await prisma.diagnostic.findMany({ select: { diagnostic_id: true } })
+     * // Only select the `diagnosticId`
+     * const diagnosticWithDiagnosticIdOnly = await prisma.diagnostic.findMany({ select: { diagnosticId: true } })
      * 
      */
     findMany<T extends DiagnosticFindManyArgs>(args?: SelectSubset<T, DiagnosticFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiagnosticPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -6802,9 +6802,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Diagnostics and only return the `diagnostic_id`
-     * const diagnosticWithDiagnostic_idOnly = await prisma.diagnostic.createManyAndReturn({
-     *   select: { diagnostic_id: true },
+     * // Create many Diagnostics and only return the `diagnosticId`
+     * const diagnosticWithDiagnosticIdOnly = await prisma.diagnostic.createManyAndReturn({
+     *   select: { diagnosticId: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -6893,9 +6893,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Diagnostics and only return the `diagnostic_id`
-     * const diagnosticWithDiagnostic_idOnly = await prisma.diagnostic.updateManyAndReturn({
-     *   select: { diagnostic_id: true },
+     * // Update zero or more Diagnostics and only return the `diagnosticId`
+     * const diagnosticWithDiagnosticIdOnly = await prisma.diagnostic.updateManyAndReturn({
+     *   select: { diagnosticId: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7069,7 +7069,7 @@ export namespace Prisma {
   export interface Prisma__DiagnosticClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     responsible<T extends HeadMechanicDefaultArgs<ExtArgs> = {}>(args?: Subset<T, HeadMechanicDefaultArgs<ExtArgs>>): Prisma__HeadMechanicClient<$Result.GetResult<Prisma.$HeadMechanicPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    workers_employed<T extends Diagnostic$workers_employedArgs<ExtArgs> = {}>(args?: Subset<T, Diagnostic$workers_employedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MechanicPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    workersEmployed<T extends Diagnostic$workersEmployedArgs<ExtArgs> = {}>(args?: Subset<T, Diagnostic$workersEmployedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MechanicPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reservation<T extends ReservationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ReservationDefaultArgs<ExtArgs>>): Prisma__ReservationClient<$Result.GetResult<Prisma.$ReservationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -7100,9 +7100,9 @@ export namespace Prisma {
    * Fields of the Diagnostic model
    */ 
   interface DiagnosticFieldRefs {
-    readonly diagnostic_id: FieldRef<"Diagnostic", 'Int'>
-    readonly responsible_id: FieldRef<"Diagnostic", 'Int'>
-    readonly reservation_id: FieldRef<"Diagnostic", 'Int'>
+    readonly diagnosticId: FieldRef<"Diagnostic", 'Int'>
+    readonly responsibleId: FieldRef<"Diagnostic", 'Int'>
+    readonly reservationId: FieldRef<"Diagnostic", 'Int'>
   }
     
 
@@ -7499,9 +7499,9 @@ export namespace Prisma {
   }
 
   /**
-   * Diagnostic.workers_employed
+   * Diagnostic.workersEmployed
    */
-  export type Diagnostic$workers_employedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Diagnostic$workersEmployedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Mechanic
      */
@@ -7554,75 +7554,75 @@ export namespace Prisma {
   }
 
   export type RepairAvgAggregateOutputType = {
-    repair_id: number | null
-    responsible_id: number | null
-    reservation_id: number | null
-    total_repair_hours: number | null
+    repairId: number | null
+    responsibleId: number | null
+    reservationId: number | null
+    totalRepairHours: number | null
   }
 
   export type RepairSumAggregateOutputType = {
-    repair_id: number | null
-    responsible_id: number | null
-    reservation_id: number | null
-    total_repair_hours: number | null
+    repairId: number | null
+    responsibleId: number | null
+    reservationId: number | null
+    totalRepairHours: number | null
   }
 
   export type RepairMinAggregateOutputType = {
-    repair_id: number | null
-    responsible_id: number | null
-    reservation_id: number | null
-    total_repair_hours: number | null
+    repairId: number | null
+    responsibleId: number | null
+    reservationId: number | null
+    totalRepairHours: number | null
   }
 
   export type RepairMaxAggregateOutputType = {
-    repair_id: number | null
-    responsible_id: number | null
-    reservation_id: number | null
-    total_repair_hours: number | null
+    repairId: number | null
+    responsibleId: number | null
+    reservationId: number | null
+    totalRepairHours: number | null
   }
 
   export type RepairCountAggregateOutputType = {
-    repair_id: number
-    responsible_id: number
-    reservation_id: number
-    total_repair_hours: number
+    repairId: number
+    responsibleId: number
+    reservationId: number
+    totalRepairHours: number
     _all: number
   }
 
 
   export type RepairAvgAggregateInputType = {
-    repair_id?: true
-    responsible_id?: true
-    reservation_id?: true
-    total_repair_hours?: true
+    repairId?: true
+    responsibleId?: true
+    reservationId?: true
+    totalRepairHours?: true
   }
 
   export type RepairSumAggregateInputType = {
-    repair_id?: true
-    responsible_id?: true
-    reservation_id?: true
-    total_repair_hours?: true
+    repairId?: true
+    responsibleId?: true
+    reservationId?: true
+    totalRepairHours?: true
   }
 
   export type RepairMinAggregateInputType = {
-    repair_id?: true
-    responsible_id?: true
-    reservation_id?: true
-    total_repair_hours?: true
+    repairId?: true
+    responsibleId?: true
+    reservationId?: true
+    totalRepairHours?: true
   }
 
   export type RepairMaxAggregateInputType = {
-    repair_id?: true
-    responsible_id?: true
-    reservation_id?: true
-    total_repair_hours?: true
+    repairId?: true
+    responsibleId?: true
+    reservationId?: true
+    totalRepairHours?: true
   }
 
   export type RepairCountAggregateInputType = {
-    repair_id?: true
-    responsible_id?: true
-    reservation_id?: true
-    total_repair_hours?: true
+    repairId?: true
+    responsibleId?: true
+    reservationId?: true
+    totalRepairHours?: true
     _all?: true
   }
 
@@ -7713,10 +7713,10 @@ export namespace Prisma {
   }
 
   export type RepairGroupByOutputType = {
-    repair_id: number
-    responsible_id: number
-    reservation_id: number
-    total_repair_hours: number
+    repairId: number
+    responsibleId: number
+    reservationId: number
+    totalRepairHours: number
     _count: RepairCountAggregateOutputType | null
     _avg: RepairAvgAggregateOutputType | null
     _sum: RepairSumAggregateOutputType | null
@@ -7739,45 +7739,45 @@ export namespace Prisma {
 
 
   export type RepairSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    repair_id?: boolean
-    responsible_id?: boolean
-    reservation_id?: boolean
-    total_repair_hours?: boolean
+    repairId?: boolean
+    responsibleId?: boolean
+    reservationId?: boolean
+    totalRepairHours?: boolean
     responsible?: boolean | HeadMechanicDefaultArgs<ExtArgs>
-    workers_employed?: boolean | Repair$workers_employedArgs<ExtArgs>
+    workersEmployed?: boolean | Repair$workersEmployedArgs<ExtArgs>
     reservation?: boolean | ReservationDefaultArgs<ExtArgs>
     _count?: boolean | RepairCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["repair"]>
 
   export type RepairSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    repair_id?: boolean
-    responsible_id?: boolean
-    reservation_id?: boolean
-    total_repair_hours?: boolean
+    repairId?: boolean
+    responsibleId?: boolean
+    reservationId?: boolean
+    totalRepairHours?: boolean
     responsible?: boolean | HeadMechanicDefaultArgs<ExtArgs>
     reservation?: boolean | ReservationDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["repair"]>
 
   export type RepairSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    repair_id?: boolean
-    responsible_id?: boolean
-    reservation_id?: boolean
-    total_repair_hours?: boolean
+    repairId?: boolean
+    responsibleId?: boolean
+    reservationId?: boolean
+    totalRepairHours?: boolean
     responsible?: boolean | HeadMechanicDefaultArgs<ExtArgs>
     reservation?: boolean | ReservationDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["repair"]>
 
   export type RepairSelectScalar = {
-    repair_id?: boolean
-    responsible_id?: boolean
-    reservation_id?: boolean
-    total_repair_hours?: boolean
+    repairId?: boolean
+    responsibleId?: boolean
+    reservationId?: boolean
+    totalRepairHours?: boolean
   }
 
-  export type RepairOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"repair_id" | "responsible_id" | "reservation_id" | "total_repair_hours", ExtArgs["result"]["repair"]>
+  export type RepairOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"repairId" | "responsibleId" | "reservationId" | "totalRepairHours", ExtArgs["result"]["repair"]>
   export type RepairInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     responsible?: boolean | HeadMechanicDefaultArgs<ExtArgs>
-    workers_employed?: boolean | Repair$workers_employedArgs<ExtArgs>
+    workersEmployed?: boolean | Repair$workersEmployedArgs<ExtArgs>
     reservation?: boolean | ReservationDefaultArgs<ExtArgs>
     _count?: boolean | RepairCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -7794,14 +7794,14 @@ export namespace Prisma {
     name: "Repair"
     objects: {
       responsible: Prisma.$HeadMechanicPayload<ExtArgs>
-      workers_employed: Prisma.$MechanicPayload<ExtArgs>[]
+      workersEmployed: Prisma.$MechanicPayload<ExtArgs>[]
       reservation: Prisma.$ReservationPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      repair_id: number
-      responsible_id: number
-      reservation_id: number
-      total_repair_hours: number
+      repairId: number
+      responsibleId: number
+      reservationId: number
+      totalRepairHours: number
     }, ExtArgs["result"]["repair"]>
     composites: {}
   }
@@ -7885,8 +7885,8 @@ export namespace Prisma {
      * // Get first 10 Repairs
      * const repairs = await prisma.repair.findMany({ take: 10 })
      * 
-     * // Only select the `repair_id`
-     * const repairWithRepair_idOnly = await prisma.repair.findMany({ select: { repair_id: true } })
+     * // Only select the `repairId`
+     * const repairWithRepairIdOnly = await prisma.repair.findMany({ select: { repairId: true } })
      * 
      */
     findMany<T extends RepairFindManyArgs>(args?: SelectSubset<T, RepairFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RepairPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -7930,9 +7930,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Repairs and only return the `repair_id`
-     * const repairWithRepair_idOnly = await prisma.repair.createManyAndReturn({
-     *   select: { repair_id: true },
+     * // Create many Repairs and only return the `repairId`
+     * const repairWithRepairIdOnly = await prisma.repair.createManyAndReturn({
+     *   select: { repairId: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -8021,9 +8021,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Repairs and only return the `repair_id`
-     * const repairWithRepair_idOnly = await prisma.repair.updateManyAndReturn({
-     *   select: { repair_id: true },
+     * // Update zero or more Repairs and only return the `repairId`
+     * const repairWithRepairIdOnly = await prisma.repair.updateManyAndReturn({
+     *   select: { repairId: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8197,7 +8197,7 @@ export namespace Prisma {
   export interface Prisma__RepairClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     responsible<T extends HeadMechanicDefaultArgs<ExtArgs> = {}>(args?: Subset<T, HeadMechanicDefaultArgs<ExtArgs>>): Prisma__HeadMechanicClient<$Result.GetResult<Prisma.$HeadMechanicPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    workers_employed<T extends Repair$workers_employedArgs<ExtArgs> = {}>(args?: Subset<T, Repair$workers_employedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MechanicPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    workersEmployed<T extends Repair$workersEmployedArgs<ExtArgs> = {}>(args?: Subset<T, Repair$workersEmployedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MechanicPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reservation<T extends ReservationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ReservationDefaultArgs<ExtArgs>>): Prisma__ReservationClient<$Result.GetResult<Prisma.$ReservationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -8228,10 +8228,10 @@ export namespace Prisma {
    * Fields of the Repair model
    */ 
   interface RepairFieldRefs {
-    readonly repair_id: FieldRef<"Repair", 'Int'>
-    readonly responsible_id: FieldRef<"Repair", 'Int'>
-    readonly reservation_id: FieldRef<"Repair", 'Int'>
-    readonly total_repair_hours: FieldRef<"Repair", 'Int'>
+    readonly repairId: FieldRef<"Repair", 'Int'>
+    readonly responsibleId: FieldRef<"Repair", 'Int'>
+    readonly reservationId: FieldRef<"Repair", 'Int'>
+    readonly totalRepairHours: FieldRef<"Repair", 'Int'>
   }
     
 
@@ -8628,9 +8628,9 @@ export namespace Prisma {
   }
 
   /**
-   * Repair.workers_employed
+   * Repair.workersEmployed
    */
-  export type Repair$workers_employedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Repair$workersEmployedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Mechanic
      */
@@ -8684,62 +8684,62 @@ export namespace Prisma {
 
   export type RepairPartAvgAggregateOutputType = {
     price: number | null
-    repair_id: number | null
-    vendor_id: number | null
+    repairId: number | null
+    vendorId: number | null
   }
 
   export type RepairPartSumAggregateOutputType = {
     price: number | null
-    repair_id: number[]
-    vendor_id: number[]
+    repairId: number[]
+    vendorId: number[]
   }
 
   export type RepairPartMinAggregateOutputType = {
-    part_id: string | null
+    partId: string | null
     price: number | null
   }
 
   export type RepairPartMaxAggregateOutputType = {
-    part_id: string | null
+    partId: string | null
     price: number | null
   }
 
   export type RepairPartCountAggregateOutputType = {
-    part_id: number
+    partId: number
     price: number
-    repair_id: number
-    vendor_id: number
+    repairId: number
+    vendorId: number
     _all: number
   }
 
 
   export type RepairPartAvgAggregateInputType = {
     price?: true
-    repair_id?: true
-    vendor_id?: true
+    repairId?: true
+    vendorId?: true
   }
 
   export type RepairPartSumAggregateInputType = {
     price?: true
-    repair_id?: true
-    vendor_id?: true
+    repairId?: true
+    vendorId?: true
   }
 
   export type RepairPartMinAggregateInputType = {
-    part_id?: true
+    partId?: true
     price?: true
   }
 
   export type RepairPartMaxAggregateInputType = {
-    part_id?: true
+    partId?: true
     price?: true
   }
 
   export type RepairPartCountAggregateInputType = {
-    part_id?: true
+    partId?: true
     price?: true
-    repair_id?: true
-    vendor_id?: true
+    repairId?: true
+    vendorId?: true
     _all?: true
   }
 
@@ -8830,10 +8830,10 @@ export namespace Prisma {
   }
 
   export type RepairPartGroupByOutputType = {
-    part_id: string
+    partId: string
     price: number
-    repair_id: number[]
-    vendor_id: number[]
+    repairId: number[]
+    vendorId: number[]
     _count: RepairPartCountAggregateOutputType | null
     _avg: RepairPartAvgAggregateOutputType | null
     _sum: RepairPartSumAggregateOutputType | null
@@ -8856,43 +8856,43 @@ export namespace Prisma {
 
 
   export type RepairPartSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    part_id?: boolean
+    partId?: boolean
     price?: boolean
-    repair_id?: boolean
-    vendor_id?: boolean
+    repairId?: boolean
+    vendorId?: boolean
   }, ExtArgs["result"]["repairPart"]>
 
   export type RepairPartSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    part_id?: boolean
+    partId?: boolean
     price?: boolean
-    repair_id?: boolean
-    vendor_id?: boolean
+    repairId?: boolean
+    vendorId?: boolean
   }, ExtArgs["result"]["repairPart"]>
 
   export type RepairPartSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    part_id?: boolean
+    partId?: boolean
     price?: boolean
-    repair_id?: boolean
-    vendor_id?: boolean
+    repairId?: boolean
+    vendorId?: boolean
   }, ExtArgs["result"]["repairPart"]>
 
   export type RepairPartSelectScalar = {
-    part_id?: boolean
+    partId?: boolean
     price?: boolean
-    repair_id?: boolean
-    vendor_id?: boolean
+    repairId?: boolean
+    vendorId?: boolean
   }
 
-  export type RepairPartOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"part_id" | "price" | "repair_id" | "vendor_id", ExtArgs["result"]["repairPart"]>
+  export type RepairPartOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"partId" | "price" | "repairId" | "vendorId", ExtArgs["result"]["repairPart"]>
 
   export type $RepairPartPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "RepairPart"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      part_id: string
+      partId: string
       price: number
-      repair_id: number[]
-      vendor_id: number[]
+      repairId: number[]
+      vendorId: number[]
     }, ExtArgs["result"]["repairPart"]>
     composites: {}
   }
@@ -8976,8 +8976,8 @@ export namespace Prisma {
      * // Get first 10 RepairParts
      * const repairParts = await prisma.repairPart.findMany({ take: 10 })
      * 
-     * // Only select the `part_id`
-     * const repairPartWithPart_idOnly = await prisma.repairPart.findMany({ select: { part_id: true } })
+     * // Only select the `partId`
+     * const repairPartWithPartIdOnly = await prisma.repairPart.findMany({ select: { partId: true } })
      * 
      */
     findMany<T extends RepairPartFindManyArgs>(args?: SelectSubset<T, RepairPartFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RepairPartPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -9021,9 +9021,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many RepairParts and only return the `part_id`
-     * const repairPartWithPart_idOnly = await prisma.repairPart.createManyAndReturn({
-     *   select: { part_id: true },
+     * // Create many RepairParts and only return the `partId`
+     * const repairPartWithPartIdOnly = await prisma.repairPart.createManyAndReturn({
+     *   select: { partId: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -9112,9 +9112,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more RepairParts and only return the `part_id`
-     * const repairPartWithPart_idOnly = await prisma.repairPart.updateManyAndReturn({
-     *   select: { part_id: true },
+     * // Update zero or more RepairParts and only return the `partId`
+     * const repairPartWithPartIdOnly = await prisma.repairPart.updateManyAndReturn({
+     *   select: { partId: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -9316,10 +9316,10 @@ export namespace Prisma {
    * Fields of the RepairPart model
    */ 
   interface RepairPartFieldRefs {
-    readonly part_id: FieldRef<"RepairPart", 'String'>
+    readonly partId: FieldRef<"RepairPart", 'String'>
     readonly price: FieldRef<"RepairPart", 'Float'>
-    readonly repair_id: FieldRef<"RepairPart", 'Int[]'>
-    readonly vendor_id: FieldRef<"RepairPart", 'Int[]'>
+    readonly repairId: FieldRef<"RepairPart", 'Int[]'>
+    readonly vendorId: FieldRef<"RepairPart", 'Int[]'>
   }
     
 
@@ -9699,57 +9699,57 @@ export namespace Prisma {
   }
 
   export type VendorAvgAggregateOutputType = {
-    vendor_id: number | null
+    vendorId: number | null
   }
 
   export type VendorSumAggregateOutputType = {
-    vendor_id: number | null
+    vendorId: number | null
   }
 
   export type VendorMinAggregateOutputType = {
-    vendor_id: number | null
-    vendor_shop_name: string | null
-    vendor_shop_address: string | null
+    vendorId: number | null
+    vendorShopName: string | null
+    vendorShopAddress: string | null
   }
 
   export type VendorMaxAggregateOutputType = {
-    vendor_id: number | null
-    vendor_shop_name: string | null
-    vendor_shop_address: string | null
+    vendorId: number | null
+    vendorShopName: string | null
+    vendorShopAddress: string | null
   }
 
   export type VendorCountAggregateOutputType = {
-    vendor_id: number
-    vendor_shop_name: number
-    vendor_shop_address: number
+    vendorId: number
+    vendorShopName: number
+    vendorShopAddress: number
     _all: number
   }
 
 
   export type VendorAvgAggregateInputType = {
-    vendor_id?: true
+    vendorId?: true
   }
 
   export type VendorSumAggregateInputType = {
-    vendor_id?: true
+    vendorId?: true
   }
 
   export type VendorMinAggregateInputType = {
-    vendor_id?: true
-    vendor_shop_name?: true
-    vendor_shop_address?: true
+    vendorId?: true
+    vendorShopName?: true
+    vendorShopAddress?: true
   }
 
   export type VendorMaxAggregateInputType = {
-    vendor_id?: true
-    vendor_shop_name?: true
-    vendor_shop_address?: true
+    vendorId?: true
+    vendorShopName?: true
+    vendorShopAddress?: true
   }
 
   export type VendorCountAggregateInputType = {
-    vendor_id?: true
-    vendor_shop_name?: true
-    vendor_shop_address?: true
+    vendorId?: true
+    vendorShopName?: true
+    vendorShopAddress?: true
     _all?: true
   }
 
@@ -9840,9 +9840,9 @@ export namespace Prisma {
   }
 
   export type VendorGroupByOutputType = {
-    vendor_id: number
-    vendor_shop_name: string
-    vendor_shop_address: string
+    vendorId: number
+    vendorShopName: string
+    vendorShopAddress: string
     _count: VendorCountAggregateOutputType | null
     _avg: VendorAvgAggregateOutputType | null
     _sum: VendorSumAggregateOutputType | null
@@ -9865,38 +9865,38 @@ export namespace Prisma {
 
 
   export type VendorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    vendor_id?: boolean
-    vendor_shop_name?: boolean
-    vendor_shop_address?: boolean
+    vendorId?: boolean
+    vendorShopName?: boolean
+    vendorShopAddress?: boolean
   }, ExtArgs["result"]["vendor"]>
 
   export type VendorSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    vendor_id?: boolean
-    vendor_shop_name?: boolean
-    vendor_shop_address?: boolean
+    vendorId?: boolean
+    vendorShopName?: boolean
+    vendorShopAddress?: boolean
   }, ExtArgs["result"]["vendor"]>
 
   export type VendorSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    vendor_id?: boolean
-    vendor_shop_name?: boolean
-    vendor_shop_address?: boolean
+    vendorId?: boolean
+    vendorShopName?: boolean
+    vendorShopAddress?: boolean
   }, ExtArgs["result"]["vendor"]>
 
   export type VendorSelectScalar = {
-    vendor_id?: boolean
-    vendor_shop_name?: boolean
-    vendor_shop_address?: boolean
+    vendorId?: boolean
+    vendorShopName?: boolean
+    vendorShopAddress?: boolean
   }
 
-  export type VendorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"vendor_id" | "vendor_shop_name" | "vendor_shop_address", ExtArgs["result"]["vendor"]>
+  export type VendorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"vendorId" | "vendorShopName" | "vendorShopAddress", ExtArgs["result"]["vendor"]>
 
   export type $VendorPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Vendor"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      vendor_id: number
-      vendor_shop_name: string
-      vendor_shop_address: string
+      vendorId: number
+      vendorShopName: string
+      vendorShopAddress: string
     }, ExtArgs["result"]["vendor"]>
     composites: {}
   }
@@ -9980,8 +9980,8 @@ export namespace Prisma {
      * // Get first 10 Vendors
      * const vendors = await prisma.vendor.findMany({ take: 10 })
      * 
-     * // Only select the `vendor_id`
-     * const vendorWithVendor_idOnly = await prisma.vendor.findMany({ select: { vendor_id: true } })
+     * // Only select the `vendorId`
+     * const vendorWithVendorIdOnly = await prisma.vendor.findMany({ select: { vendorId: true } })
      * 
      */
     findMany<T extends VendorFindManyArgs>(args?: SelectSubset<T, VendorFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VendorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -10025,9 +10025,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Vendors and only return the `vendor_id`
-     * const vendorWithVendor_idOnly = await prisma.vendor.createManyAndReturn({
-     *   select: { vendor_id: true },
+     * // Create many Vendors and only return the `vendorId`
+     * const vendorWithVendorIdOnly = await prisma.vendor.createManyAndReturn({
+     *   select: { vendorId: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -10116,9 +10116,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Vendors and only return the `vendor_id`
-     * const vendorWithVendor_idOnly = await prisma.vendor.updateManyAndReturn({
-     *   select: { vendor_id: true },
+     * // Update zero or more Vendors and only return the `vendorId`
+     * const vendorWithVendorIdOnly = await prisma.vendor.updateManyAndReturn({
+     *   select: { vendorId: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -10320,9 +10320,9 @@ export namespace Prisma {
    * Fields of the Vendor model
    */ 
   interface VendorFieldRefs {
-    readonly vendor_id: FieldRef<"Vendor", 'Int'>
-    readonly vendor_shop_name: FieldRef<"Vendor", 'String'>
-    readonly vendor_shop_address: FieldRef<"Vendor", 'String'>
+    readonly vendorId: FieldRef<"Vendor", 'Int'>
+    readonly vendorShopName: FieldRef<"Vendor", 'String'>
+    readonly vendorShopAddress: FieldRef<"Vendor", 'String'>
   }
     
 
@@ -10702,27 +10702,27 @@ export namespace Prisma {
   }
 
   export type UserAvgAggregateOutputType = {
-    user_id: number | null
+    userId: number | null
   }
 
   export type UserSumAggregateOutputType = {
-    user_id: number | null
+    userId: number | null
   }
 
   export type UserMinAggregateOutputType = {
-    user_id: number | null
+    userId: number | null
     email: string | null
     name: string | null
   }
 
   export type UserMaxAggregateOutputType = {
-    user_id: number | null
+    userId: number | null
     email: string | null
     name: string | null
   }
 
   export type UserCountAggregateOutputType = {
-    user_id: number
+    userId: number
     email: number
     name: number
     _all: number
@@ -10730,27 +10730,27 @@ export namespace Prisma {
 
 
   export type UserAvgAggregateInputType = {
-    user_id?: true
+    userId?: true
   }
 
   export type UserSumAggregateInputType = {
-    user_id?: true
+    userId?: true
   }
 
   export type UserMinAggregateInputType = {
-    user_id?: true
+    userId?: true
     email?: true
     name?: true
   }
 
   export type UserMaxAggregateInputType = {
-    user_id?: true
+    userId?: true
     email?: true
     name?: true
   }
 
   export type UserCountAggregateInputType = {
-    user_id?: true
+    userId?: true
     email?: true
     name?: true
     _all?: true
@@ -10843,7 +10843,7 @@ export namespace Prisma {
   }
 
   export type UserGroupByOutputType = {
-    user_id: number
+    userId: number
     email: string
     name: string | null
     _count: UserCountAggregateOutputType | null
@@ -10868,7 +10868,7 @@ export namespace Prisma {
 
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    user_id?: boolean
+    userId?: boolean
     email?: boolean
     name?: boolean
     posts?: boolean | User$postsArgs<ExtArgs>
@@ -10876,24 +10876,24 @@ export namespace Prisma {
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    user_id?: boolean
+    userId?: boolean
     email?: boolean
     name?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    user_id?: boolean
+    userId?: boolean
     email?: boolean
     name?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
-    user_id?: boolean
+    userId?: boolean
     email?: boolean
     name?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"user_id" | "email" | "name", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "email" | "name", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     posts?: boolean | User$postsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -10907,7 +10907,7 @@ export namespace Prisma {
       posts: Prisma.$PostPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      user_id: number
+      userId: number
       email: string
       name: string | null
     }, ExtArgs["result"]["user"]>
@@ -10993,8 +10993,8 @@ export namespace Prisma {
      * // Get first 10 Users
      * const users = await prisma.user.findMany({ take: 10 })
      * 
-     * // Only select the `user_id`
-     * const userWithUser_idOnly = await prisma.user.findMany({ select: { user_id: true } })
+     * // Only select the `userId`
+     * const userWithUserIdOnly = await prisma.user.findMany({ select: { userId: true } })
      * 
      */
     findMany<T extends UserFindManyArgs>(args?: SelectSubset<T, UserFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -11038,9 +11038,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Users and only return the `user_id`
-     * const userWithUser_idOnly = await prisma.user.createManyAndReturn({
-     *   select: { user_id: true },
+     * // Create many Users and only return the `userId`
+     * const userWithUserIdOnly = await prisma.user.createManyAndReturn({
+     *   select: { userId: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -11129,9 +11129,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Users and only return the `user_id`
-     * const userWithUser_idOnly = await prisma.user.updateManyAndReturn({
-     *   select: { user_id: true },
+     * // Update zero or more Users and only return the `userId`
+     * const userWithUserIdOnly = await prisma.user.updateManyAndReturn({
+     *   select: { userId: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -11334,7 +11334,7 @@ export namespace Prisma {
    * Fields of the User model
    */ 
   interface UserFieldRefs {
-    readonly user_id: FieldRef<"User", 'Int'>
+    readonly userId: FieldRef<"User", 'Int'>
     readonly email: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
   }
@@ -11780,17 +11780,17 @@ export namespace Prisma {
   }
 
   export type PostAvgAggregateOutputType = {
-    post_id: number | null
+    postId: number | null
     authorId: number | null
   }
 
   export type PostSumAggregateOutputType = {
-    post_id: number | null
+    postId: number | null
     authorId: number | null
   }
 
   export type PostMinAggregateOutputType = {
-    post_id: number | null
+    postId: number | null
     title: string | null
     content: string | null
     published: boolean | null
@@ -11798,7 +11798,7 @@ export namespace Prisma {
   }
 
   export type PostMaxAggregateOutputType = {
-    post_id: number | null
+    postId: number | null
     title: string | null
     content: string | null
     published: boolean | null
@@ -11806,7 +11806,7 @@ export namespace Prisma {
   }
 
   export type PostCountAggregateOutputType = {
-    post_id: number
+    postId: number
     title: number
     content: number
     published: number
@@ -11816,17 +11816,17 @@ export namespace Prisma {
 
 
   export type PostAvgAggregateInputType = {
-    post_id?: true
+    postId?: true
     authorId?: true
   }
 
   export type PostSumAggregateInputType = {
-    post_id?: true
+    postId?: true
     authorId?: true
   }
 
   export type PostMinAggregateInputType = {
-    post_id?: true
+    postId?: true
     title?: true
     content?: true
     published?: true
@@ -11834,7 +11834,7 @@ export namespace Prisma {
   }
 
   export type PostMaxAggregateInputType = {
-    post_id?: true
+    postId?: true
     title?: true
     content?: true
     published?: true
@@ -11842,7 +11842,7 @@ export namespace Prisma {
   }
 
   export type PostCountAggregateInputType = {
-    post_id?: true
+    postId?: true
     title?: true
     content?: true
     published?: true
@@ -11937,7 +11937,7 @@ export namespace Prisma {
   }
 
   export type PostGroupByOutputType = {
-    post_id: number
+    postId: number
     title: string
     content: string | null
     published: boolean
@@ -11964,7 +11964,7 @@ export namespace Prisma {
 
 
   export type PostSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    post_id?: boolean
+    postId?: boolean
     title?: boolean
     content?: boolean
     published?: boolean
@@ -11973,7 +11973,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["post"]>
 
   export type PostSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    post_id?: boolean
+    postId?: boolean
     title?: boolean
     content?: boolean
     published?: boolean
@@ -11982,7 +11982,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["post"]>
 
   export type PostSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    post_id?: boolean
+    postId?: boolean
     title?: boolean
     content?: boolean
     published?: boolean
@@ -11991,14 +11991,14 @@ export namespace Prisma {
   }, ExtArgs["result"]["post"]>
 
   export type PostSelectScalar = {
-    post_id?: boolean
+    postId?: boolean
     title?: boolean
     content?: boolean
     published?: boolean
     authorId?: boolean
   }
 
-  export type PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"post_id" | "title" | "content" | "published" | "authorId", ExtArgs["result"]["post"]>
+  export type PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"postId" | "title" | "content" | "published" | "authorId", ExtArgs["result"]["post"]>
   export type PostInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     author?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -12015,7 +12015,7 @@ export namespace Prisma {
       author: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      post_id: number
+      postId: number
       title: string
       content: string | null
       published: boolean
@@ -12103,8 +12103,8 @@ export namespace Prisma {
      * // Get first 10 Posts
      * const posts = await prisma.post.findMany({ take: 10 })
      * 
-     * // Only select the `post_id`
-     * const postWithPost_idOnly = await prisma.post.findMany({ select: { post_id: true } })
+     * // Only select the `postId`
+     * const postWithPostIdOnly = await prisma.post.findMany({ select: { postId: true } })
      * 
      */
     findMany<T extends PostFindManyArgs>(args?: SelectSubset<T, PostFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -12148,9 +12148,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Posts and only return the `post_id`
-     * const postWithPost_idOnly = await prisma.post.createManyAndReturn({
-     *   select: { post_id: true },
+     * // Create many Posts and only return the `postId`
+     * const postWithPostIdOnly = await prisma.post.createManyAndReturn({
+     *   select: { postId: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -12239,9 +12239,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Posts and only return the `post_id`
-     * const postWithPost_idOnly = await prisma.post.updateManyAndReturn({
-     *   select: { post_id: true },
+     * // Update zero or more Posts and only return the `postId`
+     * const postWithPostIdOnly = await prisma.post.updateManyAndReturn({
+     *   select: { postId: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -12444,7 +12444,7 @@ export namespace Prisma {
    * Fields of the Post model
    */ 
   interface PostFieldRefs {
-    readonly post_id: FieldRef<"Post", 'Int'>
+    readonly postId: FieldRef<"Post", 'Int'>
     readonly title: FieldRef<"Post", 'String'>
     readonly content: FieldRef<"Post", 'String'>
     readonly published: FieldRef<"Post", 'Boolean'>
@@ -12881,7 +12881,7 @@ export namespace Prisma {
     vin: 'vin',
     local: 'local',
     registation: 'registation',
-    registration_type: 'registration_type',
+    registrationType: 'registrationType',
     location: 'location'
   };
 
@@ -12889,74 +12889,74 @@ export namespace Prisma {
 
 
   export const MechanicScalarFieldEnum: {
-    mechanic_id: 'mechanic_id',
-    pay_per_hour: 'pay_per_hour',
-    diagnosticDiagnostic_id: 'diagnosticDiagnostic_id',
-    repairRepair_id: 'repairRepair_id'
+    mechanicId: 'mechanicId',
+    payPerHour: 'payPerHour',
+    diagnosticDiagnosticId: 'diagnosticDiagnosticId',
+    repairRepairId: 'repairRepairId'
   };
 
   export type MechanicScalarFieldEnum = (typeof MechanicScalarFieldEnum)[keyof typeof MechanicScalarFieldEnum]
 
 
   export const HeadMechanicScalarFieldEnum: {
-    mechanic_id: 'mechanic_id'
+    mechanicId: 'mechanicId'
   };
 
   export type HeadMechanicScalarFieldEnum = (typeof HeadMechanicScalarFieldEnum)[keyof typeof HeadMechanicScalarFieldEnum]
 
 
   export const ReservationScalarFieldEnum: {
-    reservation_id: 'reservation_id',
-    mobile_phone: 'mobile_phone',
+    reservationId: 'reservationId',
+    mobilePhone: 'mobilePhone',
     date: 'date',
-    base_fee: 'base_fee',
-    repair_status: 'repair_status',
-    vehicule_id: 'vehicule_id'
+    baseFee: 'baseFee',
+    repairStatus: 'repairStatus',
+    vehiculeId: 'vehiculeId'
   };
 
   export type ReservationScalarFieldEnum = (typeof ReservationScalarFieldEnum)[keyof typeof ReservationScalarFieldEnum]
 
 
   export const DiagnosticScalarFieldEnum: {
-    diagnostic_id: 'diagnostic_id',
-    responsible_id: 'responsible_id',
-    reservation_id: 'reservation_id'
+    diagnosticId: 'diagnosticId',
+    responsibleId: 'responsibleId',
+    reservationId: 'reservationId'
   };
 
   export type DiagnosticScalarFieldEnum = (typeof DiagnosticScalarFieldEnum)[keyof typeof DiagnosticScalarFieldEnum]
 
 
   export const RepairScalarFieldEnum: {
-    repair_id: 'repair_id',
-    responsible_id: 'responsible_id',
-    reservation_id: 'reservation_id',
-    total_repair_hours: 'total_repair_hours'
+    repairId: 'repairId',
+    responsibleId: 'responsibleId',
+    reservationId: 'reservationId',
+    totalRepairHours: 'totalRepairHours'
   };
 
   export type RepairScalarFieldEnum = (typeof RepairScalarFieldEnum)[keyof typeof RepairScalarFieldEnum]
 
 
   export const RepairPartScalarFieldEnum: {
-    part_id: 'part_id',
+    partId: 'partId',
     price: 'price',
-    repair_id: 'repair_id',
-    vendor_id: 'vendor_id'
+    repairId: 'repairId',
+    vendorId: 'vendorId'
   };
 
   export type RepairPartScalarFieldEnum = (typeof RepairPartScalarFieldEnum)[keyof typeof RepairPartScalarFieldEnum]
 
 
   export const VendorScalarFieldEnum: {
-    vendor_id: 'vendor_id',
-    vendor_shop_name: 'vendor_shop_name',
-    vendor_shop_address: 'vendor_shop_address'
+    vendorId: 'vendorId',
+    vendorShopName: 'vendorShopName',
+    vendorShopAddress: 'vendorShopAddress'
   };
 
   export type VendorScalarFieldEnum = (typeof VendorScalarFieldEnum)[keyof typeof VendorScalarFieldEnum]
 
 
   export const UserScalarFieldEnum: {
-    user_id: 'user_id',
+    userId: 'userId',
     email: 'email',
     name: 'name'
   };
@@ -12965,7 +12965,7 @@ export namespace Prisma {
 
 
   export const PostScalarFieldEnum: {
-    post_id: 'post_id',
+    postId: 'postId',
     title: 'title',
     content: 'content',
     published: 'published',
@@ -13105,18 +13105,18 @@ export namespace Prisma {
     vin?: StringFilter<"Vehicule"> | string
     local?: BoolFilter<"Vehicule"> | boolean
     registation?: StringFilter<"Vehicule"> | string
-    registration_type?: EnumRegTypesNullableFilter<"Vehicule"> | $Enums.RegTypes | null
+    registrationType?: EnumRegTypesNullableFilter<"Vehicule"> | $Enums.RegTypes | null
     location?: StringNullableFilter<"Vehicule"> | string | null
-    Reservation?: ReservationListRelationFilter
+    reservation?: ReservationListRelationFilter
   }
 
   export type VehiculeOrderByWithRelationInput = {
     vin?: SortOrder
     local?: SortOrder
     registation?: SortOrder
-    registration_type?: SortOrderInput | SortOrder
+    registrationType?: SortOrderInput | SortOrder
     location?: SortOrderInput | SortOrder
-    Reservation?: ReservationOrderByRelationAggregateInput
+    reservation?: ReservationOrderByRelationAggregateInput
   }
 
   export type VehiculeWhereUniqueInput = Prisma.AtLeast<{
@@ -13126,16 +13126,16 @@ export namespace Prisma {
     NOT?: VehiculeWhereInput | VehiculeWhereInput[]
     local?: BoolFilter<"Vehicule"> | boolean
     registation?: StringFilter<"Vehicule"> | string
-    registration_type?: EnumRegTypesNullableFilter<"Vehicule"> | $Enums.RegTypes | null
+    registrationType?: EnumRegTypesNullableFilter<"Vehicule"> | $Enums.RegTypes | null
     location?: StringNullableFilter<"Vehicule"> | string | null
-    Reservation?: ReservationListRelationFilter
+    reservation?: ReservationListRelationFilter
   }, "vin">
 
   export type VehiculeOrderByWithAggregationInput = {
     vin?: SortOrder
     local?: SortOrder
     registation?: SortOrder
-    registration_type?: SortOrderInput | SortOrder
+    registrationType?: SortOrderInput | SortOrder
     location?: SortOrderInput | SortOrder
     _count?: VehiculeCountOrderByAggregateInput
     _max?: VehiculeMaxOrderByAggregateInput
@@ -13149,7 +13149,7 @@ export namespace Prisma {
     vin?: StringWithAggregatesFilter<"Vehicule"> | string
     local?: BoolWithAggregatesFilter<"Vehicule"> | boolean
     registation?: StringWithAggregatesFilter<"Vehicule"> | string
-    registration_type?: EnumRegTypesNullableWithAggregatesFilter<"Vehicule"> | $Enums.RegTypes | null
+    registrationType?: EnumRegTypesNullableWithAggregatesFilter<"Vehicule"> | $Enums.RegTypes | null
     location?: StringNullableWithAggregatesFilter<"Vehicule"> | string | null
   }
 
@@ -13157,43 +13157,43 @@ export namespace Prisma {
     AND?: MechanicWhereInput | MechanicWhereInput[]
     OR?: MechanicWhereInput[]
     NOT?: MechanicWhereInput | MechanicWhereInput[]
-    mechanic_id?: IntFilter<"Mechanic"> | number
-    pay_per_hour?: FloatFilter<"Mechanic"> | number
-    diagnosticDiagnostic_id?: IntNullableFilter<"Mechanic"> | number | null
-    repairRepair_id?: IntNullableFilter<"Mechanic"> | number | null
-    HeadMechanic?: XOR<HeadMechanicNullableScalarRelationFilter, HeadMechanicWhereInput> | null
-    Diagnostic?: XOR<DiagnosticNullableScalarRelationFilter, DiagnosticWhereInput> | null
-    Repair?: XOR<RepairNullableScalarRelationFilter, RepairWhereInput> | null
+    mechanicId?: IntFilter<"Mechanic"> | number
+    payPerHour?: FloatFilter<"Mechanic"> | number
+    diagnosticDiagnosticId?: IntNullableFilter<"Mechanic"> | number | null
+    repairRepairId?: IntNullableFilter<"Mechanic"> | number | null
+    headMechanic?: XOR<HeadMechanicNullableScalarRelationFilter, HeadMechanicWhereInput> | null
+    diagnostic?: XOR<DiagnosticNullableScalarRelationFilter, DiagnosticWhereInput> | null
+    repair?: XOR<RepairNullableScalarRelationFilter, RepairWhereInput> | null
   }
 
   export type MechanicOrderByWithRelationInput = {
-    mechanic_id?: SortOrder
-    pay_per_hour?: SortOrder
-    diagnosticDiagnostic_id?: SortOrderInput | SortOrder
-    repairRepair_id?: SortOrderInput | SortOrder
-    HeadMechanic?: HeadMechanicOrderByWithRelationInput
-    Diagnostic?: DiagnosticOrderByWithRelationInput
-    Repair?: RepairOrderByWithRelationInput
+    mechanicId?: SortOrder
+    payPerHour?: SortOrder
+    diagnosticDiagnosticId?: SortOrderInput | SortOrder
+    repairRepairId?: SortOrderInput | SortOrder
+    headMechanic?: HeadMechanicOrderByWithRelationInput
+    diagnostic?: DiagnosticOrderByWithRelationInput
+    repair?: RepairOrderByWithRelationInput
   }
 
   export type MechanicWhereUniqueInput = Prisma.AtLeast<{
-    mechanic_id?: number
+    mechanicId?: number
     AND?: MechanicWhereInput | MechanicWhereInput[]
     OR?: MechanicWhereInput[]
     NOT?: MechanicWhereInput | MechanicWhereInput[]
-    pay_per_hour?: FloatFilter<"Mechanic"> | number
-    diagnosticDiagnostic_id?: IntNullableFilter<"Mechanic"> | number | null
-    repairRepair_id?: IntNullableFilter<"Mechanic"> | number | null
-    HeadMechanic?: XOR<HeadMechanicNullableScalarRelationFilter, HeadMechanicWhereInput> | null
-    Diagnostic?: XOR<DiagnosticNullableScalarRelationFilter, DiagnosticWhereInput> | null
-    Repair?: XOR<RepairNullableScalarRelationFilter, RepairWhereInput> | null
-  }, "mechanic_id">
+    payPerHour?: FloatFilter<"Mechanic"> | number
+    diagnosticDiagnosticId?: IntNullableFilter<"Mechanic"> | number | null
+    repairRepairId?: IntNullableFilter<"Mechanic"> | number | null
+    headMechanic?: XOR<HeadMechanicNullableScalarRelationFilter, HeadMechanicWhereInput> | null
+    diagnostic?: XOR<DiagnosticNullableScalarRelationFilter, DiagnosticWhereInput> | null
+    repair?: XOR<RepairNullableScalarRelationFilter, RepairWhereInput> | null
+  }, "mechanicId">
 
   export type MechanicOrderByWithAggregationInput = {
-    mechanic_id?: SortOrder
-    pay_per_hour?: SortOrder
-    diagnosticDiagnostic_id?: SortOrderInput | SortOrder
-    repairRepair_id?: SortOrderInput | SortOrder
+    mechanicId?: SortOrder
+    payPerHour?: SortOrder
+    diagnosticDiagnosticId?: SortOrderInput | SortOrder
+    repairRepairId?: SortOrderInput | SortOrder
     _count?: MechanicCountOrderByAggregateInput
     _avg?: MechanicAvgOrderByAggregateInput
     _max?: MechanicMaxOrderByAggregateInput
@@ -13205,41 +13205,41 @@ export namespace Prisma {
     AND?: MechanicScalarWhereWithAggregatesInput | MechanicScalarWhereWithAggregatesInput[]
     OR?: MechanicScalarWhereWithAggregatesInput[]
     NOT?: MechanicScalarWhereWithAggregatesInput | MechanicScalarWhereWithAggregatesInput[]
-    mechanic_id?: IntWithAggregatesFilter<"Mechanic"> | number
-    pay_per_hour?: FloatWithAggregatesFilter<"Mechanic"> | number
-    diagnosticDiagnostic_id?: IntNullableWithAggregatesFilter<"Mechanic"> | number | null
-    repairRepair_id?: IntNullableWithAggregatesFilter<"Mechanic"> | number | null
+    mechanicId?: IntWithAggregatesFilter<"Mechanic"> | number
+    payPerHour?: FloatWithAggregatesFilter<"Mechanic"> | number
+    diagnosticDiagnosticId?: IntNullableWithAggregatesFilter<"Mechanic"> | number | null
+    repairRepairId?: IntNullableWithAggregatesFilter<"Mechanic"> | number | null
   }
 
   export type HeadMechanicWhereInput = {
     AND?: HeadMechanicWhereInput | HeadMechanicWhereInput[]
     OR?: HeadMechanicWhereInput[]
     NOT?: HeadMechanicWhereInput | HeadMechanicWhereInput[]
-    mechanic_id?: IntFilter<"HeadMechanic"> | number
+    mechanicId?: IntFilter<"HeadMechanic"> | number
     mechanic?: XOR<MechanicScalarRelationFilter, MechanicWhereInput>
-    Diagnostic?: DiagnosticListRelationFilter
-    Repair?: RepairListRelationFilter
+    diagnostic?: DiagnosticListRelationFilter
+    repair?: RepairListRelationFilter
   }
 
   export type HeadMechanicOrderByWithRelationInput = {
-    mechanic_id?: SortOrder
+    mechanicId?: SortOrder
     mechanic?: MechanicOrderByWithRelationInput
-    Diagnostic?: DiagnosticOrderByRelationAggregateInput
-    Repair?: RepairOrderByRelationAggregateInput
+    diagnostic?: DiagnosticOrderByRelationAggregateInput
+    repair?: RepairOrderByRelationAggregateInput
   }
 
   export type HeadMechanicWhereUniqueInput = Prisma.AtLeast<{
-    mechanic_id?: number
+    mechanicId?: number
     AND?: HeadMechanicWhereInput | HeadMechanicWhereInput[]
     OR?: HeadMechanicWhereInput[]
     NOT?: HeadMechanicWhereInput | HeadMechanicWhereInput[]
     mechanic?: XOR<MechanicScalarRelationFilter, MechanicWhereInput>
-    Diagnostic?: DiagnosticListRelationFilter
-    Repair?: RepairListRelationFilter
-  }, "mechanic_id">
+    diagnostic?: DiagnosticListRelationFilter
+    repair?: RepairListRelationFilter
+  }, "mechanicId">
 
   export type HeadMechanicOrderByWithAggregationInput = {
-    mechanic_id?: SortOrder
+    mechanicId?: SortOrder
     _count?: HeadMechanicCountOrderByAggregateInput
     _avg?: HeadMechanicAvgOrderByAggregateInput
     _max?: HeadMechanicMaxOrderByAggregateInput
@@ -13251,58 +13251,58 @@ export namespace Prisma {
     AND?: HeadMechanicScalarWhereWithAggregatesInput | HeadMechanicScalarWhereWithAggregatesInput[]
     OR?: HeadMechanicScalarWhereWithAggregatesInput[]
     NOT?: HeadMechanicScalarWhereWithAggregatesInput | HeadMechanicScalarWhereWithAggregatesInput[]
-    mechanic_id?: IntWithAggregatesFilter<"HeadMechanic"> | number
+    mechanicId?: IntWithAggregatesFilter<"HeadMechanic"> | number
   }
 
   export type ReservationWhereInput = {
     AND?: ReservationWhereInput | ReservationWhereInput[]
     OR?: ReservationWhereInput[]
     NOT?: ReservationWhereInput | ReservationWhereInput[]
-    reservation_id?: IntFilter<"Reservation"> | number
-    mobile_phone?: StringFilter<"Reservation"> | string
+    reservationId?: IntFilter<"Reservation"> | number
+    mobilePhone?: StringFilter<"Reservation"> | string
     date?: DateTimeFilter<"Reservation"> | Date | string
-    base_fee?: FloatNullableFilter<"Reservation"> | number | null
-    repair_status?: EnumRepairStatusNullableFilter<"Reservation"> | $Enums.RepairStatus | null
-    vehicule_id?: StringFilter<"Reservation"> | string
+    baseFee?: FloatNullableFilter<"Reservation"> | number | null
+    repairStatus?: EnumRepairStatusNullableFilter<"Reservation"> | $Enums.RepairStatus | null
+    vehiculeId?: StringFilter<"Reservation"> | string
     vehicule?: XOR<VehiculeScalarRelationFilter, VehiculeWhereInput>
-    Diagnostic?: DiagnosticListRelationFilter
-    Repair?: RepairListRelationFilter
+    diagnostic?: DiagnosticListRelationFilter
+    repair?: RepairListRelationFilter
   }
 
   export type ReservationOrderByWithRelationInput = {
-    reservation_id?: SortOrder
-    mobile_phone?: SortOrder
+    reservationId?: SortOrder
+    mobilePhone?: SortOrder
     date?: SortOrder
-    base_fee?: SortOrderInput | SortOrder
-    repair_status?: SortOrderInput | SortOrder
-    vehicule_id?: SortOrder
+    baseFee?: SortOrderInput | SortOrder
+    repairStatus?: SortOrderInput | SortOrder
+    vehiculeId?: SortOrder
     vehicule?: VehiculeOrderByWithRelationInput
-    Diagnostic?: DiagnosticOrderByRelationAggregateInput
-    Repair?: RepairOrderByRelationAggregateInput
+    diagnostic?: DiagnosticOrderByRelationAggregateInput
+    repair?: RepairOrderByRelationAggregateInput
   }
 
   export type ReservationWhereUniqueInput = Prisma.AtLeast<{
-    reservation_id?: number
+    reservationId?: number
     AND?: ReservationWhereInput | ReservationWhereInput[]
     OR?: ReservationWhereInput[]
     NOT?: ReservationWhereInput | ReservationWhereInput[]
-    mobile_phone?: StringFilter<"Reservation"> | string
+    mobilePhone?: StringFilter<"Reservation"> | string
     date?: DateTimeFilter<"Reservation"> | Date | string
-    base_fee?: FloatNullableFilter<"Reservation"> | number | null
-    repair_status?: EnumRepairStatusNullableFilter<"Reservation"> | $Enums.RepairStatus | null
-    vehicule_id?: StringFilter<"Reservation"> | string
+    baseFee?: FloatNullableFilter<"Reservation"> | number | null
+    repairStatus?: EnumRepairStatusNullableFilter<"Reservation"> | $Enums.RepairStatus | null
+    vehiculeId?: StringFilter<"Reservation"> | string
     vehicule?: XOR<VehiculeScalarRelationFilter, VehiculeWhereInput>
-    Diagnostic?: DiagnosticListRelationFilter
-    Repair?: RepairListRelationFilter
-  }, "reservation_id">
+    diagnostic?: DiagnosticListRelationFilter
+    repair?: RepairListRelationFilter
+  }, "reservationId">
 
   export type ReservationOrderByWithAggregationInput = {
-    reservation_id?: SortOrder
-    mobile_phone?: SortOrder
+    reservationId?: SortOrder
+    mobilePhone?: SortOrder
     date?: SortOrder
-    base_fee?: SortOrderInput | SortOrder
-    repair_status?: SortOrderInput | SortOrder
-    vehicule_id?: SortOrder
+    baseFee?: SortOrderInput | SortOrder
+    repairStatus?: SortOrderInput | SortOrder
+    vehiculeId?: SortOrder
     _count?: ReservationCountOrderByAggregateInput
     _avg?: ReservationAvgOrderByAggregateInput
     _max?: ReservationMaxOrderByAggregateInput
@@ -13314,51 +13314,51 @@ export namespace Prisma {
     AND?: ReservationScalarWhereWithAggregatesInput | ReservationScalarWhereWithAggregatesInput[]
     OR?: ReservationScalarWhereWithAggregatesInput[]
     NOT?: ReservationScalarWhereWithAggregatesInput | ReservationScalarWhereWithAggregatesInput[]
-    reservation_id?: IntWithAggregatesFilter<"Reservation"> | number
-    mobile_phone?: StringWithAggregatesFilter<"Reservation"> | string
+    reservationId?: IntWithAggregatesFilter<"Reservation"> | number
+    mobilePhone?: StringWithAggregatesFilter<"Reservation"> | string
     date?: DateTimeWithAggregatesFilter<"Reservation"> | Date | string
-    base_fee?: FloatNullableWithAggregatesFilter<"Reservation"> | number | null
-    repair_status?: EnumRepairStatusNullableWithAggregatesFilter<"Reservation"> | $Enums.RepairStatus | null
-    vehicule_id?: StringWithAggregatesFilter<"Reservation"> | string
+    baseFee?: FloatNullableWithAggregatesFilter<"Reservation"> | number | null
+    repairStatus?: EnumRepairStatusNullableWithAggregatesFilter<"Reservation"> | $Enums.RepairStatus | null
+    vehiculeId?: StringWithAggregatesFilter<"Reservation"> | string
   }
 
   export type DiagnosticWhereInput = {
     AND?: DiagnosticWhereInput | DiagnosticWhereInput[]
     OR?: DiagnosticWhereInput[]
     NOT?: DiagnosticWhereInput | DiagnosticWhereInput[]
-    diagnostic_id?: IntFilter<"Diagnostic"> | number
-    responsible_id?: IntFilter<"Diagnostic"> | number
-    reservation_id?: IntFilter<"Diagnostic"> | number
+    diagnosticId?: IntFilter<"Diagnostic"> | number
+    responsibleId?: IntFilter<"Diagnostic"> | number
+    reservationId?: IntFilter<"Diagnostic"> | number
     responsible?: XOR<HeadMechanicScalarRelationFilter, HeadMechanicWhereInput>
-    workers_employed?: MechanicListRelationFilter
+    workersEmployed?: MechanicListRelationFilter
     reservation?: XOR<ReservationScalarRelationFilter, ReservationWhereInput>
   }
 
   export type DiagnosticOrderByWithRelationInput = {
-    diagnostic_id?: SortOrder
-    responsible_id?: SortOrder
-    reservation_id?: SortOrder
+    diagnosticId?: SortOrder
+    responsibleId?: SortOrder
+    reservationId?: SortOrder
     responsible?: HeadMechanicOrderByWithRelationInput
-    workers_employed?: MechanicOrderByRelationAggregateInput
+    workersEmployed?: MechanicOrderByRelationAggregateInput
     reservation?: ReservationOrderByWithRelationInput
   }
 
   export type DiagnosticWhereUniqueInput = Prisma.AtLeast<{
-    diagnostic_id?: number
+    diagnosticId?: number
     AND?: DiagnosticWhereInput | DiagnosticWhereInput[]
     OR?: DiagnosticWhereInput[]
     NOT?: DiagnosticWhereInput | DiagnosticWhereInput[]
-    responsible_id?: IntFilter<"Diagnostic"> | number
-    reservation_id?: IntFilter<"Diagnostic"> | number
+    responsibleId?: IntFilter<"Diagnostic"> | number
+    reservationId?: IntFilter<"Diagnostic"> | number
     responsible?: XOR<HeadMechanicScalarRelationFilter, HeadMechanicWhereInput>
-    workers_employed?: MechanicListRelationFilter
+    workersEmployed?: MechanicListRelationFilter
     reservation?: XOR<ReservationScalarRelationFilter, ReservationWhereInput>
-  }, "diagnostic_id">
+  }, "diagnosticId">
 
   export type DiagnosticOrderByWithAggregationInput = {
-    diagnostic_id?: SortOrder
-    responsible_id?: SortOrder
-    reservation_id?: SortOrder
+    diagnosticId?: SortOrder
+    responsibleId?: SortOrder
+    reservationId?: SortOrder
     _count?: DiagnosticCountOrderByAggregateInput
     _avg?: DiagnosticAvgOrderByAggregateInput
     _max?: DiagnosticMaxOrderByAggregateInput
@@ -13370,52 +13370,52 @@ export namespace Prisma {
     AND?: DiagnosticScalarWhereWithAggregatesInput | DiagnosticScalarWhereWithAggregatesInput[]
     OR?: DiagnosticScalarWhereWithAggregatesInput[]
     NOT?: DiagnosticScalarWhereWithAggregatesInput | DiagnosticScalarWhereWithAggregatesInput[]
-    diagnostic_id?: IntWithAggregatesFilter<"Diagnostic"> | number
-    responsible_id?: IntWithAggregatesFilter<"Diagnostic"> | number
-    reservation_id?: IntWithAggregatesFilter<"Diagnostic"> | number
+    diagnosticId?: IntWithAggregatesFilter<"Diagnostic"> | number
+    responsibleId?: IntWithAggregatesFilter<"Diagnostic"> | number
+    reservationId?: IntWithAggregatesFilter<"Diagnostic"> | number
   }
 
   export type RepairWhereInput = {
     AND?: RepairWhereInput | RepairWhereInput[]
     OR?: RepairWhereInput[]
     NOT?: RepairWhereInput | RepairWhereInput[]
-    repair_id?: IntFilter<"Repair"> | number
-    responsible_id?: IntFilter<"Repair"> | number
-    reservation_id?: IntFilter<"Repair"> | number
-    total_repair_hours?: IntFilter<"Repair"> | number
+    repairId?: IntFilter<"Repair"> | number
+    responsibleId?: IntFilter<"Repair"> | number
+    reservationId?: IntFilter<"Repair"> | number
+    totalRepairHours?: IntFilter<"Repair"> | number
     responsible?: XOR<HeadMechanicScalarRelationFilter, HeadMechanicWhereInput>
-    workers_employed?: MechanicListRelationFilter
+    workersEmployed?: MechanicListRelationFilter
     reservation?: XOR<ReservationScalarRelationFilter, ReservationWhereInput>
   }
 
   export type RepairOrderByWithRelationInput = {
-    repair_id?: SortOrder
-    responsible_id?: SortOrder
-    reservation_id?: SortOrder
-    total_repair_hours?: SortOrder
+    repairId?: SortOrder
+    responsibleId?: SortOrder
+    reservationId?: SortOrder
+    totalRepairHours?: SortOrder
     responsible?: HeadMechanicOrderByWithRelationInput
-    workers_employed?: MechanicOrderByRelationAggregateInput
+    workersEmployed?: MechanicOrderByRelationAggregateInput
     reservation?: ReservationOrderByWithRelationInput
   }
 
   export type RepairWhereUniqueInput = Prisma.AtLeast<{
-    repair_id?: number
+    repairId?: number
     AND?: RepairWhereInput | RepairWhereInput[]
     OR?: RepairWhereInput[]
     NOT?: RepairWhereInput | RepairWhereInput[]
-    responsible_id?: IntFilter<"Repair"> | number
-    reservation_id?: IntFilter<"Repair"> | number
-    total_repair_hours?: IntFilter<"Repair"> | number
+    responsibleId?: IntFilter<"Repair"> | number
+    reservationId?: IntFilter<"Repair"> | number
+    totalRepairHours?: IntFilter<"Repair"> | number
     responsible?: XOR<HeadMechanicScalarRelationFilter, HeadMechanicWhereInput>
-    workers_employed?: MechanicListRelationFilter
+    workersEmployed?: MechanicListRelationFilter
     reservation?: XOR<ReservationScalarRelationFilter, ReservationWhereInput>
-  }, "repair_id">
+  }, "repairId">
 
   export type RepairOrderByWithAggregationInput = {
-    repair_id?: SortOrder
-    responsible_id?: SortOrder
-    reservation_id?: SortOrder
-    total_repair_hours?: SortOrder
+    repairId?: SortOrder
+    responsibleId?: SortOrder
+    reservationId?: SortOrder
+    totalRepairHours?: SortOrder
     _count?: RepairCountOrderByAggregateInput
     _avg?: RepairAvgOrderByAggregateInput
     _max?: RepairMaxOrderByAggregateInput
@@ -13427,44 +13427,44 @@ export namespace Prisma {
     AND?: RepairScalarWhereWithAggregatesInput | RepairScalarWhereWithAggregatesInput[]
     OR?: RepairScalarWhereWithAggregatesInput[]
     NOT?: RepairScalarWhereWithAggregatesInput | RepairScalarWhereWithAggregatesInput[]
-    repair_id?: IntWithAggregatesFilter<"Repair"> | number
-    responsible_id?: IntWithAggregatesFilter<"Repair"> | number
-    reservation_id?: IntWithAggregatesFilter<"Repair"> | number
-    total_repair_hours?: IntWithAggregatesFilter<"Repair"> | number
+    repairId?: IntWithAggregatesFilter<"Repair"> | number
+    responsibleId?: IntWithAggregatesFilter<"Repair"> | number
+    reservationId?: IntWithAggregatesFilter<"Repair"> | number
+    totalRepairHours?: IntWithAggregatesFilter<"Repair"> | number
   }
 
   export type RepairPartWhereInput = {
     AND?: RepairPartWhereInput | RepairPartWhereInput[]
     OR?: RepairPartWhereInput[]
     NOT?: RepairPartWhereInput | RepairPartWhereInput[]
-    part_id?: StringFilter<"RepairPart"> | string
+    partId?: StringFilter<"RepairPart"> | string
     price?: FloatFilter<"RepairPart"> | number
-    repair_id?: IntNullableListFilter<"RepairPart">
-    vendor_id?: IntNullableListFilter<"RepairPart">
+    repairId?: IntNullableListFilter<"RepairPart">
+    vendorId?: IntNullableListFilter<"RepairPart">
   }
 
   export type RepairPartOrderByWithRelationInput = {
-    part_id?: SortOrder
+    partId?: SortOrder
     price?: SortOrder
-    repair_id?: SortOrder
-    vendor_id?: SortOrder
+    repairId?: SortOrder
+    vendorId?: SortOrder
   }
 
   export type RepairPartWhereUniqueInput = Prisma.AtLeast<{
-    part_id?: string
+    partId?: string
     AND?: RepairPartWhereInput | RepairPartWhereInput[]
     OR?: RepairPartWhereInput[]
     NOT?: RepairPartWhereInput | RepairPartWhereInput[]
     price?: FloatFilter<"RepairPart"> | number
-    repair_id?: IntNullableListFilter<"RepairPart">
-    vendor_id?: IntNullableListFilter<"RepairPart">
-  }, "part_id">
+    repairId?: IntNullableListFilter<"RepairPart">
+    vendorId?: IntNullableListFilter<"RepairPart">
+  }, "partId">
 
   export type RepairPartOrderByWithAggregationInput = {
-    part_id?: SortOrder
+    partId?: SortOrder
     price?: SortOrder
-    repair_id?: SortOrder
-    vendor_id?: SortOrder
+    repairId?: SortOrder
+    vendorId?: SortOrder
     _count?: RepairPartCountOrderByAggregateInput
     _avg?: RepairPartAvgOrderByAggregateInput
     _max?: RepairPartMaxOrderByAggregateInput
@@ -13476,40 +13476,40 @@ export namespace Prisma {
     AND?: RepairPartScalarWhereWithAggregatesInput | RepairPartScalarWhereWithAggregatesInput[]
     OR?: RepairPartScalarWhereWithAggregatesInput[]
     NOT?: RepairPartScalarWhereWithAggregatesInput | RepairPartScalarWhereWithAggregatesInput[]
-    part_id?: StringWithAggregatesFilter<"RepairPart"> | string
+    partId?: StringWithAggregatesFilter<"RepairPart"> | string
     price?: FloatWithAggregatesFilter<"RepairPart"> | number
-    repair_id?: IntNullableListFilter<"RepairPart">
-    vendor_id?: IntNullableListFilter<"RepairPart">
+    repairId?: IntNullableListFilter<"RepairPart">
+    vendorId?: IntNullableListFilter<"RepairPart">
   }
 
   export type VendorWhereInput = {
     AND?: VendorWhereInput | VendorWhereInput[]
     OR?: VendorWhereInput[]
     NOT?: VendorWhereInput | VendorWhereInput[]
-    vendor_id?: IntFilter<"Vendor"> | number
-    vendor_shop_name?: StringFilter<"Vendor"> | string
-    vendor_shop_address?: StringFilter<"Vendor"> | string
+    vendorId?: IntFilter<"Vendor"> | number
+    vendorShopName?: StringFilter<"Vendor"> | string
+    vendorShopAddress?: StringFilter<"Vendor"> | string
   }
 
   export type VendorOrderByWithRelationInput = {
-    vendor_id?: SortOrder
-    vendor_shop_name?: SortOrder
-    vendor_shop_address?: SortOrder
+    vendorId?: SortOrder
+    vendorShopName?: SortOrder
+    vendorShopAddress?: SortOrder
   }
 
   export type VendorWhereUniqueInput = Prisma.AtLeast<{
-    vendor_id?: number
+    vendorId?: number
     AND?: VendorWhereInput | VendorWhereInput[]
     OR?: VendorWhereInput[]
     NOT?: VendorWhereInput | VendorWhereInput[]
-    vendor_shop_name?: StringFilter<"Vendor"> | string
-    vendor_shop_address?: StringFilter<"Vendor"> | string
-  }, "vendor_id">
+    vendorShopName?: StringFilter<"Vendor"> | string
+    vendorShopAddress?: StringFilter<"Vendor"> | string
+  }, "vendorId">
 
   export type VendorOrderByWithAggregationInput = {
-    vendor_id?: SortOrder
-    vendor_shop_name?: SortOrder
-    vendor_shop_address?: SortOrder
+    vendorId?: SortOrder
+    vendorShopName?: SortOrder
+    vendorShopAddress?: SortOrder
     _count?: VendorCountOrderByAggregateInput
     _avg?: VendorAvgOrderByAggregateInput
     _max?: VendorMaxOrderByAggregateInput
@@ -13521,40 +13521,40 @@ export namespace Prisma {
     AND?: VendorScalarWhereWithAggregatesInput | VendorScalarWhereWithAggregatesInput[]
     OR?: VendorScalarWhereWithAggregatesInput[]
     NOT?: VendorScalarWhereWithAggregatesInput | VendorScalarWhereWithAggregatesInput[]
-    vendor_id?: IntWithAggregatesFilter<"Vendor"> | number
-    vendor_shop_name?: StringWithAggregatesFilter<"Vendor"> | string
-    vendor_shop_address?: StringWithAggregatesFilter<"Vendor"> | string
+    vendorId?: IntWithAggregatesFilter<"Vendor"> | number
+    vendorShopName?: StringWithAggregatesFilter<"Vendor"> | string
+    vendorShopAddress?: StringWithAggregatesFilter<"Vendor"> | string
   }
 
   export type UserWhereInput = {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    user_id?: IntFilter<"User"> | number
+    userId?: IntFilter<"User"> | number
     email?: StringFilter<"User"> | string
     name?: StringNullableFilter<"User"> | string | null
     posts?: PostListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
-    user_id?: SortOrder
+    userId?: SortOrder
     email?: SortOrder
     name?: SortOrderInput | SortOrder
     posts?: PostOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
-    user_id?: number
+    userId?: number
     email?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringNullableFilter<"User"> | string | null
     posts?: PostListRelationFilter
-  }, "user_id" | "email">
+  }, "userId" | "email">
 
   export type UserOrderByWithAggregationInput = {
-    user_id?: SortOrder
+    userId?: SortOrder
     email?: SortOrder
     name?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -13568,7 +13568,7 @@ export namespace Prisma {
     AND?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
-    user_id?: IntWithAggregatesFilter<"User"> | number
+    userId?: IntWithAggregatesFilter<"User"> | number
     email?: StringWithAggregatesFilter<"User"> | string
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
@@ -13577,7 +13577,7 @@ export namespace Prisma {
     AND?: PostWhereInput | PostWhereInput[]
     OR?: PostWhereInput[]
     NOT?: PostWhereInput | PostWhereInput[]
-    post_id?: IntFilter<"Post"> | number
+    postId?: IntFilter<"Post"> | number
     title?: StringFilter<"Post"> | string
     content?: StringNullableFilter<"Post"> | string | null
     published?: BoolFilter<"Post"> | boolean
@@ -13586,7 +13586,7 @@ export namespace Prisma {
   }
 
   export type PostOrderByWithRelationInput = {
-    post_id?: SortOrder
+    postId?: SortOrder
     title?: SortOrder
     content?: SortOrderInput | SortOrder
     published?: SortOrder
@@ -13595,7 +13595,7 @@ export namespace Prisma {
   }
 
   export type PostWhereUniqueInput = Prisma.AtLeast<{
-    post_id?: number
+    postId?: number
     title?: string
     AND?: PostWhereInput | PostWhereInput[]
     OR?: PostWhereInput[]
@@ -13604,10 +13604,10 @@ export namespace Prisma {
     published?: BoolFilter<"Post"> | boolean
     authorId?: IntFilter<"Post"> | number
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "post_id" | "title">
+  }, "postId" | "title">
 
   export type PostOrderByWithAggregationInput = {
-    post_id?: SortOrder
+    postId?: SortOrder
     title?: SortOrder
     content?: SortOrderInput | SortOrder
     published?: SortOrder
@@ -13623,7 +13623,7 @@ export namespace Prisma {
     AND?: PostScalarWhereWithAggregatesInput | PostScalarWhereWithAggregatesInput[]
     OR?: PostScalarWhereWithAggregatesInput[]
     NOT?: PostScalarWhereWithAggregatesInput | PostScalarWhereWithAggregatesInput[]
-    post_id?: IntWithAggregatesFilter<"Post"> | number
+    postId?: IntWithAggregatesFilter<"Post"> | number
     title?: StringWithAggregatesFilter<"Post"> | string
     content?: StringNullableWithAggregatesFilter<"Post"> | string | null
     published?: BoolWithAggregatesFilter<"Post"> | boolean
@@ -13634,43 +13634,43 @@ export namespace Prisma {
     vin: string
     local: boolean
     registation: string
-    registration_type?: $Enums.RegTypes | null
+    registrationType?: $Enums.RegTypes | null
     location?: string | null
-    Reservation?: ReservationCreateNestedManyWithoutVehiculeInput
+    reservation?: ReservationCreateNestedManyWithoutVehiculeInput
   }
 
   export type VehiculeUncheckedCreateInput = {
     vin: string
     local: boolean
     registation: string
-    registration_type?: $Enums.RegTypes | null
+    registrationType?: $Enums.RegTypes | null
     location?: string | null
-    Reservation?: ReservationUncheckedCreateNestedManyWithoutVehiculeInput
+    reservation?: ReservationUncheckedCreateNestedManyWithoutVehiculeInput
   }
 
   export type VehiculeUpdateInput = {
     vin?: StringFieldUpdateOperationsInput | string
     local?: BoolFieldUpdateOperationsInput | boolean
     registation?: StringFieldUpdateOperationsInput | string
-    registration_type?: NullableEnumRegTypesFieldUpdateOperationsInput | $Enums.RegTypes | null
+    registrationType?: NullableEnumRegTypesFieldUpdateOperationsInput | $Enums.RegTypes | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    Reservation?: ReservationUpdateManyWithoutVehiculeNestedInput
+    reservation?: ReservationUpdateManyWithoutVehiculeNestedInput
   }
 
   export type VehiculeUncheckedUpdateInput = {
     vin?: StringFieldUpdateOperationsInput | string
     local?: BoolFieldUpdateOperationsInput | boolean
     registation?: StringFieldUpdateOperationsInput | string
-    registration_type?: NullableEnumRegTypesFieldUpdateOperationsInput | $Enums.RegTypes | null
+    registrationType?: NullableEnumRegTypesFieldUpdateOperationsInput | $Enums.RegTypes | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    Reservation?: ReservationUncheckedUpdateManyWithoutVehiculeNestedInput
+    reservation?: ReservationUncheckedUpdateManyWithoutVehiculeNestedInput
   }
 
   export type VehiculeCreateManyInput = {
     vin: string
     local: boolean
     registation: string
-    registration_type?: $Enums.RegTypes | null
+    registrationType?: $Enums.RegTypes | null
     location?: string | null
   }
 
@@ -13678,7 +13678,7 @@ export namespace Prisma {
     vin?: StringFieldUpdateOperationsInput | string
     local?: BoolFieldUpdateOperationsInput | boolean
     registation?: StringFieldUpdateOperationsInput | string
-    registration_type?: NullableEnumRegTypesFieldUpdateOperationsInput | $Enums.RegTypes | null
+    registrationType?: NullableEnumRegTypesFieldUpdateOperationsInput | $Enums.RegTypes | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -13686,87 +13686,87 @@ export namespace Prisma {
     vin?: StringFieldUpdateOperationsInput | string
     local?: BoolFieldUpdateOperationsInput | boolean
     registation?: StringFieldUpdateOperationsInput | string
-    registration_type?: NullableEnumRegTypesFieldUpdateOperationsInput | $Enums.RegTypes | null
+    registrationType?: NullableEnumRegTypesFieldUpdateOperationsInput | $Enums.RegTypes | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type MechanicCreateInput = {
-    mechanic_id: number
-    pay_per_hour: number
-    HeadMechanic?: HeadMechanicCreateNestedOneWithoutMechanicInput
-    Diagnostic?: DiagnosticCreateNestedOneWithoutWorkers_employedInput
-    Repair?: RepairCreateNestedOneWithoutWorkers_employedInput
+    mechanicId: number
+    payPerHour: number
+    headMechanic?: HeadMechanicCreateNestedOneWithoutMechanicInput
+    diagnostic?: DiagnosticCreateNestedOneWithoutWorkersEmployedInput
+    repair?: RepairCreateNestedOneWithoutWorkersEmployedInput
   }
 
   export type MechanicUncheckedCreateInput = {
-    mechanic_id: number
-    pay_per_hour: number
-    diagnosticDiagnostic_id?: number | null
-    repairRepair_id?: number | null
-    HeadMechanic?: HeadMechanicUncheckedCreateNestedOneWithoutMechanicInput
+    mechanicId: number
+    payPerHour: number
+    diagnosticDiagnosticId?: number | null
+    repairRepairId?: number | null
+    headMechanic?: HeadMechanicUncheckedCreateNestedOneWithoutMechanicInput
   }
 
   export type MechanicUpdateInput = {
-    mechanic_id?: IntFieldUpdateOperationsInput | number
-    pay_per_hour?: FloatFieldUpdateOperationsInput | number
-    HeadMechanic?: HeadMechanicUpdateOneWithoutMechanicNestedInput
-    Diagnostic?: DiagnosticUpdateOneWithoutWorkers_employedNestedInput
-    Repair?: RepairUpdateOneWithoutWorkers_employedNestedInput
+    mechanicId?: IntFieldUpdateOperationsInput | number
+    payPerHour?: FloatFieldUpdateOperationsInput | number
+    headMechanic?: HeadMechanicUpdateOneWithoutMechanicNestedInput
+    diagnostic?: DiagnosticUpdateOneWithoutWorkersEmployedNestedInput
+    repair?: RepairUpdateOneWithoutWorkersEmployedNestedInput
   }
 
   export type MechanicUncheckedUpdateInput = {
-    mechanic_id?: IntFieldUpdateOperationsInput | number
-    pay_per_hour?: FloatFieldUpdateOperationsInput | number
-    diagnosticDiagnostic_id?: NullableIntFieldUpdateOperationsInput | number | null
-    repairRepair_id?: NullableIntFieldUpdateOperationsInput | number | null
-    HeadMechanic?: HeadMechanicUncheckedUpdateOneWithoutMechanicNestedInput
+    mechanicId?: IntFieldUpdateOperationsInput | number
+    payPerHour?: FloatFieldUpdateOperationsInput | number
+    diagnosticDiagnosticId?: NullableIntFieldUpdateOperationsInput | number | null
+    repairRepairId?: NullableIntFieldUpdateOperationsInput | number | null
+    headMechanic?: HeadMechanicUncheckedUpdateOneWithoutMechanicNestedInput
   }
 
   export type MechanicCreateManyInput = {
-    mechanic_id: number
-    pay_per_hour: number
-    diagnosticDiagnostic_id?: number | null
-    repairRepair_id?: number | null
+    mechanicId: number
+    payPerHour: number
+    diagnosticDiagnosticId?: number | null
+    repairRepairId?: number | null
   }
 
   export type MechanicUpdateManyMutationInput = {
-    mechanic_id?: IntFieldUpdateOperationsInput | number
-    pay_per_hour?: FloatFieldUpdateOperationsInput | number
+    mechanicId?: IntFieldUpdateOperationsInput | number
+    payPerHour?: FloatFieldUpdateOperationsInput | number
   }
 
   export type MechanicUncheckedUpdateManyInput = {
-    mechanic_id?: IntFieldUpdateOperationsInput | number
-    pay_per_hour?: FloatFieldUpdateOperationsInput | number
-    diagnosticDiagnostic_id?: NullableIntFieldUpdateOperationsInput | number | null
-    repairRepair_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mechanicId?: IntFieldUpdateOperationsInput | number
+    payPerHour?: FloatFieldUpdateOperationsInput | number
+    diagnosticDiagnosticId?: NullableIntFieldUpdateOperationsInput | number | null
+    repairRepairId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type HeadMechanicCreateInput = {
     mechanic: MechanicCreateNestedOneWithoutHeadMechanicInput
-    Diagnostic?: DiagnosticCreateNestedManyWithoutResponsibleInput
-    Repair?: RepairCreateNestedManyWithoutResponsibleInput
+    diagnostic?: DiagnosticCreateNestedManyWithoutResponsibleInput
+    repair?: RepairCreateNestedManyWithoutResponsibleInput
   }
 
   export type HeadMechanicUncheckedCreateInput = {
-    mechanic_id: number
-    Diagnostic?: DiagnosticUncheckedCreateNestedManyWithoutResponsibleInput
-    Repair?: RepairUncheckedCreateNestedManyWithoutResponsibleInput
+    mechanicId: number
+    diagnostic?: DiagnosticUncheckedCreateNestedManyWithoutResponsibleInput
+    repair?: RepairUncheckedCreateNestedManyWithoutResponsibleInput
   }
 
   export type HeadMechanicUpdateInput = {
     mechanic?: MechanicUpdateOneRequiredWithoutHeadMechanicNestedInput
-    Diagnostic?: DiagnosticUpdateManyWithoutResponsibleNestedInput
-    Repair?: RepairUpdateManyWithoutResponsibleNestedInput
+    diagnostic?: DiagnosticUpdateManyWithoutResponsibleNestedInput
+    repair?: RepairUpdateManyWithoutResponsibleNestedInput
   }
 
   export type HeadMechanicUncheckedUpdateInput = {
-    mechanic_id?: IntFieldUpdateOperationsInput | number
-    Diagnostic?: DiagnosticUncheckedUpdateManyWithoutResponsibleNestedInput
-    Repair?: RepairUncheckedUpdateManyWithoutResponsibleNestedInput
+    mechanicId?: IntFieldUpdateOperationsInput | number
+    diagnostic?: DiagnosticUncheckedUpdateManyWithoutResponsibleNestedInput
+    repair?: RepairUncheckedUpdateManyWithoutResponsibleNestedInput
   }
 
   export type HeadMechanicCreateManyInput = {
-    mechanic_id: number
+    mechanicId: number
   }
 
   export type HeadMechanicUpdateManyMutationInput = {
@@ -13774,106 +13774,106 @@ export namespace Prisma {
   }
 
   export type HeadMechanicUncheckedUpdateManyInput = {
-    mechanic_id?: IntFieldUpdateOperationsInput | number
+    mechanicId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ReservationCreateInput = {
-    mobile_phone: string
+    mobilePhone: string
     date: Date | string
-    base_fee?: number | null
-    repair_status?: $Enums.RepairStatus | null
+    baseFee?: number | null
+    repairStatus?: $Enums.RepairStatus | null
     vehicule: VehiculeCreateNestedOneWithoutReservationInput
-    Diagnostic?: DiagnosticCreateNestedManyWithoutReservationInput
-    Repair?: RepairCreateNestedManyWithoutReservationInput
+    diagnostic?: DiagnosticCreateNestedManyWithoutReservationInput
+    repair?: RepairCreateNestedManyWithoutReservationInput
   }
 
   export type ReservationUncheckedCreateInput = {
-    reservation_id?: number
-    mobile_phone: string
+    reservationId?: number
+    mobilePhone: string
     date: Date | string
-    base_fee?: number | null
-    repair_status?: $Enums.RepairStatus | null
-    vehicule_id: string
-    Diagnostic?: DiagnosticUncheckedCreateNestedManyWithoutReservationInput
-    Repair?: RepairUncheckedCreateNestedManyWithoutReservationInput
+    baseFee?: number | null
+    repairStatus?: $Enums.RepairStatus | null
+    vehiculeId: string
+    diagnostic?: DiagnosticUncheckedCreateNestedManyWithoutReservationInput
+    repair?: RepairUncheckedCreateNestedManyWithoutReservationInput
   }
 
   export type ReservationUpdateInput = {
-    mobile_phone?: StringFieldUpdateOperationsInput | string
+    mobilePhone?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    base_fee?: NullableFloatFieldUpdateOperationsInput | number | null
-    repair_status?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
+    baseFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    repairStatus?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
     vehicule?: VehiculeUpdateOneRequiredWithoutReservationNestedInput
-    Diagnostic?: DiagnosticUpdateManyWithoutReservationNestedInput
-    Repair?: RepairUpdateManyWithoutReservationNestedInput
+    diagnostic?: DiagnosticUpdateManyWithoutReservationNestedInput
+    repair?: RepairUpdateManyWithoutReservationNestedInput
   }
 
   export type ReservationUncheckedUpdateInput = {
-    reservation_id?: IntFieldUpdateOperationsInput | number
-    mobile_phone?: StringFieldUpdateOperationsInput | string
+    reservationId?: IntFieldUpdateOperationsInput | number
+    mobilePhone?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    base_fee?: NullableFloatFieldUpdateOperationsInput | number | null
-    repair_status?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
-    vehicule_id?: StringFieldUpdateOperationsInput | string
-    Diagnostic?: DiagnosticUncheckedUpdateManyWithoutReservationNestedInput
-    Repair?: RepairUncheckedUpdateManyWithoutReservationNestedInput
+    baseFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    repairStatus?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
+    vehiculeId?: StringFieldUpdateOperationsInput | string
+    diagnostic?: DiagnosticUncheckedUpdateManyWithoutReservationNestedInput
+    repair?: RepairUncheckedUpdateManyWithoutReservationNestedInput
   }
 
   export type ReservationCreateManyInput = {
-    reservation_id?: number
-    mobile_phone: string
+    reservationId?: number
+    mobilePhone: string
     date: Date | string
-    base_fee?: number | null
-    repair_status?: $Enums.RepairStatus | null
-    vehicule_id: string
+    baseFee?: number | null
+    repairStatus?: $Enums.RepairStatus | null
+    vehiculeId: string
   }
 
   export type ReservationUpdateManyMutationInput = {
-    mobile_phone?: StringFieldUpdateOperationsInput | string
+    mobilePhone?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    base_fee?: NullableFloatFieldUpdateOperationsInput | number | null
-    repair_status?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
+    baseFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    repairStatus?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
   }
 
   export type ReservationUncheckedUpdateManyInput = {
-    reservation_id?: IntFieldUpdateOperationsInput | number
-    mobile_phone?: StringFieldUpdateOperationsInput | string
+    reservationId?: IntFieldUpdateOperationsInput | number
+    mobilePhone?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    base_fee?: NullableFloatFieldUpdateOperationsInput | number | null
-    repair_status?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
-    vehicule_id?: StringFieldUpdateOperationsInput | string
+    baseFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    repairStatus?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
+    vehiculeId?: StringFieldUpdateOperationsInput | string
   }
 
   export type DiagnosticCreateInput = {
     responsible: HeadMechanicCreateNestedOneWithoutDiagnosticInput
-    workers_employed?: MechanicCreateNestedManyWithoutDiagnosticInput
+    workersEmployed?: MechanicCreateNestedManyWithoutDiagnosticInput
     reservation: ReservationCreateNestedOneWithoutDiagnosticInput
   }
 
   export type DiagnosticUncheckedCreateInput = {
-    diagnostic_id?: number
-    responsible_id: number
-    reservation_id: number
-    workers_employed?: MechanicUncheckedCreateNestedManyWithoutDiagnosticInput
+    diagnosticId?: number
+    responsibleId: number
+    reservationId: number
+    workersEmployed?: MechanicUncheckedCreateNestedManyWithoutDiagnosticInput
   }
 
   export type DiagnosticUpdateInput = {
     responsible?: HeadMechanicUpdateOneRequiredWithoutDiagnosticNestedInput
-    workers_employed?: MechanicUpdateManyWithoutDiagnosticNestedInput
+    workersEmployed?: MechanicUpdateManyWithoutDiagnosticNestedInput
     reservation?: ReservationUpdateOneRequiredWithoutDiagnosticNestedInput
   }
 
   export type DiagnosticUncheckedUpdateInput = {
-    diagnostic_id?: IntFieldUpdateOperationsInput | number
-    responsible_id?: IntFieldUpdateOperationsInput | number
-    reservation_id?: IntFieldUpdateOperationsInput | number
-    workers_employed?: MechanicUncheckedUpdateManyWithoutDiagnosticNestedInput
+    diagnosticId?: IntFieldUpdateOperationsInput | number
+    responsibleId?: IntFieldUpdateOperationsInput | number
+    reservationId?: IntFieldUpdateOperationsInput | number
+    workersEmployed?: MechanicUncheckedUpdateManyWithoutDiagnosticNestedInput
   }
 
   export type DiagnosticCreateManyInput = {
-    diagnostic_id?: number
-    responsible_id: number
-    reservation_id: number
+    diagnosticId?: number
+    responsibleId: number
+    reservationId: number
   }
 
   export type DiagnosticUpdateManyMutationInput = {
@@ -13881,148 +13881,148 @@ export namespace Prisma {
   }
 
   export type DiagnosticUncheckedUpdateManyInput = {
-    diagnostic_id?: IntFieldUpdateOperationsInput | number
-    responsible_id?: IntFieldUpdateOperationsInput | number
-    reservation_id?: IntFieldUpdateOperationsInput | number
+    diagnosticId?: IntFieldUpdateOperationsInput | number
+    responsibleId?: IntFieldUpdateOperationsInput | number
+    reservationId?: IntFieldUpdateOperationsInput | number
   }
 
   export type RepairCreateInput = {
-    total_repair_hours: number
+    totalRepairHours: number
     responsible: HeadMechanicCreateNestedOneWithoutRepairInput
-    workers_employed?: MechanicCreateNestedManyWithoutRepairInput
+    workersEmployed?: MechanicCreateNestedManyWithoutRepairInput
     reservation: ReservationCreateNestedOneWithoutRepairInput
   }
 
   export type RepairUncheckedCreateInput = {
-    repair_id?: number
-    responsible_id: number
-    reservation_id: number
-    total_repair_hours: number
-    workers_employed?: MechanicUncheckedCreateNestedManyWithoutRepairInput
+    repairId?: number
+    responsibleId: number
+    reservationId: number
+    totalRepairHours: number
+    workersEmployed?: MechanicUncheckedCreateNestedManyWithoutRepairInput
   }
 
   export type RepairUpdateInput = {
-    total_repair_hours?: IntFieldUpdateOperationsInput | number
+    totalRepairHours?: IntFieldUpdateOperationsInput | number
     responsible?: HeadMechanicUpdateOneRequiredWithoutRepairNestedInput
-    workers_employed?: MechanicUpdateManyWithoutRepairNestedInput
+    workersEmployed?: MechanicUpdateManyWithoutRepairNestedInput
     reservation?: ReservationUpdateOneRequiredWithoutRepairNestedInput
   }
 
   export type RepairUncheckedUpdateInput = {
-    repair_id?: IntFieldUpdateOperationsInput | number
-    responsible_id?: IntFieldUpdateOperationsInput | number
-    reservation_id?: IntFieldUpdateOperationsInput | number
-    total_repair_hours?: IntFieldUpdateOperationsInput | number
-    workers_employed?: MechanicUncheckedUpdateManyWithoutRepairNestedInput
+    repairId?: IntFieldUpdateOperationsInput | number
+    responsibleId?: IntFieldUpdateOperationsInput | number
+    reservationId?: IntFieldUpdateOperationsInput | number
+    totalRepairHours?: IntFieldUpdateOperationsInput | number
+    workersEmployed?: MechanicUncheckedUpdateManyWithoutRepairNestedInput
   }
 
   export type RepairCreateManyInput = {
-    repair_id?: number
-    responsible_id: number
-    reservation_id: number
-    total_repair_hours: number
+    repairId?: number
+    responsibleId: number
+    reservationId: number
+    totalRepairHours: number
   }
 
   export type RepairUpdateManyMutationInput = {
-    total_repair_hours?: IntFieldUpdateOperationsInput | number
+    totalRepairHours?: IntFieldUpdateOperationsInput | number
   }
 
   export type RepairUncheckedUpdateManyInput = {
-    repair_id?: IntFieldUpdateOperationsInput | number
-    responsible_id?: IntFieldUpdateOperationsInput | number
-    reservation_id?: IntFieldUpdateOperationsInput | number
-    total_repair_hours?: IntFieldUpdateOperationsInput | number
+    repairId?: IntFieldUpdateOperationsInput | number
+    responsibleId?: IntFieldUpdateOperationsInput | number
+    reservationId?: IntFieldUpdateOperationsInput | number
+    totalRepairHours?: IntFieldUpdateOperationsInput | number
   }
 
   export type RepairPartCreateInput = {
-    part_id: string
+    partId: string
     price: number
-    repair_id?: RepairPartCreaterepair_idInput | number[]
-    vendor_id?: RepairPartCreatevendor_idInput | number[]
+    repairId?: RepairPartCreaterepairIdInput | number[]
+    vendorId?: RepairPartCreatevendorIdInput | number[]
   }
 
   export type RepairPartUncheckedCreateInput = {
-    part_id: string
+    partId: string
     price: number
-    repair_id?: RepairPartCreaterepair_idInput | number[]
-    vendor_id?: RepairPartCreatevendor_idInput | number[]
+    repairId?: RepairPartCreaterepairIdInput | number[]
+    vendorId?: RepairPartCreatevendorIdInput | number[]
   }
 
   export type RepairPartUpdateInput = {
-    part_id?: StringFieldUpdateOperationsInput | string
+    partId?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
-    repair_id?: RepairPartUpdaterepair_idInput | number[]
-    vendor_id?: RepairPartUpdatevendor_idInput | number[]
+    repairId?: RepairPartUpdaterepairIdInput | number[]
+    vendorId?: RepairPartUpdatevendorIdInput | number[]
   }
 
   export type RepairPartUncheckedUpdateInput = {
-    part_id?: StringFieldUpdateOperationsInput | string
+    partId?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
-    repair_id?: RepairPartUpdaterepair_idInput | number[]
-    vendor_id?: RepairPartUpdatevendor_idInput | number[]
+    repairId?: RepairPartUpdaterepairIdInput | number[]
+    vendorId?: RepairPartUpdatevendorIdInput | number[]
   }
 
   export type RepairPartCreateManyInput = {
-    part_id: string
+    partId: string
     price: number
-    repair_id?: RepairPartCreaterepair_idInput | number[]
-    vendor_id?: RepairPartCreatevendor_idInput | number[]
+    repairId?: RepairPartCreaterepairIdInput | number[]
+    vendorId?: RepairPartCreatevendorIdInput | number[]
   }
 
   export type RepairPartUpdateManyMutationInput = {
-    part_id?: StringFieldUpdateOperationsInput | string
+    partId?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
-    repair_id?: RepairPartUpdaterepair_idInput | number[]
-    vendor_id?: RepairPartUpdatevendor_idInput | number[]
+    repairId?: RepairPartUpdaterepairIdInput | number[]
+    vendorId?: RepairPartUpdatevendorIdInput | number[]
   }
 
   export type RepairPartUncheckedUpdateManyInput = {
-    part_id?: StringFieldUpdateOperationsInput | string
+    partId?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
-    repair_id?: RepairPartUpdaterepair_idInput | number[]
-    vendor_id?: RepairPartUpdatevendor_idInput | number[]
+    repairId?: RepairPartUpdaterepairIdInput | number[]
+    vendorId?: RepairPartUpdatevendorIdInput | number[]
   }
 
   export type VendorCreateInput = {
-    vendor_id: number
-    vendor_shop_name: string
-    vendor_shop_address: string
+    vendorId: number
+    vendorShopName: string
+    vendorShopAddress: string
   }
 
   export type VendorUncheckedCreateInput = {
-    vendor_id: number
-    vendor_shop_name: string
-    vendor_shop_address: string
+    vendorId: number
+    vendorShopName: string
+    vendorShopAddress: string
   }
 
   export type VendorUpdateInput = {
-    vendor_id?: IntFieldUpdateOperationsInput | number
-    vendor_shop_name?: StringFieldUpdateOperationsInput | string
-    vendor_shop_address?: StringFieldUpdateOperationsInput | string
+    vendorId?: IntFieldUpdateOperationsInput | number
+    vendorShopName?: StringFieldUpdateOperationsInput | string
+    vendorShopAddress?: StringFieldUpdateOperationsInput | string
   }
 
   export type VendorUncheckedUpdateInput = {
-    vendor_id?: IntFieldUpdateOperationsInput | number
-    vendor_shop_name?: StringFieldUpdateOperationsInput | string
-    vendor_shop_address?: StringFieldUpdateOperationsInput | string
+    vendorId?: IntFieldUpdateOperationsInput | number
+    vendorShopName?: StringFieldUpdateOperationsInput | string
+    vendorShopAddress?: StringFieldUpdateOperationsInput | string
   }
 
   export type VendorCreateManyInput = {
-    vendor_id: number
-    vendor_shop_name: string
-    vendor_shop_address: string
+    vendorId: number
+    vendorShopName: string
+    vendorShopAddress: string
   }
 
   export type VendorUpdateManyMutationInput = {
-    vendor_id?: IntFieldUpdateOperationsInput | number
-    vendor_shop_name?: StringFieldUpdateOperationsInput | string
-    vendor_shop_address?: StringFieldUpdateOperationsInput | string
+    vendorId?: IntFieldUpdateOperationsInput | number
+    vendorShopName?: StringFieldUpdateOperationsInput | string
+    vendorShopAddress?: StringFieldUpdateOperationsInput | string
   }
 
   export type VendorUncheckedUpdateManyInput = {
-    vendor_id?: IntFieldUpdateOperationsInput | number
-    vendor_shop_name?: StringFieldUpdateOperationsInput | string
-    vendor_shop_address?: StringFieldUpdateOperationsInput | string
+    vendorId?: IntFieldUpdateOperationsInput | number
+    vendorShopName?: StringFieldUpdateOperationsInput | string
+    vendorShopAddress?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserCreateInput = {
@@ -14032,7 +14032,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateInput = {
-    user_id?: number
+    userId?: number
     email: string
     name?: string | null
     posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
@@ -14045,14 +14045,14 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateInput = {
-    user_id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserCreateManyInput = {
-    user_id?: number
+    userId?: number
     email: string
     name?: string | null
   }
@@ -14063,7 +14063,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateManyInput = {
-    user_id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -14076,7 +14076,7 @@ export namespace Prisma {
   }
 
   export type PostUncheckedCreateInput = {
-    post_id?: number
+    postId?: number
     title: string
     content?: string | null
     published?: boolean
@@ -14091,7 +14091,7 @@ export namespace Prisma {
   }
 
   export type PostUncheckedUpdateInput = {
-    post_id?: IntFieldUpdateOperationsInput | number
+    postId?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     content?: NullableStringFieldUpdateOperationsInput | string | null
     published?: BoolFieldUpdateOperationsInput | boolean
@@ -14099,7 +14099,7 @@ export namespace Prisma {
   }
 
   export type PostCreateManyInput = {
-    post_id?: number
+    postId?: number
     title: string
     content?: string | null
     published?: boolean
@@ -14113,7 +14113,7 @@ export namespace Prisma {
   }
 
   export type PostUncheckedUpdateManyInput = {
-    post_id?: IntFieldUpdateOperationsInput | number
+    postId?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     content?: NullableStringFieldUpdateOperationsInput | string | null
     published?: BoolFieldUpdateOperationsInput | boolean
@@ -14181,7 +14181,7 @@ export namespace Prisma {
     vin?: SortOrder
     local?: SortOrder
     registation?: SortOrder
-    registration_type?: SortOrder
+    registrationType?: SortOrder
     location?: SortOrder
   }
 
@@ -14189,7 +14189,7 @@ export namespace Prisma {
     vin?: SortOrder
     local?: SortOrder
     registation?: SortOrder
-    registration_type?: SortOrder
+    registrationType?: SortOrder
     location?: SortOrder
   }
 
@@ -14197,7 +14197,7 @@ export namespace Prisma {
     vin?: SortOrder
     local?: SortOrder
     registation?: SortOrder
-    registration_type?: SortOrder
+    registrationType?: SortOrder
     location?: SortOrder
   }
 
@@ -14304,38 +14304,38 @@ export namespace Prisma {
   }
 
   export type MechanicCountOrderByAggregateInput = {
-    mechanic_id?: SortOrder
-    pay_per_hour?: SortOrder
-    diagnosticDiagnostic_id?: SortOrder
-    repairRepair_id?: SortOrder
+    mechanicId?: SortOrder
+    payPerHour?: SortOrder
+    diagnosticDiagnosticId?: SortOrder
+    repairRepairId?: SortOrder
   }
 
   export type MechanicAvgOrderByAggregateInput = {
-    mechanic_id?: SortOrder
-    pay_per_hour?: SortOrder
-    diagnosticDiagnostic_id?: SortOrder
-    repairRepair_id?: SortOrder
+    mechanicId?: SortOrder
+    payPerHour?: SortOrder
+    diagnosticDiagnosticId?: SortOrder
+    repairRepairId?: SortOrder
   }
 
   export type MechanicMaxOrderByAggregateInput = {
-    mechanic_id?: SortOrder
-    pay_per_hour?: SortOrder
-    diagnosticDiagnostic_id?: SortOrder
-    repairRepair_id?: SortOrder
+    mechanicId?: SortOrder
+    payPerHour?: SortOrder
+    diagnosticDiagnosticId?: SortOrder
+    repairRepairId?: SortOrder
   }
 
   export type MechanicMinOrderByAggregateInput = {
-    mechanic_id?: SortOrder
-    pay_per_hour?: SortOrder
-    diagnosticDiagnostic_id?: SortOrder
-    repairRepair_id?: SortOrder
+    mechanicId?: SortOrder
+    payPerHour?: SortOrder
+    diagnosticDiagnosticId?: SortOrder
+    repairRepairId?: SortOrder
   }
 
   export type MechanicSumOrderByAggregateInput = {
-    mechanic_id?: SortOrder
-    pay_per_hour?: SortOrder
-    diagnosticDiagnostic_id?: SortOrder
-    repairRepair_id?: SortOrder
+    mechanicId?: SortOrder
+    payPerHour?: SortOrder
+    diagnosticDiagnosticId?: SortOrder
+    repairRepairId?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -14412,23 +14412,23 @@ export namespace Prisma {
   }
 
   export type HeadMechanicCountOrderByAggregateInput = {
-    mechanic_id?: SortOrder
+    mechanicId?: SortOrder
   }
 
   export type HeadMechanicAvgOrderByAggregateInput = {
-    mechanic_id?: SortOrder
+    mechanicId?: SortOrder
   }
 
   export type HeadMechanicMaxOrderByAggregateInput = {
-    mechanic_id?: SortOrder
+    mechanicId?: SortOrder
   }
 
   export type HeadMechanicMinOrderByAggregateInput = {
-    mechanic_id?: SortOrder
+    mechanicId?: SortOrder
   }
 
   export type HeadMechanicSumOrderByAggregateInput = {
-    mechanic_id?: SortOrder
+    mechanicId?: SortOrder
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -14466,40 +14466,40 @@ export namespace Prisma {
   }
 
   export type ReservationCountOrderByAggregateInput = {
-    reservation_id?: SortOrder
-    mobile_phone?: SortOrder
+    reservationId?: SortOrder
+    mobilePhone?: SortOrder
     date?: SortOrder
-    base_fee?: SortOrder
-    repair_status?: SortOrder
-    vehicule_id?: SortOrder
+    baseFee?: SortOrder
+    repairStatus?: SortOrder
+    vehiculeId?: SortOrder
   }
 
   export type ReservationAvgOrderByAggregateInput = {
-    reservation_id?: SortOrder
-    base_fee?: SortOrder
+    reservationId?: SortOrder
+    baseFee?: SortOrder
   }
 
   export type ReservationMaxOrderByAggregateInput = {
-    reservation_id?: SortOrder
-    mobile_phone?: SortOrder
+    reservationId?: SortOrder
+    mobilePhone?: SortOrder
     date?: SortOrder
-    base_fee?: SortOrder
-    repair_status?: SortOrder
-    vehicule_id?: SortOrder
+    baseFee?: SortOrder
+    repairStatus?: SortOrder
+    vehiculeId?: SortOrder
   }
 
   export type ReservationMinOrderByAggregateInput = {
-    reservation_id?: SortOrder
-    mobile_phone?: SortOrder
+    reservationId?: SortOrder
+    mobilePhone?: SortOrder
     date?: SortOrder
-    base_fee?: SortOrder
-    repair_status?: SortOrder
-    vehicule_id?: SortOrder
+    baseFee?: SortOrder
+    repairStatus?: SortOrder
+    vehiculeId?: SortOrder
   }
 
   export type ReservationSumOrderByAggregateInput = {
-    reservation_id?: SortOrder
-    base_fee?: SortOrder
+    reservationId?: SortOrder
+    baseFee?: SortOrder
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -14563,68 +14563,68 @@ export namespace Prisma {
   }
 
   export type DiagnosticCountOrderByAggregateInput = {
-    diagnostic_id?: SortOrder
-    responsible_id?: SortOrder
-    reservation_id?: SortOrder
+    diagnosticId?: SortOrder
+    responsibleId?: SortOrder
+    reservationId?: SortOrder
   }
 
   export type DiagnosticAvgOrderByAggregateInput = {
-    diagnostic_id?: SortOrder
-    responsible_id?: SortOrder
-    reservation_id?: SortOrder
+    diagnosticId?: SortOrder
+    responsibleId?: SortOrder
+    reservationId?: SortOrder
   }
 
   export type DiagnosticMaxOrderByAggregateInput = {
-    diagnostic_id?: SortOrder
-    responsible_id?: SortOrder
-    reservation_id?: SortOrder
+    diagnosticId?: SortOrder
+    responsibleId?: SortOrder
+    reservationId?: SortOrder
   }
 
   export type DiagnosticMinOrderByAggregateInput = {
-    diagnostic_id?: SortOrder
-    responsible_id?: SortOrder
-    reservation_id?: SortOrder
+    diagnosticId?: SortOrder
+    responsibleId?: SortOrder
+    reservationId?: SortOrder
   }
 
   export type DiagnosticSumOrderByAggregateInput = {
-    diagnostic_id?: SortOrder
-    responsible_id?: SortOrder
-    reservation_id?: SortOrder
+    diagnosticId?: SortOrder
+    responsibleId?: SortOrder
+    reservationId?: SortOrder
   }
 
   export type RepairCountOrderByAggregateInput = {
-    repair_id?: SortOrder
-    responsible_id?: SortOrder
-    reservation_id?: SortOrder
-    total_repair_hours?: SortOrder
+    repairId?: SortOrder
+    responsibleId?: SortOrder
+    reservationId?: SortOrder
+    totalRepairHours?: SortOrder
   }
 
   export type RepairAvgOrderByAggregateInput = {
-    repair_id?: SortOrder
-    responsible_id?: SortOrder
-    reservation_id?: SortOrder
-    total_repair_hours?: SortOrder
+    repairId?: SortOrder
+    responsibleId?: SortOrder
+    reservationId?: SortOrder
+    totalRepairHours?: SortOrder
   }
 
   export type RepairMaxOrderByAggregateInput = {
-    repair_id?: SortOrder
-    responsible_id?: SortOrder
-    reservation_id?: SortOrder
-    total_repair_hours?: SortOrder
+    repairId?: SortOrder
+    responsibleId?: SortOrder
+    reservationId?: SortOrder
+    totalRepairHours?: SortOrder
   }
 
   export type RepairMinOrderByAggregateInput = {
-    repair_id?: SortOrder
-    responsible_id?: SortOrder
-    reservation_id?: SortOrder
-    total_repair_hours?: SortOrder
+    repairId?: SortOrder
+    responsibleId?: SortOrder
+    reservationId?: SortOrder
+    totalRepairHours?: SortOrder
   }
 
   export type RepairSumOrderByAggregateInput = {
-    repair_id?: SortOrder
-    responsible_id?: SortOrder
-    reservation_id?: SortOrder
-    total_repair_hours?: SortOrder
+    repairId?: SortOrder
+    responsibleId?: SortOrder
+    reservationId?: SortOrder
+    totalRepairHours?: SortOrder
   }
 
   export type IntNullableListFilter<$PrismaModel = never> = {
@@ -14636,58 +14636,58 @@ export namespace Prisma {
   }
 
   export type RepairPartCountOrderByAggregateInput = {
-    part_id?: SortOrder
+    partId?: SortOrder
     price?: SortOrder
-    repair_id?: SortOrder
-    vendor_id?: SortOrder
+    repairId?: SortOrder
+    vendorId?: SortOrder
   }
 
   export type RepairPartAvgOrderByAggregateInput = {
     price?: SortOrder
-    repair_id?: SortOrder
-    vendor_id?: SortOrder
+    repairId?: SortOrder
+    vendorId?: SortOrder
   }
 
   export type RepairPartMaxOrderByAggregateInput = {
-    part_id?: SortOrder
+    partId?: SortOrder
     price?: SortOrder
   }
 
   export type RepairPartMinOrderByAggregateInput = {
-    part_id?: SortOrder
+    partId?: SortOrder
     price?: SortOrder
   }
 
   export type RepairPartSumOrderByAggregateInput = {
     price?: SortOrder
-    repair_id?: SortOrder
-    vendor_id?: SortOrder
+    repairId?: SortOrder
+    vendorId?: SortOrder
   }
 
   export type VendorCountOrderByAggregateInput = {
-    vendor_id?: SortOrder
-    vendor_shop_name?: SortOrder
-    vendor_shop_address?: SortOrder
+    vendorId?: SortOrder
+    vendorShopName?: SortOrder
+    vendorShopAddress?: SortOrder
   }
 
   export type VendorAvgOrderByAggregateInput = {
-    vendor_id?: SortOrder
+    vendorId?: SortOrder
   }
 
   export type VendorMaxOrderByAggregateInput = {
-    vendor_id?: SortOrder
-    vendor_shop_name?: SortOrder
-    vendor_shop_address?: SortOrder
+    vendorId?: SortOrder
+    vendorShopName?: SortOrder
+    vendorShopAddress?: SortOrder
   }
 
   export type VendorMinOrderByAggregateInput = {
-    vendor_id?: SortOrder
-    vendor_shop_name?: SortOrder
-    vendor_shop_address?: SortOrder
+    vendorId?: SortOrder
+    vendorShopName?: SortOrder
+    vendorShopAddress?: SortOrder
   }
 
   export type VendorSumOrderByAggregateInput = {
-    vendor_id?: SortOrder
+    vendorId?: SortOrder
   }
 
   export type PostListRelationFilter = {
@@ -14701,29 +14701,29 @@ export namespace Prisma {
   }
 
   export type UserCountOrderByAggregateInput = {
-    user_id?: SortOrder
+    userId?: SortOrder
     email?: SortOrder
     name?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
-    user_id?: SortOrder
+    userId?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
-    user_id?: SortOrder
+    userId?: SortOrder
     email?: SortOrder
     name?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
-    user_id?: SortOrder
+    userId?: SortOrder
     email?: SortOrder
     name?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
-    user_id?: SortOrder
+    userId?: SortOrder
   }
 
   export type UserScalarRelationFilter = {
@@ -14732,7 +14732,7 @@ export namespace Prisma {
   }
 
   export type PostCountOrderByAggregateInput = {
-    post_id?: SortOrder
+    postId?: SortOrder
     title?: SortOrder
     content?: SortOrder
     published?: SortOrder
@@ -14740,12 +14740,12 @@ export namespace Prisma {
   }
 
   export type PostAvgOrderByAggregateInput = {
-    post_id?: SortOrder
+    postId?: SortOrder
     authorId?: SortOrder
   }
 
   export type PostMaxOrderByAggregateInput = {
-    post_id?: SortOrder
+    postId?: SortOrder
     title?: SortOrder
     content?: SortOrder
     published?: SortOrder
@@ -14753,7 +14753,7 @@ export namespace Prisma {
   }
 
   export type PostMinOrderByAggregateInput = {
-    post_id?: SortOrder
+    postId?: SortOrder
     title?: SortOrder
     content?: SortOrder
     published?: SortOrder
@@ -14761,7 +14761,7 @@ export namespace Prisma {
   }
 
   export type PostSumOrderByAggregateInput = {
-    post_id?: SortOrder
+    postId?: SortOrder
     authorId?: SortOrder
   }
 
@@ -14829,15 +14829,15 @@ export namespace Prisma {
     connect?: HeadMechanicWhereUniqueInput
   }
 
-  export type DiagnosticCreateNestedOneWithoutWorkers_employedInput = {
-    create?: XOR<DiagnosticCreateWithoutWorkers_employedInput, DiagnosticUncheckedCreateWithoutWorkers_employedInput>
-    connectOrCreate?: DiagnosticCreateOrConnectWithoutWorkers_employedInput
+  export type DiagnosticCreateNestedOneWithoutWorkersEmployedInput = {
+    create?: XOR<DiagnosticCreateWithoutWorkersEmployedInput, DiagnosticUncheckedCreateWithoutWorkersEmployedInput>
+    connectOrCreate?: DiagnosticCreateOrConnectWithoutWorkersEmployedInput
     connect?: DiagnosticWhereUniqueInput
   }
 
-  export type RepairCreateNestedOneWithoutWorkers_employedInput = {
-    create?: XOR<RepairCreateWithoutWorkers_employedInput, RepairUncheckedCreateWithoutWorkers_employedInput>
-    connectOrCreate?: RepairCreateOrConnectWithoutWorkers_employedInput
+  export type RepairCreateNestedOneWithoutWorkersEmployedInput = {
+    create?: XOR<RepairCreateWithoutWorkersEmployedInput, RepairUncheckedCreateWithoutWorkersEmployedInput>
+    connectOrCreate?: RepairCreateOrConnectWithoutWorkersEmployedInput
     connect?: RepairWhereUniqueInput
   }
 
@@ -14873,24 +14873,24 @@ export namespace Prisma {
     update?: XOR<XOR<HeadMechanicUpdateToOneWithWhereWithoutMechanicInput, HeadMechanicUpdateWithoutMechanicInput>, HeadMechanicUncheckedUpdateWithoutMechanicInput>
   }
 
-  export type DiagnosticUpdateOneWithoutWorkers_employedNestedInput = {
-    create?: XOR<DiagnosticCreateWithoutWorkers_employedInput, DiagnosticUncheckedCreateWithoutWorkers_employedInput>
-    connectOrCreate?: DiagnosticCreateOrConnectWithoutWorkers_employedInput
-    upsert?: DiagnosticUpsertWithoutWorkers_employedInput
+  export type DiagnosticUpdateOneWithoutWorkersEmployedNestedInput = {
+    create?: XOR<DiagnosticCreateWithoutWorkersEmployedInput, DiagnosticUncheckedCreateWithoutWorkersEmployedInput>
+    connectOrCreate?: DiagnosticCreateOrConnectWithoutWorkersEmployedInput
+    upsert?: DiagnosticUpsertWithoutWorkersEmployedInput
     disconnect?: DiagnosticWhereInput | boolean
     delete?: DiagnosticWhereInput | boolean
     connect?: DiagnosticWhereUniqueInput
-    update?: XOR<XOR<DiagnosticUpdateToOneWithWhereWithoutWorkers_employedInput, DiagnosticUpdateWithoutWorkers_employedInput>, DiagnosticUncheckedUpdateWithoutWorkers_employedInput>
+    update?: XOR<XOR<DiagnosticUpdateToOneWithWhereWithoutWorkersEmployedInput, DiagnosticUpdateWithoutWorkersEmployedInput>, DiagnosticUncheckedUpdateWithoutWorkersEmployedInput>
   }
 
-  export type RepairUpdateOneWithoutWorkers_employedNestedInput = {
-    create?: XOR<RepairCreateWithoutWorkers_employedInput, RepairUncheckedCreateWithoutWorkers_employedInput>
-    connectOrCreate?: RepairCreateOrConnectWithoutWorkers_employedInput
-    upsert?: RepairUpsertWithoutWorkers_employedInput
+  export type RepairUpdateOneWithoutWorkersEmployedNestedInput = {
+    create?: XOR<RepairCreateWithoutWorkersEmployedInput, RepairUncheckedCreateWithoutWorkersEmployedInput>
+    connectOrCreate?: RepairCreateOrConnectWithoutWorkersEmployedInput
+    upsert?: RepairUpsertWithoutWorkersEmployedInput
     disconnect?: RepairWhereInput | boolean
     delete?: RepairWhereInput | boolean
     connect?: RepairWhereUniqueInput
-    update?: XOR<XOR<RepairUpdateToOneWithWhereWithoutWorkers_employedInput, RepairUpdateWithoutWorkers_employedInput>, RepairUncheckedUpdateWithoutWorkers_employedInput>
+    update?: XOR<XOR<RepairUpdateToOneWithWhereWithoutWorkersEmployedInput, RepairUpdateWithoutWorkersEmployedInput>, RepairUncheckedUpdateWithoutWorkersEmployedInput>
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -15263,20 +15263,20 @@ export namespace Prisma {
     deleteMany?: MechanicScalarWhereInput | MechanicScalarWhereInput[]
   }
 
-  export type RepairPartCreaterepair_idInput = {
+  export type RepairPartCreaterepairIdInput = {
     set: number[]
   }
 
-  export type RepairPartCreatevendor_idInput = {
+  export type RepairPartCreatevendorIdInput = {
     set: number[]
   }
 
-  export type RepairPartUpdaterepair_idInput = {
+  export type RepairPartUpdaterepairIdInput = {
     set?: number[]
     push?: number | number[]
   }
 
-  export type RepairPartUpdatevendor_idInput = {
+  export type RepairPartUpdatevendorIdInput = {
     set?: number[]
     push?: number | number[]
   }
@@ -15580,22 +15580,22 @@ export namespace Prisma {
   }
 
   export type ReservationCreateWithoutVehiculeInput = {
-    mobile_phone: string
+    mobilePhone: string
     date: Date | string
-    base_fee?: number | null
-    repair_status?: $Enums.RepairStatus | null
-    Diagnostic?: DiagnosticCreateNestedManyWithoutReservationInput
-    Repair?: RepairCreateNestedManyWithoutReservationInput
+    baseFee?: number | null
+    repairStatus?: $Enums.RepairStatus | null
+    diagnostic?: DiagnosticCreateNestedManyWithoutReservationInput
+    repair?: RepairCreateNestedManyWithoutReservationInput
   }
 
   export type ReservationUncheckedCreateWithoutVehiculeInput = {
-    reservation_id?: number
-    mobile_phone: string
+    reservationId?: number
+    mobilePhone: string
     date: Date | string
-    base_fee?: number | null
-    repair_status?: $Enums.RepairStatus | null
-    Diagnostic?: DiagnosticUncheckedCreateNestedManyWithoutReservationInput
-    Repair?: RepairUncheckedCreateNestedManyWithoutReservationInput
+    baseFee?: number | null
+    repairStatus?: $Enums.RepairStatus | null
+    diagnostic?: DiagnosticUncheckedCreateNestedManyWithoutReservationInput
+    repair?: RepairUncheckedCreateNestedManyWithoutReservationInput
   }
 
   export type ReservationCreateOrConnectWithoutVehiculeInput = {
@@ -15628,22 +15628,22 @@ export namespace Prisma {
     AND?: ReservationScalarWhereInput | ReservationScalarWhereInput[]
     OR?: ReservationScalarWhereInput[]
     NOT?: ReservationScalarWhereInput | ReservationScalarWhereInput[]
-    reservation_id?: IntFilter<"Reservation"> | number
-    mobile_phone?: StringFilter<"Reservation"> | string
+    reservationId?: IntFilter<"Reservation"> | number
+    mobilePhone?: StringFilter<"Reservation"> | string
     date?: DateTimeFilter<"Reservation"> | Date | string
-    base_fee?: FloatNullableFilter<"Reservation"> | number | null
-    repair_status?: EnumRepairStatusNullableFilter<"Reservation"> | $Enums.RepairStatus | null
-    vehicule_id?: StringFilter<"Reservation"> | string
+    baseFee?: FloatNullableFilter<"Reservation"> | number | null
+    repairStatus?: EnumRepairStatusNullableFilter<"Reservation"> | $Enums.RepairStatus | null
+    vehiculeId?: StringFilter<"Reservation"> | string
   }
 
   export type HeadMechanicCreateWithoutMechanicInput = {
-    Diagnostic?: DiagnosticCreateNestedManyWithoutResponsibleInput
-    Repair?: RepairCreateNestedManyWithoutResponsibleInput
+    diagnostic?: DiagnosticCreateNestedManyWithoutResponsibleInput
+    repair?: RepairCreateNestedManyWithoutResponsibleInput
   }
 
   export type HeadMechanicUncheckedCreateWithoutMechanicInput = {
-    Diagnostic?: DiagnosticUncheckedCreateNestedManyWithoutResponsibleInput
-    Repair?: RepairUncheckedCreateNestedManyWithoutResponsibleInput
+    diagnostic?: DiagnosticUncheckedCreateNestedManyWithoutResponsibleInput
+    repair?: RepairUncheckedCreateNestedManyWithoutResponsibleInput
   }
 
   export type HeadMechanicCreateOrConnectWithoutMechanicInput = {
@@ -15651,38 +15651,38 @@ export namespace Prisma {
     create: XOR<HeadMechanicCreateWithoutMechanicInput, HeadMechanicUncheckedCreateWithoutMechanicInput>
   }
 
-  export type DiagnosticCreateWithoutWorkers_employedInput = {
+  export type DiagnosticCreateWithoutWorkersEmployedInput = {
     responsible: HeadMechanicCreateNestedOneWithoutDiagnosticInput
     reservation: ReservationCreateNestedOneWithoutDiagnosticInput
   }
 
-  export type DiagnosticUncheckedCreateWithoutWorkers_employedInput = {
-    diagnostic_id?: number
-    responsible_id: number
-    reservation_id: number
+  export type DiagnosticUncheckedCreateWithoutWorkersEmployedInput = {
+    diagnosticId?: number
+    responsibleId: number
+    reservationId: number
   }
 
-  export type DiagnosticCreateOrConnectWithoutWorkers_employedInput = {
+  export type DiagnosticCreateOrConnectWithoutWorkersEmployedInput = {
     where: DiagnosticWhereUniqueInput
-    create: XOR<DiagnosticCreateWithoutWorkers_employedInput, DiagnosticUncheckedCreateWithoutWorkers_employedInput>
+    create: XOR<DiagnosticCreateWithoutWorkersEmployedInput, DiagnosticUncheckedCreateWithoutWorkersEmployedInput>
   }
 
-  export type RepairCreateWithoutWorkers_employedInput = {
-    total_repair_hours: number
+  export type RepairCreateWithoutWorkersEmployedInput = {
+    totalRepairHours: number
     responsible: HeadMechanicCreateNestedOneWithoutRepairInput
     reservation: ReservationCreateNestedOneWithoutRepairInput
   }
 
-  export type RepairUncheckedCreateWithoutWorkers_employedInput = {
-    repair_id?: number
-    responsible_id: number
-    reservation_id: number
-    total_repair_hours: number
+  export type RepairUncheckedCreateWithoutWorkersEmployedInput = {
+    repairId?: number
+    responsibleId: number
+    reservationId: number
+    totalRepairHours: number
   }
 
-  export type RepairCreateOrConnectWithoutWorkers_employedInput = {
+  export type RepairCreateOrConnectWithoutWorkersEmployedInput = {
     where: RepairWhereUniqueInput
-    create: XOR<RepairCreateWithoutWorkers_employedInput, RepairUncheckedCreateWithoutWorkers_employedInput>
+    create: XOR<RepairCreateWithoutWorkersEmployedInput, RepairUncheckedCreateWithoutWorkersEmployedInput>
   }
 
   export type HeadMechanicUpsertWithoutMechanicInput = {
@@ -15697,73 +15697,73 @@ export namespace Prisma {
   }
 
   export type HeadMechanicUpdateWithoutMechanicInput = {
-    Diagnostic?: DiagnosticUpdateManyWithoutResponsibleNestedInput
-    Repair?: RepairUpdateManyWithoutResponsibleNestedInput
+    diagnostic?: DiagnosticUpdateManyWithoutResponsibleNestedInput
+    repair?: RepairUpdateManyWithoutResponsibleNestedInput
   }
 
   export type HeadMechanicUncheckedUpdateWithoutMechanicInput = {
-    Diagnostic?: DiagnosticUncheckedUpdateManyWithoutResponsibleNestedInput
-    Repair?: RepairUncheckedUpdateManyWithoutResponsibleNestedInput
+    diagnostic?: DiagnosticUncheckedUpdateManyWithoutResponsibleNestedInput
+    repair?: RepairUncheckedUpdateManyWithoutResponsibleNestedInput
   }
 
-  export type DiagnosticUpsertWithoutWorkers_employedInput = {
-    update: XOR<DiagnosticUpdateWithoutWorkers_employedInput, DiagnosticUncheckedUpdateWithoutWorkers_employedInput>
-    create: XOR<DiagnosticCreateWithoutWorkers_employedInput, DiagnosticUncheckedCreateWithoutWorkers_employedInput>
+  export type DiagnosticUpsertWithoutWorkersEmployedInput = {
+    update: XOR<DiagnosticUpdateWithoutWorkersEmployedInput, DiagnosticUncheckedUpdateWithoutWorkersEmployedInput>
+    create: XOR<DiagnosticCreateWithoutWorkersEmployedInput, DiagnosticUncheckedCreateWithoutWorkersEmployedInput>
     where?: DiagnosticWhereInput
   }
 
-  export type DiagnosticUpdateToOneWithWhereWithoutWorkers_employedInput = {
+  export type DiagnosticUpdateToOneWithWhereWithoutWorkersEmployedInput = {
     where?: DiagnosticWhereInput
-    data: XOR<DiagnosticUpdateWithoutWorkers_employedInput, DiagnosticUncheckedUpdateWithoutWorkers_employedInput>
+    data: XOR<DiagnosticUpdateWithoutWorkersEmployedInput, DiagnosticUncheckedUpdateWithoutWorkersEmployedInput>
   }
 
-  export type DiagnosticUpdateWithoutWorkers_employedInput = {
+  export type DiagnosticUpdateWithoutWorkersEmployedInput = {
     responsible?: HeadMechanicUpdateOneRequiredWithoutDiagnosticNestedInput
     reservation?: ReservationUpdateOneRequiredWithoutDiagnosticNestedInput
   }
 
-  export type DiagnosticUncheckedUpdateWithoutWorkers_employedInput = {
-    diagnostic_id?: IntFieldUpdateOperationsInput | number
-    responsible_id?: IntFieldUpdateOperationsInput | number
-    reservation_id?: IntFieldUpdateOperationsInput | number
+  export type DiagnosticUncheckedUpdateWithoutWorkersEmployedInput = {
+    diagnosticId?: IntFieldUpdateOperationsInput | number
+    responsibleId?: IntFieldUpdateOperationsInput | number
+    reservationId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type RepairUpsertWithoutWorkers_employedInput = {
-    update: XOR<RepairUpdateWithoutWorkers_employedInput, RepairUncheckedUpdateWithoutWorkers_employedInput>
-    create: XOR<RepairCreateWithoutWorkers_employedInput, RepairUncheckedCreateWithoutWorkers_employedInput>
+  export type RepairUpsertWithoutWorkersEmployedInput = {
+    update: XOR<RepairUpdateWithoutWorkersEmployedInput, RepairUncheckedUpdateWithoutWorkersEmployedInput>
+    create: XOR<RepairCreateWithoutWorkersEmployedInput, RepairUncheckedCreateWithoutWorkersEmployedInput>
     where?: RepairWhereInput
   }
 
-  export type RepairUpdateToOneWithWhereWithoutWorkers_employedInput = {
+  export type RepairUpdateToOneWithWhereWithoutWorkersEmployedInput = {
     where?: RepairWhereInput
-    data: XOR<RepairUpdateWithoutWorkers_employedInput, RepairUncheckedUpdateWithoutWorkers_employedInput>
+    data: XOR<RepairUpdateWithoutWorkersEmployedInput, RepairUncheckedUpdateWithoutWorkersEmployedInput>
   }
 
-  export type RepairUpdateWithoutWorkers_employedInput = {
-    total_repair_hours?: IntFieldUpdateOperationsInput | number
+  export type RepairUpdateWithoutWorkersEmployedInput = {
+    totalRepairHours?: IntFieldUpdateOperationsInput | number
     responsible?: HeadMechanicUpdateOneRequiredWithoutRepairNestedInput
     reservation?: ReservationUpdateOneRequiredWithoutRepairNestedInput
   }
 
-  export type RepairUncheckedUpdateWithoutWorkers_employedInput = {
-    repair_id?: IntFieldUpdateOperationsInput | number
-    responsible_id?: IntFieldUpdateOperationsInput | number
-    reservation_id?: IntFieldUpdateOperationsInput | number
-    total_repair_hours?: IntFieldUpdateOperationsInput | number
+  export type RepairUncheckedUpdateWithoutWorkersEmployedInput = {
+    repairId?: IntFieldUpdateOperationsInput | number
+    responsibleId?: IntFieldUpdateOperationsInput | number
+    reservationId?: IntFieldUpdateOperationsInput | number
+    totalRepairHours?: IntFieldUpdateOperationsInput | number
   }
 
   export type MechanicCreateWithoutHeadMechanicInput = {
-    mechanic_id: number
-    pay_per_hour: number
-    Diagnostic?: DiagnosticCreateNestedOneWithoutWorkers_employedInput
-    Repair?: RepairCreateNestedOneWithoutWorkers_employedInput
+    mechanicId: number
+    payPerHour: number
+    diagnostic?: DiagnosticCreateNestedOneWithoutWorkersEmployedInput
+    repair?: RepairCreateNestedOneWithoutWorkersEmployedInput
   }
 
   export type MechanicUncheckedCreateWithoutHeadMechanicInput = {
-    mechanic_id: number
-    pay_per_hour: number
-    diagnosticDiagnostic_id?: number | null
-    repairRepair_id?: number | null
+    mechanicId: number
+    payPerHour: number
+    diagnosticDiagnosticId?: number | null
+    repairRepairId?: number | null
   }
 
   export type MechanicCreateOrConnectWithoutHeadMechanicInput = {
@@ -15772,14 +15772,14 @@ export namespace Prisma {
   }
 
   export type DiagnosticCreateWithoutResponsibleInput = {
-    workers_employed?: MechanicCreateNestedManyWithoutDiagnosticInput
+    workersEmployed?: MechanicCreateNestedManyWithoutDiagnosticInput
     reservation: ReservationCreateNestedOneWithoutDiagnosticInput
   }
 
   export type DiagnosticUncheckedCreateWithoutResponsibleInput = {
-    diagnostic_id?: number
-    reservation_id: number
-    workers_employed?: MechanicUncheckedCreateNestedManyWithoutDiagnosticInput
+    diagnosticId?: number
+    reservationId: number
+    workersEmployed?: MechanicUncheckedCreateNestedManyWithoutDiagnosticInput
   }
 
   export type DiagnosticCreateOrConnectWithoutResponsibleInput = {
@@ -15793,16 +15793,16 @@ export namespace Prisma {
   }
 
   export type RepairCreateWithoutResponsibleInput = {
-    total_repair_hours: number
-    workers_employed?: MechanicCreateNestedManyWithoutRepairInput
+    totalRepairHours: number
+    workersEmployed?: MechanicCreateNestedManyWithoutRepairInput
     reservation: ReservationCreateNestedOneWithoutRepairInput
   }
 
   export type RepairUncheckedCreateWithoutResponsibleInput = {
-    repair_id?: number
-    reservation_id: number
-    total_repair_hours: number
-    workers_employed?: MechanicUncheckedCreateNestedManyWithoutRepairInput
+    repairId?: number
+    reservationId: number
+    totalRepairHours: number
+    workersEmployed?: MechanicUncheckedCreateNestedManyWithoutRepairInput
   }
 
   export type RepairCreateOrConnectWithoutResponsibleInput = {
@@ -15827,17 +15827,17 @@ export namespace Prisma {
   }
 
   export type MechanicUpdateWithoutHeadMechanicInput = {
-    mechanic_id?: IntFieldUpdateOperationsInput | number
-    pay_per_hour?: FloatFieldUpdateOperationsInput | number
-    Diagnostic?: DiagnosticUpdateOneWithoutWorkers_employedNestedInput
-    Repair?: RepairUpdateOneWithoutWorkers_employedNestedInput
+    mechanicId?: IntFieldUpdateOperationsInput | number
+    payPerHour?: FloatFieldUpdateOperationsInput | number
+    diagnostic?: DiagnosticUpdateOneWithoutWorkersEmployedNestedInput
+    repair?: RepairUpdateOneWithoutWorkersEmployedNestedInput
   }
 
   export type MechanicUncheckedUpdateWithoutHeadMechanicInput = {
-    mechanic_id?: IntFieldUpdateOperationsInput | number
-    pay_per_hour?: FloatFieldUpdateOperationsInput | number
-    diagnosticDiagnostic_id?: NullableIntFieldUpdateOperationsInput | number | null
-    repairRepair_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mechanicId?: IntFieldUpdateOperationsInput | number
+    payPerHour?: FloatFieldUpdateOperationsInput | number
+    diagnosticDiagnosticId?: NullableIntFieldUpdateOperationsInput | number | null
+    repairRepairId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type DiagnosticUpsertWithWhereUniqueWithoutResponsibleInput = {
@@ -15860,9 +15860,9 @@ export namespace Prisma {
     AND?: DiagnosticScalarWhereInput | DiagnosticScalarWhereInput[]
     OR?: DiagnosticScalarWhereInput[]
     NOT?: DiagnosticScalarWhereInput | DiagnosticScalarWhereInput[]
-    diagnostic_id?: IntFilter<"Diagnostic"> | number
-    responsible_id?: IntFilter<"Diagnostic"> | number
-    reservation_id?: IntFilter<"Diagnostic"> | number
+    diagnosticId?: IntFilter<"Diagnostic"> | number
+    responsibleId?: IntFilter<"Diagnostic"> | number
+    reservationId?: IntFilter<"Diagnostic"> | number
   }
 
   export type RepairUpsertWithWhereUniqueWithoutResponsibleInput = {
@@ -15885,17 +15885,17 @@ export namespace Prisma {
     AND?: RepairScalarWhereInput | RepairScalarWhereInput[]
     OR?: RepairScalarWhereInput[]
     NOT?: RepairScalarWhereInput | RepairScalarWhereInput[]
-    repair_id?: IntFilter<"Repair"> | number
-    responsible_id?: IntFilter<"Repair"> | number
-    reservation_id?: IntFilter<"Repair"> | number
-    total_repair_hours?: IntFilter<"Repair"> | number
+    repairId?: IntFilter<"Repair"> | number
+    responsibleId?: IntFilter<"Repair"> | number
+    reservationId?: IntFilter<"Repair"> | number
+    totalRepairHours?: IntFilter<"Repair"> | number
   }
 
   export type VehiculeCreateWithoutReservationInput = {
     vin: string
     local: boolean
     registation: string
-    registration_type?: $Enums.RegTypes | null
+    registrationType?: $Enums.RegTypes | null
     location?: string | null
   }
 
@@ -15903,7 +15903,7 @@ export namespace Prisma {
     vin: string
     local: boolean
     registation: string
-    registration_type?: $Enums.RegTypes | null
+    registrationType?: $Enums.RegTypes | null
     location?: string | null
   }
 
@@ -15914,13 +15914,13 @@ export namespace Prisma {
 
   export type DiagnosticCreateWithoutReservationInput = {
     responsible: HeadMechanicCreateNestedOneWithoutDiagnosticInput
-    workers_employed?: MechanicCreateNestedManyWithoutDiagnosticInput
+    workersEmployed?: MechanicCreateNestedManyWithoutDiagnosticInput
   }
 
   export type DiagnosticUncheckedCreateWithoutReservationInput = {
-    diagnostic_id?: number
-    responsible_id: number
-    workers_employed?: MechanicUncheckedCreateNestedManyWithoutDiagnosticInput
+    diagnosticId?: number
+    responsibleId: number
+    workersEmployed?: MechanicUncheckedCreateNestedManyWithoutDiagnosticInput
   }
 
   export type DiagnosticCreateOrConnectWithoutReservationInput = {
@@ -15934,16 +15934,16 @@ export namespace Prisma {
   }
 
   export type RepairCreateWithoutReservationInput = {
-    total_repair_hours: number
+    totalRepairHours: number
     responsible: HeadMechanicCreateNestedOneWithoutRepairInput
-    workers_employed?: MechanicCreateNestedManyWithoutRepairInput
+    workersEmployed?: MechanicCreateNestedManyWithoutRepairInput
   }
 
   export type RepairUncheckedCreateWithoutReservationInput = {
-    repair_id?: number
-    responsible_id: number
-    total_repair_hours: number
-    workers_employed?: MechanicUncheckedCreateNestedManyWithoutRepairInput
+    repairId?: number
+    responsibleId: number
+    totalRepairHours: number
+    workersEmployed?: MechanicUncheckedCreateNestedManyWithoutRepairInput
   }
 
   export type RepairCreateOrConnectWithoutReservationInput = {
@@ -15971,7 +15971,7 @@ export namespace Prisma {
     vin?: StringFieldUpdateOperationsInput | string
     local?: BoolFieldUpdateOperationsInput | boolean
     registation?: StringFieldUpdateOperationsInput | string
-    registration_type?: NullableEnumRegTypesFieldUpdateOperationsInput | $Enums.RegTypes | null
+    registrationType?: NullableEnumRegTypesFieldUpdateOperationsInput | $Enums.RegTypes | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -15979,7 +15979,7 @@ export namespace Prisma {
     vin?: StringFieldUpdateOperationsInput | string
     local?: BoolFieldUpdateOperationsInput | boolean
     registation?: StringFieldUpdateOperationsInput | string
-    registration_type?: NullableEnumRegTypesFieldUpdateOperationsInput | $Enums.RegTypes | null
+    registrationType?: NullableEnumRegTypesFieldUpdateOperationsInput | $Enums.RegTypes | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -16017,12 +16017,12 @@ export namespace Prisma {
 
   export type HeadMechanicCreateWithoutDiagnosticInput = {
     mechanic: MechanicCreateNestedOneWithoutHeadMechanicInput
-    Repair?: RepairCreateNestedManyWithoutResponsibleInput
+    repair?: RepairCreateNestedManyWithoutResponsibleInput
   }
 
   export type HeadMechanicUncheckedCreateWithoutDiagnosticInput = {
-    mechanic_id: number
-    Repair?: RepairUncheckedCreateNestedManyWithoutResponsibleInput
+    mechanicId: number
+    repair?: RepairUncheckedCreateNestedManyWithoutResponsibleInput
   }
 
   export type HeadMechanicCreateOrConnectWithoutDiagnosticInput = {
@@ -16031,17 +16031,17 @@ export namespace Prisma {
   }
 
   export type MechanicCreateWithoutDiagnosticInput = {
-    mechanic_id: number
-    pay_per_hour: number
-    HeadMechanic?: HeadMechanicCreateNestedOneWithoutMechanicInput
-    Repair?: RepairCreateNestedOneWithoutWorkers_employedInput
+    mechanicId: number
+    payPerHour: number
+    headMechanic?: HeadMechanicCreateNestedOneWithoutMechanicInput
+    repair?: RepairCreateNestedOneWithoutWorkersEmployedInput
   }
 
   export type MechanicUncheckedCreateWithoutDiagnosticInput = {
-    mechanic_id: number
-    pay_per_hour: number
-    repairRepair_id?: number | null
-    HeadMechanic?: HeadMechanicUncheckedCreateNestedOneWithoutMechanicInput
+    mechanicId: number
+    payPerHour: number
+    repairRepairId?: number | null
+    headMechanic?: HeadMechanicUncheckedCreateNestedOneWithoutMechanicInput
   }
 
   export type MechanicCreateOrConnectWithoutDiagnosticInput = {
@@ -16055,22 +16055,22 @@ export namespace Prisma {
   }
 
   export type ReservationCreateWithoutDiagnosticInput = {
-    mobile_phone: string
+    mobilePhone: string
     date: Date | string
-    base_fee?: number | null
-    repair_status?: $Enums.RepairStatus | null
+    baseFee?: number | null
+    repairStatus?: $Enums.RepairStatus | null
     vehicule: VehiculeCreateNestedOneWithoutReservationInput
-    Repair?: RepairCreateNestedManyWithoutReservationInput
+    repair?: RepairCreateNestedManyWithoutReservationInput
   }
 
   export type ReservationUncheckedCreateWithoutDiagnosticInput = {
-    reservation_id?: number
-    mobile_phone: string
+    reservationId?: number
+    mobilePhone: string
     date: Date | string
-    base_fee?: number | null
-    repair_status?: $Enums.RepairStatus | null
-    vehicule_id: string
-    Repair?: RepairUncheckedCreateNestedManyWithoutReservationInput
+    baseFee?: number | null
+    repairStatus?: $Enums.RepairStatus | null
+    vehiculeId: string
+    repair?: RepairUncheckedCreateNestedManyWithoutReservationInput
   }
 
   export type ReservationCreateOrConnectWithoutDiagnosticInput = {
@@ -16091,12 +16091,12 @@ export namespace Prisma {
 
   export type HeadMechanicUpdateWithoutDiagnosticInput = {
     mechanic?: MechanicUpdateOneRequiredWithoutHeadMechanicNestedInput
-    Repair?: RepairUpdateManyWithoutResponsibleNestedInput
+    repair?: RepairUpdateManyWithoutResponsibleNestedInput
   }
 
   export type HeadMechanicUncheckedUpdateWithoutDiagnosticInput = {
-    mechanic_id?: IntFieldUpdateOperationsInput | number
-    Repair?: RepairUncheckedUpdateManyWithoutResponsibleNestedInput
+    mechanicId?: IntFieldUpdateOperationsInput | number
+    repair?: RepairUncheckedUpdateManyWithoutResponsibleNestedInput
   }
 
   export type MechanicUpsertWithWhereUniqueWithoutDiagnosticInput = {
@@ -16119,10 +16119,10 @@ export namespace Prisma {
     AND?: MechanicScalarWhereInput | MechanicScalarWhereInput[]
     OR?: MechanicScalarWhereInput[]
     NOT?: MechanicScalarWhereInput | MechanicScalarWhereInput[]
-    mechanic_id?: IntFilter<"Mechanic"> | number
-    pay_per_hour?: FloatFilter<"Mechanic"> | number
-    diagnosticDiagnostic_id?: IntNullableFilter<"Mechanic"> | number | null
-    repairRepair_id?: IntNullableFilter<"Mechanic"> | number | null
+    mechanicId?: IntFilter<"Mechanic"> | number
+    payPerHour?: FloatFilter<"Mechanic"> | number
+    diagnosticDiagnosticId?: IntNullableFilter<"Mechanic"> | number | null
+    repairRepairId?: IntNullableFilter<"Mechanic"> | number | null
   }
 
   export type ReservationUpsertWithoutDiagnosticInput = {
@@ -16137,32 +16137,32 @@ export namespace Prisma {
   }
 
   export type ReservationUpdateWithoutDiagnosticInput = {
-    mobile_phone?: StringFieldUpdateOperationsInput | string
+    mobilePhone?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    base_fee?: NullableFloatFieldUpdateOperationsInput | number | null
-    repair_status?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
+    baseFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    repairStatus?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
     vehicule?: VehiculeUpdateOneRequiredWithoutReservationNestedInput
-    Repair?: RepairUpdateManyWithoutReservationNestedInput
+    repair?: RepairUpdateManyWithoutReservationNestedInput
   }
 
   export type ReservationUncheckedUpdateWithoutDiagnosticInput = {
-    reservation_id?: IntFieldUpdateOperationsInput | number
-    mobile_phone?: StringFieldUpdateOperationsInput | string
+    reservationId?: IntFieldUpdateOperationsInput | number
+    mobilePhone?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    base_fee?: NullableFloatFieldUpdateOperationsInput | number | null
-    repair_status?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
-    vehicule_id?: StringFieldUpdateOperationsInput | string
-    Repair?: RepairUncheckedUpdateManyWithoutReservationNestedInput
+    baseFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    repairStatus?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
+    vehiculeId?: StringFieldUpdateOperationsInput | string
+    repair?: RepairUncheckedUpdateManyWithoutReservationNestedInput
   }
 
   export type HeadMechanicCreateWithoutRepairInput = {
     mechanic: MechanicCreateNestedOneWithoutHeadMechanicInput
-    Diagnostic?: DiagnosticCreateNestedManyWithoutResponsibleInput
+    diagnostic?: DiagnosticCreateNestedManyWithoutResponsibleInput
   }
 
   export type HeadMechanicUncheckedCreateWithoutRepairInput = {
-    mechanic_id: number
-    Diagnostic?: DiagnosticUncheckedCreateNestedManyWithoutResponsibleInput
+    mechanicId: number
+    diagnostic?: DiagnosticUncheckedCreateNestedManyWithoutResponsibleInput
   }
 
   export type HeadMechanicCreateOrConnectWithoutRepairInput = {
@@ -16171,17 +16171,17 @@ export namespace Prisma {
   }
 
   export type MechanicCreateWithoutRepairInput = {
-    mechanic_id: number
-    pay_per_hour: number
-    HeadMechanic?: HeadMechanicCreateNestedOneWithoutMechanicInput
-    Diagnostic?: DiagnosticCreateNestedOneWithoutWorkers_employedInput
+    mechanicId: number
+    payPerHour: number
+    headMechanic?: HeadMechanicCreateNestedOneWithoutMechanicInput
+    diagnostic?: DiagnosticCreateNestedOneWithoutWorkersEmployedInput
   }
 
   export type MechanicUncheckedCreateWithoutRepairInput = {
-    mechanic_id: number
-    pay_per_hour: number
-    diagnosticDiagnostic_id?: number | null
-    HeadMechanic?: HeadMechanicUncheckedCreateNestedOneWithoutMechanicInput
+    mechanicId: number
+    payPerHour: number
+    diagnosticDiagnosticId?: number | null
+    headMechanic?: HeadMechanicUncheckedCreateNestedOneWithoutMechanicInput
   }
 
   export type MechanicCreateOrConnectWithoutRepairInput = {
@@ -16195,22 +16195,22 @@ export namespace Prisma {
   }
 
   export type ReservationCreateWithoutRepairInput = {
-    mobile_phone: string
+    mobilePhone: string
     date: Date | string
-    base_fee?: number | null
-    repair_status?: $Enums.RepairStatus | null
+    baseFee?: number | null
+    repairStatus?: $Enums.RepairStatus | null
     vehicule: VehiculeCreateNestedOneWithoutReservationInput
-    Diagnostic?: DiagnosticCreateNestedManyWithoutReservationInput
+    diagnostic?: DiagnosticCreateNestedManyWithoutReservationInput
   }
 
   export type ReservationUncheckedCreateWithoutRepairInput = {
-    reservation_id?: number
-    mobile_phone: string
+    reservationId?: number
+    mobilePhone: string
     date: Date | string
-    base_fee?: number | null
-    repair_status?: $Enums.RepairStatus | null
-    vehicule_id: string
-    Diagnostic?: DiagnosticUncheckedCreateNestedManyWithoutReservationInput
+    baseFee?: number | null
+    repairStatus?: $Enums.RepairStatus | null
+    vehiculeId: string
+    diagnostic?: DiagnosticUncheckedCreateNestedManyWithoutReservationInput
   }
 
   export type ReservationCreateOrConnectWithoutRepairInput = {
@@ -16231,12 +16231,12 @@ export namespace Prisma {
 
   export type HeadMechanicUpdateWithoutRepairInput = {
     mechanic?: MechanicUpdateOneRequiredWithoutHeadMechanicNestedInput
-    Diagnostic?: DiagnosticUpdateManyWithoutResponsibleNestedInput
+    diagnostic?: DiagnosticUpdateManyWithoutResponsibleNestedInput
   }
 
   export type HeadMechanicUncheckedUpdateWithoutRepairInput = {
-    mechanic_id?: IntFieldUpdateOperationsInput | number
-    Diagnostic?: DiagnosticUncheckedUpdateManyWithoutResponsibleNestedInput
+    mechanicId?: IntFieldUpdateOperationsInput | number
+    diagnostic?: DiagnosticUncheckedUpdateManyWithoutResponsibleNestedInput
   }
 
   export type MechanicUpsertWithWhereUniqueWithoutRepairInput = {
@@ -16267,22 +16267,22 @@ export namespace Prisma {
   }
 
   export type ReservationUpdateWithoutRepairInput = {
-    mobile_phone?: StringFieldUpdateOperationsInput | string
+    mobilePhone?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    base_fee?: NullableFloatFieldUpdateOperationsInput | number | null
-    repair_status?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
+    baseFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    repairStatus?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
     vehicule?: VehiculeUpdateOneRequiredWithoutReservationNestedInput
-    Diagnostic?: DiagnosticUpdateManyWithoutReservationNestedInput
+    diagnostic?: DiagnosticUpdateManyWithoutReservationNestedInput
   }
 
   export type ReservationUncheckedUpdateWithoutRepairInput = {
-    reservation_id?: IntFieldUpdateOperationsInput | number
-    mobile_phone?: StringFieldUpdateOperationsInput | string
+    reservationId?: IntFieldUpdateOperationsInput | number
+    mobilePhone?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    base_fee?: NullableFloatFieldUpdateOperationsInput | number | null
-    repair_status?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
-    vehicule_id?: StringFieldUpdateOperationsInput | string
-    Diagnostic?: DiagnosticUncheckedUpdateManyWithoutReservationNestedInput
+    baseFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    repairStatus?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
+    vehiculeId?: StringFieldUpdateOperationsInput | string
+    diagnostic?: DiagnosticUncheckedUpdateManyWithoutReservationNestedInput
   }
 
   export type PostCreateWithoutAuthorInput = {
@@ -16292,7 +16292,7 @@ export namespace Prisma {
   }
 
   export type PostUncheckedCreateWithoutAuthorInput = {
-    post_id?: number
+    postId?: number
     title: string
     content?: string | null
     published?: boolean
@@ -16328,7 +16328,7 @@ export namespace Prisma {
     AND?: PostScalarWhereInput | PostScalarWhereInput[]
     OR?: PostScalarWhereInput[]
     NOT?: PostScalarWhereInput | PostScalarWhereInput[]
-    post_id?: IntFilter<"Post"> | number
+    postId?: IntFilter<"Post"> | number
     title?: StringFilter<"Post"> | string
     content?: StringNullableFilter<"Post"> | string | null
     published?: BoolFilter<"Post"> | boolean
@@ -16341,7 +16341,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutPostsInput = {
-    user_id?: number
+    userId?: number
     email: string
     name?: string | null
   }
@@ -16368,192 +16368,192 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutPostsInput = {
-    user_id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ReservationCreateManyVehiculeInput = {
-    reservation_id?: number
-    mobile_phone: string
+    reservationId?: number
+    mobilePhone: string
     date: Date | string
-    base_fee?: number | null
-    repair_status?: $Enums.RepairStatus | null
+    baseFee?: number | null
+    repairStatus?: $Enums.RepairStatus | null
   }
 
   export type ReservationUpdateWithoutVehiculeInput = {
-    mobile_phone?: StringFieldUpdateOperationsInput | string
+    mobilePhone?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    base_fee?: NullableFloatFieldUpdateOperationsInput | number | null
-    repair_status?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
-    Diagnostic?: DiagnosticUpdateManyWithoutReservationNestedInput
-    Repair?: RepairUpdateManyWithoutReservationNestedInput
+    baseFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    repairStatus?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
+    diagnostic?: DiagnosticUpdateManyWithoutReservationNestedInput
+    repair?: RepairUpdateManyWithoutReservationNestedInput
   }
 
   export type ReservationUncheckedUpdateWithoutVehiculeInput = {
-    reservation_id?: IntFieldUpdateOperationsInput | number
-    mobile_phone?: StringFieldUpdateOperationsInput | string
+    reservationId?: IntFieldUpdateOperationsInput | number
+    mobilePhone?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    base_fee?: NullableFloatFieldUpdateOperationsInput | number | null
-    repair_status?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
-    Diagnostic?: DiagnosticUncheckedUpdateManyWithoutReservationNestedInput
-    Repair?: RepairUncheckedUpdateManyWithoutReservationNestedInput
+    baseFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    repairStatus?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
+    diagnostic?: DiagnosticUncheckedUpdateManyWithoutReservationNestedInput
+    repair?: RepairUncheckedUpdateManyWithoutReservationNestedInput
   }
 
   export type ReservationUncheckedUpdateManyWithoutVehiculeInput = {
-    reservation_id?: IntFieldUpdateOperationsInput | number
-    mobile_phone?: StringFieldUpdateOperationsInput | string
+    reservationId?: IntFieldUpdateOperationsInput | number
+    mobilePhone?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    base_fee?: NullableFloatFieldUpdateOperationsInput | number | null
-    repair_status?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
+    baseFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    repairStatus?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
   }
 
   export type DiagnosticCreateManyResponsibleInput = {
-    diagnostic_id?: number
-    reservation_id: number
+    diagnosticId?: number
+    reservationId: number
   }
 
   export type RepairCreateManyResponsibleInput = {
-    repair_id?: number
-    reservation_id: number
-    total_repair_hours: number
+    repairId?: number
+    reservationId: number
+    totalRepairHours: number
   }
 
   export type DiagnosticUpdateWithoutResponsibleInput = {
-    workers_employed?: MechanicUpdateManyWithoutDiagnosticNestedInput
+    workersEmployed?: MechanicUpdateManyWithoutDiagnosticNestedInput
     reservation?: ReservationUpdateOneRequiredWithoutDiagnosticNestedInput
   }
 
   export type DiagnosticUncheckedUpdateWithoutResponsibleInput = {
-    diagnostic_id?: IntFieldUpdateOperationsInput | number
-    reservation_id?: IntFieldUpdateOperationsInput | number
-    workers_employed?: MechanicUncheckedUpdateManyWithoutDiagnosticNestedInput
+    diagnosticId?: IntFieldUpdateOperationsInput | number
+    reservationId?: IntFieldUpdateOperationsInput | number
+    workersEmployed?: MechanicUncheckedUpdateManyWithoutDiagnosticNestedInput
   }
 
   export type DiagnosticUncheckedUpdateManyWithoutResponsibleInput = {
-    diagnostic_id?: IntFieldUpdateOperationsInput | number
-    reservation_id?: IntFieldUpdateOperationsInput | number
+    diagnosticId?: IntFieldUpdateOperationsInput | number
+    reservationId?: IntFieldUpdateOperationsInput | number
   }
 
   export type RepairUpdateWithoutResponsibleInput = {
-    total_repair_hours?: IntFieldUpdateOperationsInput | number
-    workers_employed?: MechanicUpdateManyWithoutRepairNestedInput
+    totalRepairHours?: IntFieldUpdateOperationsInput | number
+    workersEmployed?: MechanicUpdateManyWithoutRepairNestedInput
     reservation?: ReservationUpdateOneRequiredWithoutRepairNestedInput
   }
 
   export type RepairUncheckedUpdateWithoutResponsibleInput = {
-    repair_id?: IntFieldUpdateOperationsInput | number
-    reservation_id?: IntFieldUpdateOperationsInput | number
-    total_repair_hours?: IntFieldUpdateOperationsInput | number
-    workers_employed?: MechanicUncheckedUpdateManyWithoutRepairNestedInput
+    repairId?: IntFieldUpdateOperationsInput | number
+    reservationId?: IntFieldUpdateOperationsInput | number
+    totalRepairHours?: IntFieldUpdateOperationsInput | number
+    workersEmployed?: MechanicUncheckedUpdateManyWithoutRepairNestedInput
   }
 
   export type RepairUncheckedUpdateManyWithoutResponsibleInput = {
-    repair_id?: IntFieldUpdateOperationsInput | number
-    reservation_id?: IntFieldUpdateOperationsInput | number
-    total_repair_hours?: IntFieldUpdateOperationsInput | number
+    repairId?: IntFieldUpdateOperationsInput | number
+    reservationId?: IntFieldUpdateOperationsInput | number
+    totalRepairHours?: IntFieldUpdateOperationsInput | number
   }
 
   export type DiagnosticCreateManyReservationInput = {
-    diagnostic_id?: number
-    responsible_id: number
+    diagnosticId?: number
+    responsibleId: number
   }
 
   export type RepairCreateManyReservationInput = {
-    repair_id?: number
-    responsible_id: number
-    total_repair_hours: number
+    repairId?: number
+    responsibleId: number
+    totalRepairHours: number
   }
 
   export type DiagnosticUpdateWithoutReservationInput = {
     responsible?: HeadMechanicUpdateOneRequiredWithoutDiagnosticNestedInput
-    workers_employed?: MechanicUpdateManyWithoutDiagnosticNestedInput
+    workersEmployed?: MechanicUpdateManyWithoutDiagnosticNestedInput
   }
 
   export type DiagnosticUncheckedUpdateWithoutReservationInput = {
-    diagnostic_id?: IntFieldUpdateOperationsInput | number
-    responsible_id?: IntFieldUpdateOperationsInput | number
-    workers_employed?: MechanicUncheckedUpdateManyWithoutDiagnosticNestedInput
+    diagnosticId?: IntFieldUpdateOperationsInput | number
+    responsibleId?: IntFieldUpdateOperationsInput | number
+    workersEmployed?: MechanicUncheckedUpdateManyWithoutDiagnosticNestedInput
   }
 
   export type DiagnosticUncheckedUpdateManyWithoutReservationInput = {
-    diagnostic_id?: IntFieldUpdateOperationsInput | number
-    responsible_id?: IntFieldUpdateOperationsInput | number
+    diagnosticId?: IntFieldUpdateOperationsInput | number
+    responsibleId?: IntFieldUpdateOperationsInput | number
   }
 
   export type RepairUpdateWithoutReservationInput = {
-    total_repair_hours?: IntFieldUpdateOperationsInput | number
+    totalRepairHours?: IntFieldUpdateOperationsInput | number
     responsible?: HeadMechanicUpdateOneRequiredWithoutRepairNestedInput
-    workers_employed?: MechanicUpdateManyWithoutRepairNestedInput
+    workersEmployed?: MechanicUpdateManyWithoutRepairNestedInput
   }
 
   export type RepairUncheckedUpdateWithoutReservationInput = {
-    repair_id?: IntFieldUpdateOperationsInput | number
-    responsible_id?: IntFieldUpdateOperationsInput | number
-    total_repair_hours?: IntFieldUpdateOperationsInput | number
-    workers_employed?: MechanicUncheckedUpdateManyWithoutRepairNestedInput
+    repairId?: IntFieldUpdateOperationsInput | number
+    responsibleId?: IntFieldUpdateOperationsInput | number
+    totalRepairHours?: IntFieldUpdateOperationsInput | number
+    workersEmployed?: MechanicUncheckedUpdateManyWithoutRepairNestedInput
   }
 
   export type RepairUncheckedUpdateManyWithoutReservationInput = {
-    repair_id?: IntFieldUpdateOperationsInput | number
-    responsible_id?: IntFieldUpdateOperationsInput | number
-    total_repair_hours?: IntFieldUpdateOperationsInput | number
+    repairId?: IntFieldUpdateOperationsInput | number
+    responsibleId?: IntFieldUpdateOperationsInput | number
+    totalRepairHours?: IntFieldUpdateOperationsInput | number
   }
 
   export type MechanicCreateManyDiagnosticInput = {
-    mechanic_id: number
-    pay_per_hour: number
-    repairRepair_id?: number | null
+    mechanicId: number
+    payPerHour: number
+    repairRepairId?: number | null
   }
 
   export type MechanicUpdateWithoutDiagnosticInput = {
-    mechanic_id?: IntFieldUpdateOperationsInput | number
-    pay_per_hour?: FloatFieldUpdateOperationsInput | number
-    HeadMechanic?: HeadMechanicUpdateOneWithoutMechanicNestedInput
-    Repair?: RepairUpdateOneWithoutWorkers_employedNestedInput
+    mechanicId?: IntFieldUpdateOperationsInput | number
+    payPerHour?: FloatFieldUpdateOperationsInput | number
+    headMechanic?: HeadMechanicUpdateOneWithoutMechanicNestedInput
+    repair?: RepairUpdateOneWithoutWorkersEmployedNestedInput
   }
 
   export type MechanicUncheckedUpdateWithoutDiagnosticInput = {
-    mechanic_id?: IntFieldUpdateOperationsInput | number
-    pay_per_hour?: FloatFieldUpdateOperationsInput | number
-    repairRepair_id?: NullableIntFieldUpdateOperationsInput | number | null
-    HeadMechanic?: HeadMechanicUncheckedUpdateOneWithoutMechanicNestedInput
+    mechanicId?: IntFieldUpdateOperationsInput | number
+    payPerHour?: FloatFieldUpdateOperationsInput | number
+    repairRepairId?: NullableIntFieldUpdateOperationsInput | number | null
+    headMechanic?: HeadMechanicUncheckedUpdateOneWithoutMechanicNestedInput
   }
 
   export type MechanicUncheckedUpdateManyWithoutDiagnosticInput = {
-    mechanic_id?: IntFieldUpdateOperationsInput | number
-    pay_per_hour?: FloatFieldUpdateOperationsInput | number
-    repairRepair_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mechanicId?: IntFieldUpdateOperationsInput | number
+    payPerHour?: FloatFieldUpdateOperationsInput | number
+    repairRepairId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type MechanicCreateManyRepairInput = {
-    mechanic_id: number
-    pay_per_hour: number
-    diagnosticDiagnostic_id?: number | null
+    mechanicId: number
+    payPerHour: number
+    diagnosticDiagnosticId?: number | null
   }
 
   export type MechanicUpdateWithoutRepairInput = {
-    mechanic_id?: IntFieldUpdateOperationsInput | number
-    pay_per_hour?: FloatFieldUpdateOperationsInput | number
-    HeadMechanic?: HeadMechanicUpdateOneWithoutMechanicNestedInput
-    Diagnostic?: DiagnosticUpdateOneWithoutWorkers_employedNestedInput
+    mechanicId?: IntFieldUpdateOperationsInput | number
+    payPerHour?: FloatFieldUpdateOperationsInput | number
+    headMechanic?: HeadMechanicUpdateOneWithoutMechanicNestedInput
+    diagnostic?: DiagnosticUpdateOneWithoutWorkersEmployedNestedInput
   }
 
   export type MechanicUncheckedUpdateWithoutRepairInput = {
-    mechanic_id?: IntFieldUpdateOperationsInput | number
-    pay_per_hour?: FloatFieldUpdateOperationsInput | number
-    diagnosticDiagnostic_id?: NullableIntFieldUpdateOperationsInput | number | null
-    HeadMechanic?: HeadMechanicUncheckedUpdateOneWithoutMechanicNestedInput
+    mechanicId?: IntFieldUpdateOperationsInput | number
+    payPerHour?: FloatFieldUpdateOperationsInput | number
+    diagnosticDiagnosticId?: NullableIntFieldUpdateOperationsInput | number | null
+    headMechanic?: HeadMechanicUncheckedUpdateOneWithoutMechanicNestedInput
   }
 
   export type MechanicUncheckedUpdateManyWithoutRepairInput = {
-    mechanic_id?: IntFieldUpdateOperationsInput | number
-    pay_per_hour?: FloatFieldUpdateOperationsInput | number
-    diagnosticDiagnostic_id?: NullableIntFieldUpdateOperationsInput | number | null
+    mechanicId?: IntFieldUpdateOperationsInput | number
+    payPerHour?: FloatFieldUpdateOperationsInput | number
+    diagnosticDiagnosticId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PostCreateManyAuthorInput = {
-    post_id?: number
+    postId?: number
     title: string
     content?: string | null
     published?: boolean
@@ -16566,14 +16566,14 @@ export namespace Prisma {
   }
 
   export type PostUncheckedUpdateWithoutAuthorInput = {
-    post_id?: IntFieldUpdateOperationsInput | number
+    postId?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     content?: NullableStringFieldUpdateOperationsInput | string | null
     published?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type PostUncheckedUpdateManyWithoutAuthorInput = {
-    post_id?: IntFieldUpdateOperationsInput | number
+    postId?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     content?: NullableStringFieldUpdateOperationsInput | string | null
     published?: BoolFieldUpdateOperationsInput | boolean

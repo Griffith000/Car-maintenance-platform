@@ -52,96 +52,96 @@ model Vehicule {
   registation String // to maybe set automatically when the registration type is selected
 
   // define in-house vehicules (nullable)
-  registration_type RegTypes? // null if local is false
+  registrationType RegTypes? // null if local is false
 
   // define imported vehicules (nullable also) 
   location    String?
-  Reservation Reservation[]
+  reservation Reservation[]
 }
 
 model Mechanic {
-  mechanic_id             Int           @id
-  pay_per_hour            Float
-  HeadMechanic            HeadMechanic?
-  Diagnostic              Diagnostic?   @relation(fields: [diagnosticDiagnostic_id], references: [diagnostic_id])
-  diagnosticDiagnostic_id Int?
-  Repair                  Repair?       @relation(fields: [repairRepair_id], references: [repair_id])
-  repairRepair_id         Int?
+  mechanicId             Int           @id
+  payPerHour             Float
+  headMechanic           HeadMechanic?
+  diagnostic             Diagnostic?   @relation(fields: [diagnosticDiagnosticId], references: [diagnosticId])
+  diagnosticDiagnosticId Int?
+  repair                 Repair?       @relation(fields: [repairRepairId], references: [repairId])
+  repairRepairId         Int?
 }
 
 model HeadMechanic {
-  mechanic_id Int          @unique
-  mechanic    Mechanic     @relation(fields: [mechanic_id], references: [mechanic_id])
-  Diagnostic  Diagnostic[]
-  Repair      Repair[]
+  mechanicId Int          @unique
+  mechanic   Mechanic     @relation(fields: [mechanicId], references: [mechanicId])
+  diagnostic Diagnostic[]
+  repair     Repair[]
 }
 
 // currently the phone number supports only the phones in tunisian format only (may support global phone numbers later)
 
 model Reservation {
-  reservation_id Int           @id @default(autoincrement())
-  mobile_phone   String        @db.VarChar(8)
-  date           DateTime
-  base_fee       Float? // if there is a fee or not
-  repair_status  RepairStatus? // to both get information about the repair and it's type
-  vehicule_id    String
-  vehicule       Vehicule      @relation(fields: [vehicule_id], references: [vin])
+  reservationId Int           @id @default(autoincrement())
+  mobilePhone   String        @db.VarChar(8)
+  date          DateTime
+  baseFee       Float? // if there is a fee or not
+  repairStatus  RepairStatus? // to both get information about the repair and it's type
+  vehiculeId    String
+  vehicule      Vehicule      @relation(fields: [vehiculeId], references: [vin])
 
   // to test later
   // need to make this work for later @@db.check("mobile_phone ~ '^(2|5|9)[0-9]{7}$'") 
-  Diagnostic Diagnostic[]
-  Repair     Repair[]
+  diagnostic Diagnostic[]
+  repair     Repair[]
 }
 
 model Diagnostic {
-  diagnostic_id    Int          @id @default(autoincrement())
-  responsible_id   Int
-  responsible      HeadMechanic @relation(fields: [responsible_id], references: [mechanic_id])
-  workers_employed Mechanic[]
+  diagnosticId    Int          @id @default(autoincrement())
+  responsibleId   Int
+  responsible     HeadMechanic @relation(fields: [responsibleId], references: [mechanicId])
+  workersEmployed Mechanic[]
 
-  reservation_id Int
-  reservation    Reservation @relation(fields: [reservation_id], references: [reservation_id]) // are names supposed to be the same?
+  reservationId Int
+  reservation   Reservation @relation(fields: [reservationId], references: [reservationId]) // are names supposed to be the same?
 }
 
 model Repair {
-  repair_id        Int          @id @default(autoincrement())
-  responsible_id   Int
-  responsible      HeadMechanic @relation(fields: [responsible_id], references: [mechanic_id])
-  workers_employed Mechanic[]
+  repairId        Int          @id @default(autoincrement())
+  responsibleId   Int
+  responsible     HeadMechanic @relation(fields: [responsibleId], references: [mechanicId])
+  workersEmployed Mechanic[]
 
-  reservation_id     Int
-  reservation        Reservation @relation(fields: [reservation_id], references: [reservation_id])
-  total_repair_hours Int
+  reservationId    Int
+  reservation      Reservation @relation(fields: [reservationId], references: [reservationId])
+  totalRepairHours Int
 }
 
 model RepairPart {
-  part_id   String @id
-  price     Float
-  repair_id Int[]
-  vendor_id Int[]
+  partId   String @id
+  price    Float
+  repairId Int[]
+  vendorId Int[]
 }
 
 // the price is maybe problematic
 
 model Vendor {
-  vendor_id           Int    @id
-  vendor_shop_name    String
-  vendor_shop_address String
+  vendorId          Int    @id
+  vendorShopName    String
+  vendorShopAddress String
 }
 
 // models for TESTING puropses
 model User {
-  user_id Int     @id @default(autoincrement())
-  email   String  @unique
-  name    String?
-  posts   Post[]
+  userId Int     @id @default(autoincrement())
+  email  String  @unique
+  name   String?
+  posts  Post[]
 }
 
 model Post {
-  post_id   Int     @id @default(autoincrement())
+  postId    Int     @id @default(autoincrement())
   title     String  @unique
   content   String?
   published Boolean @default(false)
   authorId  Int
-  author    User    @relation(fields: [authorId], references: [user_id])
+  author    User    @relation(fields: [authorId], references: [userId])
 }

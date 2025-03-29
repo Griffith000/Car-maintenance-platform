@@ -121,64 +121,64 @@ exports.Prisma.VehiculeScalarFieldEnum = {
   vin: 'vin',
   local: 'local',
   registation: 'registation',
-  registration_type: 'registration_type',
+  registrationType: 'registrationType',
   location: 'location'
 };
 
 exports.Prisma.MechanicScalarFieldEnum = {
-  mechanic_id: 'mechanic_id',
-  pay_per_hour: 'pay_per_hour',
-  diagnosticDiagnostic_id: 'diagnosticDiagnostic_id',
-  repairRepair_id: 'repairRepair_id'
+  mechanicId: 'mechanicId',
+  payPerHour: 'payPerHour',
+  diagnosticDiagnosticId: 'diagnosticDiagnosticId',
+  repairRepairId: 'repairRepairId'
 };
 
 exports.Prisma.HeadMechanicScalarFieldEnum = {
-  mechanic_id: 'mechanic_id'
+  mechanicId: 'mechanicId'
 };
 
 exports.Prisma.ReservationScalarFieldEnum = {
-  reservation_id: 'reservation_id',
-  mobile_phone: 'mobile_phone',
+  reservationId: 'reservationId',
+  mobilePhone: 'mobilePhone',
   date: 'date',
-  base_fee: 'base_fee',
-  repair_status: 'repair_status',
-  vehicule_id: 'vehicule_id'
+  baseFee: 'baseFee',
+  repairStatus: 'repairStatus',
+  vehiculeId: 'vehiculeId'
 };
 
 exports.Prisma.DiagnosticScalarFieldEnum = {
-  diagnostic_id: 'diagnostic_id',
-  responsible_id: 'responsible_id',
-  reservation_id: 'reservation_id'
+  diagnosticId: 'diagnosticId',
+  responsibleId: 'responsibleId',
+  reservationId: 'reservationId'
 };
 
 exports.Prisma.RepairScalarFieldEnum = {
-  repair_id: 'repair_id',
-  responsible_id: 'responsible_id',
-  reservation_id: 'reservation_id',
-  total_repair_hours: 'total_repair_hours'
+  repairId: 'repairId',
+  responsibleId: 'responsibleId',
+  reservationId: 'reservationId',
+  totalRepairHours: 'totalRepairHours'
 };
 
 exports.Prisma.RepairPartScalarFieldEnum = {
-  part_id: 'part_id',
+  partId: 'partId',
   price: 'price',
-  repair_id: 'repair_id',
-  vendor_id: 'vendor_id'
+  repairId: 'repairId',
+  vendorId: 'vendorId'
 };
 
 exports.Prisma.VendorScalarFieldEnum = {
-  vendor_id: 'vendor_id',
-  vendor_shop_name: 'vendor_shop_name',
-  vendor_shop_address: 'vendor_shop_address'
+  vendorId: 'vendorId',
+  vendorShopName: 'vendorShopName',
+  vendorShopAddress: 'vendorShopAddress'
 };
 
 exports.Prisma.UserScalarFieldEnum = {
-  user_id: 'user_id',
+  userId: 'userId',
   email: 'email',
   name: 'name'
 };
 
 exports.Prisma.PostScalarFieldEnum = {
-  post_id: 'post_id',
+  postId: 'postId',
   title: 'title',
   content: 'content',
   published: 'published',
