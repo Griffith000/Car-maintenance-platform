@@ -7,6 +7,10 @@ export const dynamic = 'force-static'
 const prisma = new PrismaClient().$extends(withAccelerate())
 
 // these are some test functions to get used to api calling in nextjs.
+// this is where we store some api calls that are availabe in general
+//
+//
+// SEEDING THE SLAMA WAY
 export async function GET(request: Request) {
   console.log("testing this is a pain")
   try {

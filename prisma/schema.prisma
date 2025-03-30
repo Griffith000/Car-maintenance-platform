@@ -46,15 +46,15 @@ enum RepairStatus {
   FAILURE
 }
 
-model Vehicule {
-  vin         String  @id
-  local       Boolean //for local in-house vehicules and the not local (imported) vehicules 
-  registation String // to maybe set automatically when the registration type is selected
+model Vehicle {
+  vin   String  @id
+  local Boolean //for local in-house vehicles and the not local (imported) vehicles 
 
-  // define in-house vehicules (nullable)
+  // define in-house vehicles (nullable)
+  registration     String? // to maybe set automatically when the registration type is selected
   registrationType RegTypes? // null if local is false
 
-  // define imported vehicules (nullable also) 
+  // define imported vehicles (nullable also) 
   location    String?
   reservation Reservation[]
 }
@@ -84,8 +84,8 @@ model Reservation {
   date          DateTime
   baseFee       Float? // if there is a fee or not
   repairStatus  RepairStatus? // to both get information about the repair and it's type
-  vehiculeId    String
-  vehicule      Vehicule      @relation(fields: [vehiculeId], references: [vin])
+  vehicleId     String
+  vehicle       Vehicle       @relation(fields: [vehicleId], references: [vin])
 
   // to test later
   // need to make this work for later @@db.check("mobile_phone ~ '^(2|5|9)[0-9]{7}$'") 
@@ -131,17 +131,8 @@ model Vendor {
 
 // models for TESTING puropses
 model User {
-  userId Int     @id @default(autoincrement())
-  email  String  @unique
-  name   String?
-  posts  Post[]
-}
-
-model Post {
-  postId    Int     @id @default(autoincrement())
-  title     String  @unique
-  content   String?
-  published Boolean @default(false)
-  authorId  Int
-  author    User    @relation(fields: [authorId], references: [userId])
+  userId   Int     @id @default(autoincrement())
+  username String  @default("default_username")
+  email    String  @unique
+  phone    String?
 }

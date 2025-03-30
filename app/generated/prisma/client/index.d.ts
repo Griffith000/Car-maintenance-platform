@@ -14,10 +14,10 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model Vehicule
+ * Model Vehicle
  * 
  */
-export type Vehicule = $Result.DefaultSelection<Prisma.$VehiculePayload>
+export type Vehicle = $Result.DefaultSelection<Prisma.$VehiclePayload>
 /**
  * Model Mechanic
  * 
@@ -58,11 +58,6 @@ export type Vendor = $Result.DefaultSelection<Prisma.$VendorPayload>
  * 
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
-/**
- * Model Post
- * 
- */
-export type Post = $Result.DefaultSelection<Prisma.$PostPayload>
 
 /**
  * Enums
@@ -114,8 +109,8 @@ export const RepairStatus: typeof $Enums.RepairStatus
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Vehicules
- * const vehicules = await prisma.vehicule.findMany()
+ * // Fetch zero or more Vehicles
+ * const vehicles = await prisma.vehicle.findMany()
  * ```
  *
  *
@@ -135,8 +130,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Vehicules
-   * const vehicules = await prisma.vehicule.findMany()
+   * // Fetch zero or more Vehicles
+   * const vehicles = await prisma.vehicle.findMany()
    * ```
    *
    *
@@ -233,14 +228,14 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.vehicule`: Exposes CRUD operations for the **Vehicule** model.
+   * `prisma.vehicle`: Exposes CRUD operations for the **Vehicle** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Vehicules
-    * const vehicules = await prisma.vehicule.findMany()
+    * // Fetch zero or more Vehicles
+    * const vehicles = await prisma.vehicle.findMany()
     * ```
     */
-  get vehicule(): Prisma.VehiculeDelegate<ExtArgs, ClientOptions>;
+  get vehicle(): Prisma.VehicleDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.mechanic`: Exposes CRUD operations for the **Mechanic** model.
@@ -321,16 +316,6 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.post`: Exposes CRUD operations for the **Post** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Posts
-    * const posts = await prisma.post.findMany()
-    * ```
-    */
-  get post(): Prisma.PostDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -771,7 +756,7 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Vehicule: 'Vehicule',
+    Vehicle: 'Vehicle',
     Mechanic: 'Mechanic',
     HeadMechanic: 'HeadMechanic',
     Reservation: 'Reservation',
@@ -779,8 +764,7 @@ export namespace Prisma {
     Repair: 'Repair',
     RepairPart: 'RepairPart',
     Vendor: 'Vendor',
-    User: 'User',
-    Post: 'Post'
+    User: 'User'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -799,81 +783,81 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "vehicule" | "mechanic" | "headMechanic" | "reservation" | "diagnostic" | "repair" | "repairPart" | "vendor" | "user" | "post"
+      modelProps: "vehicle" | "mechanic" | "headMechanic" | "reservation" | "diagnostic" | "repair" | "repairPart" | "vendor" | "user"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      Vehicule: {
-        payload: Prisma.$VehiculePayload<ExtArgs>
-        fields: Prisma.VehiculeFieldRefs
+      Vehicle: {
+        payload: Prisma.$VehiclePayload<ExtArgs>
+        fields: Prisma.VehicleFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.VehiculeFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VehiculePayload> | null
+            args: Prisma.VehicleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.VehiculeFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VehiculePayload>
+            args: Prisma.VehicleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload>
           }
           findFirst: {
-            args: Prisma.VehiculeFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VehiculePayload> | null
+            args: Prisma.VehicleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.VehiculeFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VehiculePayload>
+            args: Prisma.VehicleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload>
           }
           findMany: {
-            args: Prisma.VehiculeFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VehiculePayload>[]
+            args: Prisma.VehicleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload>[]
           }
           create: {
-            args: Prisma.VehiculeCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VehiculePayload>
+            args: Prisma.VehicleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload>
           }
           createMany: {
-            args: Prisma.VehiculeCreateManyArgs<ExtArgs>
+            args: Prisma.VehicleCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.VehiculeCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VehiculePayload>[]
+            args: Prisma.VehicleCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload>[]
           }
           delete: {
-            args: Prisma.VehiculeDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VehiculePayload>
+            args: Prisma.VehicleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload>
           }
           update: {
-            args: Prisma.VehiculeUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VehiculePayload>
+            args: Prisma.VehicleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload>
           }
           deleteMany: {
-            args: Prisma.VehiculeDeleteManyArgs<ExtArgs>
+            args: Prisma.VehicleDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.VehiculeUpdateManyArgs<ExtArgs>
+            args: Prisma.VehicleUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.VehiculeUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VehiculePayload>[]
+            args: Prisma.VehicleUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload>[]
           }
           upsert: {
-            args: Prisma.VehiculeUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VehiculePayload>
+            args: Prisma.VehicleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VehiclePayload>
           }
           aggregate: {
-            args: Prisma.VehiculeAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateVehicule>
+            args: Prisma.VehicleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateVehicle>
           }
           groupBy: {
-            args: Prisma.VehiculeGroupByArgs<ExtArgs>
-            result: $Utils.Optional<VehiculeGroupByOutputType>[]
+            args: Prisma.VehicleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<VehicleGroupByOutputType>[]
           }
           count: {
-            args: Prisma.VehiculeCountArgs<ExtArgs>
-            result: $Utils.Optional<VehiculeCountAggregateOutputType> | number
+            args: Prisma.VehicleCountArgs<ExtArgs>
+            result: $Utils.Optional<VehicleCountAggregateOutputType> | number
           }
         }
       }
@@ -1469,80 +1453,6 @@ export namespace Prisma {
           }
         }
       }
-      Post: {
-        payload: Prisma.$PostPayload<ExtArgs>
-        fields: Prisma.PostFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.PostFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.PostFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>
-          }
-          findFirst: {
-            args: Prisma.PostFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.PostFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>
-          }
-          findMany: {
-            args: Prisma.PostFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>[]
-          }
-          create: {
-            args: Prisma.PostCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>
-          }
-          createMany: {
-            args: Prisma.PostCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.PostCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>[]
-          }
-          delete: {
-            args: Prisma.PostDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>
-          }
-          update: {
-            args: Prisma.PostUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>
-          }
-          deleteMany: {
-            args: Prisma.PostDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.PostUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.PostUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>[]
-          }
-          upsert: {
-            args: Prisma.PostUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>
-          }
-          aggregate: {
-            args: Prisma.PostAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregatePost>
-          }
-          groupBy: {
-            args: Prisma.PostGroupByArgs<ExtArgs>
-            result: $Utils.Optional<PostGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.PostCountArgs<ExtArgs>
-            result: $Utils.Optional<PostCountAggregateOutputType> | number
-          }
-        }
-      }
     }
   } & {
     other: {
@@ -1627,7 +1537,7 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    vehicule?: VehiculeOmit
+    vehicle?: VehicleOmit
     mechanic?: MechanicOmit
     headMechanic?: HeadMechanicOmit
     reservation?: ReservationOmit
@@ -1636,7 +1546,6 @@ export namespace Prisma {
     repairPart?: RepairPartOmit
     vendor?: VendorOmit
     user?: UserOmit
-    post?: PostOmit
   }
 
   /* Types for Logging */
@@ -1727,32 +1636,32 @@ export namespace Prisma {
 
 
   /**
-   * Count Type VehiculeCountOutputType
+   * Count Type VehicleCountOutputType
    */
 
-  export type VehiculeCountOutputType = {
+  export type VehicleCountOutputType = {
     reservation: number
   }
 
-  export type VehiculeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    reservation?: boolean | VehiculeCountOutputTypeCountReservationArgs
+  export type VehicleCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    reservation?: boolean | VehicleCountOutputTypeCountReservationArgs
   }
 
   // Custom InputTypes
   /**
-   * VehiculeCountOutputType without action
+   * VehicleCountOutputType without action
    */
-  export type VehiculeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type VehicleCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VehiculeCountOutputType
+     * Select specific fields to fetch from the VehicleCountOutputType
      */
-    select?: VehiculeCountOutputTypeSelect<ExtArgs> | null
+    select?: VehicleCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * VehiculeCountOutputType without action
+   * VehicleCountOutputType without action
    */
-  export type VehiculeCountOutputTypeCountReservationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type VehicleCountOutputTypeCountReservationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ReservationWhereInput
   }
 
@@ -1900,381 +1809,350 @@ export namespace Prisma {
 
 
   /**
-   * Count Type UserCountOutputType
-   */
-
-  export type UserCountOutputType = {
-    posts: number
-  }
-
-  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    posts?: boolean | UserCountOutputTypeCountPostsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserCountOutputType
-     */
-    select?: UserCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountPostsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PostWhereInput
-  }
-
-
-  /**
    * Models
    */
 
   /**
-   * Model Vehicule
+   * Model Vehicle
    */
 
-  export type AggregateVehicule = {
-    _count: VehiculeCountAggregateOutputType | null
-    _min: VehiculeMinAggregateOutputType | null
-    _max: VehiculeMaxAggregateOutputType | null
+  export type AggregateVehicle = {
+    _count: VehicleCountAggregateOutputType | null
+    _min: VehicleMinAggregateOutputType | null
+    _max: VehicleMaxAggregateOutputType | null
   }
 
-  export type VehiculeMinAggregateOutputType = {
+  export type VehicleMinAggregateOutputType = {
     vin: string | null
     local: boolean | null
-    registation: string | null
+    registration: string | null
     registrationType: $Enums.RegTypes | null
     location: string | null
   }
 
-  export type VehiculeMaxAggregateOutputType = {
+  export type VehicleMaxAggregateOutputType = {
     vin: string | null
     local: boolean | null
-    registation: string | null
+    registration: string | null
     registrationType: $Enums.RegTypes | null
     location: string | null
   }
 
-  export type VehiculeCountAggregateOutputType = {
+  export type VehicleCountAggregateOutputType = {
     vin: number
     local: number
-    registation: number
+    registration: number
     registrationType: number
     location: number
     _all: number
   }
 
 
-  export type VehiculeMinAggregateInputType = {
+  export type VehicleMinAggregateInputType = {
     vin?: true
     local?: true
-    registation?: true
+    registration?: true
     registrationType?: true
     location?: true
   }
 
-  export type VehiculeMaxAggregateInputType = {
+  export type VehicleMaxAggregateInputType = {
     vin?: true
     local?: true
-    registation?: true
+    registration?: true
     registrationType?: true
     location?: true
   }
 
-  export type VehiculeCountAggregateInputType = {
+  export type VehicleCountAggregateInputType = {
     vin?: true
     local?: true
-    registation?: true
+    registration?: true
     registrationType?: true
     location?: true
     _all?: true
   }
 
-  export type VehiculeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type VehicleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Vehicule to aggregate.
+     * Filter which Vehicle to aggregate.
      */
-    where?: VehiculeWhereInput
+    where?: VehicleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Vehicules to fetch.
+     * Determine the order of Vehicles to fetch.
      */
-    orderBy?: VehiculeOrderByWithRelationInput | VehiculeOrderByWithRelationInput[]
+    orderBy?: VehicleOrderByWithRelationInput | VehicleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: VehiculeWhereUniqueInput
+    cursor?: VehicleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Vehicules from the position of the cursor.
+     * Take `±n` Vehicles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Vehicules.
+     * Skip the first `n` Vehicles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Vehicules
+     * Count returned Vehicles
     **/
-    _count?: true | VehiculeCountAggregateInputType
+    _count?: true | VehicleCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: VehiculeMinAggregateInputType
+    _min?: VehicleMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: VehiculeMaxAggregateInputType
+    _max?: VehicleMaxAggregateInputType
   }
 
-  export type GetVehiculeAggregateType<T extends VehiculeAggregateArgs> = {
-        [P in keyof T & keyof AggregateVehicule]: P extends '_count' | 'count'
+  export type GetVehicleAggregateType<T extends VehicleAggregateArgs> = {
+        [P in keyof T & keyof AggregateVehicle]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateVehicule[P]>
-      : GetScalarType<T[P], AggregateVehicule[P]>
+        : GetScalarType<T[P], AggregateVehicle[P]>
+      : GetScalarType<T[P], AggregateVehicle[P]>
   }
 
 
 
 
-  export type VehiculeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: VehiculeWhereInput
-    orderBy?: VehiculeOrderByWithAggregationInput | VehiculeOrderByWithAggregationInput[]
-    by: VehiculeScalarFieldEnum[] | VehiculeScalarFieldEnum
-    having?: VehiculeScalarWhereWithAggregatesInput
+  export type VehicleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VehicleWhereInput
+    orderBy?: VehicleOrderByWithAggregationInput | VehicleOrderByWithAggregationInput[]
+    by: VehicleScalarFieldEnum[] | VehicleScalarFieldEnum
+    having?: VehicleScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: VehiculeCountAggregateInputType | true
-    _min?: VehiculeMinAggregateInputType
-    _max?: VehiculeMaxAggregateInputType
+    _count?: VehicleCountAggregateInputType | true
+    _min?: VehicleMinAggregateInputType
+    _max?: VehicleMaxAggregateInputType
   }
 
-  export type VehiculeGroupByOutputType = {
+  export type VehicleGroupByOutputType = {
     vin: string
     local: boolean
-    registation: string
+    registration: string | null
     registrationType: $Enums.RegTypes | null
     location: string | null
-    _count: VehiculeCountAggregateOutputType | null
-    _min: VehiculeMinAggregateOutputType | null
-    _max: VehiculeMaxAggregateOutputType | null
+    _count: VehicleCountAggregateOutputType | null
+    _min: VehicleMinAggregateOutputType | null
+    _max: VehicleMaxAggregateOutputType | null
   }
 
-  type GetVehiculeGroupByPayload<T extends VehiculeGroupByArgs> = Prisma.PrismaPromise<
+  type GetVehicleGroupByPayload<T extends VehicleGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<VehiculeGroupByOutputType, T['by']> &
+      PickEnumerable<VehicleGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof VehiculeGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof VehicleGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], VehiculeGroupByOutputType[P]>
-            : GetScalarType<T[P], VehiculeGroupByOutputType[P]>
+              : GetScalarType<T[P], VehicleGroupByOutputType[P]>
+            : GetScalarType<T[P], VehicleGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type VehiculeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type VehicleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     vin?: boolean
     local?: boolean
-    registation?: boolean
+    registration?: boolean
     registrationType?: boolean
     location?: boolean
-    reservation?: boolean | Vehicule$reservationArgs<ExtArgs>
-    _count?: boolean | VehiculeCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["vehicule"]>
+    reservation?: boolean | Vehicle$reservationArgs<ExtArgs>
+    _count?: boolean | VehicleCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["vehicle"]>
 
-  export type VehiculeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type VehicleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     vin?: boolean
     local?: boolean
-    registation?: boolean
+    registration?: boolean
     registrationType?: boolean
     location?: boolean
-  }, ExtArgs["result"]["vehicule"]>
+  }, ExtArgs["result"]["vehicle"]>
 
-  export type VehiculeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type VehicleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     vin?: boolean
     local?: boolean
-    registation?: boolean
+    registration?: boolean
     registrationType?: boolean
     location?: boolean
-  }, ExtArgs["result"]["vehicule"]>
+  }, ExtArgs["result"]["vehicle"]>
 
-  export type VehiculeSelectScalar = {
+  export type VehicleSelectScalar = {
     vin?: boolean
     local?: boolean
-    registation?: boolean
+    registration?: boolean
     registrationType?: boolean
     location?: boolean
   }
 
-  export type VehiculeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"vin" | "local" | "registation" | "registrationType" | "location", ExtArgs["result"]["vehicule"]>
-  export type VehiculeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    reservation?: boolean | Vehicule$reservationArgs<ExtArgs>
-    _count?: boolean | VehiculeCountOutputTypeDefaultArgs<ExtArgs>
+  export type VehicleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"vin" | "local" | "registration" | "registrationType" | "location", ExtArgs["result"]["vehicle"]>
+  export type VehicleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    reservation?: boolean | Vehicle$reservationArgs<ExtArgs>
+    _count?: boolean | VehicleCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type VehiculeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type VehiculeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type VehicleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type VehicleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $VehiculePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Vehicule"
+  export type $VehiclePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Vehicle"
     objects: {
       reservation: Prisma.$ReservationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       vin: string
       local: boolean
-      registation: string
+      registration: string | null
       registrationType: $Enums.RegTypes | null
       location: string | null
-    }, ExtArgs["result"]["vehicule"]>
+    }, ExtArgs["result"]["vehicle"]>
     composites: {}
   }
 
-  type VehiculeGetPayload<S extends boolean | null | undefined | VehiculeDefaultArgs> = $Result.GetResult<Prisma.$VehiculePayload, S>
+  type VehicleGetPayload<S extends boolean | null | undefined | VehicleDefaultArgs> = $Result.GetResult<Prisma.$VehiclePayload, S>
 
-  type VehiculeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<VehiculeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: VehiculeCountAggregateInputType | true
+  type VehicleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<VehicleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: VehicleCountAggregateInputType | true
     }
 
-  export interface VehiculeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Vehicule'], meta: { name: 'Vehicule' } }
+  export interface VehicleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Vehicle'], meta: { name: 'Vehicle' } }
     /**
-     * Find zero or one Vehicule that matches the filter.
-     * @param {VehiculeFindUniqueArgs} args - Arguments to find a Vehicule
+     * Find zero or one Vehicle that matches the filter.
+     * @param {VehicleFindUniqueArgs} args - Arguments to find a Vehicle
      * @example
-     * // Get one Vehicule
-     * const vehicule = await prisma.vehicule.findUnique({
+     * // Get one Vehicle
+     * const vehicle = await prisma.vehicle.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends VehiculeFindUniqueArgs>(args: SelectSubset<T, VehiculeFindUniqueArgs<ExtArgs>>): Prisma__VehiculeClient<$Result.GetResult<Prisma.$VehiculePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends VehicleFindUniqueArgs>(args: SelectSubset<T, VehicleFindUniqueArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Vehicule that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Vehicle that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {VehiculeFindUniqueOrThrowArgs} args - Arguments to find a Vehicule
+     * @param {VehicleFindUniqueOrThrowArgs} args - Arguments to find a Vehicle
      * @example
-     * // Get one Vehicule
-     * const vehicule = await prisma.vehicule.findUniqueOrThrow({
+     * // Get one Vehicle
+     * const vehicle = await prisma.vehicle.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends VehiculeFindUniqueOrThrowArgs>(args: SelectSubset<T, VehiculeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VehiculeClient<$Result.GetResult<Prisma.$VehiculePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends VehicleFindUniqueOrThrowArgs>(args: SelectSubset<T, VehicleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Vehicule that matches the filter.
+     * Find the first Vehicle that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VehiculeFindFirstArgs} args - Arguments to find a Vehicule
+     * @param {VehicleFindFirstArgs} args - Arguments to find a Vehicle
      * @example
-     * // Get one Vehicule
-     * const vehicule = await prisma.vehicule.findFirst({
+     * // Get one Vehicle
+     * const vehicle = await prisma.vehicle.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends VehiculeFindFirstArgs>(args?: SelectSubset<T, VehiculeFindFirstArgs<ExtArgs>>): Prisma__VehiculeClient<$Result.GetResult<Prisma.$VehiculePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends VehicleFindFirstArgs>(args?: SelectSubset<T, VehicleFindFirstArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Vehicule that matches the filter or
+     * Find the first Vehicle that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VehiculeFindFirstOrThrowArgs} args - Arguments to find a Vehicule
+     * @param {VehicleFindFirstOrThrowArgs} args - Arguments to find a Vehicle
      * @example
-     * // Get one Vehicule
-     * const vehicule = await prisma.vehicule.findFirstOrThrow({
+     * // Get one Vehicle
+     * const vehicle = await prisma.vehicle.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends VehiculeFindFirstOrThrowArgs>(args?: SelectSubset<T, VehiculeFindFirstOrThrowArgs<ExtArgs>>): Prisma__VehiculeClient<$Result.GetResult<Prisma.$VehiculePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends VehicleFindFirstOrThrowArgs>(args?: SelectSubset<T, VehicleFindFirstOrThrowArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Vehicules that matches the filter.
+     * Find zero or more Vehicles that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VehiculeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {VehicleFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Vehicules
-     * const vehicules = await prisma.vehicule.findMany()
+     * // Get all Vehicles
+     * const vehicles = await prisma.vehicle.findMany()
      * 
-     * // Get first 10 Vehicules
-     * const vehicules = await prisma.vehicule.findMany({ take: 10 })
+     * // Get first 10 Vehicles
+     * const vehicles = await prisma.vehicle.findMany({ take: 10 })
      * 
      * // Only select the `vin`
-     * const vehiculeWithVinOnly = await prisma.vehicule.findMany({ select: { vin: true } })
+     * const vehicleWithVinOnly = await prisma.vehicle.findMany({ select: { vin: true } })
      * 
      */
-    findMany<T extends VehiculeFindManyArgs>(args?: SelectSubset<T, VehiculeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehiculePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends VehicleFindManyArgs>(args?: SelectSubset<T, VehicleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Vehicule.
-     * @param {VehiculeCreateArgs} args - Arguments to create a Vehicule.
+     * Create a Vehicle.
+     * @param {VehicleCreateArgs} args - Arguments to create a Vehicle.
      * @example
-     * // Create one Vehicule
-     * const Vehicule = await prisma.vehicule.create({
+     * // Create one Vehicle
+     * const Vehicle = await prisma.vehicle.create({
      *   data: {
-     *     // ... data to create a Vehicule
+     *     // ... data to create a Vehicle
      *   }
      * })
      * 
      */
-    create<T extends VehiculeCreateArgs>(args: SelectSubset<T, VehiculeCreateArgs<ExtArgs>>): Prisma__VehiculeClient<$Result.GetResult<Prisma.$VehiculePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends VehicleCreateArgs>(args: SelectSubset<T, VehicleCreateArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Vehicules.
-     * @param {VehiculeCreateManyArgs} args - Arguments to create many Vehicules.
+     * Create many Vehicles.
+     * @param {VehicleCreateManyArgs} args - Arguments to create many Vehicles.
      * @example
-     * // Create many Vehicules
-     * const vehicule = await prisma.vehicule.createMany({
+     * // Create many Vehicles
+     * const vehicle = await prisma.vehicle.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends VehiculeCreateManyArgs>(args?: SelectSubset<T, VehiculeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends VehicleCreateManyArgs>(args?: SelectSubset<T, VehicleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Vehicules and returns the data saved in the database.
-     * @param {VehiculeCreateManyAndReturnArgs} args - Arguments to create many Vehicules.
+     * Create many Vehicles and returns the data saved in the database.
+     * @param {VehicleCreateManyAndReturnArgs} args - Arguments to create many Vehicles.
      * @example
-     * // Create many Vehicules
-     * const vehicule = await prisma.vehicule.createManyAndReturn({
+     * // Create many Vehicles
+     * const vehicle = await prisma.vehicle.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Vehicules and only return the `vin`
-     * const vehiculeWithVinOnly = await prisma.vehicule.createManyAndReturn({
+     * // Create many Vehicles and only return the `vin`
+     * const vehicleWithVinOnly = await prisma.vehicle.createManyAndReturn({
      *   select: { vin: true },
      *   data: [
      *     // ... provide data here
@@ -2284,28 +2162,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends VehiculeCreateManyAndReturnArgs>(args?: SelectSubset<T, VehiculeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehiculePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends VehicleCreateManyAndReturnArgs>(args?: SelectSubset<T, VehicleCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Vehicule.
-     * @param {VehiculeDeleteArgs} args - Arguments to delete one Vehicule.
+     * Delete a Vehicle.
+     * @param {VehicleDeleteArgs} args - Arguments to delete one Vehicle.
      * @example
-     * // Delete one Vehicule
-     * const Vehicule = await prisma.vehicule.delete({
+     * // Delete one Vehicle
+     * const Vehicle = await prisma.vehicle.delete({
      *   where: {
-     *     // ... filter to delete one Vehicule
+     *     // ... filter to delete one Vehicle
      *   }
      * })
      * 
      */
-    delete<T extends VehiculeDeleteArgs>(args: SelectSubset<T, VehiculeDeleteArgs<ExtArgs>>): Prisma__VehiculeClient<$Result.GetResult<Prisma.$VehiculePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends VehicleDeleteArgs>(args: SelectSubset<T, VehicleDeleteArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Vehicule.
-     * @param {VehiculeUpdateArgs} args - Arguments to update one Vehicule.
+     * Update one Vehicle.
+     * @param {VehicleUpdateArgs} args - Arguments to update one Vehicle.
      * @example
-     * // Update one Vehicule
-     * const vehicule = await prisma.vehicule.update({
+     * // Update one Vehicle
+     * const vehicle = await prisma.vehicle.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2315,30 +2193,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends VehiculeUpdateArgs>(args: SelectSubset<T, VehiculeUpdateArgs<ExtArgs>>): Prisma__VehiculeClient<$Result.GetResult<Prisma.$VehiculePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends VehicleUpdateArgs>(args: SelectSubset<T, VehicleUpdateArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Vehicules.
-     * @param {VehiculeDeleteManyArgs} args - Arguments to filter Vehicules to delete.
+     * Delete zero or more Vehicles.
+     * @param {VehicleDeleteManyArgs} args - Arguments to filter Vehicles to delete.
      * @example
-     * // Delete a few Vehicules
-     * const { count } = await prisma.vehicule.deleteMany({
+     * // Delete a few Vehicles
+     * const { count } = await prisma.vehicle.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends VehiculeDeleteManyArgs>(args?: SelectSubset<T, VehiculeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends VehicleDeleteManyArgs>(args?: SelectSubset<T, VehicleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Vehicules.
+     * Update zero or more Vehicles.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VehiculeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {VehicleUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Vehicules
-     * const vehicule = await prisma.vehicule.updateMany({
+     * // Update many Vehicles
+     * const vehicle = await prisma.vehicle.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2348,14 +2226,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends VehiculeUpdateManyArgs>(args: SelectSubset<T, VehiculeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends VehicleUpdateManyArgs>(args: SelectSubset<T, VehicleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Vehicules and returns the data updated in the database.
-     * @param {VehiculeUpdateManyAndReturnArgs} args - Arguments to update many Vehicules.
+     * Update zero or more Vehicles and returns the data updated in the database.
+     * @param {VehicleUpdateManyAndReturnArgs} args - Arguments to update many Vehicles.
      * @example
-     * // Update many Vehicules
-     * const vehicule = await prisma.vehicule.updateManyAndReturn({
+     * // Update many Vehicles
+     * const vehicle = await prisma.vehicle.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2364,8 +2242,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Vehicules and only return the `vin`
-     * const vehiculeWithVinOnly = await prisma.vehicule.updateManyAndReturn({
+     * // Update zero or more Vehicles and only return the `vin`
+     * const vehicleWithVinOnly = await prisma.vehicle.updateManyAndReturn({
      *   select: { vin: true },
      *   where: {
      *     // ... provide filter here
@@ -2378,56 +2256,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends VehiculeUpdateManyAndReturnArgs>(args: SelectSubset<T, VehiculeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehiculePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends VehicleUpdateManyAndReturnArgs>(args: SelectSubset<T, VehicleUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Vehicule.
-     * @param {VehiculeUpsertArgs} args - Arguments to update or create a Vehicule.
+     * Create or update one Vehicle.
+     * @param {VehicleUpsertArgs} args - Arguments to update or create a Vehicle.
      * @example
-     * // Update or create a Vehicule
-     * const vehicule = await prisma.vehicule.upsert({
+     * // Update or create a Vehicle
+     * const vehicle = await prisma.vehicle.upsert({
      *   create: {
-     *     // ... data to create a Vehicule
+     *     // ... data to create a Vehicle
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Vehicule we want to update
+     *     // ... the filter for the Vehicle we want to update
      *   }
      * })
      */
-    upsert<T extends VehiculeUpsertArgs>(args: SelectSubset<T, VehiculeUpsertArgs<ExtArgs>>): Prisma__VehiculeClient<$Result.GetResult<Prisma.$VehiculePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends VehicleUpsertArgs>(args: SelectSubset<T, VehicleUpsertArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Vehicules.
+     * Count the number of Vehicles.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VehiculeCountArgs} args - Arguments to filter Vehicules to count.
+     * @param {VehicleCountArgs} args - Arguments to filter Vehicles to count.
      * @example
-     * // Count the number of Vehicules
-     * const count = await prisma.vehicule.count({
+     * // Count the number of Vehicles
+     * const count = await prisma.vehicle.count({
      *   where: {
-     *     // ... the filter for the Vehicules we want to count
+     *     // ... the filter for the Vehicles we want to count
      *   }
      * })
     **/
-    count<T extends VehiculeCountArgs>(
-      args?: Subset<T, VehiculeCountArgs>,
+    count<T extends VehicleCountArgs>(
+      args?: Subset<T, VehicleCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], VehiculeCountAggregateOutputType>
+          : GetScalarType<T['select'], VehicleCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Vehicule.
+     * Allows you to perform aggregations operations on a Vehicle.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VehiculeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {VehicleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -2447,13 +2325,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends VehiculeAggregateArgs>(args: Subset<T, VehiculeAggregateArgs>): Prisma.PrismaPromise<GetVehiculeAggregateType<T>>
+    aggregate<T extends VehicleAggregateArgs>(args: Subset<T, VehicleAggregateArgs>): Prisma.PrismaPromise<GetVehicleAggregateType<T>>
 
     /**
-     * Group by Vehicule.
+     * Group by Vehicle.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VehiculeGroupByArgs} args - Group by arguments.
+     * @param {VehicleGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -2468,14 +2346,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends VehiculeGroupByArgs,
+      T extends VehicleGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: VehiculeGroupByArgs['orderBy'] }
-        : { orderBy?: VehiculeGroupByArgs['orderBy'] },
+        ? { orderBy: VehicleGroupByArgs['orderBy'] }
+        : { orderBy?: VehicleGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -2524,22 +2402,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, VehiculeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVehiculeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, VehicleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVehicleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Vehicule model
+   * Fields of the Vehicle model
    */
-  readonly fields: VehiculeFieldRefs;
+  readonly fields: VehicleFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Vehicule.
+   * The delegate class that acts as a "Promise-like" for Vehicle.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__VehiculeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__VehicleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    reservation<T extends Vehicule$reservationArgs<ExtArgs> = {}>(args?: Subset<T, Vehicule$reservationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReservationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reservation<T extends Vehicle$reservationArgs<ExtArgs> = {}>(args?: Subset<T, Vehicle$reservationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReservationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2566,405 +2444,405 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Vehicule model
+   * Fields of the Vehicle model
    */ 
-  interface VehiculeFieldRefs {
-    readonly vin: FieldRef<"Vehicule", 'String'>
-    readonly local: FieldRef<"Vehicule", 'Boolean'>
-    readonly registation: FieldRef<"Vehicule", 'String'>
-    readonly registrationType: FieldRef<"Vehicule", 'RegTypes'>
-    readonly location: FieldRef<"Vehicule", 'String'>
+  interface VehicleFieldRefs {
+    readonly vin: FieldRef<"Vehicle", 'String'>
+    readonly local: FieldRef<"Vehicle", 'Boolean'>
+    readonly registration: FieldRef<"Vehicle", 'String'>
+    readonly registrationType: FieldRef<"Vehicle", 'RegTypes'>
+    readonly location: FieldRef<"Vehicle", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * Vehicule findUnique
+   * Vehicle findUnique
    */
-  export type VehiculeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type VehicleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Vehicule
+     * Select specific fields to fetch from the Vehicle
      */
-    select?: VehiculeSelect<ExtArgs> | null
+    select?: VehicleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Vehicule
+     * Omit specific fields from the Vehicle
      */
-    omit?: VehiculeOmit<ExtArgs> | null
+    omit?: VehicleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VehiculeInclude<ExtArgs> | null
+    include?: VehicleInclude<ExtArgs> | null
     /**
-     * Filter, which Vehicule to fetch.
+     * Filter, which Vehicle to fetch.
      */
-    where: VehiculeWhereUniqueInput
+    where: VehicleWhereUniqueInput
   }
 
   /**
-   * Vehicule findUniqueOrThrow
+   * Vehicle findUniqueOrThrow
    */
-  export type VehiculeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type VehicleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Vehicule
+     * Select specific fields to fetch from the Vehicle
      */
-    select?: VehiculeSelect<ExtArgs> | null
+    select?: VehicleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Vehicule
+     * Omit specific fields from the Vehicle
      */
-    omit?: VehiculeOmit<ExtArgs> | null
+    omit?: VehicleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VehiculeInclude<ExtArgs> | null
+    include?: VehicleInclude<ExtArgs> | null
     /**
-     * Filter, which Vehicule to fetch.
+     * Filter, which Vehicle to fetch.
      */
-    where: VehiculeWhereUniqueInput
+    where: VehicleWhereUniqueInput
   }
 
   /**
-   * Vehicule findFirst
+   * Vehicle findFirst
    */
-  export type VehiculeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type VehicleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Vehicule
+     * Select specific fields to fetch from the Vehicle
      */
-    select?: VehiculeSelect<ExtArgs> | null
+    select?: VehicleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Vehicule
+     * Omit specific fields from the Vehicle
      */
-    omit?: VehiculeOmit<ExtArgs> | null
+    omit?: VehicleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VehiculeInclude<ExtArgs> | null
+    include?: VehicleInclude<ExtArgs> | null
     /**
-     * Filter, which Vehicule to fetch.
+     * Filter, which Vehicle to fetch.
      */
-    where?: VehiculeWhereInput
+    where?: VehicleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Vehicules to fetch.
+     * Determine the order of Vehicles to fetch.
      */
-    orderBy?: VehiculeOrderByWithRelationInput | VehiculeOrderByWithRelationInput[]
+    orderBy?: VehicleOrderByWithRelationInput | VehicleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Vehicules.
+     * Sets the position for searching for Vehicles.
      */
-    cursor?: VehiculeWhereUniqueInput
+    cursor?: VehicleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Vehicules from the position of the cursor.
+     * Take `±n` Vehicles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Vehicules.
+     * Skip the first `n` Vehicles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Vehicules.
+     * Filter by unique combinations of Vehicles.
      */
-    distinct?: VehiculeScalarFieldEnum | VehiculeScalarFieldEnum[]
+    distinct?: VehicleScalarFieldEnum | VehicleScalarFieldEnum[]
   }
 
   /**
-   * Vehicule findFirstOrThrow
+   * Vehicle findFirstOrThrow
    */
-  export type VehiculeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type VehicleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Vehicule
+     * Select specific fields to fetch from the Vehicle
      */
-    select?: VehiculeSelect<ExtArgs> | null
+    select?: VehicleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Vehicule
+     * Omit specific fields from the Vehicle
      */
-    omit?: VehiculeOmit<ExtArgs> | null
+    omit?: VehicleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VehiculeInclude<ExtArgs> | null
+    include?: VehicleInclude<ExtArgs> | null
     /**
-     * Filter, which Vehicule to fetch.
+     * Filter, which Vehicle to fetch.
      */
-    where?: VehiculeWhereInput
+    where?: VehicleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Vehicules to fetch.
+     * Determine the order of Vehicles to fetch.
      */
-    orderBy?: VehiculeOrderByWithRelationInput | VehiculeOrderByWithRelationInput[]
+    orderBy?: VehicleOrderByWithRelationInput | VehicleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Vehicules.
+     * Sets the position for searching for Vehicles.
      */
-    cursor?: VehiculeWhereUniqueInput
+    cursor?: VehicleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Vehicules from the position of the cursor.
+     * Take `±n` Vehicles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Vehicules.
+     * Skip the first `n` Vehicles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Vehicules.
+     * Filter by unique combinations of Vehicles.
      */
-    distinct?: VehiculeScalarFieldEnum | VehiculeScalarFieldEnum[]
+    distinct?: VehicleScalarFieldEnum | VehicleScalarFieldEnum[]
   }
 
   /**
-   * Vehicule findMany
+   * Vehicle findMany
    */
-  export type VehiculeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type VehicleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Vehicule
+     * Select specific fields to fetch from the Vehicle
      */
-    select?: VehiculeSelect<ExtArgs> | null
+    select?: VehicleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Vehicule
+     * Omit specific fields from the Vehicle
      */
-    omit?: VehiculeOmit<ExtArgs> | null
+    omit?: VehicleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VehiculeInclude<ExtArgs> | null
+    include?: VehicleInclude<ExtArgs> | null
     /**
-     * Filter, which Vehicules to fetch.
+     * Filter, which Vehicles to fetch.
      */
-    where?: VehiculeWhereInput
+    where?: VehicleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Vehicules to fetch.
+     * Determine the order of Vehicles to fetch.
      */
-    orderBy?: VehiculeOrderByWithRelationInput | VehiculeOrderByWithRelationInput[]
+    orderBy?: VehicleOrderByWithRelationInput | VehicleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Vehicules.
+     * Sets the position for listing Vehicles.
      */
-    cursor?: VehiculeWhereUniqueInput
+    cursor?: VehicleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Vehicules from the position of the cursor.
+     * Take `±n` Vehicles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Vehicules.
+     * Skip the first `n` Vehicles.
      */
     skip?: number
-    distinct?: VehiculeScalarFieldEnum | VehiculeScalarFieldEnum[]
+    distinct?: VehicleScalarFieldEnum | VehicleScalarFieldEnum[]
   }
 
   /**
-   * Vehicule create
+   * Vehicle create
    */
-  export type VehiculeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type VehicleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Vehicule
+     * Select specific fields to fetch from the Vehicle
      */
-    select?: VehiculeSelect<ExtArgs> | null
+    select?: VehicleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Vehicule
+     * Omit specific fields from the Vehicle
      */
-    omit?: VehiculeOmit<ExtArgs> | null
+    omit?: VehicleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VehiculeInclude<ExtArgs> | null
+    include?: VehicleInclude<ExtArgs> | null
     /**
-     * The data needed to create a Vehicule.
+     * The data needed to create a Vehicle.
      */
-    data: XOR<VehiculeCreateInput, VehiculeUncheckedCreateInput>
+    data: XOR<VehicleCreateInput, VehicleUncheckedCreateInput>
   }
 
   /**
-   * Vehicule createMany
+   * Vehicle createMany
    */
-  export type VehiculeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type VehicleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Vehicules.
+     * The data used to create many Vehicles.
      */
-    data: VehiculeCreateManyInput | VehiculeCreateManyInput[]
+    data: VehicleCreateManyInput | VehicleCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Vehicule createManyAndReturn
+   * Vehicle createManyAndReturn
    */
-  export type VehiculeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type VehicleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Vehicule
+     * Select specific fields to fetch from the Vehicle
      */
-    select?: VehiculeSelectCreateManyAndReturn<ExtArgs> | null
+    select?: VehicleSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Vehicule
+     * Omit specific fields from the Vehicle
      */
-    omit?: VehiculeOmit<ExtArgs> | null
+    omit?: VehicleOmit<ExtArgs> | null
     /**
-     * The data used to create many Vehicules.
+     * The data used to create many Vehicles.
      */
-    data: VehiculeCreateManyInput | VehiculeCreateManyInput[]
+    data: VehicleCreateManyInput | VehicleCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Vehicule update
+   * Vehicle update
    */
-  export type VehiculeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type VehicleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Vehicule
+     * Select specific fields to fetch from the Vehicle
      */
-    select?: VehiculeSelect<ExtArgs> | null
+    select?: VehicleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Vehicule
+     * Omit specific fields from the Vehicle
      */
-    omit?: VehiculeOmit<ExtArgs> | null
+    omit?: VehicleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VehiculeInclude<ExtArgs> | null
+    include?: VehicleInclude<ExtArgs> | null
     /**
-     * The data needed to update a Vehicule.
+     * The data needed to update a Vehicle.
      */
-    data: XOR<VehiculeUpdateInput, VehiculeUncheckedUpdateInput>
+    data: XOR<VehicleUpdateInput, VehicleUncheckedUpdateInput>
     /**
-     * Choose, which Vehicule to update.
+     * Choose, which Vehicle to update.
      */
-    where: VehiculeWhereUniqueInput
+    where: VehicleWhereUniqueInput
   }
 
   /**
-   * Vehicule updateMany
+   * Vehicle updateMany
    */
-  export type VehiculeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type VehicleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Vehicules.
+     * The data used to update Vehicles.
      */
-    data: XOR<VehiculeUpdateManyMutationInput, VehiculeUncheckedUpdateManyInput>
+    data: XOR<VehicleUpdateManyMutationInput, VehicleUncheckedUpdateManyInput>
     /**
-     * Filter which Vehicules to update
+     * Filter which Vehicles to update
      */
-    where?: VehiculeWhereInput
+    where?: VehicleWhereInput
     /**
-     * Limit how many Vehicules to update.
+     * Limit how many Vehicles to update.
      */
     limit?: number
   }
 
   /**
-   * Vehicule updateManyAndReturn
+   * Vehicle updateManyAndReturn
    */
-  export type VehiculeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type VehicleUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Vehicule
+     * Select specific fields to fetch from the Vehicle
      */
-    select?: VehiculeSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: VehicleSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Vehicule
+     * Omit specific fields from the Vehicle
      */
-    omit?: VehiculeOmit<ExtArgs> | null
+    omit?: VehicleOmit<ExtArgs> | null
     /**
-     * The data used to update Vehicules.
+     * The data used to update Vehicles.
      */
-    data: XOR<VehiculeUpdateManyMutationInput, VehiculeUncheckedUpdateManyInput>
+    data: XOR<VehicleUpdateManyMutationInput, VehicleUncheckedUpdateManyInput>
     /**
-     * Filter which Vehicules to update
+     * Filter which Vehicles to update
      */
-    where?: VehiculeWhereInput
+    where?: VehicleWhereInput
     /**
-     * Limit how many Vehicules to update.
+     * Limit how many Vehicles to update.
      */
     limit?: number
   }
 
   /**
-   * Vehicule upsert
+   * Vehicle upsert
    */
-  export type VehiculeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type VehicleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Vehicule
+     * Select specific fields to fetch from the Vehicle
      */
-    select?: VehiculeSelect<ExtArgs> | null
+    select?: VehicleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Vehicule
+     * Omit specific fields from the Vehicle
      */
-    omit?: VehiculeOmit<ExtArgs> | null
+    omit?: VehicleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VehiculeInclude<ExtArgs> | null
+    include?: VehicleInclude<ExtArgs> | null
     /**
-     * The filter to search for the Vehicule to update in case it exists.
+     * The filter to search for the Vehicle to update in case it exists.
      */
-    where: VehiculeWhereUniqueInput
+    where: VehicleWhereUniqueInput
     /**
-     * In case the Vehicule found by the `where` argument doesn't exist, create a new Vehicule with this data.
+     * In case the Vehicle found by the `where` argument doesn't exist, create a new Vehicle with this data.
      */
-    create: XOR<VehiculeCreateInput, VehiculeUncheckedCreateInput>
+    create: XOR<VehicleCreateInput, VehicleUncheckedCreateInput>
     /**
-     * In case the Vehicule was found with the provided `where` argument, update it with this data.
+     * In case the Vehicle was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<VehiculeUpdateInput, VehiculeUncheckedUpdateInput>
+    update: XOR<VehicleUpdateInput, VehicleUncheckedUpdateInput>
   }
 
   /**
-   * Vehicule delete
+   * Vehicle delete
    */
-  export type VehiculeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type VehicleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Vehicule
+     * Select specific fields to fetch from the Vehicle
      */
-    select?: VehiculeSelect<ExtArgs> | null
+    select?: VehicleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Vehicule
+     * Omit specific fields from the Vehicle
      */
-    omit?: VehiculeOmit<ExtArgs> | null
+    omit?: VehicleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VehiculeInclude<ExtArgs> | null
+    include?: VehicleInclude<ExtArgs> | null
     /**
-     * Filter which Vehicule to delete.
+     * Filter which Vehicle to delete.
      */
-    where: VehiculeWhereUniqueInput
+    where: VehicleWhereUniqueInput
   }
 
   /**
-   * Vehicule deleteMany
+   * Vehicle deleteMany
    */
-  export type VehiculeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type VehicleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Vehicules to delete
+     * Filter which Vehicles to delete
      */
-    where?: VehiculeWhereInput
+    where?: VehicleWhereInput
     /**
-     * Limit how many Vehicules to delete.
+     * Limit how many Vehicles to delete.
      */
     limit?: number
   }
 
   /**
-   * Vehicule.reservation
+   * Vehicle.reservation
    */
-  export type Vehicule$reservationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Vehicle$reservationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Reservation
      */
@@ -2986,21 +2864,21 @@ export namespace Prisma {
   }
 
   /**
-   * Vehicule without action
+   * Vehicle without action
    */
-  export type VehiculeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type VehicleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Vehicule
+     * Select specific fields to fetch from the Vehicle
      */
-    select?: VehiculeSelect<ExtArgs> | null
+    select?: VehicleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Vehicule
+     * Omit specific fields from the Vehicle
      */
-    omit?: VehiculeOmit<ExtArgs> | null
+    omit?: VehicleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: VehiculeInclude<ExtArgs> | null
+    include?: VehicleInclude<ExtArgs> | null
   }
 
 
@@ -5290,7 +5168,7 @@ export namespace Prisma {
     date: Date | null
     baseFee: number | null
     repairStatus: $Enums.RepairStatus | null
-    vehiculeId: string | null
+    vehicleId: string | null
   }
 
   export type ReservationMaxAggregateOutputType = {
@@ -5299,7 +5177,7 @@ export namespace Prisma {
     date: Date | null
     baseFee: number | null
     repairStatus: $Enums.RepairStatus | null
-    vehiculeId: string | null
+    vehicleId: string | null
   }
 
   export type ReservationCountAggregateOutputType = {
@@ -5308,7 +5186,7 @@ export namespace Prisma {
     date: number
     baseFee: number
     repairStatus: number
-    vehiculeId: number
+    vehicleId: number
     _all: number
   }
 
@@ -5329,7 +5207,7 @@ export namespace Prisma {
     date?: true
     baseFee?: true
     repairStatus?: true
-    vehiculeId?: true
+    vehicleId?: true
   }
 
   export type ReservationMaxAggregateInputType = {
@@ -5338,7 +5216,7 @@ export namespace Prisma {
     date?: true
     baseFee?: true
     repairStatus?: true
-    vehiculeId?: true
+    vehicleId?: true
   }
 
   export type ReservationCountAggregateInputType = {
@@ -5347,7 +5225,7 @@ export namespace Prisma {
     date?: true
     baseFee?: true
     repairStatus?: true
-    vehiculeId?: true
+    vehicleId?: true
     _all?: true
   }
 
@@ -5443,7 +5321,7 @@ export namespace Prisma {
     date: Date
     baseFee: number | null
     repairStatus: $Enums.RepairStatus | null
-    vehiculeId: string
+    vehicleId: string
     _count: ReservationCountAggregateOutputType | null
     _avg: ReservationAvgAggregateOutputType | null
     _sum: ReservationSumAggregateOutputType | null
@@ -5471,8 +5349,8 @@ export namespace Prisma {
     date?: boolean
     baseFee?: boolean
     repairStatus?: boolean
-    vehiculeId?: boolean
-    vehicule?: boolean | VehiculeDefaultArgs<ExtArgs>
+    vehicleId?: boolean
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
     diagnostic?: boolean | Reservation$diagnosticArgs<ExtArgs>
     repair?: boolean | Reservation$repairArgs<ExtArgs>
     _count?: boolean | ReservationCountOutputTypeDefaultArgs<ExtArgs>
@@ -5484,8 +5362,8 @@ export namespace Prisma {
     date?: boolean
     baseFee?: boolean
     repairStatus?: boolean
-    vehiculeId?: boolean
-    vehicule?: boolean | VehiculeDefaultArgs<ExtArgs>
+    vehicleId?: boolean
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reservation"]>
 
   export type ReservationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5494,8 +5372,8 @@ export namespace Prisma {
     date?: boolean
     baseFee?: boolean
     repairStatus?: boolean
-    vehiculeId?: boolean
-    vehicule?: boolean | VehiculeDefaultArgs<ExtArgs>
+    vehicleId?: boolean
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reservation"]>
 
   export type ReservationSelectScalar = {
@@ -5504,27 +5382,27 @@ export namespace Prisma {
     date?: boolean
     baseFee?: boolean
     repairStatus?: boolean
-    vehiculeId?: boolean
+    vehicleId?: boolean
   }
 
-  export type ReservationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"reservationId" | "mobilePhone" | "date" | "baseFee" | "repairStatus" | "vehiculeId", ExtArgs["result"]["reservation"]>
+  export type ReservationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"reservationId" | "mobilePhone" | "date" | "baseFee" | "repairStatus" | "vehicleId", ExtArgs["result"]["reservation"]>
   export type ReservationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    vehicule?: boolean | VehiculeDefaultArgs<ExtArgs>
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
     diagnostic?: boolean | Reservation$diagnosticArgs<ExtArgs>
     repair?: boolean | Reservation$repairArgs<ExtArgs>
     _count?: boolean | ReservationCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ReservationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    vehicule?: boolean | VehiculeDefaultArgs<ExtArgs>
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
   }
   export type ReservationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    vehicule?: boolean | VehiculeDefaultArgs<ExtArgs>
+    vehicle?: boolean | VehicleDefaultArgs<ExtArgs>
   }
 
   export type $ReservationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Reservation"
     objects: {
-      vehicule: Prisma.$VehiculePayload<ExtArgs>
+      vehicle: Prisma.$VehiclePayload<ExtArgs>
       diagnostic: Prisma.$DiagnosticPayload<ExtArgs>[]
       repair: Prisma.$RepairPayload<ExtArgs>[]
     }
@@ -5534,7 +5412,7 @@ export namespace Prisma {
       date: Date
       baseFee: number | null
       repairStatus: $Enums.RepairStatus | null
-      vehiculeId: string
+      vehicleId: string
     }, ExtArgs["result"]["reservation"]>
     composites: {}
   }
@@ -5929,7 +5807,7 @@ export namespace Prisma {
    */
   export interface Prisma__ReservationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    vehicule<T extends VehiculeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VehiculeDefaultArgs<ExtArgs>>): Prisma__VehiculeClient<$Result.GetResult<Prisma.$VehiculePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    vehicle<T extends VehicleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, VehicleDefaultArgs<ExtArgs>>): Prisma__VehicleClient<$Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     diagnostic<T extends Reservation$diagnosticArgs<ExtArgs> = {}>(args?: Subset<T, Reservation$diagnosticArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiagnosticPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     repair<T extends Reservation$repairArgs<ExtArgs> = {}>(args?: Subset<T, Reservation$repairArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RepairPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -5966,7 +5844,7 @@ export namespace Prisma {
     readonly date: FieldRef<"Reservation", 'DateTime'>
     readonly baseFee: FieldRef<"Reservation", 'Float'>
     readonly repairStatus: FieldRef<"Reservation", 'RepairStatus'>
-    readonly vehiculeId: FieldRef<"Reservation", 'String'>
+    readonly vehicleId: FieldRef<"Reservation", 'String'>
   }
     
 
@@ -10711,20 +10589,23 @@ export namespace Prisma {
 
   export type UserMinAggregateOutputType = {
     userId: number | null
+    username: string | null
     email: string | null
-    name: string | null
+    phone: string | null
   }
 
   export type UserMaxAggregateOutputType = {
     userId: number | null
+    username: string | null
     email: string | null
-    name: string | null
+    phone: string | null
   }
 
   export type UserCountAggregateOutputType = {
     userId: number
+    username: number
     email: number
-    name: number
+    phone: number
     _all: number
   }
 
@@ -10739,20 +10620,23 @@ export namespace Prisma {
 
   export type UserMinAggregateInputType = {
     userId?: true
+    username?: true
     email?: true
-    name?: true
+    phone?: true
   }
 
   export type UserMaxAggregateInputType = {
     userId?: true
+    username?: true
     email?: true
-    name?: true
+    phone?: true
   }
 
   export type UserCountAggregateInputType = {
     userId?: true
+    username?: true
     email?: true
-    name?: true
+    phone?: true
     _all?: true
   }
 
@@ -10844,8 +10728,9 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     userId: number
+    username: string
     email: string
-    name: string | null
+    phone: string | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -10869,47 +10754,42 @@ export namespace Prisma {
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     userId?: boolean
+    username?: boolean
     email?: boolean
-    name?: boolean
-    posts?: boolean | User$postsArgs<ExtArgs>
-    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+    phone?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     userId?: boolean
+    username?: boolean
     email?: boolean
-    name?: boolean
+    phone?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     userId?: boolean
+    username?: boolean
     email?: boolean
-    name?: boolean
+    phone?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     userId?: boolean
+    username?: boolean
     email?: boolean
-    name?: boolean
+    phone?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "email" | "name", ExtArgs["result"]["user"]>
-  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    posts?: boolean | User$postsArgs<ExtArgs>
-    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "username" | "email" | "phone", ExtArgs["result"]["user"]>
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
-    objects: {
-      posts: Prisma.$PostPayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       userId: number
+      username: string
       email: string
-      name: string | null
+      phone: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -11304,7 +11184,6 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    posts<T extends User$postsArgs<ExtArgs> = {}>(args?: Subset<T, User$postsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11335,8 +11214,9 @@ export namespace Prisma {
    */ 
   interface UserFieldRefs {
     readonly userId: FieldRef<"User", 'Int'>
+    readonly username: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
-    readonly name: FieldRef<"User", 'String'>
+    readonly phone: FieldRef<"User", 'String'>
   }
     
 
@@ -11353,10 +11233,6 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -11376,10 +11252,6 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -11397,10 +11269,6 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -11450,10 +11318,6 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    /**
      * Filter, which User to fetch.
      */
     where?: UserWhereInput
@@ -11502,10 +11366,6 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    /**
      * Filter, which Users to fetch.
      */
     where?: UserWhereInput
@@ -11548,10 +11408,6 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to create a User.
      */
@@ -11600,10 +11456,6 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to update a User.
      */
@@ -11671,10 +11523,6 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    /**
      * The filter to search for the User to update in case it exists.
      */
     where: UserWhereUniqueInput
@@ -11701,10 +11549,6 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    /**
      * Filter which User to delete.
      */
     where: UserWhereUniqueInput
@@ -11725,30 +11569,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.posts
-   */
-  export type User$postsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    where?: PostWhereInput
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
-    cursor?: PostWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
-  }
-
-  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11760,1106 +11580,6 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Post
-   */
-
-  export type AggregatePost = {
-    _count: PostCountAggregateOutputType | null
-    _avg: PostAvgAggregateOutputType | null
-    _sum: PostSumAggregateOutputType | null
-    _min: PostMinAggregateOutputType | null
-    _max: PostMaxAggregateOutputType | null
-  }
-
-  export type PostAvgAggregateOutputType = {
-    postId: number | null
-    authorId: number | null
-  }
-
-  export type PostSumAggregateOutputType = {
-    postId: number | null
-    authorId: number | null
-  }
-
-  export type PostMinAggregateOutputType = {
-    postId: number | null
-    title: string | null
-    content: string | null
-    published: boolean | null
-    authorId: number | null
-  }
-
-  export type PostMaxAggregateOutputType = {
-    postId: number | null
-    title: string | null
-    content: string | null
-    published: boolean | null
-    authorId: number | null
-  }
-
-  export type PostCountAggregateOutputType = {
-    postId: number
-    title: number
-    content: number
-    published: number
-    authorId: number
-    _all: number
-  }
-
-
-  export type PostAvgAggregateInputType = {
-    postId?: true
-    authorId?: true
-  }
-
-  export type PostSumAggregateInputType = {
-    postId?: true
-    authorId?: true
-  }
-
-  export type PostMinAggregateInputType = {
-    postId?: true
-    title?: true
-    content?: true
-    published?: true
-    authorId?: true
-  }
-
-  export type PostMaxAggregateInputType = {
-    postId?: true
-    title?: true
-    content?: true
-    published?: true
-    authorId?: true
-  }
-
-  export type PostCountAggregateInputType = {
-    postId?: true
-    title?: true
-    content?: true
-    published?: true
-    authorId?: true
-    _all?: true
-  }
-
-  export type PostAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Post to aggregate.
-     */
-    where?: PostWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Posts to fetch.
-     */
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: PostWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Posts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Posts.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Posts
-    **/
-    _count?: true | PostCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: PostAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: PostSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: PostMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: PostMaxAggregateInputType
-  }
-
-  export type GetPostAggregateType<T extends PostAggregateArgs> = {
-        [P in keyof T & keyof AggregatePost]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregatePost[P]>
-      : GetScalarType<T[P], AggregatePost[P]>
-  }
-
-
-
-
-  export type PostGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PostWhereInput
-    orderBy?: PostOrderByWithAggregationInput | PostOrderByWithAggregationInput[]
-    by: PostScalarFieldEnum[] | PostScalarFieldEnum
-    having?: PostScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: PostCountAggregateInputType | true
-    _avg?: PostAvgAggregateInputType
-    _sum?: PostSumAggregateInputType
-    _min?: PostMinAggregateInputType
-    _max?: PostMaxAggregateInputType
-  }
-
-  export type PostGroupByOutputType = {
-    postId: number
-    title: string
-    content: string | null
-    published: boolean
-    authorId: number
-    _count: PostCountAggregateOutputType | null
-    _avg: PostAvgAggregateOutputType | null
-    _sum: PostSumAggregateOutputType | null
-    _min: PostMinAggregateOutputType | null
-    _max: PostMaxAggregateOutputType | null
-  }
-
-  type GetPostGroupByPayload<T extends PostGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<PostGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof PostGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], PostGroupByOutputType[P]>
-            : GetScalarType<T[P], PostGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type PostSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    postId?: boolean
-    title?: boolean
-    content?: boolean
-    published?: boolean
-    authorId?: boolean
-    author?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["post"]>
-
-  export type PostSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    postId?: boolean
-    title?: boolean
-    content?: boolean
-    published?: boolean
-    authorId?: boolean
-    author?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["post"]>
-
-  export type PostSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    postId?: boolean
-    title?: boolean
-    content?: boolean
-    published?: boolean
-    authorId?: boolean
-    author?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["post"]>
-
-  export type PostSelectScalar = {
-    postId?: boolean
-    title?: boolean
-    content?: boolean
-    published?: boolean
-    authorId?: boolean
-  }
-
-  export type PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"postId" | "title" | "content" | "published" | "authorId", ExtArgs["result"]["post"]>
-  export type PostInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    author?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type PostIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    author?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type PostIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    author?: boolean | UserDefaultArgs<ExtArgs>
-  }
-
-  export type $PostPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Post"
-    objects: {
-      author: Prisma.$UserPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      postId: number
-      title: string
-      content: string | null
-      published: boolean
-      authorId: number
-    }, ExtArgs["result"]["post"]>
-    composites: {}
-  }
-
-  type PostGetPayload<S extends boolean | null | undefined | PostDefaultArgs> = $Result.GetResult<Prisma.$PostPayload, S>
-
-  type PostCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<PostFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: PostCountAggregateInputType | true
-    }
-
-  export interface PostDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Post'], meta: { name: 'Post' } }
-    /**
-     * Find zero or one Post that matches the filter.
-     * @param {PostFindUniqueArgs} args - Arguments to find a Post
-     * @example
-     * // Get one Post
-     * const post = await prisma.post.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends PostFindUniqueArgs>(args: SelectSubset<T, PostFindUniqueArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Post that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {PostFindUniqueOrThrowArgs} args - Arguments to find a Post
-     * @example
-     * // Get one Post
-     * const post = await prisma.post.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends PostFindUniqueOrThrowArgs>(args: SelectSubset<T, PostFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Post that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostFindFirstArgs} args - Arguments to find a Post
-     * @example
-     * // Get one Post
-     * const post = await prisma.post.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends PostFindFirstArgs>(args?: SelectSubset<T, PostFindFirstArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Post that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostFindFirstOrThrowArgs} args - Arguments to find a Post
-     * @example
-     * // Get one Post
-     * const post = await prisma.post.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends PostFindFirstOrThrowArgs>(args?: SelectSubset<T, PostFindFirstOrThrowArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Posts that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Posts
-     * const posts = await prisma.post.findMany()
-     * 
-     * // Get first 10 Posts
-     * const posts = await prisma.post.findMany({ take: 10 })
-     * 
-     * // Only select the `postId`
-     * const postWithPostIdOnly = await prisma.post.findMany({ select: { postId: true } })
-     * 
-     */
-    findMany<T extends PostFindManyArgs>(args?: SelectSubset<T, PostFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Post.
-     * @param {PostCreateArgs} args - Arguments to create a Post.
-     * @example
-     * // Create one Post
-     * const Post = await prisma.post.create({
-     *   data: {
-     *     // ... data to create a Post
-     *   }
-     * })
-     * 
-     */
-    create<T extends PostCreateArgs>(args: SelectSubset<T, PostCreateArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Posts.
-     * @param {PostCreateManyArgs} args - Arguments to create many Posts.
-     * @example
-     * // Create many Posts
-     * const post = await prisma.post.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends PostCreateManyArgs>(args?: SelectSubset<T, PostCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Posts and returns the data saved in the database.
-     * @param {PostCreateManyAndReturnArgs} args - Arguments to create many Posts.
-     * @example
-     * // Create many Posts
-     * const post = await prisma.post.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Posts and only return the `postId`
-     * const postWithPostIdOnly = await prisma.post.createManyAndReturn({
-     *   select: { postId: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends PostCreateManyAndReturnArgs>(args?: SelectSubset<T, PostCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Post.
-     * @param {PostDeleteArgs} args - Arguments to delete one Post.
-     * @example
-     * // Delete one Post
-     * const Post = await prisma.post.delete({
-     *   where: {
-     *     // ... filter to delete one Post
-     *   }
-     * })
-     * 
-     */
-    delete<T extends PostDeleteArgs>(args: SelectSubset<T, PostDeleteArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Post.
-     * @param {PostUpdateArgs} args - Arguments to update one Post.
-     * @example
-     * // Update one Post
-     * const post = await prisma.post.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends PostUpdateArgs>(args: SelectSubset<T, PostUpdateArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Posts.
-     * @param {PostDeleteManyArgs} args - Arguments to filter Posts to delete.
-     * @example
-     * // Delete a few Posts
-     * const { count } = await prisma.post.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends PostDeleteManyArgs>(args?: SelectSubset<T, PostDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Posts.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Posts
-     * const post = await prisma.post.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends PostUpdateManyArgs>(args: SelectSubset<T, PostUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Posts and returns the data updated in the database.
-     * @param {PostUpdateManyAndReturnArgs} args - Arguments to update many Posts.
-     * @example
-     * // Update many Posts
-     * const post = await prisma.post.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Posts and only return the `postId`
-     * const postWithPostIdOnly = await prisma.post.updateManyAndReturn({
-     *   select: { postId: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends PostUpdateManyAndReturnArgs>(args: SelectSubset<T, PostUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Post.
-     * @param {PostUpsertArgs} args - Arguments to update or create a Post.
-     * @example
-     * // Update or create a Post
-     * const post = await prisma.post.upsert({
-     *   create: {
-     *     // ... data to create a Post
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Post we want to update
-     *   }
-     * })
-     */
-    upsert<T extends PostUpsertArgs>(args: SelectSubset<T, PostUpsertArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Posts.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostCountArgs} args - Arguments to filter Posts to count.
-     * @example
-     * // Count the number of Posts
-     * const count = await prisma.post.count({
-     *   where: {
-     *     // ... the filter for the Posts we want to count
-     *   }
-     * })
-    **/
-    count<T extends PostCountArgs>(
-      args?: Subset<T, PostCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], PostCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Post.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends PostAggregateArgs>(args: Subset<T, PostAggregateArgs>): Prisma.PrismaPromise<GetPostAggregateType<T>>
-
-    /**
-     * Group by Post.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends PostGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: PostGroupByArgs['orderBy'] }
-        : { orderBy?: PostGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, PostGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPostGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Post model
-   */
-  readonly fields: PostFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Post.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__PostClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Post model
-   */ 
-  interface PostFieldRefs {
-    readonly postId: FieldRef<"Post", 'Int'>
-    readonly title: FieldRef<"Post", 'String'>
-    readonly content: FieldRef<"Post", 'String'>
-    readonly published: FieldRef<"Post", 'Boolean'>
-    readonly authorId: FieldRef<"Post", 'Int'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Post findUnique
-   */
-  export type PostFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    /**
-     * Filter, which Post to fetch.
-     */
-    where: PostWhereUniqueInput
-  }
-
-  /**
-   * Post findUniqueOrThrow
-   */
-  export type PostFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    /**
-     * Filter, which Post to fetch.
-     */
-    where: PostWhereUniqueInput
-  }
-
-  /**
-   * Post findFirst
-   */
-  export type PostFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    /**
-     * Filter, which Post to fetch.
-     */
-    where?: PostWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Posts to fetch.
-     */
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Posts.
-     */
-    cursor?: PostWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Posts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Posts.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Posts.
-     */
-    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
-  }
-
-  /**
-   * Post findFirstOrThrow
-   */
-  export type PostFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    /**
-     * Filter, which Post to fetch.
-     */
-    where?: PostWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Posts to fetch.
-     */
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Posts.
-     */
-    cursor?: PostWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Posts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Posts.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Posts.
-     */
-    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
-  }
-
-  /**
-   * Post findMany
-   */
-  export type PostFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    /**
-     * Filter, which Posts to fetch.
-     */
-    where?: PostWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Posts to fetch.
-     */
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Posts.
-     */
-    cursor?: PostWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Posts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Posts.
-     */
-    skip?: number
-    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
-  }
-
-  /**
-   * Post create
-   */
-  export type PostCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Post.
-     */
-    data: XOR<PostCreateInput, PostUncheckedCreateInput>
-  }
-
-  /**
-   * Post createMany
-   */
-  export type PostCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Posts.
-     */
-    data: PostCreateManyInput | PostCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Post createManyAndReturn
-   */
-  export type PostCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * The data used to create many Posts.
-     */
-    data: PostCreateManyInput | PostCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Post update
-   */
-  export type PostUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Post.
-     */
-    data: XOR<PostUpdateInput, PostUncheckedUpdateInput>
-    /**
-     * Choose, which Post to update.
-     */
-    where: PostWhereUniqueInput
-  }
-
-  /**
-   * Post updateMany
-   */
-  export type PostUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Posts.
-     */
-    data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyInput>
-    /**
-     * Filter which Posts to update
-     */
-    where?: PostWhereInput
-    /**
-     * Limit how many Posts to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Post updateManyAndReturn
-   */
-  export type PostUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * The data used to update Posts.
-     */
-    data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyInput>
-    /**
-     * Filter which Posts to update
-     */
-    where?: PostWhereInput
-    /**
-     * Limit how many Posts to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Post upsert
-   */
-  export type PostUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Post to update in case it exists.
-     */
-    where: PostWhereUniqueInput
-    /**
-     * In case the Post found by the `where` argument doesn't exist, create a new Post with this data.
-     */
-    create: XOR<PostCreateInput, PostUncheckedCreateInput>
-    /**
-     * In case the Post was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<PostUpdateInput, PostUncheckedUpdateInput>
-  }
-
-  /**
-   * Post delete
-   */
-  export type PostDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    /**
-     * Filter which Post to delete.
-     */
-    where: PostWhereUniqueInput
-  }
-
-  /**
-   * Post deleteMany
-   */
-  export type PostDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Posts to delete
-     */
-    where?: PostWhereInput
-    /**
-     * Limit how many Posts to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Post without action
-   */
-  export type PostDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
   }
 
 
@@ -12877,15 +11597,15 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const VehiculeScalarFieldEnum: {
+  export const VehicleScalarFieldEnum: {
     vin: 'vin',
     local: 'local',
-    registation: 'registation',
+    registration: 'registration',
     registrationType: 'registrationType',
     location: 'location'
   };
 
-  export type VehiculeScalarFieldEnum = (typeof VehiculeScalarFieldEnum)[keyof typeof VehiculeScalarFieldEnum]
+  export type VehicleScalarFieldEnum = (typeof VehicleScalarFieldEnum)[keyof typeof VehicleScalarFieldEnum]
 
 
   export const MechanicScalarFieldEnum: {
@@ -12911,7 +11631,7 @@ export namespace Prisma {
     date: 'date',
     baseFee: 'baseFee',
     repairStatus: 'repairStatus',
-    vehiculeId: 'vehiculeId'
+    vehicleId: 'vehicleId'
   };
 
   export type ReservationScalarFieldEnum = (typeof ReservationScalarFieldEnum)[keyof typeof ReservationScalarFieldEnum]
@@ -12957,22 +11677,12 @@ export namespace Prisma {
 
   export const UserScalarFieldEnum: {
     userId: 'userId',
+    username: 'username',
     email: 'email',
-    name: 'name'
+    phone: 'phone'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
-
-
-  export const PostScalarFieldEnum: {
-    postId: 'postId',
-    title: 'title',
-    content: 'content',
-    published: 'published',
-    authorId: 'authorId'
-  };
-
-  export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -13098,59 +11808,59 @@ export namespace Prisma {
    */
 
 
-  export type VehiculeWhereInput = {
-    AND?: VehiculeWhereInput | VehiculeWhereInput[]
-    OR?: VehiculeWhereInput[]
-    NOT?: VehiculeWhereInput | VehiculeWhereInput[]
-    vin?: StringFilter<"Vehicule"> | string
-    local?: BoolFilter<"Vehicule"> | boolean
-    registation?: StringFilter<"Vehicule"> | string
-    registrationType?: EnumRegTypesNullableFilter<"Vehicule"> | $Enums.RegTypes | null
-    location?: StringNullableFilter<"Vehicule"> | string | null
+  export type VehicleWhereInput = {
+    AND?: VehicleWhereInput | VehicleWhereInput[]
+    OR?: VehicleWhereInput[]
+    NOT?: VehicleWhereInput | VehicleWhereInput[]
+    vin?: StringFilter<"Vehicle"> | string
+    local?: BoolFilter<"Vehicle"> | boolean
+    registration?: StringNullableFilter<"Vehicle"> | string | null
+    registrationType?: EnumRegTypesNullableFilter<"Vehicle"> | $Enums.RegTypes | null
+    location?: StringNullableFilter<"Vehicle"> | string | null
     reservation?: ReservationListRelationFilter
   }
 
-  export type VehiculeOrderByWithRelationInput = {
+  export type VehicleOrderByWithRelationInput = {
     vin?: SortOrder
     local?: SortOrder
-    registation?: SortOrder
+    registration?: SortOrderInput | SortOrder
     registrationType?: SortOrderInput | SortOrder
     location?: SortOrderInput | SortOrder
     reservation?: ReservationOrderByRelationAggregateInput
   }
 
-  export type VehiculeWhereUniqueInput = Prisma.AtLeast<{
+  export type VehicleWhereUniqueInput = Prisma.AtLeast<{
     vin?: string
-    AND?: VehiculeWhereInput | VehiculeWhereInput[]
-    OR?: VehiculeWhereInput[]
-    NOT?: VehiculeWhereInput | VehiculeWhereInput[]
-    local?: BoolFilter<"Vehicule"> | boolean
-    registation?: StringFilter<"Vehicule"> | string
-    registrationType?: EnumRegTypesNullableFilter<"Vehicule"> | $Enums.RegTypes | null
-    location?: StringNullableFilter<"Vehicule"> | string | null
+    AND?: VehicleWhereInput | VehicleWhereInput[]
+    OR?: VehicleWhereInput[]
+    NOT?: VehicleWhereInput | VehicleWhereInput[]
+    local?: BoolFilter<"Vehicle"> | boolean
+    registration?: StringNullableFilter<"Vehicle"> | string | null
+    registrationType?: EnumRegTypesNullableFilter<"Vehicle"> | $Enums.RegTypes | null
+    location?: StringNullableFilter<"Vehicle"> | string | null
     reservation?: ReservationListRelationFilter
   }, "vin">
 
-  export type VehiculeOrderByWithAggregationInput = {
+  export type VehicleOrderByWithAggregationInput = {
     vin?: SortOrder
     local?: SortOrder
-    registation?: SortOrder
+    registration?: SortOrderInput | SortOrder
     registrationType?: SortOrderInput | SortOrder
     location?: SortOrderInput | SortOrder
-    _count?: VehiculeCountOrderByAggregateInput
-    _max?: VehiculeMaxOrderByAggregateInput
-    _min?: VehiculeMinOrderByAggregateInput
+    _count?: VehicleCountOrderByAggregateInput
+    _max?: VehicleMaxOrderByAggregateInput
+    _min?: VehicleMinOrderByAggregateInput
   }
 
-  export type VehiculeScalarWhereWithAggregatesInput = {
-    AND?: VehiculeScalarWhereWithAggregatesInput | VehiculeScalarWhereWithAggregatesInput[]
-    OR?: VehiculeScalarWhereWithAggregatesInput[]
-    NOT?: VehiculeScalarWhereWithAggregatesInput | VehiculeScalarWhereWithAggregatesInput[]
-    vin?: StringWithAggregatesFilter<"Vehicule"> | string
-    local?: BoolWithAggregatesFilter<"Vehicule"> | boolean
-    registation?: StringWithAggregatesFilter<"Vehicule"> | string
-    registrationType?: EnumRegTypesNullableWithAggregatesFilter<"Vehicule"> | $Enums.RegTypes | null
-    location?: StringNullableWithAggregatesFilter<"Vehicule"> | string | null
+  export type VehicleScalarWhereWithAggregatesInput = {
+    AND?: VehicleScalarWhereWithAggregatesInput | VehicleScalarWhereWithAggregatesInput[]
+    OR?: VehicleScalarWhereWithAggregatesInput[]
+    NOT?: VehicleScalarWhereWithAggregatesInput | VehicleScalarWhereWithAggregatesInput[]
+    vin?: StringWithAggregatesFilter<"Vehicle"> | string
+    local?: BoolWithAggregatesFilter<"Vehicle"> | boolean
+    registration?: StringNullableWithAggregatesFilter<"Vehicle"> | string | null
+    registrationType?: EnumRegTypesNullableWithAggregatesFilter<"Vehicle"> | $Enums.RegTypes | null
+    location?: StringNullableWithAggregatesFilter<"Vehicle"> | string | null
   }
 
   export type MechanicWhereInput = {
@@ -13263,8 +11973,8 @@ export namespace Prisma {
     date?: DateTimeFilter<"Reservation"> | Date | string
     baseFee?: FloatNullableFilter<"Reservation"> | number | null
     repairStatus?: EnumRepairStatusNullableFilter<"Reservation"> | $Enums.RepairStatus | null
-    vehiculeId?: StringFilter<"Reservation"> | string
-    vehicule?: XOR<VehiculeScalarRelationFilter, VehiculeWhereInput>
+    vehicleId?: StringFilter<"Reservation"> | string
+    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
     diagnostic?: DiagnosticListRelationFilter
     repair?: RepairListRelationFilter
   }
@@ -13275,8 +11985,8 @@ export namespace Prisma {
     date?: SortOrder
     baseFee?: SortOrderInput | SortOrder
     repairStatus?: SortOrderInput | SortOrder
-    vehiculeId?: SortOrder
-    vehicule?: VehiculeOrderByWithRelationInput
+    vehicleId?: SortOrder
+    vehicle?: VehicleOrderByWithRelationInput
     diagnostic?: DiagnosticOrderByRelationAggregateInput
     repair?: RepairOrderByRelationAggregateInput
   }
@@ -13290,8 +12000,8 @@ export namespace Prisma {
     date?: DateTimeFilter<"Reservation"> | Date | string
     baseFee?: FloatNullableFilter<"Reservation"> | number | null
     repairStatus?: EnumRepairStatusNullableFilter<"Reservation"> | $Enums.RepairStatus | null
-    vehiculeId?: StringFilter<"Reservation"> | string
-    vehicule?: XOR<VehiculeScalarRelationFilter, VehiculeWhereInput>
+    vehicleId?: StringFilter<"Reservation"> | string
+    vehicle?: XOR<VehicleScalarRelationFilter, VehicleWhereInput>
     diagnostic?: DiagnosticListRelationFilter
     repair?: RepairListRelationFilter
   }, "reservationId">
@@ -13302,7 +12012,7 @@ export namespace Prisma {
     date?: SortOrder
     baseFee?: SortOrderInput | SortOrder
     repairStatus?: SortOrderInput | SortOrder
-    vehiculeId?: SortOrder
+    vehicleId?: SortOrder
     _count?: ReservationCountOrderByAggregateInput
     _avg?: ReservationAvgOrderByAggregateInput
     _max?: ReservationMaxOrderByAggregateInput
@@ -13319,7 +12029,7 @@ export namespace Prisma {
     date?: DateTimeWithAggregatesFilter<"Reservation"> | Date | string
     baseFee?: FloatNullableWithAggregatesFilter<"Reservation"> | number | null
     repairStatus?: EnumRepairStatusNullableWithAggregatesFilter<"Reservation"> | $Enums.RepairStatus | null
-    vehiculeId?: StringWithAggregatesFilter<"Reservation"> | string
+    vehicleId?: StringWithAggregatesFilter<"Reservation"> | string
   }
 
   export type DiagnosticWhereInput = {
@@ -13531,16 +12241,16 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     userId?: IntFilter<"User"> | number
+    username?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
-    name?: StringNullableFilter<"User"> | string | null
-    posts?: PostListRelationFilter
+    phone?: StringNullableFilter<"User"> | string | null
   }
 
   export type UserOrderByWithRelationInput = {
     userId?: SortOrder
+    username?: SortOrder
     email?: SortOrder
-    name?: SortOrderInput | SortOrder
-    posts?: PostOrderByRelationAggregateInput
+    phone?: SortOrderInput | SortOrder
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -13549,14 +12259,15 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    name?: StringNullableFilter<"User"> | string | null
-    posts?: PostListRelationFilter
+    username?: StringFilter<"User"> | string
+    phone?: StringNullableFilter<"User"> | string | null
   }, "userId" | "email">
 
   export type UserOrderByWithAggregationInput = {
     userId?: SortOrder
+    username?: SortOrder
     email?: SortOrder
-    name?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -13569,123 +12280,67 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     userId?: IntWithAggregatesFilter<"User"> | number
+    username?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
-    name?: StringNullableWithAggregatesFilter<"User"> | string | null
+    phone?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
-  export type PostWhereInput = {
-    AND?: PostWhereInput | PostWhereInput[]
-    OR?: PostWhereInput[]
-    NOT?: PostWhereInput | PostWhereInput[]
-    postId?: IntFilter<"Post"> | number
-    title?: StringFilter<"Post"> | string
-    content?: StringNullableFilter<"Post"> | string | null
-    published?: BoolFilter<"Post"> | boolean
-    authorId?: IntFilter<"Post"> | number
-    author?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }
-
-  export type PostOrderByWithRelationInput = {
-    postId?: SortOrder
-    title?: SortOrder
-    content?: SortOrderInput | SortOrder
-    published?: SortOrder
-    authorId?: SortOrder
-    author?: UserOrderByWithRelationInput
-  }
-
-  export type PostWhereUniqueInput = Prisma.AtLeast<{
-    postId?: number
-    title?: string
-    AND?: PostWhereInput | PostWhereInput[]
-    OR?: PostWhereInput[]
-    NOT?: PostWhereInput | PostWhereInput[]
-    content?: StringNullableFilter<"Post"> | string | null
-    published?: BoolFilter<"Post"> | boolean
-    authorId?: IntFilter<"Post"> | number
-    author?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "postId" | "title">
-
-  export type PostOrderByWithAggregationInput = {
-    postId?: SortOrder
-    title?: SortOrder
-    content?: SortOrderInput | SortOrder
-    published?: SortOrder
-    authorId?: SortOrder
-    _count?: PostCountOrderByAggregateInput
-    _avg?: PostAvgOrderByAggregateInput
-    _max?: PostMaxOrderByAggregateInput
-    _min?: PostMinOrderByAggregateInput
-    _sum?: PostSumOrderByAggregateInput
-  }
-
-  export type PostScalarWhereWithAggregatesInput = {
-    AND?: PostScalarWhereWithAggregatesInput | PostScalarWhereWithAggregatesInput[]
-    OR?: PostScalarWhereWithAggregatesInput[]
-    NOT?: PostScalarWhereWithAggregatesInput | PostScalarWhereWithAggregatesInput[]
-    postId?: IntWithAggregatesFilter<"Post"> | number
-    title?: StringWithAggregatesFilter<"Post"> | string
-    content?: StringNullableWithAggregatesFilter<"Post"> | string | null
-    published?: BoolWithAggregatesFilter<"Post"> | boolean
-    authorId?: IntWithAggregatesFilter<"Post"> | number
-  }
-
-  export type VehiculeCreateInput = {
+  export type VehicleCreateInput = {
     vin: string
     local: boolean
-    registation: string
+    registration?: string | null
     registrationType?: $Enums.RegTypes | null
     location?: string | null
-    reservation?: ReservationCreateNestedManyWithoutVehiculeInput
+    reservation?: ReservationCreateNestedManyWithoutVehicleInput
   }
 
-  export type VehiculeUncheckedCreateInput = {
+  export type VehicleUncheckedCreateInput = {
     vin: string
     local: boolean
-    registation: string
+    registration?: string | null
     registrationType?: $Enums.RegTypes | null
     location?: string | null
-    reservation?: ReservationUncheckedCreateNestedManyWithoutVehiculeInput
+    reservation?: ReservationUncheckedCreateNestedManyWithoutVehicleInput
   }
 
-  export type VehiculeUpdateInput = {
+  export type VehicleUpdateInput = {
     vin?: StringFieldUpdateOperationsInput | string
     local?: BoolFieldUpdateOperationsInput | boolean
-    registation?: StringFieldUpdateOperationsInput | string
+    registration?: NullableStringFieldUpdateOperationsInput | string | null
     registrationType?: NullableEnumRegTypesFieldUpdateOperationsInput | $Enums.RegTypes | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    reservation?: ReservationUpdateManyWithoutVehiculeNestedInput
+    reservation?: ReservationUpdateManyWithoutVehicleNestedInput
   }
 
-  export type VehiculeUncheckedUpdateInput = {
+  export type VehicleUncheckedUpdateInput = {
     vin?: StringFieldUpdateOperationsInput | string
     local?: BoolFieldUpdateOperationsInput | boolean
-    registation?: StringFieldUpdateOperationsInput | string
+    registration?: NullableStringFieldUpdateOperationsInput | string | null
     registrationType?: NullableEnumRegTypesFieldUpdateOperationsInput | $Enums.RegTypes | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
-    reservation?: ReservationUncheckedUpdateManyWithoutVehiculeNestedInput
+    reservation?: ReservationUncheckedUpdateManyWithoutVehicleNestedInput
   }
 
-  export type VehiculeCreateManyInput = {
+  export type VehicleCreateManyInput = {
     vin: string
     local: boolean
-    registation: string
+    registration?: string | null
     registrationType?: $Enums.RegTypes | null
     location?: string | null
   }
 
-  export type VehiculeUpdateManyMutationInput = {
+  export type VehicleUpdateManyMutationInput = {
     vin?: StringFieldUpdateOperationsInput | string
     local?: BoolFieldUpdateOperationsInput | boolean
-    registation?: StringFieldUpdateOperationsInput | string
+    registration?: NullableStringFieldUpdateOperationsInput | string | null
     registrationType?: NullableEnumRegTypesFieldUpdateOperationsInput | $Enums.RegTypes | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type VehiculeUncheckedUpdateManyInput = {
+  export type VehicleUncheckedUpdateManyInput = {
     vin?: StringFieldUpdateOperationsInput | string
     local?: BoolFieldUpdateOperationsInput | boolean
-    registation?: StringFieldUpdateOperationsInput | string
+    registration?: NullableStringFieldUpdateOperationsInput | string | null
     registrationType?: NullableEnumRegTypesFieldUpdateOperationsInput | $Enums.RegTypes | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -13782,7 +12437,7 @@ export namespace Prisma {
     date: Date | string
     baseFee?: number | null
     repairStatus?: $Enums.RepairStatus | null
-    vehicule: VehiculeCreateNestedOneWithoutReservationInput
+    vehicle: VehicleCreateNestedOneWithoutReservationInput
     diagnostic?: DiagnosticCreateNestedManyWithoutReservationInput
     repair?: RepairCreateNestedManyWithoutReservationInput
   }
@@ -13793,7 +12448,7 @@ export namespace Prisma {
     date: Date | string
     baseFee?: number | null
     repairStatus?: $Enums.RepairStatus | null
-    vehiculeId: string
+    vehicleId: string
     diagnostic?: DiagnosticUncheckedCreateNestedManyWithoutReservationInput
     repair?: RepairUncheckedCreateNestedManyWithoutReservationInput
   }
@@ -13803,7 +12458,7 @@ export namespace Prisma {
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     baseFee?: NullableFloatFieldUpdateOperationsInput | number | null
     repairStatus?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
-    vehicule?: VehiculeUpdateOneRequiredWithoutReservationNestedInput
+    vehicle?: VehicleUpdateOneRequiredWithoutReservationNestedInput
     diagnostic?: DiagnosticUpdateManyWithoutReservationNestedInput
     repair?: RepairUpdateManyWithoutReservationNestedInput
   }
@@ -13814,7 +12469,7 @@ export namespace Prisma {
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     baseFee?: NullableFloatFieldUpdateOperationsInput | number | null
     repairStatus?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
-    vehiculeId?: StringFieldUpdateOperationsInput | string
+    vehicleId?: StringFieldUpdateOperationsInput | string
     diagnostic?: DiagnosticUncheckedUpdateManyWithoutReservationNestedInput
     repair?: RepairUncheckedUpdateManyWithoutReservationNestedInput
   }
@@ -13825,7 +12480,7 @@ export namespace Prisma {
     date: Date | string
     baseFee?: number | null
     repairStatus?: $Enums.RepairStatus | null
-    vehiculeId: string
+    vehicleId: string
   }
 
   export type ReservationUpdateManyMutationInput = {
@@ -13841,7 +12496,7 @@ export namespace Prisma {
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     baseFee?: NullableFloatFieldUpdateOperationsInput | number | null
     repairStatus?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
-    vehiculeId?: StringFieldUpdateOperationsInput | string
+    vehicleId?: StringFieldUpdateOperationsInput | string
   }
 
   export type DiagnosticCreateInput = {
@@ -14026,98 +12681,49 @@ export namespace Prisma {
   }
 
   export type UserCreateInput = {
+    username?: string
     email: string
-    name?: string | null
-    posts?: PostCreateNestedManyWithoutAuthorInput
+    phone?: string | null
   }
 
   export type UserUncheckedCreateInput = {
     userId?: number
+    username?: string
     email: string
-    name?: string | null
-    posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
+    phone?: string | null
   }
 
   export type UserUpdateInput = {
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    posts?: PostUpdateManyWithoutAuthorNestedInput
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateInput = {
     userId?: IntFieldUpdateOperationsInput | number
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserCreateManyInput = {
     userId?: number
+    username?: string
     email: string
-    name?: string | null
+    phone?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
     userId?: IntFieldUpdateOperationsInput | number
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type PostCreateInput = {
-    title: string
-    content?: string | null
-    published?: boolean
-    author: UserCreateNestedOneWithoutPostsInput
-  }
-
-  export type PostUncheckedCreateInput = {
-    postId?: number
-    title: string
-    content?: string | null
-    published?: boolean
-    authorId: number
-  }
-
-  export type PostUpdateInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    content?: NullableStringFieldUpdateOperationsInput | string | null
-    published?: BoolFieldUpdateOperationsInput | boolean
-    author?: UserUpdateOneRequiredWithoutPostsNestedInput
-  }
-
-  export type PostUncheckedUpdateInput = {
-    postId?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    content?: NullableStringFieldUpdateOperationsInput | string | null
-    published?: BoolFieldUpdateOperationsInput | boolean
-    authorId?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type PostCreateManyInput = {
-    postId?: number
-    title: string
-    content?: string | null
-    published?: boolean
-    authorId: number
-  }
-
-  export type PostUpdateManyMutationInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    content?: NullableStringFieldUpdateOperationsInput | string | null
-    published?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type PostUncheckedUpdateManyInput = {
-    postId?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    content?: NullableStringFieldUpdateOperationsInput | string | null
-    published?: BoolFieldUpdateOperationsInput | boolean
-    authorId?: IntFieldUpdateOperationsInput | number
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -14140,13 +12746,6 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type EnumRegTypesNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.RegTypes | EnumRegTypesFieldRefInput<$PrismaModel> | null
-    in?: $Enums.RegTypes[] | ListEnumRegTypesFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.RegTypes[] | ListEnumRegTypesFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumRegTypesNullableFilter<$PrismaModel> | $Enums.RegTypes | null
-  }
-
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -14160,6 +12759,13 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type EnumRegTypesNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.RegTypes | EnumRegTypesFieldRefInput<$PrismaModel> | null
+    in?: $Enums.RegTypes[] | ListEnumRegTypesFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.RegTypes[] | ListEnumRegTypesFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumRegTypesNullableFilter<$PrismaModel> | $Enums.RegTypes | null
   }
 
   export type ReservationListRelationFilter = {
@@ -14177,26 +12783,26 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type VehiculeCountOrderByAggregateInput = {
+  export type VehicleCountOrderByAggregateInput = {
     vin?: SortOrder
     local?: SortOrder
-    registation?: SortOrder
+    registration?: SortOrder
     registrationType?: SortOrder
     location?: SortOrder
   }
 
-  export type VehiculeMaxOrderByAggregateInput = {
+  export type VehicleMaxOrderByAggregateInput = {
     vin?: SortOrder
     local?: SortOrder
-    registation?: SortOrder
+    registration?: SortOrder
     registrationType?: SortOrder
     location?: SortOrder
   }
 
-  export type VehiculeMinOrderByAggregateInput = {
+  export type VehicleMinOrderByAggregateInput = {
     vin?: SortOrder
     local?: SortOrder
-    registation?: SortOrder
+    registration?: SortOrder
     registrationType?: SortOrder
     location?: SortOrder
   }
@@ -14227,16 +12833,6 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type EnumRegTypesNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.RegTypes | EnumRegTypesFieldRefInput<$PrismaModel> | null
-    in?: $Enums.RegTypes[] | ListEnumRegTypesFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.RegTypes[] | ListEnumRegTypesFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumRegTypesNullableWithAggregatesFilter<$PrismaModel> | $Enums.RegTypes | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumRegTypesNullableFilter<$PrismaModel>
-    _max?: NestedEnumRegTypesNullableFilter<$PrismaModel>
-  }
-
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -14253,6 +12849,16 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type EnumRegTypesNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.RegTypes | EnumRegTypesFieldRefInput<$PrismaModel> | null
+    in?: $Enums.RegTypes[] | ListEnumRegTypesFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.RegTypes[] | ListEnumRegTypesFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumRegTypesNullableWithAggregatesFilter<$PrismaModel> | $Enums.RegTypes | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumRegTypesNullableFilter<$PrismaModel>
+    _max?: NestedEnumRegTypesNullableFilter<$PrismaModel>
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -14460,9 +13066,9 @@ export namespace Prisma {
     not?: NestedEnumRepairStatusNullableFilter<$PrismaModel> | $Enums.RepairStatus | null
   }
 
-  export type VehiculeScalarRelationFilter = {
-    is?: VehiculeWhereInput
-    isNot?: VehiculeWhereInput
+  export type VehicleScalarRelationFilter = {
+    is?: VehicleWhereInput
+    isNot?: VehicleWhereInput
   }
 
   export type ReservationCountOrderByAggregateInput = {
@@ -14471,7 +13077,7 @@ export namespace Prisma {
     date?: SortOrder
     baseFee?: SortOrder
     repairStatus?: SortOrder
-    vehiculeId?: SortOrder
+    vehicleId?: SortOrder
   }
 
   export type ReservationAvgOrderByAggregateInput = {
@@ -14485,7 +13091,7 @@ export namespace Prisma {
     date?: SortOrder
     baseFee?: SortOrder
     repairStatus?: SortOrder
-    vehiculeId?: SortOrder
+    vehicleId?: SortOrder
   }
 
   export type ReservationMinOrderByAggregateInput = {
@@ -14494,7 +13100,7 @@ export namespace Prisma {
     date?: SortOrder
     baseFee?: SortOrder
     repairStatus?: SortOrder
-    vehiculeId?: SortOrder
+    vehicleId?: SortOrder
   }
 
   export type ReservationSumOrderByAggregateInput = {
@@ -14690,20 +13296,11 @@ export namespace Prisma {
     vendorId?: SortOrder
   }
 
-  export type PostListRelationFilter = {
-    every?: PostWhereInput
-    some?: PostWhereInput
-    none?: PostWhereInput
-  }
-
-  export type PostOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type UserCountOrderByAggregateInput = {
     userId?: SortOrder
+    username?: SortOrder
     email?: SortOrder
-    name?: SortOrder
+    phone?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -14712,70 +13309,33 @@ export namespace Prisma {
 
   export type UserMaxOrderByAggregateInput = {
     userId?: SortOrder
+    username?: SortOrder
     email?: SortOrder
-    name?: SortOrder
+    phone?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     userId?: SortOrder
+    username?: SortOrder
     email?: SortOrder
-    name?: SortOrder
+    phone?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
     userId?: SortOrder
   }
 
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
-  }
-
-  export type PostCountOrderByAggregateInput = {
-    postId?: SortOrder
-    title?: SortOrder
-    content?: SortOrder
-    published?: SortOrder
-    authorId?: SortOrder
-  }
-
-  export type PostAvgOrderByAggregateInput = {
-    postId?: SortOrder
-    authorId?: SortOrder
-  }
-
-  export type PostMaxOrderByAggregateInput = {
-    postId?: SortOrder
-    title?: SortOrder
-    content?: SortOrder
-    published?: SortOrder
-    authorId?: SortOrder
-  }
-
-  export type PostMinOrderByAggregateInput = {
-    postId?: SortOrder
-    title?: SortOrder
-    content?: SortOrder
-    published?: SortOrder
-    authorId?: SortOrder
-  }
-
-  export type PostSumOrderByAggregateInput = {
-    postId?: SortOrder
-    authorId?: SortOrder
-  }
-
-  export type ReservationCreateNestedManyWithoutVehiculeInput = {
-    create?: XOR<ReservationCreateWithoutVehiculeInput, ReservationUncheckedCreateWithoutVehiculeInput> | ReservationCreateWithoutVehiculeInput[] | ReservationUncheckedCreateWithoutVehiculeInput[]
-    connectOrCreate?: ReservationCreateOrConnectWithoutVehiculeInput | ReservationCreateOrConnectWithoutVehiculeInput[]
-    createMany?: ReservationCreateManyVehiculeInputEnvelope
+  export type ReservationCreateNestedManyWithoutVehicleInput = {
+    create?: XOR<ReservationCreateWithoutVehicleInput, ReservationUncheckedCreateWithoutVehicleInput> | ReservationCreateWithoutVehicleInput[] | ReservationUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: ReservationCreateOrConnectWithoutVehicleInput | ReservationCreateOrConnectWithoutVehicleInput[]
+    createMany?: ReservationCreateManyVehicleInputEnvelope
     connect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
   }
 
-  export type ReservationUncheckedCreateNestedManyWithoutVehiculeInput = {
-    create?: XOR<ReservationCreateWithoutVehiculeInput, ReservationUncheckedCreateWithoutVehiculeInput> | ReservationCreateWithoutVehiculeInput[] | ReservationUncheckedCreateWithoutVehiculeInput[]
-    connectOrCreate?: ReservationCreateOrConnectWithoutVehiculeInput | ReservationCreateOrConnectWithoutVehiculeInput[]
-    createMany?: ReservationCreateManyVehiculeInputEnvelope
+  export type ReservationUncheckedCreateNestedManyWithoutVehicleInput = {
+    create?: XOR<ReservationCreateWithoutVehicleInput, ReservationUncheckedCreateWithoutVehicleInput> | ReservationCreateWithoutVehicleInput[] | ReservationUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: ReservationCreateOrConnectWithoutVehicleInput | ReservationCreateOrConnectWithoutVehicleInput[]
+    createMany?: ReservationCreateManyVehicleInputEnvelope
     connect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
   }
 
@@ -14787,39 +13347,39 @@ export namespace Prisma {
     set?: boolean
   }
 
-  export type NullableEnumRegTypesFieldUpdateOperationsInput = {
-    set?: $Enums.RegTypes | null
-  }
-
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
 
-  export type ReservationUpdateManyWithoutVehiculeNestedInput = {
-    create?: XOR<ReservationCreateWithoutVehiculeInput, ReservationUncheckedCreateWithoutVehiculeInput> | ReservationCreateWithoutVehiculeInput[] | ReservationUncheckedCreateWithoutVehiculeInput[]
-    connectOrCreate?: ReservationCreateOrConnectWithoutVehiculeInput | ReservationCreateOrConnectWithoutVehiculeInput[]
-    upsert?: ReservationUpsertWithWhereUniqueWithoutVehiculeInput | ReservationUpsertWithWhereUniqueWithoutVehiculeInput[]
-    createMany?: ReservationCreateManyVehiculeInputEnvelope
+  export type NullableEnumRegTypesFieldUpdateOperationsInput = {
+    set?: $Enums.RegTypes | null
+  }
+
+  export type ReservationUpdateManyWithoutVehicleNestedInput = {
+    create?: XOR<ReservationCreateWithoutVehicleInput, ReservationUncheckedCreateWithoutVehicleInput> | ReservationCreateWithoutVehicleInput[] | ReservationUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: ReservationCreateOrConnectWithoutVehicleInput | ReservationCreateOrConnectWithoutVehicleInput[]
+    upsert?: ReservationUpsertWithWhereUniqueWithoutVehicleInput | ReservationUpsertWithWhereUniqueWithoutVehicleInput[]
+    createMany?: ReservationCreateManyVehicleInputEnvelope
     set?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
     disconnect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
     delete?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
     connect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-    update?: ReservationUpdateWithWhereUniqueWithoutVehiculeInput | ReservationUpdateWithWhereUniqueWithoutVehiculeInput[]
-    updateMany?: ReservationUpdateManyWithWhereWithoutVehiculeInput | ReservationUpdateManyWithWhereWithoutVehiculeInput[]
+    update?: ReservationUpdateWithWhereUniqueWithoutVehicleInput | ReservationUpdateWithWhereUniqueWithoutVehicleInput[]
+    updateMany?: ReservationUpdateManyWithWhereWithoutVehicleInput | ReservationUpdateManyWithWhereWithoutVehicleInput[]
     deleteMany?: ReservationScalarWhereInput | ReservationScalarWhereInput[]
   }
 
-  export type ReservationUncheckedUpdateManyWithoutVehiculeNestedInput = {
-    create?: XOR<ReservationCreateWithoutVehiculeInput, ReservationUncheckedCreateWithoutVehiculeInput> | ReservationCreateWithoutVehiculeInput[] | ReservationUncheckedCreateWithoutVehiculeInput[]
-    connectOrCreate?: ReservationCreateOrConnectWithoutVehiculeInput | ReservationCreateOrConnectWithoutVehiculeInput[]
-    upsert?: ReservationUpsertWithWhereUniqueWithoutVehiculeInput | ReservationUpsertWithWhereUniqueWithoutVehiculeInput[]
-    createMany?: ReservationCreateManyVehiculeInputEnvelope
+  export type ReservationUncheckedUpdateManyWithoutVehicleNestedInput = {
+    create?: XOR<ReservationCreateWithoutVehicleInput, ReservationUncheckedCreateWithoutVehicleInput> | ReservationCreateWithoutVehicleInput[] | ReservationUncheckedCreateWithoutVehicleInput[]
+    connectOrCreate?: ReservationCreateOrConnectWithoutVehicleInput | ReservationCreateOrConnectWithoutVehicleInput[]
+    upsert?: ReservationUpsertWithWhereUniqueWithoutVehicleInput | ReservationUpsertWithWhereUniqueWithoutVehicleInput[]
+    createMany?: ReservationCreateManyVehicleInputEnvelope
     set?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
     disconnect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
     delete?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
     connect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
-    update?: ReservationUpdateWithWhereUniqueWithoutVehiculeInput | ReservationUpdateWithWhereUniqueWithoutVehiculeInput[]
-    updateMany?: ReservationUpdateManyWithWhereWithoutVehiculeInput | ReservationUpdateManyWithWhereWithoutVehiculeInput[]
+    update?: ReservationUpdateWithWhereUniqueWithoutVehicleInput | ReservationUpdateWithWhereUniqueWithoutVehicleInput[]
+    updateMany?: ReservationUpdateManyWithWhereWithoutVehicleInput | ReservationUpdateManyWithWhereWithoutVehicleInput[]
     deleteMany?: ReservationScalarWhereInput | ReservationScalarWhereInput[]
   }
 
@@ -15009,10 +13569,10 @@ export namespace Prisma {
     deleteMany?: RepairScalarWhereInput | RepairScalarWhereInput[]
   }
 
-  export type VehiculeCreateNestedOneWithoutReservationInput = {
-    create?: XOR<VehiculeCreateWithoutReservationInput, VehiculeUncheckedCreateWithoutReservationInput>
-    connectOrCreate?: VehiculeCreateOrConnectWithoutReservationInput
-    connect?: VehiculeWhereUniqueInput
+  export type VehicleCreateNestedOneWithoutReservationInput = {
+    create?: XOR<VehicleCreateWithoutReservationInput, VehicleUncheckedCreateWithoutReservationInput>
+    connectOrCreate?: VehicleCreateOrConnectWithoutReservationInput
+    connect?: VehicleWhereUniqueInput
   }
 
   export type DiagnosticCreateNestedManyWithoutReservationInput = {
@@ -15059,12 +13619,12 @@ export namespace Prisma {
     set?: $Enums.RepairStatus | null
   }
 
-  export type VehiculeUpdateOneRequiredWithoutReservationNestedInput = {
-    create?: XOR<VehiculeCreateWithoutReservationInput, VehiculeUncheckedCreateWithoutReservationInput>
-    connectOrCreate?: VehiculeCreateOrConnectWithoutReservationInput
-    upsert?: VehiculeUpsertWithoutReservationInput
-    connect?: VehiculeWhereUniqueInput
-    update?: XOR<XOR<VehiculeUpdateToOneWithWhereWithoutReservationInput, VehiculeUpdateWithoutReservationInput>, VehiculeUncheckedUpdateWithoutReservationInput>
+  export type VehicleUpdateOneRequiredWithoutReservationNestedInput = {
+    create?: XOR<VehicleCreateWithoutReservationInput, VehicleUncheckedCreateWithoutReservationInput>
+    connectOrCreate?: VehicleCreateOrConnectWithoutReservationInput
+    upsert?: VehicleUpsertWithoutReservationInput
+    connect?: VehicleWhereUniqueInput
+    update?: XOR<XOR<VehicleUpdateToOneWithWhereWithoutReservationInput, VehicleUpdateWithoutReservationInput>, VehicleUncheckedUpdateWithoutReservationInput>
   }
 
   export type DiagnosticUpdateManyWithoutReservationNestedInput = {
@@ -15281,62 +13841,6 @@ export namespace Prisma {
     push?: number | number[]
   }
 
-  export type PostCreateNestedManyWithoutAuthorInput = {
-    create?: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput> | PostCreateWithoutAuthorInput[] | PostUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: PostCreateOrConnectWithoutAuthorInput | PostCreateOrConnectWithoutAuthorInput[]
-    createMany?: PostCreateManyAuthorInputEnvelope
-    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-  }
-
-  export type PostUncheckedCreateNestedManyWithoutAuthorInput = {
-    create?: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput> | PostCreateWithoutAuthorInput[] | PostUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: PostCreateOrConnectWithoutAuthorInput | PostCreateOrConnectWithoutAuthorInput[]
-    createMany?: PostCreateManyAuthorInputEnvelope
-    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-  }
-
-  export type PostUpdateManyWithoutAuthorNestedInput = {
-    create?: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput> | PostCreateWithoutAuthorInput[] | PostUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: PostCreateOrConnectWithoutAuthorInput | PostCreateOrConnectWithoutAuthorInput[]
-    upsert?: PostUpsertWithWhereUniqueWithoutAuthorInput | PostUpsertWithWhereUniqueWithoutAuthorInput[]
-    createMany?: PostCreateManyAuthorInputEnvelope
-    set?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    disconnect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    delete?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    update?: PostUpdateWithWhereUniqueWithoutAuthorInput | PostUpdateWithWhereUniqueWithoutAuthorInput[]
-    updateMany?: PostUpdateManyWithWhereWithoutAuthorInput | PostUpdateManyWithWhereWithoutAuthorInput[]
-    deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
-  }
-
-  export type PostUncheckedUpdateManyWithoutAuthorNestedInput = {
-    create?: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput> | PostCreateWithoutAuthorInput[] | PostUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: PostCreateOrConnectWithoutAuthorInput | PostCreateOrConnectWithoutAuthorInput[]
-    upsert?: PostUpsertWithWhereUniqueWithoutAuthorInput | PostUpsertWithWhereUniqueWithoutAuthorInput[]
-    createMany?: PostCreateManyAuthorInputEnvelope
-    set?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    disconnect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    delete?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    update?: PostUpdateWithWhereUniqueWithoutAuthorInput | PostUpdateWithWhereUniqueWithoutAuthorInput[]
-    updateMany?: PostUpdateManyWithWhereWithoutAuthorInput | PostUpdateManyWithWhereWithoutAuthorInput[]
-    deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
-  }
-
-  export type UserCreateNestedOneWithoutPostsInput = {
-    create?: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutPostsInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type UserUpdateOneRequiredWithoutPostsNestedInput = {
-    create?: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutPostsInput
-    upsert?: UserUpsertWithoutPostsInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPostsInput, UserUpdateWithoutPostsInput>, UserUncheckedUpdateWithoutPostsInput>
-  }
-
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -15356,13 +13860,6 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type NestedEnumRegTypesNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.RegTypes | EnumRegTypesFieldRefInput<$PrismaModel> | null
-    in?: $Enums.RegTypes[] | ListEnumRegTypesFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.RegTypes[] | ListEnumRegTypesFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumRegTypesNullableFilter<$PrismaModel> | $Enums.RegTypes | null
-  }
-
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -15375,6 +13872,13 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedEnumRegTypesNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.RegTypes | EnumRegTypesFieldRefInput<$PrismaModel> | null
+    in?: $Enums.RegTypes[] | ListEnumRegTypesFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.RegTypes[] | ListEnumRegTypesFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumRegTypesNullableFilter<$PrismaModel> | $Enums.RegTypes | null
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -15413,27 +13917,6 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type NestedEnumRegTypesNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.RegTypes | EnumRegTypesFieldRefInput<$PrismaModel> | null
-    in?: $Enums.RegTypes[] | ListEnumRegTypesFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.RegTypes[] | ListEnumRegTypesFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumRegTypesNullableWithAggregatesFilter<$PrismaModel> | $Enums.RegTypes | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumRegTypesNullableFilter<$PrismaModel>
-    _max?: NestedEnumRegTypesNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -15449,6 +13932,27 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnumRegTypesNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.RegTypes | EnumRegTypesFieldRefInput<$PrismaModel> | null
+    in?: $Enums.RegTypes[] | ListEnumRegTypesFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.RegTypes[] | ListEnumRegTypesFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumRegTypesNullableWithAggregatesFilter<$PrismaModel> | $Enums.RegTypes | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumRegTypesNullableFilter<$PrismaModel>
+    _max?: NestedEnumRegTypesNullableFilter<$PrismaModel>
   }
 
   export type NestedFloatFilter<$PrismaModel = never> = {
@@ -15579,7 +14083,7 @@ export namespace Prisma {
     _max?: NestedEnumRepairStatusNullableFilter<$PrismaModel>
   }
 
-  export type ReservationCreateWithoutVehiculeInput = {
+  export type ReservationCreateWithoutVehicleInput = {
     mobilePhone: string
     date: Date | string
     baseFee?: number | null
@@ -15588,7 +14092,7 @@ export namespace Prisma {
     repair?: RepairCreateNestedManyWithoutReservationInput
   }
 
-  export type ReservationUncheckedCreateWithoutVehiculeInput = {
+  export type ReservationUncheckedCreateWithoutVehicleInput = {
     reservationId?: number
     mobilePhone: string
     date: Date | string
@@ -15598,30 +14102,30 @@ export namespace Prisma {
     repair?: RepairUncheckedCreateNestedManyWithoutReservationInput
   }
 
-  export type ReservationCreateOrConnectWithoutVehiculeInput = {
+  export type ReservationCreateOrConnectWithoutVehicleInput = {
     where: ReservationWhereUniqueInput
-    create: XOR<ReservationCreateWithoutVehiculeInput, ReservationUncheckedCreateWithoutVehiculeInput>
+    create: XOR<ReservationCreateWithoutVehicleInput, ReservationUncheckedCreateWithoutVehicleInput>
   }
 
-  export type ReservationCreateManyVehiculeInputEnvelope = {
-    data: ReservationCreateManyVehiculeInput | ReservationCreateManyVehiculeInput[]
+  export type ReservationCreateManyVehicleInputEnvelope = {
+    data: ReservationCreateManyVehicleInput | ReservationCreateManyVehicleInput[]
     skipDuplicates?: boolean
   }
 
-  export type ReservationUpsertWithWhereUniqueWithoutVehiculeInput = {
+  export type ReservationUpsertWithWhereUniqueWithoutVehicleInput = {
     where: ReservationWhereUniqueInput
-    update: XOR<ReservationUpdateWithoutVehiculeInput, ReservationUncheckedUpdateWithoutVehiculeInput>
-    create: XOR<ReservationCreateWithoutVehiculeInput, ReservationUncheckedCreateWithoutVehiculeInput>
+    update: XOR<ReservationUpdateWithoutVehicleInput, ReservationUncheckedUpdateWithoutVehicleInput>
+    create: XOR<ReservationCreateWithoutVehicleInput, ReservationUncheckedCreateWithoutVehicleInput>
   }
 
-  export type ReservationUpdateWithWhereUniqueWithoutVehiculeInput = {
+  export type ReservationUpdateWithWhereUniqueWithoutVehicleInput = {
     where: ReservationWhereUniqueInput
-    data: XOR<ReservationUpdateWithoutVehiculeInput, ReservationUncheckedUpdateWithoutVehiculeInput>
+    data: XOR<ReservationUpdateWithoutVehicleInput, ReservationUncheckedUpdateWithoutVehicleInput>
   }
 
-  export type ReservationUpdateManyWithWhereWithoutVehiculeInput = {
+  export type ReservationUpdateManyWithWhereWithoutVehicleInput = {
     where: ReservationScalarWhereInput
-    data: XOR<ReservationUpdateManyMutationInput, ReservationUncheckedUpdateManyWithoutVehiculeInput>
+    data: XOR<ReservationUpdateManyMutationInput, ReservationUncheckedUpdateManyWithoutVehicleInput>
   }
 
   export type ReservationScalarWhereInput = {
@@ -15633,7 +14137,7 @@ export namespace Prisma {
     date?: DateTimeFilter<"Reservation"> | Date | string
     baseFee?: FloatNullableFilter<"Reservation"> | number | null
     repairStatus?: EnumRepairStatusNullableFilter<"Reservation"> | $Enums.RepairStatus | null
-    vehiculeId?: StringFilter<"Reservation"> | string
+    vehicleId?: StringFilter<"Reservation"> | string
   }
 
   export type HeadMechanicCreateWithoutMechanicInput = {
@@ -15891,25 +14395,25 @@ export namespace Prisma {
     totalRepairHours?: IntFilter<"Repair"> | number
   }
 
-  export type VehiculeCreateWithoutReservationInput = {
+  export type VehicleCreateWithoutReservationInput = {
     vin: string
     local: boolean
-    registation: string
+    registration?: string | null
     registrationType?: $Enums.RegTypes | null
     location?: string | null
   }
 
-  export type VehiculeUncheckedCreateWithoutReservationInput = {
+  export type VehicleUncheckedCreateWithoutReservationInput = {
     vin: string
     local: boolean
-    registation: string
+    registration?: string | null
     registrationType?: $Enums.RegTypes | null
     location?: string | null
   }
 
-  export type VehiculeCreateOrConnectWithoutReservationInput = {
-    where: VehiculeWhereUniqueInput
-    create: XOR<VehiculeCreateWithoutReservationInput, VehiculeUncheckedCreateWithoutReservationInput>
+  export type VehicleCreateOrConnectWithoutReservationInput = {
+    where: VehicleWhereUniqueInput
+    create: XOR<VehicleCreateWithoutReservationInput, VehicleUncheckedCreateWithoutReservationInput>
   }
 
   export type DiagnosticCreateWithoutReservationInput = {
@@ -15956,29 +14460,29 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type VehiculeUpsertWithoutReservationInput = {
-    update: XOR<VehiculeUpdateWithoutReservationInput, VehiculeUncheckedUpdateWithoutReservationInput>
-    create: XOR<VehiculeCreateWithoutReservationInput, VehiculeUncheckedCreateWithoutReservationInput>
-    where?: VehiculeWhereInput
+  export type VehicleUpsertWithoutReservationInput = {
+    update: XOR<VehicleUpdateWithoutReservationInput, VehicleUncheckedUpdateWithoutReservationInput>
+    create: XOR<VehicleCreateWithoutReservationInput, VehicleUncheckedCreateWithoutReservationInput>
+    where?: VehicleWhereInput
   }
 
-  export type VehiculeUpdateToOneWithWhereWithoutReservationInput = {
-    where?: VehiculeWhereInput
-    data: XOR<VehiculeUpdateWithoutReservationInput, VehiculeUncheckedUpdateWithoutReservationInput>
+  export type VehicleUpdateToOneWithWhereWithoutReservationInput = {
+    where?: VehicleWhereInput
+    data: XOR<VehicleUpdateWithoutReservationInput, VehicleUncheckedUpdateWithoutReservationInput>
   }
 
-  export type VehiculeUpdateWithoutReservationInput = {
+  export type VehicleUpdateWithoutReservationInput = {
     vin?: StringFieldUpdateOperationsInput | string
     local?: BoolFieldUpdateOperationsInput | boolean
-    registation?: StringFieldUpdateOperationsInput | string
+    registration?: NullableStringFieldUpdateOperationsInput | string | null
     registrationType?: NullableEnumRegTypesFieldUpdateOperationsInput | $Enums.RegTypes | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type VehiculeUncheckedUpdateWithoutReservationInput = {
+  export type VehicleUncheckedUpdateWithoutReservationInput = {
     vin?: StringFieldUpdateOperationsInput | string
     local?: BoolFieldUpdateOperationsInput | boolean
-    registation?: StringFieldUpdateOperationsInput | string
+    registration?: NullableStringFieldUpdateOperationsInput | string | null
     registrationType?: NullableEnumRegTypesFieldUpdateOperationsInput | $Enums.RegTypes | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -16059,7 +14563,7 @@ export namespace Prisma {
     date: Date | string
     baseFee?: number | null
     repairStatus?: $Enums.RepairStatus | null
-    vehicule: VehiculeCreateNestedOneWithoutReservationInput
+    vehicle: VehicleCreateNestedOneWithoutReservationInput
     repair?: RepairCreateNestedManyWithoutReservationInput
   }
 
@@ -16069,7 +14573,7 @@ export namespace Prisma {
     date: Date | string
     baseFee?: number | null
     repairStatus?: $Enums.RepairStatus | null
-    vehiculeId: string
+    vehicleId: string
     repair?: RepairUncheckedCreateNestedManyWithoutReservationInput
   }
 
@@ -16141,7 +14645,7 @@ export namespace Prisma {
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     baseFee?: NullableFloatFieldUpdateOperationsInput | number | null
     repairStatus?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
-    vehicule?: VehiculeUpdateOneRequiredWithoutReservationNestedInput
+    vehicle?: VehicleUpdateOneRequiredWithoutReservationNestedInput
     repair?: RepairUpdateManyWithoutReservationNestedInput
   }
 
@@ -16151,7 +14655,7 @@ export namespace Prisma {
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     baseFee?: NullableFloatFieldUpdateOperationsInput | number | null
     repairStatus?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
-    vehiculeId?: StringFieldUpdateOperationsInput | string
+    vehicleId?: StringFieldUpdateOperationsInput | string
     repair?: RepairUncheckedUpdateManyWithoutReservationNestedInput
   }
 
@@ -16199,7 +14703,7 @@ export namespace Prisma {
     date: Date | string
     baseFee?: number | null
     repairStatus?: $Enums.RepairStatus | null
-    vehicule: VehiculeCreateNestedOneWithoutReservationInput
+    vehicle: VehicleCreateNestedOneWithoutReservationInput
     diagnostic?: DiagnosticCreateNestedManyWithoutReservationInput
   }
 
@@ -16209,7 +14713,7 @@ export namespace Prisma {
     date: Date | string
     baseFee?: number | null
     repairStatus?: $Enums.RepairStatus | null
-    vehiculeId: string
+    vehicleId: string
     diagnostic?: DiagnosticUncheckedCreateNestedManyWithoutReservationInput
   }
 
@@ -16271,7 +14775,7 @@ export namespace Prisma {
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     baseFee?: NullableFloatFieldUpdateOperationsInput | number | null
     repairStatus?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
-    vehicule?: VehiculeUpdateOneRequiredWithoutReservationNestedInput
+    vehicle?: VehicleUpdateOneRequiredWithoutReservationNestedInput
     diagnostic?: DiagnosticUpdateManyWithoutReservationNestedInput
   }
 
@@ -16281,99 +14785,11 @@ export namespace Prisma {
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     baseFee?: NullableFloatFieldUpdateOperationsInput | number | null
     repairStatus?: NullableEnumRepairStatusFieldUpdateOperationsInput | $Enums.RepairStatus | null
-    vehiculeId?: StringFieldUpdateOperationsInput | string
+    vehicleId?: StringFieldUpdateOperationsInput | string
     diagnostic?: DiagnosticUncheckedUpdateManyWithoutReservationNestedInput
   }
 
-  export type PostCreateWithoutAuthorInput = {
-    title: string
-    content?: string | null
-    published?: boolean
-  }
-
-  export type PostUncheckedCreateWithoutAuthorInput = {
-    postId?: number
-    title: string
-    content?: string | null
-    published?: boolean
-  }
-
-  export type PostCreateOrConnectWithoutAuthorInput = {
-    where: PostWhereUniqueInput
-    create: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput>
-  }
-
-  export type PostCreateManyAuthorInputEnvelope = {
-    data: PostCreateManyAuthorInput | PostCreateManyAuthorInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type PostUpsertWithWhereUniqueWithoutAuthorInput = {
-    where: PostWhereUniqueInput
-    update: XOR<PostUpdateWithoutAuthorInput, PostUncheckedUpdateWithoutAuthorInput>
-    create: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput>
-  }
-
-  export type PostUpdateWithWhereUniqueWithoutAuthorInput = {
-    where: PostWhereUniqueInput
-    data: XOR<PostUpdateWithoutAuthorInput, PostUncheckedUpdateWithoutAuthorInput>
-  }
-
-  export type PostUpdateManyWithWhereWithoutAuthorInput = {
-    where: PostScalarWhereInput
-    data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyWithoutAuthorInput>
-  }
-
-  export type PostScalarWhereInput = {
-    AND?: PostScalarWhereInput | PostScalarWhereInput[]
-    OR?: PostScalarWhereInput[]
-    NOT?: PostScalarWhereInput | PostScalarWhereInput[]
-    postId?: IntFilter<"Post"> | number
-    title?: StringFilter<"Post"> | string
-    content?: StringNullableFilter<"Post"> | string | null
-    published?: BoolFilter<"Post"> | boolean
-    authorId?: IntFilter<"Post"> | number
-  }
-
-  export type UserCreateWithoutPostsInput = {
-    email: string
-    name?: string | null
-  }
-
-  export type UserUncheckedCreateWithoutPostsInput = {
-    userId?: number
-    email: string
-    name?: string | null
-  }
-
-  export type UserCreateOrConnectWithoutPostsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
-  }
-
-  export type UserUpsertWithoutPostsInput = {
-    update: XOR<UserUpdateWithoutPostsInput, UserUncheckedUpdateWithoutPostsInput>
-    create: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutPostsInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutPostsInput, UserUncheckedUpdateWithoutPostsInput>
-  }
-
-  export type UserUpdateWithoutPostsInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type UserUncheckedUpdateWithoutPostsInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type ReservationCreateManyVehiculeInput = {
+  export type ReservationCreateManyVehicleInput = {
     reservationId?: number
     mobilePhone: string
     date: Date | string
@@ -16381,7 +14797,7 @@ export namespace Prisma {
     repairStatus?: $Enums.RepairStatus | null
   }
 
-  export type ReservationUpdateWithoutVehiculeInput = {
+  export type ReservationUpdateWithoutVehicleInput = {
     mobilePhone?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     baseFee?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -16390,7 +14806,7 @@ export namespace Prisma {
     repair?: RepairUpdateManyWithoutReservationNestedInput
   }
 
-  export type ReservationUncheckedUpdateWithoutVehiculeInput = {
+  export type ReservationUncheckedUpdateWithoutVehicleInput = {
     reservationId?: IntFieldUpdateOperationsInput | number
     mobilePhone?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16400,7 +14816,7 @@ export namespace Prisma {
     repair?: RepairUncheckedUpdateManyWithoutReservationNestedInput
   }
 
-  export type ReservationUncheckedUpdateManyWithoutVehiculeInput = {
+  export type ReservationUncheckedUpdateManyWithoutVehicleInput = {
     reservationId?: IntFieldUpdateOperationsInput | number
     mobilePhone?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16550,33 +14966,6 @@ export namespace Prisma {
     mechanicId?: IntFieldUpdateOperationsInput | number
     payPerHour?: FloatFieldUpdateOperationsInput | number
     diagnosticDiagnosticId?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type PostCreateManyAuthorInput = {
-    postId?: number
-    title: string
-    content?: string | null
-    published?: boolean
-  }
-
-  export type PostUpdateWithoutAuthorInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    content?: NullableStringFieldUpdateOperationsInput | string | null
-    published?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type PostUncheckedUpdateWithoutAuthorInput = {
-    postId?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    content?: NullableStringFieldUpdateOperationsInput | string | null
-    published?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type PostUncheckedUpdateManyWithoutAuthorInput = {
-    postId?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    content?: NullableStringFieldUpdateOperationsInput | string | null
-    published?: BoolFieldUpdateOperationsInput | boolean
   }
 
 

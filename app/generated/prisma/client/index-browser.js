@@ -117,10 +117,10 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.VehiculeScalarFieldEnum = {
+exports.Prisma.VehicleScalarFieldEnum = {
   vin: 'vin',
   local: 'local',
-  registation: 'registation',
+  registration: 'registration',
   registrationType: 'registrationType',
   location: 'location'
 };
@@ -142,7 +142,7 @@ exports.Prisma.ReservationScalarFieldEnum = {
   date: 'date',
   baseFee: 'baseFee',
   repairStatus: 'repairStatus',
-  vehiculeId: 'vehiculeId'
+  vehicleId: 'vehicleId'
 };
 
 exports.Prisma.DiagnosticScalarFieldEnum = {
@@ -173,16 +173,9 @@ exports.Prisma.VendorScalarFieldEnum = {
 
 exports.Prisma.UserScalarFieldEnum = {
   userId: 'userId',
+  username: 'username',
   email: 'email',
-  name: 'name'
-};
-
-exports.Prisma.PostScalarFieldEnum = {
-  postId: 'postId',
-  title: 'title',
-  content: 'content',
-  published: 'published',
-  authorId: 'authorId'
+  phone: 'phone'
 };
 
 exports.Prisma.SortOrder = {
@@ -224,7 +217,7 @@ exports.RepairStatus = exports.$Enums.RepairStatus = {
 };
 
 exports.Prisma.ModelName = {
-  Vehicule: 'Vehicule',
+  Vehicle: 'Vehicle',
   Mechanic: 'Mechanic',
   HeadMechanic: 'HeadMechanic',
   Reservation: 'Reservation',
@@ -232,8 +225,7 @@ exports.Prisma.ModelName = {
   Repair: 'Repair',
   RepairPart: 'RepairPart',
   Vendor: 'Vendor',
-  User: 'User',
-  Post: 'Post'
+  User: 'User'
 };
 
 /**
