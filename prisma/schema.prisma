@@ -6,10 +6,142 @@
 
 generator client {
   provider = "prisma-client-js"
-  output = "../templates/prisma"
+  output   = "../app/generated/prisma/client"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+// creating models for the car
+// the models are to be inputted one by one and then linked
+// 1/ The models are being created (Somewhat done)
+// 2/ the models will be linked with each other (What i am currently doing)
+// 3/ test the relationship between these tables
+
+// Chb3a erreurat
+
+enum RegTypes {
+  TUN
+  RS
+  TRAC
+  PAT
+  CMD
+  CD
+  MD
+  MC
+  CC
+  REM
+  AA
+  ES
+  PE
+  IT
+}
+
+enum RepairStatus {
+  DIAGNOSTIC
+  REPAIR
+  SUCCESS
+  FAILURE
+}
+
+model Vehicule {
+  vin         String  @id
+  local       Boolean //for local in-house vehicules and the not local (imported) vehicules 
+  registation String // to maybe set automatically when the registration type is selected
+
+  // define in-house vehicules (nullable)
+  registrationType RegTypes? // null if local is false
+
+  // define imported vehicules (nullable also) 
+  location    String?
+  reservation Reservation[]
+}
+
+model Mechanic {
+  mechanicId             Int           @id
+  payPerHour             Float
+  headMechanic           HeadMechanic?
+  diagnostic             Diagnostic?   @relation(fields: [diagnosticDiagnosticId], references: [diagnosticId])
+  diagnosticDiagnosticId Int?
+  repair                 Repair?       @relation(fields: [repairRepairId], references: [repairId])
+  repairRepairId         Int?
+}
+
+model HeadMechanic {
+  mechanicId Int          @unique
+  mechanic   Mechanic     @relation(fields: [mechanicId], references: [mechanicId])
+  diagnostic Diagnostic[]
+  repair     Repair[]
+}
+
+// currently the phone number supports only the phones in tunisian format only (may support global phone numbers later)
+
+model Reservation {
+  reservationId Int           @id @default(autoincrement())
+  mobilePhone   String        @db.VarChar(8)
+  date          DateTime
+  baseFee       Float? // if there is a fee or not
+  repairStatus  RepairStatus? // to both get information about the repair and it's type
+  vehiculeId    String
+  vehicule      Vehicule      @relation(fields: [vehiculeId], references: [vin])
+
+  // to test later
+  // need to make this work for later @@db.check("mobile_phone ~ '^(2|5|9)[0-9]{7}$'") 
+  diagnostic Diagnostic[]
+  repair     Repair[]
+}
+
+model Diagnostic {
+  diagnosticId    Int          @id @default(autoincrement())
+  responsibleId   Int
+  responsible     HeadMechanic @relation(fields: [responsibleId], references: [mechanicId])
+  workersEmployed Mechanic[]
+
+  reservationId Int
+  reservation   Reservation @relation(fields: [reservationId], references: [reservationId]) // are names supposed to be the same?
+}
+
+model Repair {
+  repairId        Int          @id @default(autoincrement())
+  responsibleId   Int
+  responsible     HeadMechanic @relation(fields: [responsibleId], references: [mechanicId])
+  workersEmployed Mechanic[]
+
+  reservationId    Int
+  reservation      Reservation @relation(fields: [reservationId], references: [reservationId])
+  totalRepairHours Int
+}
+
+model RepairPart {
+  partId   String @id
+  price    Float
+  repairId Int[]
+  vendorId Int[]
+}
+
+// the price is maybe problematic
+
+model Vendor {
+  vendorId          Int    @id
+  vendorShopName    String
+  vendorShopAddress String
+}
+
+// models for TESTING puropses
+model User {
+  userId Int     @id @default(autoincrement())
+  email  String  @unique
+  name   String?
+  posts  Post[]
+}
+
+model Post {
+  postId    Int     @id @default(autoincrement())
+  title     String  @unique
+  content   String?
+  published Boolean @default(false)
+  authorId  Int
+  author    User    @relation(fields: [authorId], references: [userId])
 }
