@@ -1,35 +1,20 @@
-import { PrismaClient } from '../generated/prisma/client';
-import { withAccelerate } from '@prisma/extension-accelerate'
-import { NextResponse } from 'next/server';
+// This is the documentation location of the api request
+/**
+ * @openapi
+ * tags:
+ *   - name: Vehicles
+ *     description: 🏎 Car registration and details
+ *   - name: Users
+ *     description: 🚴🏻 User account management
+ *   - name: Reservation
+ *     description: ⏰ make and manage reservations
+ */
 
-export const dynamic = 'force-static'
 
-const prisma = new PrismaClient().$extends(withAccelerate())
-
-// these are some test functions to get used to api calling in nextjs.
-// this is where we store some api calls that are availabe in general
-//
-//
-// SEEDING THE SLAMA WAY
-export async function GET(request: Request) {
-  console.log("testing this is a pain")
-  try {
-    await prisma.user.create({
-      data: {
-        username: "notSOJohnen",
-        email: "ahmedJohnny@gmail.com",
-      }
-    })
-  } catch {
-    console.log("welp very sad")
-    return NextResponse.json({
-      Message: "Error, we didn't add to the database, server error!"
-    }, { status: 500 })
-  }
-  console.log("Added the user to the database")
-  return NextResponse.json({
-    Message: "Successfully added to the database."
-
-  })
-}
-// to figure out once i have set up the prisma orm
+/**
+ * @openapi
+ * /api/v1/userspace/vehicle/{id}:
+ *   get:
+ *     tags: [Vehicles]  # <-- Assign to category
+ *     summary: Get car details by VIN
+ */
