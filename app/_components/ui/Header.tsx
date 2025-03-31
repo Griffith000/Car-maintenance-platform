@@ -10,6 +10,8 @@ import { Menu } from 'lucide-react';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -19,30 +21,32 @@ const Header = () => {
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
+
             <Image
               src="/images/renault-logo.jpg"
-              alt="Realut Logo"
+              alt="Renault light Logo"
               width={40}
               height={40}
               className="object-contain"
               priority
+
             />
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
-            <Link href="/" className="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+            <Link href="/" className="text-destructive  hover:text-primary transition-colors">
               Home
             </Link>
-            <Link href="/services" className="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+            <Link href="/services" className="text-destructive hover:text-primary transition-colors">
               Services
             </Link>
-            <Link href="/about" className="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+            <Link href="/about" className="text-destructive hover:text-primary transition-colors">
               About
             </Link>
-            <Link href="/contact" className="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+            <Link href="/contact" className="text-destructive hover:text-primary transition-colors">
               Contact
             </Link>
-            <ThemeToggle />
           </nav>
+          <ThemeToggle />
           <div className="md:hidden">
             <Button
               variant="ghost"

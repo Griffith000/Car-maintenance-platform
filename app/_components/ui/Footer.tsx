@@ -16,7 +16,7 @@ export default function Footer() {
             className="col-span-1"
           >
             <Image
-              src="/realut-logo.png"
+              src="/images/renault-logo.jpg"
               alt="Realut Logo"
               width={120}
               height={40}
@@ -46,8 +46,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/booking" className="hover:text-yellow-400 transition-colors">
-                  Book Appointment
+                <Link href="/about" className="hover:text-yellow-400 transition-colors">
+                  About
                 </Link>
               </li>
             </ul>
@@ -79,14 +79,14 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>📍 123 Service Street</li>
               <li>📞 +1 234 567 890</li>
-              <li>✉️ service@realut.com</li>
+              <li>✉️ service@renault.com</li>
             </ul>
           </motion.div>
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center">
           <p className="text-sm">
-            © {new Date().getFullYear()} Realut Service Center. All rights reserved.
+            © {new Date().getFullYear()} Renault Service Center. All rights reserved.
           </p>
         </div>
       </div>

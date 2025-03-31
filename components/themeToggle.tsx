@@ -11,24 +11,38 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { useThemeStore } from "@/app/store/themeStore"
+import { useThemeStore } from "@/app/stores/themeStore"
 
 export const ThemeToggle = () => {
   const { setTheme, theme } = useTheme()
   const { setTheme: setZustandTheme } = useThemeStore()
+  const [isMounted, setIsMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
 
   const handleThemeChange = (newTheme: string) => {
     setTheme(newTheme)
     setZustandTheme(newTheme)
+  }
+  if (!isMounted) {
+    return (
+      <Button 
+        variant="outline" 
+        size="icon" 
+        className="bg-background border-border hover:bg-accent hover:text-accent-foreground dark:bg-background dark:border-border dark:hover:bg-accent"
+        aria-label="Loading theme"
+      />
+    )
   }
   console.log("current theme is ", theme)
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon" className="bg-background border-border hover:bg-accent hover:text-accent-foreground dark:bg-background dark:border-border dark:hover:bg-accent">
-          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
+          {theme === "light" ? <Moon className="h-[1.2rem] w-[1.2rem]" /> : <Sun className="h-[1.2rem] w-[1.2rem]" />}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="bg-background/95 backdrop-blur-sm border border-border shadow-lg dark:bg-background/95 dark:border-border">

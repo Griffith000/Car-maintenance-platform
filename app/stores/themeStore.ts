@@ -1,3 +1,5 @@
+// appearently useless since i can get the theme frm setTheme from next-themes
+
 import { create } from 'zustand'
 
 interface ThemeState {
