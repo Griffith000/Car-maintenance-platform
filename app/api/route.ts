@@ -16,7 +16,7 @@ export async function GET(request: Request) {
   try {
     await prisma.user.create({
       data: {
-        name: "notSOJohnen",
+        username: "notSOJohnen",
         email: "ahmedJohnny@gmail.com",
       }
     })

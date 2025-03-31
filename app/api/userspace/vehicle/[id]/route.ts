@@ -1,10 +1,21 @@
 // to set up auth js
-import { Prisma, PrismaClient, Vehicle } from "@/app/generated/prisma/client";
+import { PrismaClient, Vehicle } from "@/app/generated/prisma/client";
 import { withAccelerate } from "@prisma/extension-accelerate"
 import { NextRequest, NextResponse } from "next/server";
 
 const prisma = new PrismaClient().$extends(withAccelerate())
 
+
+// to test swagger documentation
+/**
+ * @swagger
+ * /api/hello:
+ *   get:
+ *     description: Returns the hello world
+ *     responses:
+ *       200:
+ *         description: Hello World!
+ */
 export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }) {
@@ -30,6 +41,4 @@ export async function GET(
     { status: searchedCar ? 200 : 404 }
   );
 }
-
-
 
