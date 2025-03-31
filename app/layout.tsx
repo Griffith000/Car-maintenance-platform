@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Providers from "./providers"
+import QueryClientProvider from "./query-provider";
+import { ThemeProvider } from "@/components/theme-provider";
+import Header from "@/app/_components/ui/Header";
+import Footer from "@/app/_components/ui/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,15 +15,24 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  
+}: {
+  children: React.ReactNode
+}) {
+
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+        <meta name="darkreader-lock" />
+      </head>
       <body className={inter.className}>
-        <Providers>{children}</Providers>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <QueryClientProvider>
+            <Header />
+            {children}
+            <Footer />
+          </QueryClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
