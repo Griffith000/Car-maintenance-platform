@@ -4,6 +4,35 @@ import { NextResponse, NextRequest } from "next/server";
 
 export const dynamic = 'force-static'
 
+/**
+ * @openapi
+ * /api/v1/userspace/user:
+ *   get:
+ *     summary: Get all available user details
+ *     responses:
+ *       200:
+ *         description: List of Car Details
+ *         content:
+ *           application/json:
+ *             examples:
+ *               user-list:
+ *                  summary: The list of available cars
+ *                  value:
+ *                   - userId: "12345678"
+ *                     username: "Griffith00"
+ *                     email: "ahmed@gmail.com"
+ *                     phone: "21467333"
+ *                   - userId: "12873412"
+ *                     username: "SlamZDank"
+ *                     email: "khalil@gmail.com"
+ *                     phone: "1234123"
+ *       500:
+ *         description: 
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: Internal server error
+ */
 // setting up the prisma client
 const prisma = new PrismaClient().$extends(withAccelerate())
 const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

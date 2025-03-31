@@ -42,7 +42,9 @@ const prisma = new PrismaClient().$extends(withAccelerate())
  *           application/json:
  *             example:
  *               error: Vehicle Not Found
- */export async function GET(
+ */
+
+export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }) {
   // this is where the authentication is needed
