@@ -6,8 +6,6 @@ import { UpdateVehicleDto } from "@/app/helpers/userspace/vehicle/dto/update-veh
 import { withAccelerate } from "@prisma/extension-accelerate"
 import { NextRequest, NextResponse } from "next/server";
 
-const prisma = new PrismaClient().$extends(withAccelerate())
-
 // to test swagger documentation
 /**
  * @openapi
@@ -45,6 +43,8 @@ const prisma = new PrismaClient().$extends(withAccelerate())
  *             example:
  *               error: Vehicle Not Found
  */
+
+const prisma = new PrismaClient().$extends(withAccelerate())
 
 export async function GET( { params }: { params: { id: string } }) {
   // this is where the authentication is needed

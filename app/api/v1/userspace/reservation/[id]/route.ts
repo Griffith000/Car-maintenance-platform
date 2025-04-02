@@ -4,9 +4,6 @@ import { PrismaClientKnownRequestError } from "@/app/generated/prisma/client/run
 import { withAccelerate } from "@prisma/extension-accelerate"
 import { NextRequest, NextResponse } from "next/server";
 
-const prisma = new PrismaClient().$extends(withAccelerate())
-
-// to test swagger documentation
 /**
  * @openapi
  * /api/v1/userspace/vehicle/{id}:
@@ -43,6 +40,8 @@ const prisma = new PrismaClient().$extends(withAccelerate())
  *             example:
  *               error: Vehicle Not Found
  */
+
+const prisma = new PrismaClient().$extends(withAccelerate())
 
 export async function GET(
   request: NextRequest,

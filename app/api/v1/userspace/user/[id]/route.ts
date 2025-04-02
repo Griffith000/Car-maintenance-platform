@@ -6,8 +6,6 @@ import { UpdateUserDto } from "@/app/helpers/userspace/user/dto/update-user.dto"
 import { withAccelerate } from "@prisma/extension-accelerate"
 import { NextRequest, NextResponse } from "next/server";
 
-const prisma = new PrismaClient().$extends(withAccelerate())
-
 
 // we might use zod for form validation and requestValidation
 
@@ -49,6 +47,8 @@ const prisma = new PrismaClient().$extends(withAccelerate())
  *             example:
  *               error: Internal Server Error
  */
+
+const prisma = new PrismaClient().$extends(withAccelerate())
 
 export async function GET(
   request: NextRequest,

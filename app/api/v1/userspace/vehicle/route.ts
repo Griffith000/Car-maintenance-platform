@@ -6,9 +6,6 @@ import { validate } from "@/app/helpers/shared/validate";
 
 export const dynamic = 'force-static'
 
-// setting up the prisma client
-const prisma = new PrismaClient().$extends(withAccelerate())
-
 /**
  * @openapi
  * /api/v1/userspace/vehicle:
@@ -21,20 +18,55 @@ const prisma = new PrismaClient().$extends(withAccelerate())
  *           application/json:
  *             examples:
  *               vehicle-list:
- *                  summary: The list of available cars
- *                  value:
- *                    - vehicleId: "123412342341234234"
- *                      registration: "234TUN1234"
- *                      registrationType: "TUN"
- *                    - vehicleId: "123412342341234234"
- *                      location: "France"
+ *                 summary: The list of available cars
+ *                 value:
+ *                   - vehicleId: "123412342341234234"
+ *                     registration: "234TUN1234"
+ *                     registrationType: "TUN"
+ *                   - vehicleId: "123412342341234234"
+ *                     location: "France"
  *       500:
- *         description: 
+ *         description: Internal server error
  *         content:
  *           application/json:
  *             example:
  *               error: Internal server error
+ *   post:  # <── POST method now correctly indented under the same path
+ *     summary: Add a new vehicle to a database
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - vin
+ *               - local
+ *             properties:
+ *               vin:
+ *                 type: string
+ *                 minLength: 17
+ *                 maxLength: 17
+ *                 pattern: "^[A-HJ-NPR-Z0-9]{17}$"
+ *               local:
+ *                 type: boolean
+ *               registration:
+ *                 type: string
+ *               registrationType:
+ *                 type: string
+ *                 enum: [TUN, RS, TRAC, PAT, CMD, CD, MD, MC, CC, REM, AA, ES, PE, IT]
+ *               location:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Vehicle created successfully
+ *         content:  # Optional but recommended
+ *           application/json:
+ *             example:
+ *               success: true
  */
+
+const prisma = new PrismaClient().$extends(withAccelerate())
 
 export async function GET() {
   let listOfVehicles: Vehicle[];
@@ -55,10 +87,10 @@ export async function POST(request: NextRequest) {
   let prismaOutput;
   try {
     let validatedResponse = validate(CreateVehicleDto, await request.json());
-    if ( validatedResponse.local === true ) {
+    if (validatedResponse.local === true) {
       validatedResponse.registration = undefined;
       validatedResponse.registrationType = undefined;
-    } else if (validatedResponse.local === false){
+    } else if (validatedResponse.local === false) {
       validatedResponse.location = undefined;
     }
 
@@ -72,11 +104,11 @@ export async function POST(request: NextRequest) {
       }
     })
 
-  } catch(e) {
+  } catch (error) {
     console.log("Internal Server Error")
     return NextResponse.json({
       Message: "Internal Server Error",
-      errorMessage: e
+      errorMessage: error
     }, {
       status: 500
     })

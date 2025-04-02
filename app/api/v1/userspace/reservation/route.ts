@@ -3,10 +3,6 @@ import { withAccelerate } from '@prisma/extension-accelerate'
 import { NextResponse, NextRequest } from "next/server";
 import { CreateReservationDto } from "@/app/helpers/userspace/reservation/create-reservation.dto";
 import { validate } from "@/app/helpers/shared/validate";
-import { vehicles } from "@/app/services/data";
-
-// setting up the prisma client
-const prisma = new PrismaClient().$extends(withAccelerate())
 
 /**
  * @openapi
@@ -34,6 +30,10 @@ const prisma = new PrismaClient().$extends(withAccelerate())
  *             example:
  *               error: Internal server error
  */
+
+// setting up the prisma client
+const prisma = new PrismaClient().$extends(withAccelerate())
+
 
 export async function GET() {
   let listOfReservations: Reservation[];
@@ -65,11 +65,11 @@ export async function POST(request: NextRequest) {
       }
     })
 
-  } catch(e) {
+  } catch (error) {
     console.log("Internal Server Error")
     return NextResponse.json({
       Message: "Internal Server Error",
-      errorMessage: e
+      errorMessage: error
     }, {
       status: 500
     })
