@@ -1,5 +1,8 @@
 // to set up auth js with the user
-import { Prisma, PrismaClient, User } from "@/app/generated/prisma/client";
+import { PrismaClient, User } from "@/app/generated/prisma/client";
+import { PrismaClientKnownRequestError } from "@/app/generated/prisma/client/runtime/library";
+import { validate } from "@/app/helpers/shared/validate";
+import { UpdateUserDto } from "@/app/helpers/userspace/user/dto/update-user.dto";
 import { withAccelerate } from "@prisma/extension-accelerate"
 import { NextRequest, NextResponse } from "next/server";
 
@@ -87,37 +90,56 @@ export async function DELETE(
         userId: params.id
       }
     })
-  } catch (e) {
+  } catch (error) {
     console.log("Internal Server Error")
     return NextResponse.json({
-      error: "Internal Server Error"
+      error: "Internal Server Error",
+      errorLog: error
     }, {
-        status: 500
-      })
+      status: 500
+    })
   }
   if (userToDelete === null) {
     return NextResponse.json({
       message: "User not found"
     }, {
-        status: 404
-      })
+      status: 404
+    })
   }
 }
 
-/* patch needs to be made functional later
-export async function PATCH(request: NextRequest, { params }: { params: {id: number }}){
-  const newUserCredentials: User | null = await request.json();
+export async function PATCH(request: NextRequest, { params }: { params: { id: number } }) {
 
-  let userToPatch: User | null;
-  try{
-    userToPatch = await prisma.user.update({
+  let user: User | null = null;
+  try {
+    const validateData = validate(UpdateUserDto, await request.json())
+    user = await prisma.user.update({
       where: {
         userId: params.id
       },
       data: {
-        // TODO, USE ZOD
+        ...validateData
       }
     })
+  } catch (error) {
+    if (error instanceof PrismaClientKnownRequestError) {
+      if (error.code === "P2025") {
+        console.log("User not found");
+        return NextResponse.json({
+          data: {
+            error: "User not found"
+          }
+        }, { status: 404 })
+      }
+      console.log("Internal Server Error");
+      return NextResponse.json({
+        Message: "Internal Server Error",
+        error: error
+      }, {
+        status: 500
+      })
+    }
+  } finally {
+    return NextResponse.json(user)
   }
 } 
-*/
