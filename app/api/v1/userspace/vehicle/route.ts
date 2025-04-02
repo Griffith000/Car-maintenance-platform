@@ -1,6 +1,8 @@
 import { PrismaClient, Vehicle, RegTypes } from "@/app/generated/prisma/client";
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { NextResponse, NextRequest } from "next/server";
+import { CreateVehicleDto } from "@/app/helpers/userspace/vehicle/create-vehicle.dto";
+import { validate } from "@/app/helpers/shared/validate";
 
 export const dynamic = 'force-static'
 
@@ -51,10 +53,10 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   // this will create a new vehicle taking the request as an argument (TODO)
-  let response: Vehicle | null = null;
+  let response: Vehicle | null = validate(CreateVehicleDto, await request.json());
   try {
     // if the local variable is set to true, make location input and the registration type is null, if the registration is 
-    const data = await request.json()
+    const data: Vehicle = await request.json()
     if (!data.vin || !data.local) {
       return NextResponse.json(
         { error: 'Missing required fields' },
@@ -62,21 +64,25 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    console.log(data.vin, data.vin)
+    
+
     // initiates a new route
     response = await prisma.vehicle.create({
       data: {
-        vin: data.vin,
+        vin: data.vin as string,
         local: data.local,
         registration: data.registration ?? "",
-        registrationType: data.RegTypes ?? "",
         location: data.location ?? "",
         reservation: {}
       }
     })
-  } catch {
+
+  } catch(e) {
     console.log("Internal Server Error")
     return NextResponse.json({
-      Message: "Internal Server Error"
+      Message: "Internal Server Error",
+      errorMessage: e
     }, {
       status: 500
     })

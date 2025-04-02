@@ -92,6 +92,14 @@ export const RepairStatus: {
 
 export type RepairStatus = (typeof RepairStatus)[keyof typeof RepairStatus]
 
+
+export const Roles: {
+  PEASANT: 'PEASANT',
+  ADMIN: 'ADMIN'
+};
+
+export type Roles = (typeof Roles)[keyof typeof Roles]
+
 }
 
 export type RegTypes = $Enums.RegTypes
@@ -101,6 +109,10 @@ export const RegTypes: typeof $Enums.RegTypes
 export type RepairStatus = $Enums.RepairStatus
 
 export const RepairStatus: typeof $Enums.RepairStatus
+
+export type Roles = $Enums.Roles
+
+export const Roles: typeof $Enums.Roles
 
 /**
  * ##  Prisma Client ʲˢ
@@ -10592,6 +10604,7 @@ export namespace Prisma {
     username: string | null
     email: string | null
     phone: string | null
+    role: $Enums.Roles | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -10599,6 +10612,7 @@ export namespace Prisma {
     username: string | null
     email: string | null
     phone: string | null
+    role: $Enums.Roles | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -10606,6 +10620,7 @@ export namespace Prisma {
     username: number
     email: number
     phone: number
+    role: number
     _all: number
   }
 
@@ -10623,6 +10638,7 @@ export namespace Prisma {
     username?: true
     email?: true
     phone?: true
+    role?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -10630,6 +10646,7 @@ export namespace Prisma {
     username?: true
     email?: true
     phone?: true
+    role?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -10637,6 +10654,7 @@ export namespace Prisma {
     username?: true
     email?: true
     phone?: true
+    role?: true
     _all?: true
   }
 
@@ -10731,6 +10749,7 @@ export namespace Prisma {
     username: string
     email: string
     phone: string | null
+    role: $Enums.Roles
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -10757,6 +10776,7 @@ export namespace Prisma {
     username?: boolean
     email?: boolean
     phone?: boolean
+    role?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10764,6 +10784,7 @@ export namespace Prisma {
     username?: boolean
     email?: boolean
     phone?: boolean
+    role?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10771,6 +10792,7 @@ export namespace Prisma {
     username?: boolean
     email?: boolean
     phone?: boolean
+    role?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -10778,9 +10800,10 @@ export namespace Prisma {
     username?: boolean
     email?: boolean
     phone?: boolean
+    role?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "username" | "email" | "phone", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "username" | "email" | "phone" | "role", ExtArgs["result"]["user"]>
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
@@ -10790,6 +10813,7 @@ export namespace Prisma {
       username: string
       email: string
       phone: string | null
+      role: $Enums.Roles
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -11217,6 +11241,7 @@ export namespace Prisma {
     readonly username: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly phone: FieldRef<"User", 'String'>
+    readonly role: FieldRef<"User", 'Roles'>
   }
     
 
@@ -11679,7 +11704,8 @@ export namespace Prisma {
     userId: 'userId',
     username: 'username',
     email: 'email',
-    phone: 'phone'
+    phone: 'phone',
+    role: 'role'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -11802,6 +11828,20 @@ export namespace Prisma {
    * Reference to a field of type 'RepairStatus[]'
    */
   export type ListEnumRepairStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RepairStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Roles'
+   */
+  export type EnumRolesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Roles'>
+    
+
+
+  /**
+   * Reference to a field of type 'Roles[]'
+   */
+  export type ListEnumRolesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Roles[]'>
     
   /**
    * Deep Input Types
@@ -12244,6 +12284,7 @@ export namespace Prisma {
     username?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     phone?: StringNullableFilter<"User"> | string | null
+    role?: EnumRolesFilter<"User"> | $Enums.Roles
   }
 
   export type UserOrderByWithRelationInput = {
@@ -12251,6 +12292,7 @@ export namespace Prisma {
     username?: SortOrder
     email?: SortOrder
     phone?: SortOrderInput | SortOrder
+    role?: SortOrder
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -12261,6 +12303,7 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     username?: StringFilter<"User"> | string
     phone?: StringNullableFilter<"User"> | string | null
+    role?: EnumRolesFilter<"User"> | $Enums.Roles
   }, "userId" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -12268,6 +12311,7 @@ export namespace Prisma {
     username?: SortOrder
     email?: SortOrder
     phone?: SortOrderInput | SortOrder
+    role?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -12283,6 +12327,7 @@ export namespace Prisma {
     username?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
     phone?: StringNullableWithAggregatesFilter<"User"> | string | null
+    role?: EnumRolesWithAggregatesFilter<"User"> | $Enums.Roles
   }
 
   export type VehicleCreateInput = {
@@ -12684,6 +12729,7 @@ export namespace Prisma {
     username?: string
     email: string
     phone?: string | null
+    role: $Enums.Roles
   }
 
   export type UserUncheckedCreateInput = {
@@ -12691,12 +12737,14 @@ export namespace Prisma {
     username?: string
     email: string
     phone?: string | null
+    role: $Enums.Roles
   }
 
   export type UserUpdateInput = {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRolesFieldUpdateOperationsInput | $Enums.Roles
   }
 
   export type UserUncheckedUpdateInput = {
@@ -12704,6 +12752,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRolesFieldUpdateOperationsInput | $Enums.Roles
   }
 
   export type UserCreateManyInput = {
@@ -12711,12 +12760,14 @@ export namespace Prisma {
     username?: string
     email: string
     phone?: string | null
+    role: $Enums.Roles
   }
 
   export type UserUpdateManyMutationInput = {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRolesFieldUpdateOperationsInput | $Enums.Roles
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -12724,6 +12775,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRolesFieldUpdateOperationsInput | $Enums.Roles
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -13296,11 +13348,19 @@ export namespace Prisma {
     vendorId?: SortOrder
   }
 
+  export type EnumRolesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Roles | EnumRolesFieldRefInput<$PrismaModel>
+    in?: $Enums.Roles[] | ListEnumRolesFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Roles[] | ListEnumRolesFieldRefInput<$PrismaModel>
+    not?: NestedEnumRolesFilter<$PrismaModel> | $Enums.Roles
+  }
+
   export type UserCountOrderByAggregateInput = {
     userId?: SortOrder
     username?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    role?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -13312,6 +13372,7 @@ export namespace Prisma {
     username?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    role?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -13319,10 +13380,21 @@ export namespace Prisma {
     username?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    role?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
     userId?: SortOrder
+  }
+
+  export type EnumRolesWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Roles | EnumRolesFieldRefInput<$PrismaModel>
+    in?: $Enums.Roles[] | ListEnumRolesFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Roles[] | ListEnumRolesFieldRefInput<$PrismaModel>
+    not?: NestedEnumRolesWithAggregatesFilter<$PrismaModel> | $Enums.Roles
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRolesFilter<$PrismaModel>
+    _max?: NestedEnumRolesFilter<$PrismaModel>
   }
 
   export type ReservationCreateNestedManyWithoutVehicleInput = {
@@ -13841,6 +13913,10 @@ export namespace Prisma {
     push?: number | number[]
   }
 
+  export type EnumRolesFieldUpdateOperationsInput = {
+    set?: $Enums.Roles
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -14081,6 +14157,23 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumRepairStatusNullableFilter<$PrismaModel>
     _max?: NestedEnumRepairStatusNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumRolesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Roles | EnumRolesFieldRefInput<$PrismaModel>
+    in?: $Enums.Roles[] | ListEnumRolesFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Roles[] | ListEnumRolesFieldRefInput<$PrismaModel>
+    not?: NestedEnumRolesFilter<$PrismaModel> | $Enums.Roles
+  }
+
+  export type NestedEnumRolesWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Roles | EnumRolesFieldRefInput<$PrismaModel>
+    in?: $Enums.Roles[] | ListEnumRolesFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Roles[] | ListEnumRolesFieldRefInput<$PrismaModel>
+    not?: NestedEnumRolesWithAggregatesFilter<$PrismaModel> | $Enums.Roles
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRolesFilter<$PrismaModel>
+    _max?: NestedEnumRolesFilter<$PrismaModel>
   }
 
   export type ReservationCreateWithoutVehicleInput = {

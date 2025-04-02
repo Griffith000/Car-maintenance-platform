@@ -78,6 +78,11 @@ model HeadMechanic {
 
 // currently the phone number supports only the phones in tunisian format only (may support global phone numbers later)
 
+enum Roles {
+  PEASANT
+  ADMIN
+}
+
 model Reservation {
   reservationId Int           @id @default(autoincrement())
   mobilePhone   String        @db.VarChar(8)
@@ -129,10 +134,11 @@ model Vendor {
   vendorShopAddress String
 }
 
-// models for TESTING puropses
+// models
 model User {
   userId   Int     @id @default(autoincrement())
   username String  @default("default_username")
   email    String  @unique
   phone    String?
+  role     Roles
 }

@@ -1,5 +1,6 @@
 // to set up auth js
 import { PrismaClient, Vehicle } from "@/app/generated/prisma/client";
+import { PrismaClientKnownRequestError } from "@/app/generated/prisma/client/runtime/library";
 import { withAccelerate } from "@prisma/extension-accelerate"
 import { NextRequest, NextResponse } from "next/server";
 
@@ -50,25 +51,28 @@ export async function GET(
   // this is where the authentication is needed
   let searchedCar: Vehicle | null;
   try {
-    searchedCar = await prisma.vehicle.findFirst({
+    searchedCar = await prisma.vehicle.findFirstOrThrow({
       where: {
         vin: params.id
       }
     })
-  } catch {
-    console.log("Error with specific car retrieval Error")
+  } catch (error) {
+    if (error instanceof PrismaClientKnownRequestError) {
+      if (error.code === "P2025") {
+
+        return NextResponse.json(
+          {
+            data: { error: "Vehicle Not Found" }
+          }, { status: 404 });
+      }
+    }
+    console.log("Internal Server Error");
     return NextResponse.json({
-      Message: "Error getting the vehicle"
+      Message: "Internal Server Error",
+      error: error
     }, {
       status: 500
     })
   }
-
-  return NextResponse.json(
-    { data: searchedCar ?? {
-      error: "Vehicle Not Found"
-    } },
-    { status: searchedCar ? 200 : 404 }
-  );
 }
 

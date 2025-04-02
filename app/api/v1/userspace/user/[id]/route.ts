@@ -6,6 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 const prisma = new PrismaClient().$extends(withAccelerate())
 
 
+// we might use zod for form validation and requestValidation
 
 /**
  * @openapi
@@ -60,19 +61,63 @@ export async function GET(
   } catch {
     console.log("Error with specific car retrieval Error")
     return NextResponse.json({
-      Message: "Internal Server Error"
+      error: "Internal Server Error"
     }, {
       status: 500
     })
   }
 
   return NextResponse.json(
-    { data: searchedUser ?? {
-      error: "User Not Found"
-    } },
+    {
+      data: searchedUser ?? {
+        error: "User Not Found"
+      }
+    },
     { status: searchedUser ? 200 : 404 }
   );
 }
 
+export async function DELETE(
+  { params }: { params: { id: number } }
+) {
+  let userToDelete: User | null;
+  try {
+    userToDelete = await prisma.user.delete({
+      where: {
+        userId: params.id
+      }
+    })
+  } catch (e) {
+    console.log("Internal Server Error")
+    return NextResponse.json({
+      error: "Internal Server Error"
+    }, {
+        status: 500
+      })
+  }
+  if (userToDelete === null) {
+    return NextResponse.json({
+      message: "User not found"
+    }, {
+        status: 404
+      })
+  }
+}
 
+/* patch needs to be made functional later
+export async function PATCH(request: NextRequest, { params }: { params: {id: number }}){
+  const newUserCredentials: User | null = await request.json();
 
+  let userToPatch: User | null;
+  try{
+    userToPatch = await prisma.user.update({
+      where: {
+        userId: params.id
+      },
+      data: {
+        // TODO, USE ZOD
+      }
+    })
+  }
+} 
+*/
