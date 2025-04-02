@@ -46,6 +46,91 @@ import { NextRequest, NextResponse } from "next/server";
  *           application/json:
  *             example:
  *               error: Internal Server Error
+ *   delete:
+ *     summary: Delete a user by id
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: UserID number
+ *     responses:
+ *       200:
+ *         description: User deleted successfully
+ *         content:
+ *           application/json:
+ *             example:
+ *                userId: "12345678"
+ *                username: "JacerDJO"
+ *                email: "notRealJacer@gmail.com"
+ *                phone: "98736263"
+ *       404:
+ *         description: User not found
+ *         content:
+ *           application/json:
+ *             example:
+ *               data:
+ *                 error: "User Not Found"
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             example:
+ *               Message: "Internal Server Error"
+ *               error: "Error details"
+ * 
+ *   patch:
+ *     summary: Update user details
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: UserID number
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 minLength: 5 
+ *               email:
+ *                 type: string 
+ *               phone: 
+ *                 type: string
+ *               role:
+ *                 type: string
+ *                 enum: [ADMIN, PEASANT]
+ *     responses:
+ *       200:
+ *         description: Vehicle updated successfully
+ *         content:
+ *           application/json:
+ *             example:
+ *               vin: "1HGBH41JXMN109186"
+ *               registration: "234TUN1234"
+ *               registrationType: "TUN"
+ *               location: "France"
+ *       404:
+ *         description: Vehicle not found
+ *         content:
+ *           application/json:
+ *             example:
+ *               data:
+ *                 error: "Vehicle not found"
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             example:
+ *               Message: "Internal Server Error"
+ *               error: "Error details"
+
  */
 
 const prisma = new PrismaClient().$extends(withAccelerate())
