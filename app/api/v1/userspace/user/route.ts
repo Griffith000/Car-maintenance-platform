@@ -35,7 +35,6 @@ export const dynamic = 'force-static'
  */
 // setting up the prisma client
 const prisma = new PrismaClient().$extends(withAccelerate())
-const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export async function GET() {
   let listOfUsers: User[];
@@ -79,3 +78,6 @@ export async function POST(request: NextRequest) {
   }
   return NextResponse.json({ data: response })
 }
+
+
+

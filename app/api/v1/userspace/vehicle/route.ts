@@ -52,28 +52,22 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  // this will create a new vehicle taking the request as an argument (TODO)
-  let response: Vehicle | null = validate(CreateVehicleDto, await request.json());
+  let prismaOutput;
   try {
-    // if the local variable is set to true, make location input and the registration type is null, if the registration is 
-    const data: Vehicle = await request.json()
-    if (!data.vin || !data.local) {
-      return NextResponse.json(
-        { error: 'Missing required fields' },
-        { status: 400 }
-      )
+    let validatedResponse = validate(CreateVehicleDto, await request.json());
+    if ( validatedResponse.local === true ) {
+      validatedResponse.registration = undefined;
+      validatedResponse.registrationType = undefined;
+    } else if (validatedResponse.local === false){
+      validatedResponse.location = undefined;
     }
 
-    console.log(data.vin, data.vin)
-    
-
-    // initiates a new route
-    response = await prisma.vehicle.create({
+    prismaOutput = await prisma.vehicle.create({
       data: {
-        vin: data.vin as string,
-        local: data.local,
-        registration: data.registration ?? "",
-        location: data.location ?? "",
+        vin: validatedResponse.vin as string,
+        local: validatedResponse.local,
+        registration: validatedResponse.registration ?? "",
+        location: validatedResponse.location ?? "",
         reservation: {}
       }
     })
@@ -87,5 +81,5 @@ export async function POST(request: NextRequest) {
       status: 500
     })
   }
-  return NextResponse.json({ data: response })
+  return NextResponse.json(prismaOutput)
 }
