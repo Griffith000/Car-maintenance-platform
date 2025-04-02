@@ -31,7 +31,7 @@ export const dynamic = 'force-static'
  *           application/json:
  *             example:
  *               error: Internal server error
- *   post:  # <── POST method now correctly indented under the same path
+ *   post:
  *     summary: Add a new vehicle to a database
  *     requestBody:
  *       required: true

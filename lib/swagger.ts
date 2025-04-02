@@ -6,8 +6,8 @@ export const getApiDocs = async () => {
     definition: {
       openapi: "3.0.0",
       info: {
-        title: "The exagerated Swagger of a black teen api.",
-        version: "0.0.1",
+        title: "The exaggerated Swagger of a black teen api.",
+        version: "0.0.9",
       },
       components: {
         securitySchemes: {

@@ -42,6 +42,76 @@ import { NextRequest, NextResponse } from "next/server";
  *           application/json:
  *             example:
  *               error: Vehicle Not Found
+ *   delete:
+ *     summary: Delete a vehicle by VIN
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Vehicle VIN number
+ *     responses:
+ *       200:
+ *         description: Vehicle deleted successfully
+ *         content:
+ *           application/json:
+ *             example:
+ *               vin: "1HGBH41JXMN109186"
+ *               registration: "234TUN1234"
+ *               registrationType: "TUN"
+ *       404:
+ *         description: Vehicle not found
+ *         content:
+ *           application/json:
+ *             example:
+ *               data:
+ *                 error: "Vehicle Not Found"
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             example:
+ *               Message: "Internal Server Error"
+ *               error: "Error details"
+ * 
+ *   patch:
+ *     summary: Update vehicle details
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Vehicle VIN number
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *     responses:
+ *       200:
+ *         description: Vehicle updated successfully
+ *         content:
+ *           application/json:
+ *             example:
+ *               vin: "1HGBH41JXMN109186"
+ *               registration: "234TUN1234"
+ *               registrationType: "TUN"
+ *               location: "France"
+ *       404:
+ *         description: Vehicle not found
+ *         content:
+ *           application/json:
+ *             example:
+ *               data:
+ *                 error: "Vehicle not found"
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             example:
+ *               Message: "Internal Server Error"
+ *               error: "Error details"
  */
 
 const prisma = new PrismaClient().$extends(withAccelerate())

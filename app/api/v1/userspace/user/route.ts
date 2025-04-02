@@ -34,7 +34,37 @@ export const dynamic = 'force-static'
  *           application/json:
  *             example:
  *               error: Internal server error
+ *   post:
+ *     summary: Add a new user to a database
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - username
+ *               - email
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 minLength: 5 
+ *               email:
+ *                 type: string 
+ *               phone: 
+ *                 type: string
+ *               role:
+ *                 type: string
+ *                 enum: [admin, peasant]
+ *     responses:
+ *       201:
+ *         description: User created successfully
+ *         content:  
+ *           application/json:
+ *             example:
+ *               success: true
  */
+
 // setting up the prisma client
 const prisma = new PrismaClient().$extends(withAccelerate())
 
@@ -56,10 +86,9 @@ export async function GET() {
 export async function POST(request: NextRequest) { // to rewrite
   // this will create a new user taking the request as an argument (TODO)
   // to implement the verification of an email in here
-  let prismaOutput;
   try {
     let validatedResponse = validate(CreateUserDto, await request.json())
-    prismaOutput = await prisma.user.create({
+    const prismaOutput = await prisma.user.create({
       data: {
         username: validatedResponse.username,
         email: validatedResponse.email,
@@ -76,7 +105,7 @@ export async function POST(request: NextRequest) { // to rewrite
         status: 500
       })
   }
+  return NextResponse.json({data: {
+    success: true 
+  }})
 }
-
-
-

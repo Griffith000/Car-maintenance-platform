@@ -10,4 +10,4 @@ export const CreateReservationDto = z.object({
   baseFee: z.number().optional(),
   repairStatus: z.nativeEnum(RepairStatus).optional(),
   vehicleId: z.string().min(17).max(17).regex(new RegExp("^[A-HJ-NPR-Z0-9]{17}$")),
-})
+}) 

@@ -29,7 +29,42 @@ import { validate } from "@/app/helpers/shared/validate";
  *           application/json:
  *             example:
  *               error: Internal server error
+ *   post:
+ *     summary: Add a new vehicle to a database
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - vin
+ *               - local
+ *             properties:
+ *               vin:
+ *                 type: string
+ *                 minLength: 17
+ *                 maxLength: 17
+ *                 pattern: "^[A-HJ-NPR-Z0-9]{17}$"
+ *               local:
+ *                 type: boolean
+ *               registration:
+ *                 type: string
+ *               registrationType:
+ *                 type: string
+ *                 enum: [TUN, RS, TRAC, PAT, CMD, CD, MD, MC, CC, REM, AA, ES, PE, IT]
+ *               location:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Vehicle created successfully
+ *         content:  # Optional but recommended
+ *           application/json:
+ *             example:
+ *               success: true
  */
+
+
 
 // setting up the prisma client
 const prisma = new PrismaClient().$extends(withAccelerate())
