@@ -46,13 +46,11 @@ const prisma = new PrismaClient().$extends(withAccelerate())
  *               error: Vehicle Not Found
  */
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }) {
+export async function GET( { params }: { params: { id: string } }) {
   // this is where the authentication is needed
-  let searchedCar: Vehicle | null;
+  let searchedVehicle : Vehicle | null;
   try {
-    searchedCar = await prisma.vehicle.findFirstOrThrow({
+    searchedVehicle = await prisma.vehicle.findFirstOrThrow({
       where: {
         vin: params.id
       }
@@ -74,9 +72,10 @@ export async function GET(
       status: 500
     })
   }
+  return NextResponse.json(searchedVehicle)
 }
 
-export async function DELETE({ params }: {params: {id: string}}){
+export async function DELETE({ params }: { params: { id: string } }) {
   let vehicleToDelete: Vehicle | null;
   try {
     vehicleToDelete = await prisma.vehicle.findFirstOrThrow({
@@ -84,7 +83,7 @@ export async function DELETE({ params }: {params: {id: string}}){
         vin: params.id
       }
     })
-  } catch(error){
+  } catch (error) {
     if (error instanceof PrismaClientKnownRequestError) {
       if (error.code === "P2025") {
         return NextResponse.json(
@@ -101,8 +100,41 @@ export async function DELETE({ params }: {params: {id: string}}){
       status: 500
     })
   }
-  return NextResponse.json(vehicleToDelete) 
+  return NextResponse.json(vehicleToDelete)
 }
 
 
-export async function PATCH(){}
+export async function PATCH(request: NextRequest, { params }: { params: { id: string } }) {
+  let vehicle: Vehicle | null = null;
+  try {
+    const validateData = validate(UpdateVehicleDto, await request.json())
+    vehicle = await prisma.vehicle.update({
+      where: {
+        vin: params.id
+      },
+      data: {
+        ...validateData
+      }
+    })
+  } catch (error) {
+    if (error instanceof PrismaClientKnownRequestError) {
+      if (error.code === "P2025") {
+        console.log("Vehicle not found");
+        return NextResponse.json({
+          data: {
+            error: "Vehicle not found"
+          }
+        }, { status: 404 })
+      }
+      console.log("Internal Server Error");
+      return NextResponse.json({
+        Message: "Internal Server Error",
+        error: error
+      }, {
+        status: 500
+      })
+    }
+  } finally {
+    return NextResponse.json(vehicle)
+  }
+}
