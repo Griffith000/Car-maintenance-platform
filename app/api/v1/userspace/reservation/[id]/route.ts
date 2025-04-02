@@ -6,40 +6,121 @@ import { NextRequest, NextResponse } from "next/server";
 
 /**
  * @openapi
- * /api/v1/userspace/vehicle/{id}:
+ * /api/v1/userspace/reservation/{id}:
  *   get:
- *     summary: Get car details by the VIN (id)
+ *     summary: Get reservation details by the id
  *     parameters:
  *       - in: path
- *         name: id  # Must match {id} in the path
+ *         name: id
  *         schema:
- *           type: string  # Changed to string (VINs are alphanumeric)
+ *           type: string
  *         required: true
  *         description: The VIN of a registered vehicle
  *     responses:
  *       200:
- *         description: Car Details
+ *         description: Reservation Details
  *         content:
  *           application/json:
  *             examples:
- *               vehicle-local:
- *                 summary: Local Vehicle Details
+ *               Reservation-Details:
+ *                 summary: Local Reservation Details
  *                 value:
- *                   vehicleId: "123412342341234234"
- *                   registration: "234TUN1234"
- *                   registrationType: "TUN"
- *               vehicle-foreign:
- *                 summary: Foreign Vehicle Details
- *                 value:
- *                   vehicleId: "123412342341234234"
- *                   location: "France"
+ *                   reservationId: "23"
+ *                   mobilePhone: "23466237"
+ *                   date: "some date that i need to test"
+ *                   baseFee: 80
+ *                   repairStatus: "DIAGNOSTIC"
+ *                   vehicleId: "23435552324456" 
  *       404:
  *         description: Not found
  *         content:
  *           application/json:
  *             example:
- *               error: Vehicle Not Found
+ *               error: Reservation Not Found
+ *   delete:
+ *     summary: Delete a reservation by Id
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Reservation ID number
+ *     responses:
+ *       200:
+ *         description: Reservation deleted successfully
+ *         content:
+ *           application/json:
+ *             example:
+ *               reservationId: "43"
+ *               mobilePhone: "98772833"
+ *               date: "some date that i need to test"
+ *               baseFee: 90.234 
+ *               repairStatus: "FAILURE"
+ *               vehicleId: "123456789234" 
+ *       404:
+ *         description: Vehicle not found
+ *         content:
+ *           application/json:
+ *             example:
+ *               data:
+ *                 error: "Reservation Not Found"
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             example:
+ *               Message: "Internal Server Error"
+ *               error: "Error details"
+ * 
+ *   patch:
+ *     summary: Update reservation detail (only baseFee)
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Resservation ID number
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - baseFee 
+ *             properties:
+ *               baseFee:
+ *                 type: number 
+ *     responses:
+ *       200:
+ *         description: Reservation updated successfully
+ *         content:
+ *           application/json:
+ *             example: 
+ *               reservationId: "66"
+ *               mobilePhone: "54327238"
+ *               date: "some date that i need to test"
+ *               baseFee: 93.560
+ *               repairStatus: "DIAGNOSTIC"
+ *               vehicleId: "12345678923412344" 
+ *       404:
+ *         description: Reservation not found
+ *         content:
+ *           application/json:
+ *             example:
+ *               data:
+ *                 error: "Reservation not found"
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             example:
+ *               Message: "Internal Server Error"
+ *               error: "Error details"
  */
+
 
 const prisma = new PrismaClient().$extends(withAccelerate())
 

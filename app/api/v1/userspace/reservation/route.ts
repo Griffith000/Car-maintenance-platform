@@ -6,23 +6,36 @@ import { validate } from "@/app/helpers/shared/validate";
 
 /**
  * @openapi
- * /api/v1/userspace/vehicle:
+ * /api/v1/userspace/reservation:
  *   get:
- *     summary: Get all available car details (id)
+ *     summary: Get all available reservation details (id)
  *     responses:
  *       200:
- *         description: List of Car Details
+ *         description: List of reservation Details
  *         content:
  *           application/json:
  *             examples:
- *               vehicle-list:
- *                  summary: The list of available cars
+ *               reservations-list:
+ *                  summary: The list of available reservations
  *                  value:
- *                    - vehicleId: "123412342341234234"
- *                      registration: "234TUN1234"
- *                      registrationType: "TUN"
- *                    - vehicleId: "123412342341234234"
- *                      location: "France"
+ *                    - reservationId: "1"
+ *                      mobilePhone: "23466237"
+ *                      date: "some date that i need to test"
+ *                      baseFee: 85.34
+ *                      repairStatus: "SUCCESS"
+ *                      vehicleId: "123412342341234234"
+ *                    - reservationId: "63"
+ *                      mobilePhone: "25532433"
+ *                      date: "some date that i need to test"
+ *                      baseFee: 1238.34
+ *                      repairStatus: "SUCCESS"
+ *                      vehicleId: "123423455553322"
+ *                    - reservationId: "23"
+ *                      mobilePhone: "23466237"
+ *                      date: "some date that i need to test"
+ *                      baseFee: 80
+ *                      repairStatus: "DIAGNOSTIC"
+ *                      vehicleId: "23435552324456"
  *       500:
  *         description: 
  *         content:
@@ -30,7 +43,7 @@ import { validate } from "@/app/helpers/shared/validate";
  *             example:
  *               error: Internal server error
  *   post:
- *     summary: Add a new vehicle to a database
+ *     summary: Add a new reservation to a database
  *     requestBody:
  *       required: true
  *       content:
@@ -38,33 +51,32 @@ import { validate } from "@/app/helpers/shared/validate";
  *           schema:
  *             type: object
  *             required:
- *               - vin
- *               - local
+ *               - mobilePhone
+ *               - date
+ *               - vehicleId
  *             properties:
- *               vin:
- *                 type: string
- *                 minLength: 17
- *                 maxLength: 17
- *                 pattern: "^[A-HJ-NPR-Z0-9]{17}$"
- *               local:
- *                 type: boolean
- *               registration:
- *                 type: string
+ *               mobilePhone:
+ *                 type: string 
+ *               date:
+ *                 type: string 
+ *               basefee:
+ *                 type: number 
  *               registrationType:
  *                 type: string
- *                 enum: [TUN, RS, TRAC, PAT, CMD, CD, MD, MC, CC, REM, AA, ES, PE, IT]
- *               location:
+ *                 enum: ["DIAGNOSTIC", "REPAIR", "SUCCESS", "FAILURE"]
+ *               vehicleId:
  *                 type: string
+ *                 minlength: 17
+ *                 maxlength: 17
+ *                 pattern: "^[A-HJ-NPR-Z0-9]{17}$"
  *     responses:
  *       201:
- *         description: Vehicle created successfully
- *         content:  # Optional but recommended
+ *         description: Reservation booked successfully
+ *         content:  
  *           application/json:
  *             example:
  *               success: true
  */
-
-
 
 // setting up the prisma client
 const prisma = new PrismaClient().$extends(withAccelerate())
@@ -109,5 +121,7 @@ export async function POST(request: NextRequest) {
       status: 500
     })
   }
-  return NextResponse.json(prismaOutput)
+  return NextResponse.json({data: 
+    { message: "Reservation Booked Successflly" }
+  })
 }

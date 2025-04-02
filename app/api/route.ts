@@ -46,4 +46,21 @@
  *   delete:
  *     tags: [Users]
  *     summary: Get specific user detail by ID
+ * /api/v1/userspace/reservation:
+ *  get:
+ *    tags: [Reservation]
+ *    summary: Get the data of all reservations
+ *  post:
+ *    tags: [Reservation]
+ *    summary: Add a new reservation
+ * /api/v1/userspace/reservation/{id}:
+ *   get:
+ *     tags: [Reservation]
+ *     summary: Get Specific reservation detail
+ *   patch:
+ *     tags: [Reservation]
+ *     summary: Update the base fee of an ongoing resrvation
+ *   delete:
+ *     tags: [Reservation]
+ *     summary: Delete a specific reservation by ID 
  */

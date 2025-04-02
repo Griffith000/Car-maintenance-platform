@@ -140,5 +140,5 @@ model User {
   username String  @default("default_username")
   email    String  @unique
   phone    String?
-  role     Roles
+  role     Roles   @default(PEASANT)
 }

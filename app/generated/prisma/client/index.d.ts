@@ -12729,7 +12729,7 @@ export namespace Prisma {
     username?: string
     email: string
     phone?: string | null
-    role: $Enums.Roles
+    role?: $Enums.Roles
   }
 
   export type UserUncheckedCreateInput = {
@@ -12737,7 +12737,7 @@ export namespace Prisma {
     username?: string
     email: string
     phone?: string | null
-    role: $Enums.Roles
+    role?: $Enums.Roles
   }
 
   export type UserUpdateInput = {
@@ -12760,7 +12760,7 @@ export namespace Prisma {
     username?: string
     email: string
     phone?: string | null
-    role: $Enums.Roles
+    role?: $Enums.Roles
   }
 
   export type UserUpdateManyMutationInput = {

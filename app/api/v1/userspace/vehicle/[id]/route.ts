@@ -88,6 +88,20 @@ import { NextRequest, NextResponse } from "next/server";
  *       required: true
  *       content:
  *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - local
+ *             properties:
+ *               local:
+ *                 type: boolean
+ *               registration:
+ *                 type: string
+ *               registrationType:
+ *                 type: string
+ *                 enum: [TUN, RS, TRAC, PAT, CMD, CD, MD, MC, CC, REM, AA, ES, PE, IT]
+ *               location:
+ *                 type: string
  *     responses:
  *       200:
  *         description: Vehicle updated successfully
