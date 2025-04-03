@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from '@/components/themeToggle';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
+import { UserNav } from './UserAvatar';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -45,14 +46,20 @@ const Header = () => {
             <Link href="/contact" className="text-destructive hover:text-primary transition-colors">
               Contact
             </Link>
+            <Link href="/login" className="text-destructive hover:text-primary transition-colors">
+              Login
+            </Link>
           </nav>
-          <ThemeToggle />
-          <div className="md:hidden">
+          
+          <div className="flex items-center space-x-4">
+            <ThemeToggle />
+            <UserNav />
+           
             <Button
               variant="ghost"
               size="icon"
+              className="md:hidden"
               onClick={() => setMenuOpen(!menuOpen)}
-              className="text-foreground hover:bg-accent"
             >
               <Menu className="h-6 w-6" />
             </Button>
@@ -97,6 +104,13 @@ const Header = () => {
                   onClick={() => setMenuOpen(false)}
                 >
                   Contact
+                </Link>
+                <Link
+                  href="/login"
+                  className="px-2 py-2 text-foreground/80 hover:bg-accent rounded-md transition-colors"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Login
                 </Link>
               </div>
             </motion.div>

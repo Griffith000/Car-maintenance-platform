@@ -5,7 +5,7 @@ import QueryClientProvider from "./query-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/app/_components/ui/Header";
 import Footer from "@/app/_components/ui/Footer";
-
+import { SessionProvider } from "next-auth/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -27,11 +27,13 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <SessionProvider> 
           <QueryClientProvider>
             <Header />
             {children}
             <Footer />
           </QueryClientProvider>
+          </SessionProvider>
         </ThemeProvider>
       </body>
     </html>
