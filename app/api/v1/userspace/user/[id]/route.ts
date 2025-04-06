@@ -165,17 +165,18 @@ export async function GET(
   );
 }
 
-export async function DELETE(
-  { params }: { params: { id: number } }
+export async function DELETE(request: NextRequest,
+  { params }: { params: { id: string } }
 ) {
   let userToDelete: User | null;
   try {
     userToDelete = await prisma.user.delete({
       where: {
-        userId: params.id
+        userId: parseInt(params.id)
       }
     })
   } catch (error) {
+    console.log(error)
     console.log("Internal Server Error")
     return NextResponse.json({
       error: "Internal Server Error",
@@ -191,22 +192,27 @@ export async function DELETE(
       status: 404
     })
   }
+  return NextResponse.json({
+    message: "success"
+  }, {
+      status: 200
+    })
 }
 
-export async function PATCH(request: NextRequest, { params }: { params: { id: number } }) {
-
+export async function PATCH(request: NextRequest, { params }: { params: { id: string } }) {
   let user: User | null = null;
   try {
     const validateData = validate(UpdateUserDto, await request.json())
     user = await prisma.user.update({
       where: {
-        userId: params.id
+        userId: parseInt(params.id)
       },
       data: {
         ...validateData
       }
     })
   } catch (error) {
+    console.log(error)
     if (error instanceof PrismaClientKnownRequestError) {
       if (error.code === "P2025") {
         console.log("User not found");

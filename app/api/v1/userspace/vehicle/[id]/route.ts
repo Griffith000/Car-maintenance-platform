@@ -130,13 +130,14 @@ import { NextRequest, NextResponse } from "next/server";
 
 const prisma = new PrismaClient().$extends(withAccelerate())
 
-export async function GET( { params }: { params: { id: string } }) {
+export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
   // this is where the authentication is needed
   let searchedVehicle : Vehicle | null;
+  console.log(params.id)
   try {
     searchedVehicle = await prisma.vehicle.findFirstOrThrow({
       where: {
-        vin: params.id
+        vin: decodeURIComponent(params.id)
       }
     })
   } catch (error) {
@@ -148,7 +149,9 @@ export async function GET( { params }: { params: { id: string } }) {
           }, { status: 404 });
       }
     }
-    console.log("Internal Server Error");
+
+    console.log(error);
+
     return NextResponse.json({
       Message: "Internal Server Error",
       error: error
@@ -159,15 +162,16 @@ export async function GET( { params }: { params: { id: string } }) {
   return NextResponse.json(searchedVehicle)
 }
 
-export async function DELETE({ params }: { params: { id: string } }) {
+export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
   let vehicleToDelete: Vehicle | null;
   try {
-    vehicleToDelete = await prisma.vehicle.findFirstOrThrow({
+    vehicleToDelete = await prisma.vehicle.delete({
       where: {
-        vin: params.id
+        vin: decodeURIComponent(params.id)
       }
     })
   } catch (error) {
+    console.log(error)
     if (error instanceof PrismaClientKnownRequestError) {
       if (error.code === "P2025") {
         return NextResponse.json(
@@ -194,7 +198,7 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
     const validateData = validate(UpdateVehicleDto, await request.json())
     vehicle = await prisma.vehicle.update({
       where: {
-        vin: params.id
+        vin: decodeURIComponent(params.id)
       },
       data: {
         ...validateData
