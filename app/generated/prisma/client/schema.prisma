@@ -141,4 +141,5 @@ model User {
   email    String  @unique
   phone    String?
   role     Roles   @default(PEASANT)
+  image    String?
 }
