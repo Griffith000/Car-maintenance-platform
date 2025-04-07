@@ -1,9 +1,8 @@
-import { PrismaClient, Vehicle, RegTypes } from "@/app/generated/prisma/client";
-import { withAccelerate } from '@prisma/extension-accelerate'
+import { Vehicle } from "@prisma/client";
 import { NextResponse, NextRequest } from "next/server";
 import { CreateVehicleDto } from "@/app/helpers/userspace/vehicle/create-vehicle.dto";
 import { validate } from "@/app/helpers/shared/validate";
-import { auth } from 'next-auth'
+import prisma from "@/lib/prisma"
 
 export const dynamic = 'force-static'
 
@@ -66,8 +65,6 @@ export const dynamic = 'force-static'
  *             example:
  *               success: true
  */
-
-const prisma = new PrismaClient().$extends(withAccelerate())
 
 export async function GET() {
   let listOfVehicles: Vehicle[];

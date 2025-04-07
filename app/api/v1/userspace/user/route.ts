@@ -1,10 +1,10 @@
-import { PrismaClient, User, RegTypes } from "@/app/generated/prisma/client";
+import {  User, RegTypes, Prisma } from "@prisma/client";
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { NextResponse, NextRequest } from "next/server";
 import { CreateUserDto } from "@/app/helpers/userspace/user/create-user.dto";
 import { validate } from "@/app/helpers/shared/validate";
 
-export const dynamic = 'force-static'
+import prisma from '@/lib/prisma'
 
 /**
  * @openapi
@@ -65,8 +65,6 @@ export const dynamic = 'force-static'
  *               success: true
  */
 
-// setting up the prisma client
-const prisma = new PrismaClient().$extends(withAccelerate())
 
 export async function GET() {
   let listOfUsers: User[];

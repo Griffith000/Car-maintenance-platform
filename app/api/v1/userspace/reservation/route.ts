@@ -1,8 +1,12 @@
-import { PrismaClient, Vehicle, RegTypes, Reservation } from "@/app/generated/prisma/client";
+import { Reservation } from "@prisma/client";
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { NextResponse, NextRequest } from "next/server";
 import { CreateReservationDto } from "@/app/helpers/userspace/reservation/create-reservation.dto";
 import { validate } from "@/app/helpers/shared/validate";
+
+import prisma from "@/lib/prisma"
+
+
 
 /**
  * @openapi
@@ -79,8 +83,6 @@ import { validate } from "@/app/helpers/shared/validate";
  */
 
 // setting up the prisma client
-const prisma = new PrismaClient().$extends(withAccelerate())
-
 
 export async function GET() {
   let listOfReservations: Reservation[];
