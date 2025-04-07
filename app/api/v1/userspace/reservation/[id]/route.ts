@@ -15,7 +15,7 @@ import { NextRequest, NextResponse } from "next/server";
  *         schema:
  *           type: string
  *         required: true
- *         description: The VIN of a registered vehicle
+ *         description: The registration ID
  *     responses:
  *       200:
  *         description: Reservation Details
@@ -125,7 +125,7 @@ import { NextRequest, NextResponse } from "next/server";
 const prisma = new PrismaClient().$extends(withAccelerate())
 
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: { id: string } }) {
   // this is where the authentication is needed
   let searchedReservation: Reservation | null;
@@ -156,7 +156,7 @@ export async function GET(
   return NextResponse.json(searchedReservation)
 }
 
-export async function DELETE({ params }: { params: { id: string } }) {
+export async function DELETE(_request: NextRequest, { params }: { params: { id: string } }) {
   let reservationToDelete: Reservation | null = null;
   try {
     reservationToDelete = await prisma.reservation.delete({

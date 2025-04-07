@@ -136,7 +136,7 @@ import { NextRequest, NextResponse } from "next/server";
 const prisma = new PrismaClient().$extends(withAccelerate())
 
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: { id: string } }) {
   // this is where the authentication is needed
   let searchedUser: User | null;
@@ -165,7 +165,7 @@ export async function GET(
   );
 }
 
-export async function DELETE(request: NextRequest,
+export async function DELETE(_request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   let userToDelete: User | null;

@@ -130,7 +130,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 const prisma = new PrismaClient().$extends(withAccelerate())
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(_request: NextRequest, { params }: { params: { id: string } }) {
   // this is where the authentication is needed
   let searchedVehicle : Vehicle | null;
   console.log(params.id)
@@ -162,7 +162,7 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
   return NextResponse.json(searchedVehicle)
 }
 
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(_request: NextRequest, { params }: { params: { id: string } }) {
   let vehicleToDelete: Vehicle | null;
   try {
     vehicleToDelete = await prisma.vehicle.delete({

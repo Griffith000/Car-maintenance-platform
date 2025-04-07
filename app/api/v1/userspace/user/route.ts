@@ -88,7 +88,7 @@ export async function POST(request: NextRequest) { // to rewrite
   // to implement the verification of an email in here
   try {
     let validatedResponse = validate(CreateUserDto, await request.json())
-    const prismaOutput = await prisma.user.create({
+    await prisma.user.create({
       data: {
         username: validatedResponse.username,
         email: validatedResponse.email,

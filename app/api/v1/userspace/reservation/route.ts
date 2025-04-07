@@ -59,9 +59,9 @@ import { validate } from "@/app/helpers/shared/validate";
  *                 type: string 
  *               date:
  *                 type: string 
- *               basefee:
+ *               baseFee:
  *                 type: number 
- *               registrationType:
+ *               repairStatus:
  *                 type: string
  *                 enum: ["DIAGNOSTIC", "REPAIR", "SUCCESS", "FAILURE"]
  *               vehicleId:
@@ -100,7 +100,10 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   let prismaOutput;
   try {
-    let validatedResponse = validate(CreateReservationDto, await request.json());
+    const reqBody = await request.json();
+    console.log(reqBody)
+    let validatedResponse = validate(CreateReservationDto, reqBody);
+    console.log(validatedResponse)
 
     prismaOutput = await prisma.reservation.create({
       data: {
