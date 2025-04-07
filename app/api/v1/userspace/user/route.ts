@@ -1,10 +1,9 @@
-import { PrismaClient, User, RegTypes } from "@/app/generated/prisma/client";
-import { withAccelerate } from '@prisma/extension-accelerate'
+import { User } from "@prisma/client";
 import { NextResponse, NextRequest } from "next/server";
 import { CreateUserDto } from "@/app/helpers/userspace/user/create-user.dto";
 import { validate } from "@/app/helpers/shared/validate";
 
-export const dynamic = 'force-static'
+import prisma from '@/lib/prisma'
 
 /**
  * @openapi
@@ -65,8 +64,6 @@ export const dynamic = 'force-static'
  *               success: true
  */
 
-// setting up the prisma client
-const prisma = new PrismaClient().$extends(withAccelerate())
 
 export async function GET() {
   let listOfUsers: User[];
@@ -77,7 +74,7 @@ export async function GET() {
     return NextResponse.json({
       Message: "Internal Server Error"
     }, {
-  status: 500
+      status: 500
     })
   }
   return NextResponse.json(listOfUsers)
@@ -103,10 +100,12 @@ export async function POST(request: NextRequest) { // to rewrite
       Message: "Internal server Error",
       errorMessage: error
     }, {
-        status: 500
-      })
+      status: 500
+    })
   }
-  return NextResponse.json({data: {
-    success: true 
-  }})
+  return NextResponse.json({
+    data: {
+      success: true
+    }
+  })
 }

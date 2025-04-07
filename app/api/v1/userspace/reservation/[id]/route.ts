@@ -1,9 +1,9 @@
 // to set up auth js
-import { PrismaClient, Reservation } from "@/app/generated/prisma/client";
-import { PrismaClientKnownRequestError } from "@/app/generated/prisma/client/runtime/library";
-import { withAccelerate } from "@prisma/extension-accelerate"
+import { Reservation } from "@prisma/client";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { NextRequest, NextResponse } from "next/server";
 
+import prisma from "@/lib/prisma"
 /**
  * @openapi
  * /api/v1/userspace/reservation/{id}:
@@ -120,9 +120,6 @@ import { NextRequest, NextResponse } from "next/server";
  *               Message: "Internal Server Error"
  *               error: "Error details"
  */
-
-
-const prisma = new PrismaClient().$extends(withAccelerate())
 
 export async function GET(
   _request: NextRequest,

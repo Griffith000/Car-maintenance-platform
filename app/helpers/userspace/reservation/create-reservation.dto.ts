@@ -1,6 +1,5 @@
 import { z } from "zod"
-import { RepairStatus } from "@/app/generated/prisma/client"
-
+import { RepairStatus } from "@prisma/client"
 
 // the setter is maybe needed for setting the final price
 // nah we may just raw dog it to make it only available in a backend route

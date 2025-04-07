@@ -1,10 +1,12 @@
 // to set up auth js with the user
-import { PrismaClient, User } from "@/app/generated/prisma/client";
-import { PrismaClientKnownRequestError } from "@/app/generated/prisma/client/runtime/library";
+import { User } from "@prisma/client";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { validate } from "@/app/helpers/shared/validate";
 import { UpdateUserDto } from "@/app/helpers/userspace/user/dto/update-user.dto";
 import { withAccelerate } from "@prisma/extension-accelerate"
 import { NextRequest, NextResponse } from "next/server";
+
+import prisma from "@/lib/prisma"
 
 
 // we might use zod for form validation and requestValidation
@@ -133,8 +135,6 @@ import { NextRequest, NextResponse } from "next/server";
 
  */
 
-const prisma = new PrismaClient().$extends(withAccelerate())
-
 export async function GET(
   _request: NextRequest,
   { params }: { params: { id: string } }) {
@@ -195,8 +195,8 @@ export async function DELETE(_request: NextRequest,
   return NextResponse.json({
     message: "success"
   }, {
-      status: 200
-    })
+    status: 200
+  })
 }
 
 export async function PATCH(request: NextRequest, { params }: { params: { id: string } }) {
