@@ -1,6 +1,6 @@
 // to set up auth js
 import { Vehicle } from "@prisma/client";
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library"; 
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { validate } from "@/app/helpers/shared/validate";
 import { UpdateVehicleDto } from "@/app/helpers/userspace/vehicle/dto/update-vehicle.dto";
 import { NextRequest, NextResponse } from "next/server";
@@ -131,7 +131,7 @@ import prisma from "@/lib/prisma"
 
 export async function GET(_request: NextRequest, { params }: { params: { id: string } }) {
   // this is where the authentication is needed
-  let searchedVehicle : Vehicle | null;
+  let searchedVehicle: Vehicle | null;
   console.log(params.id)
   try {
     searchedVehicle = await prisma.vehicle.findFirstOrThrow({

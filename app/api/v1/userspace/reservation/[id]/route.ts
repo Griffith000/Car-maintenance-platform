@@ -1,7 +1,6 @@
 // to set up auth js
 import { Reservation } from "@prisma/client";
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library"; 
-import { withAccelerate } from "@prisma/extension-accelerate"
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { NextRequest, NextResponse } from "next/server";
 
 import prisma from "@/lib/prisma"

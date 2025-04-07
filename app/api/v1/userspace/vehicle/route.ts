@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
     } else if (validatedResponse.local) {
       validatedResponse.location = undefined;
     }
-    
+
     console.log(validatedResponse.registrationType);
 
     prismaOutput = await prisma.vehicle.create({

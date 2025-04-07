@@ -1,5 +1,4 @@
 import { Reservation } from "@prisma/client";
-import { withAccelerate } from '@prisma/extension-accelerate'
 import { NextResponse, NextRequest } from "next/server";
 import { CreateReservationDto } from "@/app/helpers/userspace/reservation/create-reservation.dto";
 import { validate } from "@/app/helpers/shared/validate";
@@ -126,7 +125,8 @@ export async function POST(request: NextRequest) {
       status: 500
     })
   }
-  return NextResponse.json({data: 
-    { message: "Reservation Booked Successflly" }
+  return NextResponse.json({
+    data:
+      { message: "Reservation Booked Successflly" }
   })
 }
