@@ -94,6 +94,7 @@ export async function POST(request: NextRequest) { // to rewrite
         email: validatedResponse.email,
         phone: validatedResponse.phone,
         role: validatedResponse.role,
+        image: validatedResponse.image,
       }
     })
   } catch (error) {
