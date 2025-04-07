@@ -2,6 +2,7 @@
 import { auth, signOut, signIn } from "@/auth"
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import {ChevronRight} from "lucide-react"
  
 export default async function SignIn() {
     const session = await auth()
@@ -45,7 +46,7 @@ export default async function SignIn() {
                         "use server"
                         await signIn('google', {redirectTo : '/protected'})
                     }}>
-                        <Button className="bg-primary border text-foreground rounded-md dark:border-stone-50  dark:text-foreground dark:bg-primary">Sign in</Button>
+                        <Button className="bg-primary border text-foreground rounded-md dark:border-stone-50  dark:text-foreground dark:bg-primary">Sign in <ChevronRight/></Button>
                     </form>
                 </CardFooter>   
             </Card>

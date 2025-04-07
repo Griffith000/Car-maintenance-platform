@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from '@/components/themeToggle';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
-import { UserNav } from './UserAvatar';
+import { UserAvatar } from './UserAvatar';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -53,7 +53,7 @@ const Header = () => {
           
           <div className="flex items-center space-x-4">
             <ThemeToggle />
-            <UserNav />
+            <UserAvatar />
            
             <Button
               variant="ghost"

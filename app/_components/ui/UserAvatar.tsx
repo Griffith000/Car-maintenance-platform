@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { signOut, useSession } from "next-auth/react";
-export function UserNav() {
+export function UserAvatar() {
     
   const { data: session } = useSession();
   if (session) {
