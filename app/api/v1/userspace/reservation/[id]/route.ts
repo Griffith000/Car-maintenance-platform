@@ -3,6 +3,8 @@ import { Reservation } from "@prisma/client";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { NextRequest, NextResponse } from "next/server";
 
+// import prisma from "@/lib/prisma"
+
 import prisma from "@/lib/prisma"
 /**
  * @openapi

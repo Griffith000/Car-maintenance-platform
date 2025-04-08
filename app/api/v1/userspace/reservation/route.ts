@@ -2,8 +2,9 @@ import { Reservation } from "@prisma/client";
 import { NextResponse, NextRequest } from "next/server";
 import { CreateReservationDto } from "@/app/helpers/userspace/reservation/create-reservation.dto";
 import { validate } from "@/app/helpers/shared/validate";
+import { auth } from "@/auth"
 
-import prisma from "@/lib/prisma"
+// import prisma from "@/lib/prisma"
 
 /**
  * @openapi
