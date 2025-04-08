@@ -7,7 +7,7 @@ import { useBookingStore } from '@/app/stores/bookingStore';
 import ServiceCard from '@/app/_components/ui/ServiceCard';
 import ServiceSelection from '@/app/_components/booking/ServiceSelection';
 import VehicleVerification from '@/app/_components/booking/VehicleVerification';
-import DateSelection from '@/app/_components/DateSelection';
+import DateSelection from '@/app/_components/ui/DateSelection';
 import ContactForm from '@/app/_components/forms/ContactForm';
 import BookingConfirmation from '@/app/_components/booking/BookingConfirmation';
 import { CheckCircle, Circle } from 'lucide-react';

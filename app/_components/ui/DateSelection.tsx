@@ -54,7 +54,7 @@ export default function DateSelection() {
   useEffect(() => {
     const fetchHolidays = async () => {
       try {
-        const response = await fetch('/api/holidays');
+        const response = await fetch('/api/v1/holidays');
         const data = await response.json();
         
         if (data.holidays) {
@@ -168,17 +168,17 @@ export default function DateSelection() {
             headerToolbar={{
               left: 'prev,next today',
               center: 'title',
-              right: 'dayGridMonth,timeGridWeek,timeGridDay'
+              right: 'timeGridWeek'
             }}
             selectable={true}
             selectMirror={true}
             dayMaxEvents={true}
             selectConstraint={{
               startTime: '09:00',
-              endTime: '23:00'
+              endTime: '16:00'
             }}
             slotMinTime="09:00:00"
-            slotMaxTime="23:00:00"
+            slotMaxTime="16:00:00"
             selectOverlap={false}
             validRange={validRange}
             selectAllow={(selectInfo) => isDateSelectable(selectInfo.start)}
@@ -209,26 +209,7 @@ export default function DateSelection() {
           transition={{ duration: 0.3 }}
           className="space-y-4"
         >
-          <div className="mt-6">
-            <div className="flex items-center gap-2 mb-4">
-              <Clock className="h-5 w-5 text-primary" />
-              <h3 className="font-medium">Select a Time</h3>
-            </div>
-            
-            <div className="grid grid-cols-4 gap-2 md:grid-cols-6">
-              {availableTimes.map((time) => (
-                <Button
-                  key={time}
-                  variant={selectedTime === time ? "default" : "outline"}
-                  className={`w-full ${selectedTime === time ? 'bg-primary text-primary-foreground' : ''}`}
-                  onClick={() => handleTimeSelect(time)}
-                >
-                  {time}
-                </Button>
-              ))}
-            </div>
-          </div>
-
+        
           <div className="flex justify-end mt-6">
             <Button
               onClick={handleNext}

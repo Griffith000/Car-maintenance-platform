@@ -141,7 +141,7 @@ export default function Hero() {
               >
                 <Button 
                   size="lg"
-                  onClick={() => router.push('/booking')}
+                  onClick={() => router.push('/services')}
                   className="bg-yellow-400 hover:bg-yellow-500 text-black text-lg px-8 py-6 shadow-lg"
                 >
                   Book Your Service Now
@@ -155,7 +155,7 @@ export default function Hero() {
                 <Button 
                   size="lg"
                   variant="outline"
-                  onClick={() => router.push('/services')}
+                  onClick={() => router.push('#services')}
                   className="border-2 text-lg px-8 py-6"
                 >
                   View Services
@@ -366,7 +366,7 @@ export default function Hero() {
             >
               <Button 
                 size="lg"
-                onClick={() => router.push('/booking')}
+                onClick={() => router.push('/services')}
                 className="bg-yellow-400 hover:bg-yellow-500 text-black text-lg px-10 py-6 shadow-lg"
               >
                 Book Your Service Now
