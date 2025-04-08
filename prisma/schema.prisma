@@ -91,6 +91,9 @@ model Reservation {
   vehicleId     String
   vehicle       Vehicle       @relation(fields: [vehicleId], references: [vin])
 
+  userId Int
+  user   User @relation(fields: [userId], references: [userId])
+
   // to test later
   // need to make this work for later @@db.check("mobile_phone ~ '^(2|5|9)[0-9]{7}$'") 
   diagnostic Diagnostic[]
@@ -135,10 +138,11 @@ model Vendor {
 
 // models
 model User {
-  userId   Int     @id @default(autoincrement())
-  username String  @default("default_username")
-  email    String  @unique
-  phone    String?
-  role     Roles   @default(PEASANT)
-  image    String?
+  userId      Int           @id @default(autoincrement())
+  username    String        @default("default_username")
+  email       String        @unique
+  phone       String?
+  role        Roles         @default(PEASANT)
+  image       String?
+  Reservation Reservation[]
 }

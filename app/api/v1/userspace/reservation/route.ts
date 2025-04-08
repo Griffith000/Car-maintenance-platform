@@ -5,8 +5,6 @@ import { validate } from "@/app/helpers/shared/validate";
 
 import prisma from "@/lib/prisma"
 
-
-
 /**
  * @openapi
  * /api/v1/userspace/reservation:
@@ -112,7 +110,8 @@ export async function POST(request: NextRequest) {
         date: validatedResponse.date,
         baseFee: validatedResponse.baseFee ?? 0,
         repairStatus: validatedResponse.repairStatus,
-        vehicleId: validatedResponse.vehicleId
+        vehicleId: validatedResponse.vehicleId,
+        userId: validatedResponse.userId
       }
     })
 
