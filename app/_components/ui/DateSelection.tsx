@@ -121,7 +121,7 @@ export default function DateSelection() {
     // 0 = Sunday, 6 = Saturday
     const criteria = day !== 0 && day !== 6 && !isHoliday(dateStart) && diffInH === 1;
 
-    if (!criteria){
+    if (!criteria) {
       setSelectedDate(undefined);
     }
 
@@ -130,7 +130,7 @@ export default function DateSelection() {
 
   const removeSelection = () => {
     setSelectedDate(undefined)
-  } 
+  }
 
   // Get events for the calendar
   const getEvents = () => {
@@ -153,13 +153,7 @@ export default function DateSelection() {
 
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.3 }}
-      className="space-y-6"
-    >
+    <div >
       <style jsx global>{`
         .holiday-event {
           pointer-events: none;
@@ -223,7 +217,7 @@ export default function DateSelection() {
               validRange={validRange}
               selectAllow={(selectInfo) => isDateSelectable(selectInfo.start, selectInfo.end)}
               unselect={removeSelection}
-              
+
               select={handleDateSelect}
               events={getEvents()}
               dayCellDidMount={(arg) => {
@@ -244,19 +238,18 @@ export default function DateSelection() {
         </Card>
       }
 
-      {selectedDate && (
 
-          <div className="flex justify-end mt-6">
-            <Button
-              onClick={handleNext}
-              disabled={!selectedDate}
-              className="flex items-center gap-2"
-            >
-              Next
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-          </div>
-      )}
-    </motion.div>
+      <div className="flex justify-end mt-6">
+        <Button
+          onClick={handleNext}
+          disabled={!selectedDate}
+          className="flex items-center gap-2"
+        >
+          Next
+          <ArrowRight className="h-4 w-4" />
+        </Button>
+      </div>
+
+    </div>
   );
 }
