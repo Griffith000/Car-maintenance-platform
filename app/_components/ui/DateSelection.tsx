@@ -13,7 +13,7 @@ import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { debug } from 'console';
 
 export default function DateSelection() {
-  const { selectedDate, setSelectedDate, setStep } = useBookingStore();
+  const { selectedDate, setSelectedDate, setStep } = useBookingStore(); // selected Date is the one that has both date and time
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [availableTimes, setAvailableTimes] = useState<string[]>([]);
   const [holidays, setHolidays] = useState<any[]>([]);
@@ -132,6 +132,7 @@ export default function DateSelection() {
 
   const removeSelection = (info: any) => {
     const element = info.jsEvent
+    console.log(element.target.className === "fc-event-time")
     if (element.target.className === "fc-event-time") {
       setSelectedDate(undefined);
     }
