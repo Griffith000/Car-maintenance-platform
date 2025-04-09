@@ -10,6 +10,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { Card, CardContent } from '@/components/ui/card';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import { debug } from 'console';
 
 export default function DateSelection() {
   const { selectedDate, setSelectedDate, setStep } = useBookingStore();
@@ -99,7 +100,8 @@ export default function DateSelection() {
   //
 
   const handleNext = () => {
-    console.log('handleNext called', { selectedDate });
+    // console.log('handleNext called', { selectedDate });
+    console.log(selectedDate)
     if (selectedDate) {
       console.log('Proceeding to next step');
       setStep(4);
@@ -128,8 +130,11 @@ export default function DateSelection() {
     return criteria
   };
 
-  const removeSelection = () => {
-    setSelectedDate(undefined)
+  const removeSelection = (info: any) => {
+    const element = info.jsEvent
+    if (element.target.className === "fc-event-time") {
+      setSelectedDate(undefined);
+    }
   }
 
   // Get events for the calendar
@@ -150,7 +155,7 @@ export default function DateSelection() {
 
   // selectedTime is empty always, we cant determine the time from date 
   // loading
-
+  //
 
   return (
     <div >
