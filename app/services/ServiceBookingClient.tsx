@@ -1,16 +1,17 @@
 'use client';
 
-import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ContactFormValues } from './schemas';
 import { useBookingStore } from '@/app/stores/bookingStore';
 import ServiceCard from '@/app/_components/ui/ServiceCard';
 import ServiceSelection from '@/app/_components/booking/ServiceSelection';
 import VehicleVerification from '@/app/_components/booking/VehicleVerification';
-import DateSelection from '@/app/_components/ui/DateSelection';
+import DateSelection from '@/app/_components/ui/calendar/DateSelection';
 import ContactForm from '@/app/_components/forms/ContactForm';
-import BookingConfirmation from '@/app/_components/booking/BookingConfirmation';
-import { CheckCircle, Circle } from 'lucide-react';
+import FinalConfirmation from '@/app/_components/booking/FinalConfirmation';
+import { CheckCircle } from 'lucide-react';
+import BookingSummary from '../_components/booking/BookingSummary';
+
 
 export default function ServiceBookingClient() {
   const {
@@ -18,8 +19,6 @@ export default function ServiceBookingClient() {
     selectedService,
     vehicleData,
     selectedDate,
-    isLoading,
-    formSubmitted,
     contactDetails,
     setStep,
     setSelectedService,
@@ -147,15 +146,21 @@ export default function ServiceBookingClient() {
                 <DateSelection />
               )}
 
+
               {step === 4 && (
                 <ContactForm
                   onSubmit={handleContactSubmit}
-                  isLoading={isLoading}
+              
                 />
               )}
 
-              {step === 5 && contactDetails && (
-                <BookingConfirmation
+              {step ===5 && (
+                <FinalConfirmation />
+              )}
+
+
+              {step === 6 && contactDetails && (
+                <BookingSummary
                   selectedService={selectedService}
                   vehicleData={vehicleData}
                   selectedDate={selectedDate}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { useBookingStore } from '@/app/stores/bookingStore';
 import { Button } from '@/components/ui/button';
@@ -9,15 +9,17 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { Card, CardContent } from '@/components/ui/card';
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
-import { debug } from 'console';
+import { Calendar, ArrowRight } from 'lucide-react';
+import { useQuery } from '@tanstack/react-query';
+import Loading from '@/app/_components/ui/calendar/loading';
+
 
 export default function DateSelection() {
   const { selectedDate, setSelectedDate, setStep } = useBookingStore(); // selected Date is the one that has both date and time
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [availableTimes, setAvailableTimes] = useState<string[]>([]);
   const [holidays, setHolidays] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+
 
 
   // limit selection to 1hr
@@ -54,27 +56,7 @@ export default function DateSelection() {
     setSelectedTime(null); // hmm this is gay
   }, [selectedDate]);
 
-  // Fetch holidays from Google Calendar
-  useEffect(() => {
-    const fetchHolidays = async () => {
-      try {
-        setIsLoading(true)
-        const response = await fetch('/api/v1/holidays');
-        const data = await response.json();
 
-        if (data.holidays) {
-          const holidayDates = data.holidays;
-          setHolidays(holidayDates);
-        }
-      } catch (error) {
-        console.error('Error fetching holidays:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchHolidays();
-  }, []);
 
   const handleDateSelect = (info: any) => {
     const date = new Date(info.startStr); // this now selects the date with the starting time
@@ -156,7 +138,22 @@ export default function DateSelection() {
 
   // selectedTime is empty always, we cant determine the time from date 
   // loading
-  //
+
+  // Fetch holidays from Google Calendar
+  const { isPending, isError, error } = useQuery({
+    queryKey: ["holidays"],
+    queryFn: async () => {
+
+      const response = await fetch('/api/v1/holidays');
+      const data = await response.json();
+      if (data?.holidays) {
+        const holidayDates = data.holidays;
+        setHolidays(holidayDates);
+      }
+      return data?.holidays;
+    }
+  })
+  if (isError) return <div>Error: {error.message}</div>;
 
   return (
     <div >
@@ -177,72 +174,84 @@ export default function DateSelection() {
         .fc .selected-date {
           background: rgba(var(--primary), 0.15) !important;
           font-weight: bold;
+          
         }
+        .fc .fc-timegrid-slot {
+          height: 35px !important;
+        }
+        .fc {
+          padding: 15px;
+        }
+
       `}</style>
 
       <div className="flex items-center gap-2 mb-2">
         <Calendar className="h-5 w-5 text-primary" />
         <h3 className="font-medium">Select a Date</h3>
       </div>
-      {!isLoading &&
+      {isPending ? <Loading /> : (
         <Card className="border shadow-sm">
           <CardContent className="p-0">
-            <FullCalendar
-              plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-              initialView="timeGridWeek"
-              eventStartEditable={false}
-              eventDurationEditable={false}
-              slotLabelFormat={{
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: false
-              }}
-              eventTimeFormat={{
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: false
-              }}
-              headerToolbar={{
-                left: 'prev,next today',
-                center: 'title',
-                right: '',
-              }}
-              selectable={true}
-              selectMirror={true}
-              dayMaxEvents={true}
-              selectConstraint={{
-                startTime: '09:00',
-                endTime: '16:00'
-              }}
-              slotDuration="01:00:00"
-              snapDuration="01:00:00"
-              slotMinTime="09:00:00"
-              slotMaxTime="16:00:00"
-              dragScroll={false}
-              selectOverlap={false}
-              validRange={validRange}
-              selectAllow={(selectInfo) => isDateSelectable(selectInfo.start, selectInfo.end)}
-              unselect={removeSelection}
+          
+              <FullCalendar
+                plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                initialView="timeGridWeek"
+                contentHeight="auto"
+                allDaySlot={false}
+                eventStartEditable={false}
+                eventDurationEditable={false}
+                slotLabelFormat={{
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  hour12: false
+                }}
+                eventTimeFormat={{
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  hour12: false
+                }}
+                headerToolbar={{
+                  left: 'prev,next',
+                  center: '',
+                  right: 'today',
+                }}
+                selectable={true}
+                selectMirror={true}
+                dayMaxEvents={true}
+                selectConstraint={{
+                  startTime: '09:00',
+                  endTime: '19:00'
+                }}
+                slotDuration="01:00:00"
+                snapDuration="01:00:00"
+                slotMinTime="09:00:00"
+                slotMaxTime="19:00:00"
+                dragScroll={false}
+                selectOverlap={false}
+                validRange={validRange}
+                selectAllow={(selectInfo) => isDateSelectable(selectInfo.start, selectInfo.end)}
+                unselect={removeSelection}
 
-              select={handleDateSelect}
-              events={getEvents()}
-              dayCellDidMount={(arg) => {
-                // Add disabled class to holiday dates
-                if (isHoliday(arg.date)) {
-                  arg.el.classList.add('fc-day-disabled');
-                }
-                // Add selected class to the selected date
-                if (selectedDate &&
-                  arg.date.getDate() === selectedDate.getDate() &&
-                  arg.date.getMonth() === selectedDate.getMonth() &&
-                  arg.date.getFullYear() === selectedDate.getFullYear()) {
-                  arg.el.classList.add('selected-date');
-                }
-              }}
-            />
+                select={handleDateSelect}
+                events={getEvents()}
+                dayCellDidMount={(arg) => {
+                  // Add disabled class to holiday dates
+                  if (isHoliday(arg.date)) {
+                    arg.el.classList.add('fc-day-disabled');
+                  }
+                  // Add selected class to the selected date
+                  if (selectedDate &&
+                    arg.date.getDate() === selectedDate.getDate() &&
+                    arg.date.getMonth() === selectedDate.getMonth() &&
+                    arg.date.getFullYear() === selectedDate.getFullYear()) {
+                    arg.el.classList.add('selected-date');
+                  }
+                }}
+              />
+
           </CardContent>
         </Card>
-      }
+      )}
 
 
       <div className="flex justify-end mt-6">

@@ -9,16 +9,18 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { toast } from 'sonner';
+import { useUserStore } from '@/app/stores/userStore';
+import { useEffect } from 'react';
 
 type ContactFormProps = {
   onSubmit: (data: ContactFormValues) => void;
-  isLoading: boolean;
 };
 
 export default function ContactForm({
   onSubmit,
-  isLoading
 }: ContactFormProps) {
+  
   const contactForm = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -27,10 +29,25 @@ export default function ContactForm({
       phone: '',
       message: '',
     },
-    mode: 'onChange',
+    mode: 'onChange', 
   });
 
+  const { name, email } = useUserStore();
+  
+  // Sync form defaults with user store
+  useEffect(() => {
+    contactForm.reset({
+      ...contactForm.getValues(),
+      name: name || contactForm.getValues('name'),
+      email: email || contactForm.getValues('email'),
+    });
+  }, [name, email]);
+
   const handleSubmit = contactForm.handleSubmit((data) => {
+    if (!contactForm.formState.isValid) {
+      toast.error('Please fill in all required fields');
+      return;
+    }
     onSubmit(data);
   });
 
@@ -99,9 +116,9 @@ export default function ContactForm({
             <div className="flex justify-end mt-6">
               <Button
                 type="submit"
-                disabled={!contactForm.formState.isValid || isLoading}
+                disabled={!contactForm.formState.isValid}
               >
-                {isLoading ? 'Processing...' : 'Submit Booking'}
+                Submit Booking
               </Button>
             </div>
           </form>

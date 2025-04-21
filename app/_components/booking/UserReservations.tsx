@@ -71,7 +71,7 @@ export default function UserReservations({ userId }: UserReservationsProps) {
 
   if (isLoading) {
     return (
-      <div className="space-y-4">
+      <div className="space-y-4 space-x-4 flex ">
         {[1, 2, 3].map((i) => (
           <Card key={i} className="overflow-hidden">
             <CardHeader className="pb-0">
@@ -145,10 +145,11 @@ export default function UserReservations({ userId }: UserReservationsProps) {
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="space-y-6"
+      className="space-y-6 space-x-6 flex flex-wrap p-10"
     >
       {data.map((reservation: Reservation) => (
         <motion.div
+          
           key={reservation.reservationId}
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}

@@ -3,6 +3,7 @@
 import { create } from 'zustand';
 import { ContactFormValues } from '@/app/services/schemas';
 import { VehicleVerification } from '@/app/services/schemas';
+import { RepairStatus } from '@prisma/client';
 
 interface BookingState {
   step: number;
@@ -14,6 +15,7 @@ interface BookingState {
   contactDetails: ContactFormValues | null;
   isForeignCar: boolean;
   selectedVehicle: string | null;
+  RepairStatus: RepairStatus | null;
   // Actions
   setStep: (step: number) => void;
   setSelectedService: (serviceId: string) => void;
@@ -37,6 +39,7 @@ export const useBookingStore = create<BookingState>((set) => ({
   contactDetails: null,
   isForeignCar: false,
   selectedVehicle: null,
+  RepairStatus: null,
   setStep: (step) => set({ step }),
   setSelectedService: (serviceId) => set({ selectedService: serviceId }),
   setSelectedVehicle: (vehicleId) => set({ selectedVehicle: vehicleId }),

@@ -1,12 +1,12 @@
-
-import { auth, signOut, signIn } from "@/auth"
+import { auth, signIn, signOut } from '@/auth'
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import {ChevronRight} from "lucide-react"
- 
+
 export default async function SignIn() {
     const session = await auth()
-    console.log(session)
+    console.log("I,m at the login page " + session)
+
     const user = session?.user
      
     return (user ? 

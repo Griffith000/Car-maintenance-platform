@@ -3,6 +3,7 @@ import { NextResponse, NextRequest } from "next/server";
 import { CreateReservationDto } from "@/app/helpers/userspace/reservation/create-reservation.dto";
 import { validate } from "@/app/helpers/shared/validate";
 import { auth } from "@/auth"
+import prisma from "@/lib/prisma";
 
 // import prisma from "@/lib/prisma"
 
@@ -105,22 +106,46 @@ export async function POST(request: NextRequest) {
     let validatedResponse = validate(CreateReservationDto, reqBody);
     console.log(validatedResponse)
 
-    prismaOutput = await prisma.reservation.create({
-      data: {
-        mobilePhone: validatedResponse.mobilePhone,
-        date: validatedResponse.date,
-        baseFee: validatedResponse.baseFee ?? 0,
-        repairStatus: validatedResponse.repairStatus,
-        vehicleId: validatedResponse.vehicleId,
-        userId: validatedResponse.userId
+    try {
+      prismaOutput = await prisma.reservation.create({
+        data: {
+          // TODO: add the service selected by the user
+          mobilePhone: validatedResponse.mobilePhone,
+          date: validatedResponse.date,
+          baseFee: validatedResponse.baseFee ?? 0,
+          repairStatus: validatedResponse.repairStatus,
+          vehicleId: validatedResponse.vehicleId,
+          userId: validatedResponse.userId //TODO: you should also handle the case when the user is not logged in
+        }
+      })
+    } catch (error) {
+      // Type the Prisma error correctly
+      const prismaError = error as { name: string; code?: string; message: string };
+      
+      console.error("Prisma Error:", prismaError.name, prismaError.code);
+      console.error("Error message:", prismaError.message);
+      
+      // Check for common Prisma errors
+      if (prismaError.code === 'P2002') {
+        return NextResponse.json({
+          Message: "A reservation with this information already exists",
+          error: prismaError.message
+        }, { status: 409 }); // Conflict
+      } else if (prismaError.code === 'P2003') {
+        return NextResponse.json({
+          Message: "Foreign key constraint failed. User or another referenced entity doesn't exist",
+          error: prismaError.message
+        }, { status: 400 }); // Bad Request
       }
-    })
+      
+      throw error; // Re-throw to be caught by outer catch
+    }
 
   } catch (error) {
-    console.log("Internal Server Error")
+    console.error("Internal Server Error Details:", error);
     return NextResponse.json({
       Message: "Internal Server Error",
-      errorMessage: error
+      errorMessage: error instanceof Error ? error.message : String(error)
     }, {
       status: 500
     })

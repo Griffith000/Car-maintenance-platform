@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/app/_components/ui/Header";
 import Footer from "@/app/_components/ui/Footer";
 import { SessionProvider } from "next-auth/react";
+import UserStoreSync from "@/app/_components/UserStoreSync"; 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <SessionProvider> 
           <QueryClientProvider>
+            <UserStoreSync />
             <Header />
             {children}
             <Footer />
