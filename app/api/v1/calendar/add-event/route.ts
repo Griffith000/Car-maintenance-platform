@@ -18,7 +18,6 @@ export async function POST(request: Request) {
     const eventData = await request.json();
     console.log('Received event data:', eventData);
     
-    // Validate required fields
     if (!eventData.title || !eventData.start || !eventData.end) {
       return NextResponse.json(
         { success: false, message: "Missing required event data" },
@@ -26,7 +25,6 @@ export async function POST(request: Request) {
       );
     }
     
-    // Validate user ID
     if (!eventData.userId) {
       return NextResponse.json(
         { success: false, message: "User ID is required" },
@@ -34,7 +32,6 @@ export async function POST(request: Request) {
       );
     }
     
-    // Validate vehicle ID
     if (!eventData.vehicleId) {
       return NextResponse.json(
         { success: false, message: "Vehicle ID is required" },
@@ -42,7 +39,6 @@ export async function POST(request: Request) {
       );
     }
     
-    // Check for time conflict with existing events in the database
     const existingEvents = await prisma.reservation.findMany({
       where: {
         OR: [
@@ -64,9 +60,9 @@ export async function POST(request: Request) {
     }
     
     // Create event in the database with proper FullCalendar compatible format
-    const newEvent = await prisma.reservation.create({
+    /*const newEvent = await prisma.reservation.create({
       data: {
-        mobilePhone: eventData.mobilePhone || "+21600000000", // Default placeholder phone
+        mobilePhone: eventData.mobilePhone || "+21600000000", 
         date: new Date(eventData.start),
         vehicleId: eventData.vehicleId, // this is also a problem
         userId: eventData.userId, // this is a problem
@@ -76,7 +72,7 @@ export async function POST(request: Request) {
     }); // this needs to be removed and readded to the confirmation diaglog actions
     
     // Format the event for FullCalendar
-    const formattedEvent: CalendarEvent = {
+    /*const formattedEvent: CalendarEvent = {
       id: newEvent.reservationId.toString(),
       title: eventData.title || 'Appointment',
       description: eventData.description || '',
@@ -89,11 +85,11 @@ export async function POST(request: Request) {
         description: eventData.description || '',
         mobilePhone: newEvent.mobilePhone
       }
-    };
+    };*/
     
     return NextResponse.json({
       success: true,
-      event: formattedEvent,
+      event: null, // testing its supporsed to be formatedevent
       message: "Event created successfully"
     });
   } catch (error) {

@@ -3,8 +3,7 @@
 import { useMutation, useQuery ,useQueryClient} from '@tanstack/react-query';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Calendar, Clock, Car, AlertCircle } from 'lucide-react';
-import { Skeleton } from '@/components/ui/skeleton';
+import { Calendar, Clock, Car, AlertCircle, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import {Trash} from 'lucide-react';  
@@ -42,7 +41,8 @@ export default function UserReservations({ userId }: UserReservationsProps) {
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ['userReservations', userId],
     queryFn: () => fetchUserReservations(userId),
-    staleTime: 1000 * 60 * 5, // 5minutes
+    staleTime: 1000 * 60 * 5, // this code is used to prevent the user from fetching the reservations too often it is set to 5 minutes
+
   });
 
 
@@ -95,25 +95,8 @@ export default function UserReservations({ userId }: UserReservationsProps) {
 
   if (isLoading) {
     return (
-      <div className="space-y-4 space-x-4 flex ">
-        {[1, 2, 3].map((i) => (
-          <Card key={i} className="overflow-hidden">
-            <CardHeader className="pb-0">
-              <Skeleton className="h-8 w-3/4 mb-2" />
-              <Skeleton className="h-4 w-1/2" />
-            </CardHeader>
-            <CardContent className="pt-4">
-              <div className="space-y-3">
-                <Skeleton className="h-4 w-full" />
-                <Skeleton className="h-4 w-full" />
-                <Skeleton className="h-4 w-2/3" />
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Skeleton className="h-10 w-32" />
-            </CardFooter>
-          </Card>
-        ))}
+      <div className="space-y-4 space-x-4 flex justify-center items-center h-[50vh]">
+       <Loader2 className="animate-spin h-8 w-8 text-gray-500 dark:text-gray-400" />
       </div>
     );
   }

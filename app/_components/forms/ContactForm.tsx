@@ -12,6 +12,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
 import { useUserStore } from '@/app/stores/userStore';
 import { useEffect } from 'react';
+import {Loader} from 'lucide-react';
+import { useBookingStore } from '@/app/stores/bookingStore';
 
 type ContactFormProps = {
   onSubmit: (data: ContactFormValues) => void;
@@ -33,7 +35,8 @@ export default function ContactForm({
   });
 
   const { name, email } = useUserStore();
-  
+  const { isLoading, setIsLoading } = useBookingStore();
+console.log(isLoading);
   // Sync form defaults with user store
   useEffect(() => {
     contactForm.reset({
@@ -48,7 +51,9 @@ export default function ContactForm({
       toast.error('Please fill in all required fields');
       return;
     }
+    setIsLoading(true);
     onSubmit(data);
+    setIsLoading(false);
   });
 
   return (
@@ -118,7 +123,11 @@ export default function ContactForm({
                 type="submit"
                 disabled={!contactForm.formState.isValid}
               >
-                Submit Booking
+                {isLoading ? (
+                  <Loader className="mr-2 h-4 w-4 animate-spin" />
+                ) : (
+                  'Submit Booking'
+                )}
               </Button>
             </div>
           </form>

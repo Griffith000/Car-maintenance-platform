@@ -22,10 +22,8 @@ export async function GET(request: Request) {
     const startDate = url.searchParams.get('start');
     const endDate = url.searchParams.get('end');
     
-    // Query conditions
     let whereConditions: any = {};
     
-    // Apply date filters if provided
     if (startDate && endDate) {
       whereConditions.AND = [
         { start: { gte: new Date(startDate) } },
@@ -33,8 +31,7 @@ export async function GET(request: Request) {
       ];
     }
     
-    // Fetch events from database - this request is fucking bugged!
-    dbEvents = await prisma.reservation.findMany({
+    const dbEvents = await prisma.reservation.findMany({
       where: whereConditions,
       orderBy: { date: 'asc' },
       include: {

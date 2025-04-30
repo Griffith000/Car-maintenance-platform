@@ -8,7 +8,8 @@ export default async function pages() {
     
   return (
     <div className="container h-screen flex flex-col items-center justify-center">
-        <h1 className="text-3xl text-foreground font-bold mb-4 py-4 px-4">Protected Page !!!!!</h1>
+        <h1 className="text-3xl text-foreground font-bold mb-4 py-4 px-4">Booking Reservations</h1>
+        <p className="text-muted-foreground mb-4">Here you can view and manage your booking reservations.</p>
         <UserReservations userId={session.user.id} />
     </div>
   )

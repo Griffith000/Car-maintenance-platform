@@ -38,9 +38,9 @@ const Header = () => {
             <Link href="/" className="text-destructive  hover:text-primary transition-colors">
               Home
             </Link>
-            <Link href="/services" className="text-destructive hover:text-primary transition-colors">
+            {userId ? <Link href="/services" className="text-destructive hover:text-primary transition-colors">
               Services
-            </Link>
+            </Link> : null}
             <Link href="/about" className="text-destructive hover:text-primary transition-colors">
               About
             </Link>
@@ -91,13 +91,13 @@ const Header = () => {
                 >
                   Home
                 </Link>
-                <Link
+                {userId ? <Link
                   href="/services"
                   className="px-2 py-2 text-foreground/80 hover:bg-accent rounded-md transition-colors"
                   onClick={() => setMenuOpen(false)}
                 >
                   Services
-                </Link>
+                </Link> : null}
                 <Link
                   href="/about"
                   className="px-2 py-2 text-foreground/80 hover:bg-accent rounded-md transition-colors"
@@ -112,13 +112,19 @@ const Header = () => {
                 >
                   Contact
                 </Link>
-                <Link
+                {userId ? <Link
                   href="/login"
                   className="px-2 py-2 text-foreground/80 hover:bg-accent rounded-md transition-colors"
                   onClick={() => setMenuOpen(false)}
                 >
                   Login
-                </Link>
+                </Link> : <Link
+                  href="/protected"
+                  className="px-2 py-2 text-foreground/80 hover:bg-accent rounded-md transition-colors"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Reservations
+                </Link>}
               </div>
             </motion.div>
           )}

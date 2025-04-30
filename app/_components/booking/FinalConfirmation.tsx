@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ClipboardCheck, AlertCircle } from 'lucide-react';
+import { ClipboardCheck, AlertCircle, Loader } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { services } from '@/app/data/services';
 import { useBookingStore } from '@/app/stores/bookingStore';
@@ -327,7 +327,7 @@ export default function FinalConfirmation() {
           onClick={handleConfirmBooking}
           disabled={isPending || !contactDetails || !selectedService || !vehicleData || !selectedDate}
         >
-          {isPending ? 'Processing...' : 'Confirm Booking'}
+          {isPending ? <Loader className="animate-spin h-4 w-4" /> : 'Confirm Booking'}
         </Button>
       </div>
     </motion.div>

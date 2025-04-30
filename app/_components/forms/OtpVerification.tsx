@@ -15,7 +15,7 @@ interface OtpVerificationProps {
   onVerificationSuccess: () => void;
   onResendOtp: () => Promise<void>;
 }
-const sidCode = process.env.TWILIO_VERIFY_SERVICE_SID;
+
 export default function OtpVerification({
   phoneNumber,
   onVerificationSuccess,
@@ -37,7 +37,7 @@ export default function OtpVerification({
     return () => clearTimeout(timer);
   }, [countdown, canResend]);
   
-  // Focus the first input on initial load
+  
   useEffect(() => {
     if (inputRefs.current[0]) {
       inputRefs.current[0].focus();
@@ -45,29 +45,24 @@ export default function OtpVerification({
   }, []);
 
   const formatPhoneNumber = (phone: string) => {
-    // Basic formatter for display purposes
     if (phone.length <= 4) return phone;
     const lastFour = phone.slice(-4);
     return `****-${lastFour}`;
   };
   
   const handleInputChange = (index: number, value: string) => {
-    // Only allow numbers
     if (!/^\d*$/.test(value)) return;
     
-    // Update the OTP values array
     const newOtpValues = [...otpValues];
     newOtpValues[index] = value;
     setOtpValues(newOtpValues);
     
-    // Auto-focus next input if value is entered
     if (value && index < 5 && inputRefs.current[index + 1]) {
       inputRefs.current[index + 1]?.focus();
     }
   };
   
   const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
-    // Handle backspace to move to previous input
     if (e.key === 'Backspace' && !otpValues[index] && index > 0 && inputRefs.current[index - 1]) {
       inputRefs.current[index - 1]?.focus();
     }

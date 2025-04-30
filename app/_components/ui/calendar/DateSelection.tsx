@@ -12,6 +12,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Calendar, ArrowRight } from 'lucide-react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import Loading from '@/app/_components/ui/calendar/loading';
+import axios from 'axios';
 
 
 type EventData = {
@@ -47,15 +48,6 @@ export default function DateSelection() {
   };
 
   
-  useEffect(() => {
-    if (selectedDate) {
-      // In a real app, this would be fetched from your API
-    } else {
-    }
-  }, [selectedDate]);
-
-
-
   const handleDateSelect = async (info: any) => {
     const startDate = new Date(info.startStr);
     const endDate = new Date(info.endStr);
@@ -67,11 +59,10 @@ export default function DateSelection() {
       setSelectedDate(startDate);
       
       try {
+
+        //useless crap might get rid of it 
         // Create a temporary event for the selected timeslot
-        console.log('User ID from store:', userId, 'type:', typeof userId);
-        console.log('Vehicle ID from store:', selectedVehicle, 'type:', typeof selectedVehicle);
-        
-        const eventData: EventData = {
+       const eventData: EventData = {
           title: 'Your Appointment',
           description: 'Tentative booking',
           start: info.startStr,
@@ -82,8 +73,17 @@ export default function DateSelection() {
           baseFee: 0 // Default base fee
         };
         
-        console.log('Final event data:', eventData);
         
+        
+      //disabled for the moment 
+      /* addEventMutation.mutate(eventData, {
+          onSuccess: () => {
+            console.log('Event created successfully');
+          },
+          onError: (err) => {
+            console.log('Error creating calendar event:', err);
+          }
+        });*/
       } catch (error) {
         console.error('Error creating calendar event:', error);
         setSelectedDate(undefined);
@@ -132,17 +132,18 @@ export default function DateSelection() {
   // Define a query for reservation events outside the getEvents function
   const { data: reservationEvents = [] } = useQuery({
     queryKey: ['reservations'],
+    refetchInterval:1000, 
     queryFn: async () => {
       try {
-        const response = await fetch('/api/v1/calendar/get-events');
-        const data = await response.json();
-        return data.success ? data.events : [];
+        const response = await axios.get('/api/v1/calendar/get-events');
+        const data = response.data;
+        return data.success ? data.event : [];
       } catch (error) {
         console.error("Error fetching reservation events:", error);
         return [];
       }
     },
-    staleTime: 1000 * 60 * 5, // 5 minutes
+    staleTime: 1000 * 60 * 5, // 5 minutes 
   });
 
   // Get events for the calendar
@@ -192,15 +193,18 @@ export default function DateSelection() {
     
     return [...holidayEvents, ...bookedSlots, ...userSelection];
   };
-  // loading
 
-  // Fetch holidays from Google Calendar
+
   const { isPending, isError, error } = useQuery({
     queryKey: ["holidays"],
+    refetchOnWindowFocus: true,
+    refetchOnMount: true,
+    refetchOnReconnect: true,
+    refetchInterval: 50,
     queryFn: async () => {
       try {
-        const response = await fetch('/api/v1/holidays');
-        const data = await response.json();
+        const response = await axios.get('/api/v1/holidays');
+        const data = response.data;
         if (data?.holidays) {
           const holidayDates = data.holidays;
           setHolidays(holidayDates);
@@ -357,3 +361,4 @@ export default function DateSelection() {
     </div>
   );
 }
+
