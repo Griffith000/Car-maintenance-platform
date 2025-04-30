@@ -8,10 +8,11 @@ import { ThemeToggle } from '@/components/themeToggle';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
 import { UserAvatar } from './UserAvatar';
+import { useUserStore } from '@/app/stores/userStore';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const { userId } = useUserStore();
 
   return (
     <motion.header
@@ -46,9 +47,15 @@ const Header = () => {
             <Link href="/contact" className="text-destructive hover:text-primary transition-colors">
               Contact
             </Link>
-            <Link href="/login" className="text-destructive hover:text-primary transition-colors">
-              Login
-            </Link>
+            {!userId ? (
+              <Link href="/login" className="text-destructive hover:text-primary transition-colors">
+                Login
+              </Link>
+            ) : (
+              <Link href="/protected" className="text-destructive hover:text-primary transition-colors">
+                Reservations
+              </Link>
+            )}
           </nav>
           
           <div className="flex items-center space-x-4">

@@ -8,9 +8,12 @@ import ServiceSelection from '@/app/_components/booking/ServiceSelection';
 import VehicleVerification from '@/app/_components/booking/VehicleVerification';
 import DateSelection from '@/app/_components/ui/calendar/DateSelection';
 import ContactForm from '@/app/_components/forms/ContactForm';
+import OtpVerification from '@/app/_components/forms/OtpVerification';
 import FinalConfirmation from '@/app/_components/booking/FinalConfirmation';
 import { CheckCircle } from 'lucide-react';
 import BookingSummary from '../_components/booking/BookingSummary';
+import { useState } from 'react';
+import { toast } from 'sonner';
 
 
 export default function ServiceBookingClient() {
@@ -29,16 +32,77 @@ export default function ServiceBookingClient() {
     setContactDetails,
     resetStore,
   } = useBookingStore();
+  
+  const [phoneVerified, setPhoneVerified] = useState(false);
 
   const handleContactSubmit = (data: ContactFormValues) => {
     setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
-      setContactDetails(data);
-      setFormSubmitted(true);
-      setIsLoading(false);
-      setStep(5); // Move to confirmation step
-    }, 1500);
+    
+    // Save contact details and send OTP
+    setContactDetails(data);
+    
+    // Send OTP to the phone number
+    fetch('/api/v1/send-otp', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        phoneNumber: data.phone,
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.success) {
+          toast.success('Verification code sent to your phone');
+          // In development mode, show the OTP for testing
+          if (process.env.NODE_ENV !== 'production' && result.otp) {
+            toast.info(`[DEV] Your OTP: ${result.otp}`);
+          }
+          setFormSubmitted(true);
+          setStep(5); // Move to OTP verification step
+        } else {
+          toast.error(result.message || 'Failed to send verification code');
+        }
+      })
+      .catch((error) => {
+        toast.error('Failed to send verification code. Please try again.');
+        console.error('Error sending OTP:', error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+  
+  const handleOtpVerificationSuccess = () => {
+    setPhoneVerified(true);
+    setStep(6); // Move to final confirmation step
+  };
+  
+  const handleResendOtp = async () => {
+    if (!contactDetails) return Promise.reject('No contact details found');
+    
+    return fetch('/api/v1/send-otp', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        phoneNumber: contactDetails.phone,
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.success) {
+          // In development mode, show the OTP for testing
+          if (process.env.NODE_ENV !== 'production' && result.otp) {
+            toast.info(`[DEV] Your OTP: ${result.otp}`);
+          }
+          return Promise.resolve();
+        } else {
+          return Promise.reject(result.message || 'Failed to send verification code');
+        }
+      });
   };
 
   const resetForm = () => {
@@ -67,7 +131,7 @@ export default function ServiceBookingClient() {
         className="flex justify-center mb-8"
       >
         <div className="flex items-center">
-          {[1, 2, 3, 4, 5].map((stepNumber) => (
+          {[1, 2, 3, 4, 5, 6, 7].map((stepNumber) => (
             <div key={stepNumber} className="flex items-center">
               <motion.div
                 initial={false}
@@ -150,16 +214,22 @@ export default function ServiceBookingClient() {
               {step === 4 && (
                 <ContactForm
                   onSubmit={handleContactSubmit}
-              
                 />
               )}
 
-              {step ===5 && (
+              {step === 5 && contactDetails && (
+                <OtpVerification
+                  phoneNumber={contactDetails.phone}
+                  onVerificationSuccess={handleOtpVerificationSuccess}
+                  onResendOtp={handleResendOtp}
+                />
+              )}
+
+              {step === 6 && (
                 <FinalConfirmation />
               )}
 
-
-              {step === 6 && contactDetails && (
+              {step === 7 && contactDetails && (
                 <BookingSummary
                   selectedService={selectedService}
                   vehicleData={vehicleData}
@@ -187,7 +257,11 @@ function getStepTitle(step: number): string {
     case 4:
       return 'Contact Information';
     case 5:
+      return 'Phone Verification';
+    case 6:
       return 'Booking Confirmation';
+    case 7:
+      return 'Booking Summary';
     default:
       return 'Book Your Service';
   }
@@ -204,6 +278,10 @@ function getStepDescription(step: number): string | undefined {
     case 4:
       return 'Provide your contact information to complete the booking';
     case 5:
+      return 'Enter the verification code sent to your phone';
+    case 6:
+      return 'Confirm your service appointment details';
+    case 7:
       return 'Your service appointment has been confirmed';
     default:
       return undefined;

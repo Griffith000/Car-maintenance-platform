@@ -1,8 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ShieldCheck } from 'lucide-react';
+import { ShieldCheck, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useEffect, useState } from 'react';
 import { services } from '@/app/data/services';
 import { ContactFormValues, VehicleVerification } from '@/app/services/schemas';
 
@@ -21,6 +22,53 @@ export default function BookingConfirmation({
   contactDetails,
   onReset
 }: BookingConfirmationProps) {
+  const [googleCalendarUrl, setGoogleCalendarUrl] = useState<string>('');
+  
+  useEffect(() => {
+    // Retrieve the Google Calendar URL stored in local storage
+    const storedUrl = localStorage.getItem('lastBookingGoogleCalendarUrl');
+    if (storedUrl) {
+      setGoogleCalendarUrl(storedUrl);
+    } else if (selectedDate) {
+      // Generate a new URL if not found in local storage
+      const endDate = new Date(selectedDate.getTime() + (60 * 60 * 1000)); // Add 1 hour
+      const url = createGoogleCalendarUrl({
+        title: `${services.find(s => s.id === selectedService)?.name || 'Service'} Appointment`,
+        description: `Vehicle: ${vehicleData?.vin || 'Not specified'}`,
+        location: 'Car Maintenance Center',
+        startDate: selectedDate,
+        endDate: endDate
+      });
+      setGoogleCalendarUrl(url);
+    }
+  }, [selectedService, selectedDate, vehicleData]);
+  
+  // Helper to create Google Calendar URL
+  const createGoogleCalendarUrl = ({
+    title,
+    description,
+    location,
+    startDate,
+    endDate
+  }: {
+    title: string;
+    description: string;
+    location: string;
+    startDate: Date;
+    endDate: Date;
+  }) => {
+    const formatDate = (date: Date) => date.toISOString().replace(/-|:|\.\d+/g, '');
+    
+    const params = new URLSearchParams({
+      action: 'TEMPLATE',
+      text: title,
+      details: description,
+      location: location,
+      dates: `${formatDate(startDate)}/${formatDate(endDate)}`,
+    });
+    
+    return `https://calendar.google.com/calendar/render?${params.toString()}`;
+  };
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -77,9 +125,22 @@ export default function BookingConfirmation({
         </div>
       </div>
 
-      <Button onClick={onReset} className="w-full">
-        Book Another Service
-      </Button>
+      <div className="space-y-3">
+        {googleCalendarUrl && (
+          <Button 
+            variant="outline" 
+            className="w-full flex items-center justify-center gap-2"
+            onClick={() => window.open(googleCalendarUrl, '_blank')}
+          >
+            <Calendar className="h-4 w-4" />
+            Add to Google Calendar
+          </Button>
+        )}
+        
+        <Button onClick={onReset} className="w-full">
+          Book Another Service
+        </Button>
+      </div>
     </motion.div>
   );
 }

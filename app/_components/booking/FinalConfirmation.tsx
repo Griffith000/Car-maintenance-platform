@@ -55,16 +55,80 @@ export default function FinalConfirmation() {
 
       console.log('Submitting reservation with data:', reservationData);
       const response = await axios.post('/api/v1/userspace/reservation', reservationData);
+      
+      // After successful reservation, add the event to the calendar
+      if (response.data && response.data.reservationId) {
+        // Calculate appointment end time (1 hour after start)
+        const endDate = new Date(selectedDate!.getTime() + (60 * 60 * 1000)); // Add 1 hour
+        
+        // Create calendar event
+        const calendarEventData = {
+          title: `${serviceName} Appointment`,
+          description: `Vehicle: ${vehicleData?.vin}\nContact: ${contactDetails.name} (${contactDetails.phone})`,
+          startTime: selectedDate!.toISOString(),
+          endTime: endDate.toISOString(),
+          vehicleId: vehicleData?.vin,
+          userId: userId || 1,
+          reservationId: response.data.reservationId
+        };
+        
+        // Add event to calendar
+        const calendarResponse = await axios.post('/api/v1/calendar/add-event', calendarEventData);
+        console.log('Calendar event created:', calendarResponse.data);
+      }
+      
       return response.data;
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
       toast.success('Booking submitted successfully!');
-      setStep(6); 
+      // Optional: Add to Google Calendar URL
+      if (selectedDate) {
+        const endDate = new Date(selectedDate.getTime() + (60 * 60 * 1000)); // Add 1 hour
+        const googleCalendarUrl = createGoogleCalendarUrl({
+          title: `${serviceName} Appointment`,
+          description: `Vehicle: ${vehicleData?.vin}`,
+          location: 'Car Maintenance Center',
+          startDate: selectedDate,
+          endDate: endDate
+        });
+        
+        // Store URL for later use or display
+        localStorage.setItem('lastBookingGoogleCalendarUrl', googleCalendarUrl);
+      }
+      
+      setStep(7); // Move to summary step
     },
     onError: (err: any) => {
       toast.error(err.message || 'An error occurred during booking submission');
     }
   });
+  
+  // Helper to create Google Calendar URL
+  const createGoogleCalendarUrl = ({
+    title,
+    description,
+    location,
+    startDate,
+    endDate
+  }: {
+    title: string;
+    description: string;
+    location: string;
+    startDate: Date;
+    endDate: Date;
+  }) => {
+    const formatDate = (date: Date) => date.toISOString().replace(/-|:|\.\d+/g, '');
+    
+    const params = new URLSearchParams({
+      action: 'TEMPLATE',
+      text: title,
+      details: description,
+      location: location,
+      dates: `${formatDate(startDate)}/${formatDate(endDate)}`,
+    });
+    
+    return `https://calendar.google.com/calendar/render?${params.toString()}`;
+  };
 
   const handleEditStep = (step: number) => {
     setStep(step);

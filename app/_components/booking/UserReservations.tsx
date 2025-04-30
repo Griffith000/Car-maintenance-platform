@@ -1,12 +1,15 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery ,useQueryClient} from '@tanstack/react-query';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar, Clock, Car, AlertCircle } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import {Trash} from 'lucide-react';  
+import axios from 'axios';
+import { toast } from 'sonner';
 
 interface Reservation {
   reservationId: number;
@@ -26,7 +29,6 @@ interface Reservation {
 interface UserReservationsProps {
   userId: string;
 }
-
 const fetchUserReservations = async (userId: string) => {
   const response = await fetch(`/api/v1/userspace/reservation/user/${userId}`);
   if (!response.ok) {
@@ -36,12 +38,34 @@ const fetchUserReservations = async (userId: string) => {
 };
 
 export default function UserReservations({ userId }: UserReservationsProps) {
+  const queryClient = useQueryClient();
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ['userReservations', userId],
     queryFn: () => fetchUserReservations(userId),
     staleTime: 1000 * 60 * 5, // 5minutes
   });
 
+
+
+  const deleteMutation = useMutation({
+    mutationFn: async (reservationId: number) => {
+      const response = await axios.delete(`/api/v1/userspace/reservation/${reservationId}`);
+      return response.data;
+    },
+    onSuccess: () => {
+      toast.success('Reservation canceled successfully!');
+      queryClient.invalidateQueries({ queryKey: ['userReservations', userId] });
+    },
+    onError: (err: any) => {
+      toast.error('Failed to cancel reservation: ' + (err instanceof Error ? err.message : 'Unknown error occurred'));
+    }
+  });
+
+  const handleDelete = (reservationId: number) => {
+    deleteMutation.mutate(reservationId);
+  };
+
+ 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {
@@ -166,6 +190,9 @@ export default function UserReservations({ userId }: UserReservationsProps) {
                     </span>
                   </CardDescription>
                 </div>
+                <Button variant="ghost" size="icon" onClick={() => handleDelete(reservation.reservationId)}>
+                  <Trash className="h-4 w-4" />
+                </Button>
                 {reservation.baseFee > 0 && (
                   <div className="bg-primary-50 dark:bg-primary-900/20 px-3 py-1 rounded-md">
                     <span className="text-sm font-medium text-primary">
