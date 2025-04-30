@@ -9,9 +9,11 @@ import { useUserStore } from '@/app/stores/userStore';
 import { Card, CardContent } from '@/components/ui/card';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
+import { User, Vehicle } from '@prisma/client';
 import { toast } from 'sonner';
 import { useState } from 'react';
 import { RepairStatus } from '@prisma/client';
+import { Play } from 'next/font/google';
 
 export default function FinalConfirmation() {
   const {
@@ -21,8 +23,13 @@ export default function FinalConfirmation() {
     contactDetails,
     setStep,
   } = useBookingStore();
-  
-  const { userId } = useUserStore();
+
+  const {
+    userId,
+    email,
+    name,
+    // image, something 
+  } = useUserStore();
 
   const [isEditing, setIsEditing] = useState({
     vehicle: false,
@@ -37,30 +44,69 @@ export default function FinalConfirmation() {
     ? `${selectedDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}, ${selectedDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`
     : 'Date not selected';
 
- 
+
   const { mutate, isPending } = useMutation({
     mutationFn: async () => {
       if (!contactDetails) {
         throw new Error('Contact details are missing');
       }
-    
+
+      // upon clicking on the button the application needs to create
+      // a new user if the field is empty, create a new vehicle if the 
+      // field is empty, and assign their keys to the reservation data
+
+      const a_user = await axios.get(`api/v1/userspace/user/${userId}`).then((ax_resp) => {
+        if (ax_resp.status === 404) {
+          const userData: User = {
+            userId: userId ?? 0,
+            email: email ?? "error@error.com",
+            role: "PEASANT",
+            image: null,
+            username: "johnny doe", // to change later ghassen
+            phone: "123456778" // this also to change
+          }
+          try {
+            axios.post("api/v1/userspace/user", userData);
+          } catch (err) {
+            console.error("welp we ducked up");
+          }
+        }
+      });
+
+
+      const a_car = await axios.get(`api/v1/userspace/vehicle/${vehicleData?.vin}`).then((ax_resp) => {
+        if (ax_resp.status === 404) {
+          // this is to create a new vehicle
+          const vehicleDetails: Vehicle = {
+            vin: vehicleData?.vin ?? "",
+            local: vehicleData?.type === "local",
+            registration: vehicleData?.registrationType,
+            registrationType: "TUN", // we will use tun as default for now
+            location: null,
+          }
+          axios.post("api/v1/userspace/vehicle", vehicleDetails)
+        }
+      }).catch((err) => {
+        console.log(err);
+      })
+
       const reservationData = {
         vehicleId: vehicleData?.vin,
-        date: selectedDate,   
+        date: selectedDate,
         baseFee: 0,
         repairStatus: RepairStatus.PENDING,
         mobilePhone: contactDetails.phone,
-        userId: userId || 1 
+        userId: userId || 1,
       };
 
       console.log('Submitting reservation with data:', reservationData);
       const response = await axios.post('/api/v1/userspace/reservation', reservationData);
-      
+
       // After successful reservation, add the event to the calendar
       if (response.data && response.data.reservationId) {
         // Calculate appointment end time (1 hour after start)
         const endDate = new Date(selectedDate!.getTime() + (60 * 60 * 1000)); // Add 1 hour
-        
+
         // Create calendar event
         const calendarEventData = {
           title: `${serviceName} Appointment`,
@@ -71,12 +117,12 @@ export default function FinalConfirmation() {
           userId: userId || 1,
           reservationId: response.data.reservationId
         };
-        
+
         // Add event to calendar
         const calendarResponse = await axios.post('/api/v1/calendar/add-event', calendarEventData);
         console.log('Calendar event created:', calendarResponse.data);
       }
-      
+
       return response.data;
     },
     onSuccess: (data) => {
@@ -91,18 +137,18 @@ export default function FinalConfirmation() {
           startDate: selectedDate,
           endDate: endDate
         });
-        
+
         // Store URL for later use or display
         localStorage.setItem('lastBookingGoogleCalendarUrl', googleCalendarUrl);
       }
-      
+
       setStep(7); // Move to summary step
     },
     onError: (err: any) => {
       toast.error(err.message || 'An error occurred during booking submission');
     }
   });
-  
+
   // Helper to create Google Calendar URL
   const createGoogleCalendarUrl = ({
     title,
@@ -118,7 +164,7 @@ export default function FinalConfirmation() {
     endDate: Date;
   }) => {
     const formatDate = (date: Date) => date.toISOString().replace(/-|:|\.\d+/g, '');
-    
+
     const params = new URLSearchParams({
       action: 'TEMPLATE',
       text: title,
@@ -126,7 +172,7 @@ export default function FinalConfirmation() {
       location: location,
       dates: `${formatDate(startDate)}/${formatDate(endDate)}`,
     });
-    
+
     return `https://calendar.google.com/calendar/render?${params.toString()}`;
   };
 
@@ -139,7 +185,7 @@ export default function FinalConfirmation() {
       toast.error('Please complete all required information');
       return;
     }
-    
+
     mutate();
   };
 
@@ -169,9 +215,9 @@ export default function FinalConfirmation() {
                 <h4 className="font-medium text-sm text-muted-foreground">Selected Service</h4>
                 <p className="font-medium">{serviceName}</p>
               </div>
-              <Button 
-                variant="ghost" 
-                size="sm" 
+              <Button
+                variant="ghost"
+                size="sm"
                 onClick={() => handleEditStep(2)}
               >
                 Edit
@@ -199,9 +245,9 @@ export default function FinalConfirmation() {
                   <p className="font-medium text-amber-500">No vehicle data</p>
                 )}
               </div>
-              <Button 
-                variant="ghost" 
-                size="sm" 
+              <Button
+                variant="ghost"
+                size="sm"
                 onClick={() => handleEditStep(1)}
               >
                 Edit
@@ -218,9 +264,9 @@ export default function FinalConfirmation() {
                 <h4 className="font-medium text-sm text-muted-foreground">Appointment Date & Time</h4>
                 <p className="font-medium">{formattedDate}</p>
               </div>
-              <Button 
-                variant="ghost" 
-                size="sm" 
+              <Button
+                variant="ghost"
+                size="sm"
                 onClick={() => handleEditStep(3)}
               >
                 Edit
@@ -248,9 +294,9 @@ export default function FinalConfirmation() {
                   <p className="font-medium text-amber-500">Contact information missing</p>
                 )}
               </div>
-              <Button 
-                variant="ghost" 
-                size="sm" 
+              <Button
+                variant="ghost"
+                size="sm"
                 onClick={() => handleEditStep(4)}
               >
                 Edit
@@ -269,15 +315,15 @@ export default function FinalConfirmation() {
       )}
 
       <div className="flex gap-4 pt-2">
-        <Button 
-          variant="outline" 
+        <Button
+          variant="outline"
           className="flex-1"
           onClick={() => handleEditStep(4)}
         >
           Go Back
         </Button>
-        <Button 
-          className="flex-1" 
+        <Button
+          className="flex-1"
           onClick={handleConfirmBooking}
           disabled={isPending || !contactDetails || !selectedService || !vehicleData || !selectedDate}
         >

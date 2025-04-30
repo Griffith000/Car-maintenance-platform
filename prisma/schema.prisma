@@ -90,10 +90,10 @@ model Reservation {
   baseFee       Float? // if there is a fee or not
   repairStatus  RepairStatus? // to both get information about the repair and it's type
   vehicleId     String        @db.VarChar(17)
-  vehicle       Vehicle       @relation(fields: [vehicleId], references: [vin])
+  vehicle       Vehicle       @relation(fields: [vehicleId], references: [vin]) // also the foreign key
 
   userId Int
-  user   User @relation(fields: [userId], references: [userId])
+  user   User @relation(fields: [userId], references: [userId]) // this is the user id that is a foregn key
 
   // to test later
   // need to make this work for later @@db.check("mobile_phone ~ '^(2|5|9)[0-9]{7}$'") 

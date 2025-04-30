@@ -13,8 +13,6 @@ interface CalendarEvent {
   extendedProps?: Record<string, any>;
 }
 
-
-
 export async function POST(request: Request) {
   try {
     const eventData = await request.json();
@@ -70,13 +68,12 @@ export async function POST(request: Request) {
       data: {
         mobilePhone: eventData.mobilePhone || "+21600000000", // Default placeholder phone
         date: new Date(eventData.start),
-        vehicleId: eventData.vehicleId,
-        userId: eventData.userId,
+        vehicleId: eventData.vehicleId, // this is also a problem
+        userId: eventData.userId, // this is a problem
         repairStatus: "PENDING",
         baseFee: eventData.baseFee,
-        
-      }
-    });
+      } // this has a foreign key constraint
+    }); // this needs to be removed and readded to the confirmation diaglog actions
     
     // Format the event for FullCalendar
     const formattedEvent: CalendarEvent = {

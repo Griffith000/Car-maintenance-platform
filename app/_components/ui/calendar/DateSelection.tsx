@@ -12,8 +12,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Calendar, ArrowRight } from 'lucide-react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import Loading from '@/app/_components/ui/calendar/loading';
-import axios from 'axios';
-import { bookingStore } from '@/app/stores/bookingStore';
 
 
 type EventData = {
@@ -33,28 +31,6 @@ export default function DateSelection() {
   const {vehicleData}= useBookingStore();
   const vehicleId = vehicleData?.vin;
   const [holidays, setHolidays] = useState<any[]>([]);
-  
-  // Define the addEvent mutation outside of event handlers
-  const addEventMutation = useMutation({
-    mutationFn: async (eventData: EventData) => {
-      console.log('Sending event data:', JSON.stringify(eventData));
-      try {
-        const response = await axios.post('/api/v1/calendar/add-event', eventData);
-        console.log('Server response:', response.data);
-        return response.data;
-      } catch (error: any) {
-        console.error('Axios error details:', error.response?.data || 'No response data');
-        throw error;
-      }
-    },
-    onSuccess: (data) => {
-      console.log('Event created:', data);
-    },
-    onError: (error) => {
-      console.error('Error creating event:', error);
-      setSelectedDate(undefined);
-    }
-  });
   
   const handleNext = () => {
     if (selectedDate) {
@@ -108,22 +84,12 @@ export default function DateSelection() {
         
         console.log('Final event data:', eventData);
         
-        // Use the mutation defined at the component level
-        addEventMutation.mutate(eventData, {
-          onSuccess: () => {
-            console.log('Event created successfully');
-          },
-          onError: (err) => {
-            console.log('Error creating calendar event:', err);
-          }
-        });
       } catch (error) {
         console.error('Error creating calendar event:', error);
         setSelectedDate(undefined);
       }
     }
   };
-
 
   // Calculate next 60 days as valid dates
   const validRange = { 

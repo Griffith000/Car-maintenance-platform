@@ -15,6 +15,7 @@ interface CalendarEvent {
 }
 
 export async function GET(request: Request) {
+  let dbEvents;
   try {
     const session = await auth();
     const url = new URL(request.url);
@@ -32,14 +33,18 @@ export async function GET(request: Request) {
       ];
     }
     
-    // Fetch events from database
-    const dbEvents = await prisma.reservation.findMany({
+    // Fetch events from database - this request is fucking bugged!
+    dbEvents = await prisma.reservation.findMany({
       where: whereConditions,
       orderBy: { date: 'asc' },
       include: {
         vehicle: true
       }
     });
+
+    console.log(dbEvents);
+    // before doing the fullcalendar stuff
+    debugger;
     
     // Format events for FullCalendar
     const events = dbEvents.map((event: Reservation & { vehicle: { vin: string } }) => ({
@@ -63,7 +68,8 @@ export async function GET(request: Request) {
       events
     });
   } catch (error) {
-    console.error("Error fetching calendar events:", error);
+    console.log(dbEvents);
+    console.log(error)
     return NextResponse.json(
       { success: false, message: "Failed to fetch calendar events" },
       { status: 500 }
