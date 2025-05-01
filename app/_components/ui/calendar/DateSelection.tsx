@@ -132,12 +132,12 @@ export default function DateSelection() {
   // Define a query for reservation events outside the getEvents function
   const { data: reservationEvents = [] } = useQuery({
     queryKey: ['reservations'],
-    refetchInterval: 5000,
+    refetchInterval:5000, 
     queryFn: async () => {
       try {
         const response = await axios.get('/api/v1/calendar/get-events');
         const data = response.data;
-        return data.success ? data.events : []; // this fucker was the nigga
+        return data.success ? data.events : [];
       } catch (error) {
         console.error("Error fetching reservation events:", error);
         return [];
@@ -200,7 +200,7 @@ export default function DateSelection() {
     refetchOnWindowFocus: true,
     refetchOnMount: true,
     refetchOnReconnect: true,
-    refetchInterval: 50,
+    refetchInterval: 10000,
     queryFn: async () => {
       try {
         const response = await axios.get('/api/v1/holidays');

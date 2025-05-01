@@ -29,11 +29,8 @@ interface UserReservationsProps {
   userId: string;
 }
 const fetchUserReservations = async (userId: string) => {
-  const response = await fetch(`/api/v1/userspace/reservation/user/${userId}`);
-  if (!response.ok) {
-    throw new Error('Failed to fetch reservations');
-  }
-  return response.json();
+  const response = await axios.get(`/api/v1/userspace/reservation/user/${userId}`);
+  return response.data;
 };
 
 export default function UserReservations({ userId }: UserReservationsProps) {

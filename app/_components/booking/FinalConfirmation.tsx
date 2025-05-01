@@ -27,7 +27,6 @@ export default function FinalConfirmation() {
   const {
     userId,
     email,
-    name,
     // image, something 
   } = useUserStore();
 
@@ -45,8 +44,9 @@ export default function FinalConfirmation() {
     : 'Date not selected';
 
 
-  const { mutate, isPending } = useMutation({
-    mutationFn: async () => {
+  const { mutate, isPending } = useMutation(
+    {
+      mutationFn: async () => { 
       if (!contactDetails) {
         throw new Error('Contact details are missing');
       }
@@ -54,73 +54,51 @@ export default function FinalConfirmation() {
       // upon clicking on the button the application needs to create
       // a new user if the field is empty, create a new vehicle if the 
       // field is empty, and assign their keys to the reservation data
-
-      const a_user = await axios.get(`/api/v1/userspace/user/${userId}`)
-        .then((ax_resp) => {
-          // Return existing user if found
-          return ax_resp.data;
-        })
-        .catch(async (error) => {
-          if (error.response?.status === 404) {
-            // Create new user only if not found
-            const userData: User = {
-              userId: userId ?? 0,
-              email: email ?? "error@error.com",
-              role: "PEASANT",
-              image: null,
-              username: "johnny doe", 
-              phone: "123456778" 
-            };
-
-            try {
-              console.log("Creating new user in database");
-              const response = await axios.post("/api/v1/userspace/user", userData);
-              return response.data; 
-            } catch (postError) {
-              console.error("User creation failed:", postError);
-              throw new Error("Failed to create new user"); 
-            }
+      try {
+        const a_user = await axios.get<User>(`api/v1/userspace/user/${userId}`);
+      } catch (error: any) {
+        if (error.response?.status === 404) {
+          const userData: User = {
+            userId: userId ?? 0,
+            email: email ?? "error@error.com",
+            role: "PEASANT",
+            image: null,
+            username: contactDetails.name,
+            phone: contactDetails.phone
           }
-          // Re-throw other errors
-          throw error;
-        });
-
-
-      const a_car = await axios.get(`/api/v1/userspace/vehicle/${vehicleData?.vin}`)
-        .then(async (ax_resp) => {
-          return ax_resp.data;
-        })
-        .catch(async (error) => {
-          if (error.response?.status === 404) {
-            // Create new vehicle only on 404 error
-            const vehicleDetails: Vehicle = {
-              vin: vehicleData?.vin ?? "",
-              local: vehicleData?.type === "local",
-              registration: vehicleData?.registrationType,
-              registrationType: "TUN", // Default value
-              location: null,
-            };
-
-            try {
-              console.log("Posting new vehicle details");
-              const response = await axios.post("/api/v1/userspace/vehicle", vehicleDetails);
-              return response.data;
-            } catch (postError) {
-              console.error("Failed to add vehicle:", postError);
-              throw postError; // Re-throw to handle in outer catch
-            }
+          try {
+            await axios.post("api/v1/userspace/user", userData);
+          } catch (err) {
+            console.error("welp we ducked up");
           }
-          throw error;
-        });
+        }
+      }
 
-
+      try {
+        const a_car = await axios.get<Vehicle>(`api/v1/userspace/vehicle/${vehicleData?.vin}`)
+      } catch (error: any) {
+        if (error.response?.status === 404) {
+          // this is to create a new vehicle
+          const vehicleDetails: Vehicle = {
+            vin: vehicleData?.vin ?? "",
+            local: vehicleData?.type === "local",
+            registration: vehicleData?.type === "local" ? vehicleData?.registrationNumber : "",
+            registrationType: "TUN", // we will use tun as default for now
+            location: vehicleData?.type === "foreign" ? vehicleData?.location : "",
+          }
+          try {
+            await axios.post("api/v1/userspace/vehicle", vehicleDetails)
+          } catch (error: any) {
+            console.error("welp we ducked up");
+          }
+        }
+      }
 
       const reservationData = {
         vehicleId: vehicleData?.vin,
         date: selectedDate,
-        baseFee: 0, // selected price for the vehicle type
-        // to add vehicle repair type to the data base and the api endpoint
-        // optional payment using
+        repairName: selectedService,
+        baseFee: 0,
         repairStatus: RepairStatus.PENDING,
         mobilePhone: contactDetails.phone,
         userId: userId || 1,
@@ -129,52 +107,51 @@ export default function FinalConfirmation() {
       console.log('Submitting reservation with data:', reservationData);
       const response = await axios.post('/api/v1/userspace/reservation', reservationData);
 
-      // After successful reservation, add the event to the calendar
       if (response.data && response.data.reservationId) {
-        // Calculate appointment end time (1 hour after start)
-        const endDate = new Date(selectedDate!.getTime() + (60 * 60 * 1000)); // Add 1 hour
+        const endDate = new Date(selectedDate!.getTime() + (60 * 60 * 1000)); 
 
-        // Create calendar event
         const calendarEventData = {
           title: `${serviceName} Appointment`,
           description: `Vehicle: ${vehicleData?.vin}\nContact: ${contactDetails.name} (${contactDetails.phone})`,
           startTime: selectedDate!.toISOString(),
           endTime: endDate.toISOString(),
+          repairName: selectedService,
           vehicleId: vehicleData?.vin,
           userId: userId || 1,
           reservationId: response.data.reservationId
         };
 
-        // Add event to calendar
         const calendarResponse = await axios.post('/api/v1/calendar/add-event', calendarEventData);
         console.log('Calendar event created:', calendarResponse.data);
       }
 
       return response.data;
     },
+    
     onSuccess: (data) => {
       toast.success('Booking submitted successfully!');
-      // Optional: Add to Google Calendar URL
+      
       if (selectedDate) {
         const endDate = new Date(selectedDate.getTime() + (60 * 60 * 1000)); // Add 1 hour
-        const googleCalendarUrl = createGoogleCalendarUrl({
-          title: `${serviceName} Appointment`,
-          description: `Vehicle: ${vehicleData?.vin}`,
-          location: 'Car Maintenance Center',
-          startDate: selectedDate,
-          endDate: endDate
-        });
+          const googleCalendarUrl = createGoogleCalendarUrl({
+            title: `${serviceName} Appointment`,
+            description: `Vehicle: ${vehicleData?.vin}`,
+            location: 'Car Maintenance Center',
+            startDate: selectedDate,
+            endDate: endDate
+          });
 
-        // Store URL for later use or display
-        localStorage.setItem('lastBookingGoogleCalendarUrl', googleCalendarUrl);
+          // Store URL for later use or display
+          localStorage.setItem('lastBookingGoogleCalendarUrl', googleCalendarUrl);
+        }
+
+        setStep(7); // Move to summary step
+      },
+      onError: (err: any) => {
+        toast.error(err.message || 'An error occurred during booking submission');
       }
-
-      setStep(7); // Move to summary step
-    },
-    onError: (err: any) => {
-      toast.error(err.message || 'An error occurred during booking submission');
     }
-  });
+  );
 
   // Helper to create Google Calendar URL
   const createGoogleCalendarUrl = ({
