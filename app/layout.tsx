@@ -26,6 +26,7 @@ const Footer = lazy(() => import("@/app/_components/ui/Footer"));
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <meta name="darkreader-lock" />
+        <link rel="icon" href="../public/images/renault-logo.png" sizes="any" />
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
