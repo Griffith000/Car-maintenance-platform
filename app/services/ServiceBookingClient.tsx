@@ -42,27 +42,31 @@ export default function ServiceBookingClient() {
     setIsLoading(true);
     
     setContactDetails(data);
+    setFormSubmitted(true);
+    setStep(6);
+
+    // ADD OTP in an update
     
-    axios.post('/api/v1/send-otp', {
-      phoneNumber: data.phone,
-      })
-      .then((response) => response.data)
-      .then((result) => {
-        if (result.success) {
-          toast.success('Verification code sent to your phone');
-          setFormSubmitted(true);
-          setStep(5);
-        } else {
-          toast.error(result.message || 'Failed to send verification code');
-        }
-      })
-      .catch((error) => {
-        toast.error('Failed to send verification code. Please try again.');
-        console.error('Error sending OTP:', error);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    // axios.post('/api/v1/send-otp', {
+    //   phoneNumber: data.phone,
+    //   })
+    //   .then((response) => response.data)
+    //   .then((result) => {
+    //     if (result.success) {
+    //       toast.success('Verification code sent to your phone');
+    //       setFormSubmitted(true);
+    //       setStep(5);
+    //     } else {
+    //       toast.error(result.message || 'Failed to send verification code');
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     toast.error('Failed to send verification code. Please try again.');
+    //     console.error('Error sending OTP:', error);
+    //   })
+    //   .finally(() => {
+    //     setIsLoading(false);
+    //   });
   };
   
   const handleOtpVerificationSuccess = () => {
