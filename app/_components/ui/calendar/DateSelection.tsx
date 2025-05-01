@@ -27,12 +27,12 @@ type EventData = {
 };
 
 export default function DateSelection() {
-  const { selectedDate, setSelectedDate, setStep, selectedVehicle } = useBookingStore(); 
+  const { selectedDate, setSelectedDate, setStep, selectedVehicle } = useBookingStore();
   const { userId } = useUserStore();
-  const {vehicleData}= useBookingStore();
+  const { vehicleData } = useBookingStore();
   const vehicleId = vehicleData?.vin;
   const [holidays, setHolidays] = useState<any[]>([]);
-  
+
   const handleNext = () => {
     if (selectedDate) {
       setStep(4);
@@ -47,22 +47,22 @@ export default function DateSelection() {
     });
   };
 
-  
+
   const handleDateSelect = async (info: any) => {
     const startDate = new Date(info.startStr);
     const endDate = new Date(info.endStr);
-    
+
     // Don't allow past dates or holidays
     const date1 = new Date(startDate);
     if (date1.setHours(0, 0, 0, 0) >= new Date().setHours(0, 0, 0, 0) && !isHoliday(date1)) {
       // Set the selected date in the booking store
       setSelectedDate(startDate);
-      
+
       try {
 
         //useless crap might get rid of it 
         // Create a temporary event for the selected timeslot
-       const eventData: EventData = {
+        const eventData: EventData = {
           title: 'Your Appointment',
           description: 'Tentative booking',
           start: info.startStr,
@@ -72,18 +72,18 @@ export default function DateSelection() {
           mobilePhone: "+21600000000", // Default phone number
           baseFee: 0 // Default base fee
         };
-        
-        
-        
-      //disabled for the moment 
-      /* addEventMutation.mutate(eventData, {
-          onSuccess: () => {
-            console.log('Event created successfully');
-          },
-          onError: (err) => {
-            console.log('Error creating calendar event:', err);
-          }
-        });*/
+
+
+
+        //disabled for the moment 
+        /* addEventMutation.mutate(eventData, {
+            onSuccess: () => {
+              console.log('Event created successfully');
+            },
+            onError: (err) => {
+              console.log('Error creating calendar event:', err);
+            }
+          });*/
       } catch (error) {
         console.error('Error creating calendar event:', error);
         setSelectedDate(undefined);
@@ -92,7 +92,7 @@ export default function DateSelection() {
   };
 
   // Calculate next 60 days as valid dates
-  const validRange = { 
+  const validRange = {
     start: new Date(),
     end: new Date(new Date().setDate(new Date().getDate() + 60))
   };
@@ -119,25 +119,25 @@ export default function DateSelection() {
       setSelectedDate(undefined);
       return;
     }
-    
+
     // Get the target element
     const element = info.jsEvent.target;
-    
+
     // If the user clicked on a time slot or event, clear the selection
     if (element && (element.className === "fc-event-time" || element.closest('.fc-event'))) {
-      setSelectedDate(undefined);   
+      setSelectedDate(undefined);
     }
   }
 
   // Define a query for reservation events outside the getEvents function
   const { data: reservationEvents = [] } = useQuery({
     queryKey: ['reservations'],
-    refetchInterval:1000, 
+    refetchInterval: 5000,
     queryFn: async () => {
       try {
         const response = await axios.get('/api/v1/calendar/get-events');
         const data = response.data;
-        return data.success ? data.event : [];
+        return data.success ? data.events : []; // this fucker was the nigga
       } catch (error) {
         console.error("Error fetching reservation events:", error);
         return [];
@@ -158,7 +158,7 @@ export default function DateSelection() {
       backgroundColor: 'rgba(239, 68, 68, 0.1)', // red-500 with opacity
       classNames: 'holiday-event',
     }));
-    
+
     // Transform reservation events for display
     const bookedSlots = (reservationEvents || []).map((event: any) => ({
       ...event,  // This already has id, start, end
@@ -167,7 +167,7 @@ export default function DateSelection() {
       className: 'reserved-timeslot',
       display: 'block'
     }));
-    
+
     // Highlight the user's selected slot if it exists
     interface UserSelectionEvent {
       title: string;
@@ -176,12 +176,12 @@ export default function DateSelection() {
       color: string;
       className: string;
     }
-    
+
     let userSelection: UserSelectionEvent[] = [];
     if (selectedDate) {
       const selectionEnd = new Date(selectedDate);
       selectionEnd.setHours(selectionEnd.getHours() + 1);
-      
+
       userSelection = [{
         title: 'Your Selection',
         start: selectedDate.toISOString(),
@@ -190,7 +190,7 @@ export default function DateSelection() {
         className: 'user-selection'
       }];
     }
-    
+
     return [...holidayEvents, ...bookedSlots, ...userSelection];
   };
 
@@ -266,81 +266,81 @@ export default function DateSelection() {
       {isPending ? <Loading /> : (
         <Card className="border shadow-sm">
           <CardContent className="p-0">
-          
-              <FullCalendar
-                plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-                initialView="timeGridWeek"
-                contentHeight="auto"
-                allDaySlot={false}
-                eventStartEditable={false}
-                eventDurationEditable={false}
-                slotLabelFormat={{
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  hour12: false
-                }}
-                eventTimeFormat={{
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  hour12: false
-                }}
-                headerToolbar={{
-                  left: 'prev,next',
-                  center: '',
-                  right: 'today',
-                }}
-                selectable={true}
-                selectMirror={true}
-                dayMaxEvents={true}
-                selectConstraint={{
-                  startTime: '09:00',
-                  endTime: '19:00'
-                }}
-                slotDuration="01:00:00"
-                snapDuration="01:00:00"
-                slotMinTime="09:00:00"
-                slotMaxTime="19:00:00"
-                dragScroll={false}
-                selectOverlap={false}
-                validRange={validRange}
-                selectAllow={(selectInfo) => {
-                  // First check if the date is selectable (not a holiday, weekend, etc)
-                  if (!isDateSelectable(selectInfo.start, selectInfo.end)) {
-                    return false;
-                  }
-                  
-                  // Then check if the time slot is already reserved
-                  const reservedSlots = reservationEvents || [];
-                  const isReserved = reservedSlots.some((event: any) => {
-                    const eventStart = new Date(event.start);
-                    const eventEnd = new Date(event.end);
-                    return (
-                      (selectInfo.start >= eventStart && selectInfo.start < eventEnd) ||
-                      (selectInfo.end > eventStart && selectInfo.end <= eventEnd) ||
-                      (selectInfo.start <= eventStart && selectInfo.end >= eventEnd)
-                    );
-                  });
-                  
-                  return !isReserved;
-                }}
-                unselect={removeSelection}
 
-                select={handleDateSelect}
-                events={getEvents()}
-                dayCellDidMount={(arg) => {
-                  // Add disabled class to holiday dates
-                  if (isHoliday(arg.date)) {
-                    arg.el.classList.add('fc-day-disabled');
-                  }
-                  // Add selected class to the selected date
-                  if (selectedDate &&
-                    arg.date.getDate() === selectedDate.getDate() &&
-                    arg.date.getMonth() === selectedDate.getMonth() &&
-                    arg.date.getFullYear() === selectedDate.getFullYear()) {
-                    arg.el.classList.add('selected-date');
-                  }
-                }}
-              />
+            <FullCalendar
+              plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+              initialView="timeGridWeek"
+              contentHeight="auto"
+              allDaySlot={false}
+              eventStartEditable={false}
+              eventDurationEditable={false}
+              slotLabelFormat={{
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+              }}
+              eventTimeFormat={{
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+              }}
+              headerToolbar={{
+                left: 'prev,next',
+                center: '',
+                right: 'today',
+              }}
+              selectable={true}
+              selectMirror={true}
+              dayMaxEvents={true}
+              selectConstraint={{
+                startTime: '09:00',
+                endTime: '19:00'
+              }}
+              slotDuration="01:00:00"
+              snapDuration="01:00:00"
+              slotMinTime="09:00:00"
+              slotMaxTime="19:00:00"
+              dragScroll={false}
+              selectOverlap={false}
+              validRange={validRange}
+              selectAllow={(selectInfo) => {
+                // First check if the date is selectable (not a holiday, weekend, etc)
+                if (!isDateSelectable(selectInfo.start, selectInfo.end)) {
+                  return false;
+                }
+
+                // Then check if the time slot is already reserved
+                const reservedSlots = reservationEvents || [];
+                const isReserved = reservedSlots.some((event: any) => {
+                  const eventStart = new Date(event.start);
+                  const eventEnd = new Date(event.end);
+                  return (
+                    (selectInfo.start >= eventStart && selectInfo.start < eventEnd) ||
+                    (selectInfo.end > eventStart && selectInfo.end <= eventEnd) ||
+                    (selectInfo.start <= eventStart && selectInfo.end >= eventEnd)
+                  );
+                });
+
+                return !isReserved;
+              }}
+              unselect={removeSelection}
+
+              select={handleDateSelect}
+              events={getEvents()}
+              dayCellDidMount={(arg) => {
+                // Add disabled class to holiday dates
+                if (isHoliday(arg.date)) {
+                  arg.el.classList.add('fc-day-disabled');
+                }
+                // Add selected class to the selected date
+                if (selectedDate &&
+                  arg.date.getDate() === selectedDate.getDate() &&
+                  arg.date.getMonth() === selectedDate.getMonth() &&
+                  arg.date.getFullYear() === selectedDate.getFullYear()) {
+                  arg.el.classList.add('selected-date');
+                }
+              }}
+            />
 
           </CardContent>
         </Card>
