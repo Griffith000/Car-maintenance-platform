@@ -87,6 +87,7 @@ model Reservation {
   reservationId Int           @id @default(autoincrement())
   mobilePhone   String        @db.VarChar(15)
   date          DateTime
+  repairName    String?
   baseFee       Float? // if there is a fee or not
   repairStatus  RepairStatus? // to both get information about the repair and it's type
   vehicleId     String        @db.VarChar(17)

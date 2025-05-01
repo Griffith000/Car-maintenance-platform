@@ -102,9 +102,9 @@ export async function POST(request: NextRequest) {
   let prismaOutput;
   try {
     const reqBody = await request.json();
-    console.log(reqBody)
+    // console.log(reqBody)
     let validatedResponse = validate(CreateReservationDto, reqBody);
-    console.log(validatedResponse)
+    // console.log(validatedResponse)
 
     try {
       prismaOutput = await prisma.reservation.create({
@@ -113,7 +113,8 @@ export async function POST(request: NextRequest) {
           mobilePhone: validatedResponse.mobilePhone,
           date: validatedResponse.date,
           baseFee: validatedResponse.baseFee ?? 0,
-          repairStatus: validatedResponse.repairStatus,
+          repairName: validatedResponse.repairName ?? "testRepair", // added the repair name string to the creation 
+         repairStatus: validatedResponse.repairStatus,
           vehicleId: validatedResponse.vehicleId,
           userId: validatedResponse.userId //TODO: you should also handle the case when the user is not logged in
         }

@@ -55,45 +55,72 @@ export default function FinalConfirmation() {
       // a new user if the field is empty, create a new vehicle if the 
       // field is empty, and assign their keys to the reservation data
 
-      const a_user = await axios.get(`api/v1/userspace/user/${userId}`).then((ax_resp) => {
-        if (ax_resp.status === 404) {
-          const userData: User = {
-            userId: userId ?? 0,
-            email: email ?? "error@error.com",
-            role: "PEASANT",
-            image: null,
-            username: "johnny doe", // to change later ghassen
-            phone: "123456778" // this also to change
+      const a_user = await axios.get(`/api/v1/userspace/user/${userId}`)
+        .then((ax_resp) => {
+          // Return existing user if found
+          return ax_resp.data;
+        })
+        .catch(async (error) => {
+          if (error.response?.status === 404) {
+            // Create new user only if not found
+            const userData: User = {
+              userId: userId ?? 0,
+              email: email ?? "error@error.com",
+              role: "PEASANT",
+              image: null,
+              username: "johnny doe", 
+              phone: "123456778" 
+            };
+
+            try {
+              console.log("Creating new user in database");
+              const response = await axios.post("/api/v1/userspace/user", userData);
+              return response.data; 
+            } catch (postError) {
+              console.error("User creation failed:", postError);
+              throw new Error("Failed to create new user"); 
+            }
           }
-          try {
-            axios.post("api/v1/userspace/user", userData);
-          } catch (err) {
-            console.error("welp we ducked up");
-          }
-        }
-      });
+          // Re-throw other errors
+          throw error;
+        });
 
 
-      const a_car = await axios.get(`api/v1/userspace/vehicle/${vehicleData?.vin}`).then((ax_resp) => {
-        if (ax_resp.status === 404) {
-          // this is to create a new vehicle
-          const vehicleDetails: Vehicle = {
-            vin: vehicleData?.vin ?? "",
-            local: vehicleData?.type === "local",
-            registration: vehicleData?.registrationType,
-            registrationType: "TUN", // we will use tun as default for now
-            location: null,
+      const a_car = await axios.get(`/api/v1/userspace/vehicle/${vehicleData?.vin}`)
+        .then(async (ax_resp) => {
+          return ax_resp.data;
+        })
+        .catch(async (error) => {
+          if (error.response?.status === 404) {
+            // Create new vehicle only on 404 error
+            const vehicleDetails: Vehicle = {
+              vin: vehicleData?.vin ?? "",
+              local: vehicleData?.type === "local",
+              registration: vehicleData?.registrationType,
+              registrationType: "TUN", // Default value
+              location: null,
+            };
+
+            try {
+              console.log("Posting new vehicle details");
+              const response = await axios.post("/api/v1/userspace/vehicle", vehicleDetails);
+              return response.data;
+            } catch (postError) {
+              console.error("Failed to add vehicle:", postError);
+              throw postError; // Re-throw to handle in outer catch
+            }
           }
-          axios.post("api/v1/userspace/vehicle", vehicleDetails)
-        }
-      }).catch((err) => {
-        console.log(err);
-      })
+          throw error;
+        });
+
+
 
       const reservationData = {
         vehicleId: vehicleData?.vin,
         date: selectedDate,
-        baseFee: 0,
+        baseFee: 0, // selected price for the vehicle type
+        // to add vehicle repair type to the data base and the api endpoint
+        // optional payment using
         repairStatus: RepairStatus.PENDING,
         mobilePhone: contactDetails.phone,
         userId: userId || 1,

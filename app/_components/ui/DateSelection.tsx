@@ -18,6 +18,7 @@ export default function DateSelection() {
   const [availableTimes, setAvailableTimes] = useState<string[]>([]);
   const [holidays, setHolidays] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [reservedEvents, setReservedEvents] = useState<any[]>([]);
 
 
   // limit selection to 1hr
@@ -56,9 +57,9 @@ export default function DateSelection() {
 
   // Fetch holidays from Google Calendar
   useEffect(() => {
+    // this repeats infinitely
     const fetchHolidays = async () => {
       try {
-        setIsLoading(true)
         const response = await fetch('/api/v1/holidays');
         const data = await response.json();
 
@@ -68,12 +69,30 @@ export default function DateSelection() {
         }
       } catch (error) {
         console.error('Error fetching holidays:', error);
-      } finally {
-        setIsLoading(false);
+      } {
+        console.log("fuck ai, It fucked my work");
       }
     };
 
+    const fetchReservations = async () => {
+      try {
+        const response = await fetch("/api/v1/calendar/get-events")
+        const data = await response.json();
+
+        if (data.events) {
+          const reservedEvents = data.events;
+          setReservedEvents(reservedEvents);
+        }
+      } catch (err) {
+        console.log("FUCK AI");
+        console.error(err)
+      }
+    }
+
+    setIsLoading(true);
     fetchHolidays();
+    fetchReservations();
+    setIsLoading(false);
   }, []);
 
   const handleDateSelect = (info: any) => {
@@ -101,7 +120,7 @@ export default function DateSelection() {
 
   const handleNext = () => {
     // console.log('handleNext called', { selectedDate });
-    console.log(selectedDate)
+    // console.log(selectedDate)
     if (selectedDate) {
       console.log('Proceeding to next step');
       setStep(4);
@@ -132,7 +151,6 @@ export default function DateSelection() {
 
   const removeSelection = (info: any) => {
     const element = info.jsEvent
-    console.log(element.target.className === "fc-event-time")
     if (element.target.className === "fc-event-time") {
       setSelectedDate(undefined);
     }
@@ -154,9 +172,21 @@ export default function DateSelection() {
     }));
   };
 
+  // this is superseeded by tanstack query
+  const getAlreadyMadeReservations = () => {
+    return reservedEvents.map((reservationEvent) => ({
+      title: 'Reserved',
+      start: reservationEvent.start,
+      end: reservationEvent.end,
+      allDay: false,
+      display: 'background',
+      backgroundColor: 'rgba(144, 238, 144, 0.1)',
+      classNames: 'reservation-event',
+    }));
+  }
+
   // selectedTime is empty always, we cant determine the time from date 
   // loading
-  //
 
   return (
     <div >

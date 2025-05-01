@@ -14,6 +14,7 @@ interface CalendarEvent {
   extendedProps?: Record<string, any>;
 }
 
+// this works I hope
 export async function GET(request: Request) {
   let dbEvents;
   try {
@@ -30,6 +31,7 @@ export async function GET(request: Request) {
         { end: { lte: new Date(endDate) } }
       ];
     }
+
     
     const dbEvents = await prisma.reservation.findMany({
       where: whereConditions,
@@ -39,10 +41,6 @@ export async function GET(request: Request) {
       }
     });
 
-    console.log(dbEvents);
-    // before doing the fullcalendar stuff
-    debugger;
-    
     // Format events for FullCalendar
     const events = dbEvents.map((event: Reservation & { vehicle: { vin: string } }) => ({
       id: event.reservationId.toString(),

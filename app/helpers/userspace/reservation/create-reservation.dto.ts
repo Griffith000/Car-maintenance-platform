@@ -6,6 +6,7 @@ import { RepairStatus } from "@prisma/client"
 export const CreateReservationDto = z.object({
   mobilePhone: z.string(),
   date: z.string().datetime(),
+  repairName: z.string().optional(),
   baseFee: z.number().optional(),
   repairStatus: z.nativeEnum(RepairStatus).optional(),
   vehicleId: z.string().min(17).max(17).regex(new RegExp("^[A-HJ-NPR-Z0-9]{17}$")),

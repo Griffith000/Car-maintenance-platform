@@ -33,14 +33,14 @@ export async function GET() {
       throw new Error('Calendar ID not found. Please check GOOGLE_CALENDAR_ID in .env.local');
     }
 
-    console.log('Using calendar ID:', calendarId);
+    // console.log('Using calendar ID:', calendarId);
     
     const auth = getAuth();
     const now = new Date();
     const threeMonthsFromNow = new Date();
     threeMonthsFromNow.setMonth(now.getMonth() + 3);
 
-    console.log('Fetching events from:', now.toISOString(), 'to:', threeMonthsFromNow.toISOString());
+    // console.log('Fetching events from:', now.toISOString(), 'to:', threeMonthsFromNow.toISOString());
 
     // First, let's get calendar details
     const calendarResponse = await calendar.calendars.get({
@@ -48,11 +48,11 @@ export async function GET() {
       calendarId
     });
 
-    console.log('Calendar Details:', {
-      summary: calendarResponse.data.summary,
-      description: calendarResponse.data.description,
-      timeZone: calendarResponse.data.timeZone
-    });
+    // console.log('Calendar Details:', {
+    //   summary: calendarResponse.data.summary,
+    //   description: calendarResponse.data.description,
+    //   timeZone: calendarResponse.data.timeZone
+    // });
 
     // Now fetch the events
     const response = await calendar.events.list({
@@ -65,14 +65,14 @@ export async function GET() {
       showDeleted: false
     });
 
-    console.log('API Response:', {
-      itemsCount: response.data.items?.length || 0,
-      items: response.data.items?.map(item => ({
-        summary: item.summary,
-        start: item.start,
-        end: item.end
-      }))
-    });
+    // console.log('API Response:', {
+    //   itemsCount: response.data.items?.length || 0,
+    //   items: response.data.items?.map(item => ({
+    //     summary: item.summary,
+    //     start: item.start,
+    //     end: item.end
+    //   }))
+    // });
 
     const holidays = response.data.items?.map((event: calendar_v3.Schema$Event) => ({
       start: event.start?.dateTime || event.start?.date,
@@ -80,7 +80,7 @@ export async function GET() {
       summary: event.summary,
     })) || [];
 
-    console.log('Found holidays:', holidays);
+    // console.log('Found holidays:', holidays);
 
     return NextResponse.json({ 
       holidays,

@@ -137,13 +137,14 @@ import prisma from "@/lib/prisma"
 
 export async function GET(
   _request: NextRequest,
-  { params }: { params: { id: string } }) {
+  { params }: { params: Promise<{ id: string }> }) {
   // this is where the authentication is needed
   let searchedUser: User | null;
+  const { id } = await params
   try {
     searchedUser = await prisma.user.findFirst({
       where: {
-        userId: parseInt(params.id)
+        userId: parseInt(id)
       }
     })
   } catch {
@@ -166,13 +167,14 @@ export async function GET(
 }
 
 export async function DELETE(_request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   let userToDelete: User | null;
+  const { id } = await params
   try {
     userToDelete = await prisma.user.delete({
       where: {
-        userId: parseInt(params.id)
+        userId: parseInt(id)
       }
     })
   } catch (error) {
@@ -199,13 +201,14 @@ export async function DELETE(_request: NextRequest,
   })
 }
 
-export async function PATCH(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   let user: User | null = null;
+  const { id } = await params
   try {
     const validateData = validate(UpdateUserDto, await request.json())
     user = await prisma.user.update({
       where: {
-        userId: parseInt(params.id)
+        userId: parseInt(id)
       },
       data: {
         ...validateData

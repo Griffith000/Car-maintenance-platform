@@ -129,14 +129,15 @@ import prisma from "@/lib/prisma"
  *               error: "Error details"
  */
 
-export async function GET(_request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   // this is where the authentication is needed
   let searchedVehicle: Vehicle | null;
-  console.log(params.id)
+  const { id } = await params
+  // console.log(params.id)
   try {
     searchedVehicle = await prisma.vehicle.findFirstOrThrow({
       where: {
-        vin: decodeURIComponent(params.id)
+        vin: decodeURIComponent(id)
       }
     })
   } catch (error) {
@@ -161,12 +162,13 @@ export async function GET(_request: NextRequest, { params }: { params: { id: str
   return NextResponse.json(searchedVehicle)
 }
 
-export async function DELETE(_request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   let vehicleToDelete: Vehicle | null;
+  const { id } = await params;
   try {
     vehicleToDelete = await prisma.vehicle.delete({
       where: {
-        vin: decodeURIComponent(params.id)
+        vin: decodeURIComponent(id)
       }
     })
   } catch (error) {
@@ -191,13 +193,14 @@ export async function DELETE(_request: NextRequest, { params }: { params: { id: 
 }
 
 
-export async function PATCH(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   let vehicle: Vehicle | null = null;
+  const { id } = await params; 
   try {
     const validateData = validate(UpdateVehicleDto, await request.json())
     vehicle = await prisma.vehicle.update({
       where: {
-        vin: decodeURIComponent(params.id)
+        vin: decodeURIComponent(id)
       },
       data: {
         ...validateData

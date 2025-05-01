@@ -125,13 +125,14 @@ import prisma from "@/lib/prisma"
 
 export async function GET(
   _request: NextRequest,
-  { params }: { params: { id: string } }) {
+  { params }: { params: Promise<{ id: string }> }) {
   // this is where the authentication is needed
   let searchedReservation: Reservation | null;
+  const { id } = await params;
   try {
     searchedReservation = await prisma.reservation.findFirstOrThrow({
       where: {
-        reservationId: parseInt(params.id)
+        reservationId: parseInt(id)
       }
     })
   } catch (error) {
@@ -155,12 +156,13 @@ export async function GET(
   return NextResponse.json(searchedReservation)
 }
 
-export async function DELETE(_request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   let reservationToDelete: Reservation | null = null;
+  const { id } = await params;
   try {
     reservationToDelete = await prisma.reservation.delete({
       where: {
-        reservationId: parseInt(params.id)
+        reservationId: parseInt(id)
       }
     })
   } catch (error) {
@@ -184,10 +186,12 @@ export async function DELETE(_request: NextRequest, { params }: { params: { id: 
 }
 
 
-export async function PATCH(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   let updatedReservation: Reservation | null = null;
+  const { id } = await params
   try {
     const validateData: Reservation | null = await request.json()
+    const { id } = await params;
     if (validateData === null || !validateData.baseFee) {
       return NextResponse.json({
         data: { error: "Missing required fields" }
@@ -195,7 +199,7 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
     }
     updatedReservation = await prisma.reservation.update({
       where: {
-        reservationId: parseInt(params.id)
+        reservationId: parseInt(id)
       },
       data: {
         baseFee: validateData.baseFee
