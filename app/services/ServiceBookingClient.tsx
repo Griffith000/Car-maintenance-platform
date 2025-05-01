@@ -106,7 +106,7 @@ export default function ServiceBookingClient() {
   };
 
   return (
-    <div className="space-y-8 container mx-auto px-4 w-full ">
+    <div className="space-y-8 container mx-auto px-4 w-full h-full">
       {/* Step Indicator */}
       <motion.div 
         initial={{ opacity: 0, y: -10 }}
