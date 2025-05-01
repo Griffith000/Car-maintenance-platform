@@ -149,7 +149,7 @@ export default function UserReservations({ userId }: UserReservationsProps) {
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="space-y-6 space-x-6 flex flex-wrap p-10"
+      className="space-y-6 space-x-6 flex flex-wrap p-10 h-[50vh] overflow-y-auto"
     >
       {data.map((reservation: Reservation) => (
         <motion.div
