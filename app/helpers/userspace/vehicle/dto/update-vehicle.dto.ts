@@ -1,5 +1,5 @@
 import { z } from "zod"
-import { RegTypes } from "@/app/generated/prisma/client"
+import { RegTypes } from "@prisma/client"
 
 export const UpdateVehicleDto = z.object({
   vin: z.string().min(17).max(17).regex(new RegExp("^[A-HJ-NPR-Z0-9]{17}$")).optional(),

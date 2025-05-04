@@ -7,10 +7,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from '@/components/themeToggle';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
+import { UserAvatar } from './UserAvatar';
+import { useUserStore } from '@/app/stores/userStore';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const { userId } = useUserStore();
 
   return (
     <motion.header
@@ -23,7 +25,7 @@ const Header = () => {
           <Link href="/" className="flex items-center space-x-2">
 
             <Image
-              src="/images/renault-logo.jpg"
+              src="/images/renault-logo.png"
               alt="Renault light Logo"
               width={40}
               height={40}
@@ -36,23 +38,35 @@ const Header = () => {
             <Link href="/" className="text-destructive  hover:text-primary transition-colors">
               Home
             </Link>
-            <Link href="/services" className="text-destructive hover:text-primary transition-colors">
+            {userId ? <Link href="/services" className="text-destructive hover:text-primary transition-colors">
               Services
-            </Link>
+            </Link> : null}
             <Link href="/about" className="text-destructive hover:text-primary transition-colors">
               About
             </Link>
             <Link href="/contact" className="text-destructive hover:text-primary transition-colors">
               Contact
             </Link>
+            {!userId ? (
+              <Link href="/login" className="text-destructive hover:text-primary transition-colors">
+                Login
+              </Link>
+            ) : (
+              <Link href="/protected" className="text-destructive hover:text-primary transition-colors">
+                Reservations
+              </Link>
+            )}
           </nav>
-          <ThemeToggle />
-          <div className="md:hidden">
+          
+          <div className="flex items-center space-x-4">
+            <ThemeToggle />
+            <UserAvatar />
+           
             <Button
               variant="ghost"
               size="icon"
+              className="md:hidden"
               onClick={() => setMenuOpen(!menuOpen)}
-              className="text-foreground hover:bg-accent"
             >
               <Menu className="h-6 w-6" />
             </Button>
@@ -77,13 +91,13 @@ const Header = () => {
                 >
                   Home
                 </Link>
-                <Link
+                {userId ? <Link
                   href="/services"
                   className="px-2 py-2 text-foreground/80 hover:bg-accent rounded-md transition-colors"
                   onClick={() => setMenuOpen(false)}
                 >
                   Services
-                </Link>
+                </Link> : null}
                 <Link
                   href="/about"
                   className="px-2 py-2 text-foreground/80 hover:bg-accent rounded-md transition-colors"
@@ -98,6 +112,19 @@ const Header = () => {
                 >
                   Contact
                 </Link>
+                {userId ? <Link
+                  href="/login"
+                  className="px-2 py-2 text-foreground/80 hover:bg-accent rounded-md transition-colors"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Login
+                </Link> : <Link
+                  href="/protected"
+                  className="px-2 py-2 text-foreground/80 hover:bg-accent rounded-md transition-colors"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Reservations
+                </Link>}
               </div>
             </motion.div>
           )}

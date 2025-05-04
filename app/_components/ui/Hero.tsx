@@ -7,12 +7,14 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
+import { useUserStore } from '@/app/stores/userStore';
 
 export default function Hero() {
   const router = useRouter();
   const [currentFeature, setCurrentFeature] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  
+  const { userId } = useUserStore();
+
   const features = [
     { title: "Expert Technicians", description: "Factory-trained specialists for your Renault" },
     { title: "Genuine Parts", description: "Original Renault parts with full warranty" },
@@ -31,7 +33,7 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden">
       {/* Hero Section with Animated Car Silhouette */}
-      <div className="relative h-[90vh] overflow-hidden bg-gradient-to-b from-background to-background/80 dark:from-background-dark dark:to-background-dark/90">
+      <div className="relative h-[100vh] overflow-hidden bg-gradient-to-b from-background to-background/80 dark:from-background-dark dark:to-background-dark/90">
         <div className="absolute inset-0 overflow-hidden">
           <svg
             className="absolute h-full w-full opacity-[0.02] dark:opacity-[0.05]"
@@ -65,7 +67,7 @@ export default function Hero() {
 
         <div className="container mx-auto px-4 h-full flex flex-col lg:flex-row items-center justify-between pt-24 pb-10">
           {/* Left Content */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -79,12 +81,12 @@ export default function Hero() {
                 Premium Car Maintenance
               </motion.span>
             </Badge>
-            
+
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground leading-tight">
               Expert Renault Service{" "}
-              <motion.span 
+              <motion.span
                 className="text-yellow-400 inline-block"
-                animate={{ 
+                animate={{
                   scale: [1, 1.03, 1],
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
@@ -92,18 +94,18 @@ export default function Hero() {
                 You Can Trust
               </motion.span>
             </h1>
-            
-            <motion.p 
+
+            <motion.p
               className="text-xl text-muted-foreground max-w-2xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              Professional maintenance and repair services for your Renault vehicle. 
+              Professional maintenance and repair services for your Renault vehicle.
               Book your appointment today and experience excellence in automotive care.
             </motion.p>
-            
-            <motion.div 
+
+            <motion.div
               className="py-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -128,7 +130,7 @@ export default function Hero() {
                 </motion.div>
               </AnimatePresence>
             </motion.div>
-            
+
             <motion.div
               className="flex flex-col sm:flex-row gap-4 mt-8"
               initial={{ opacity: 0, y: 20 }}
@@ -139,23 +141,23 @@ export default function Hero() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button 
+                <Button
                   size="lg"
-                  onClick={() => router.push('/booking')}
+                  onClick={() => router.push(userId ? '/services' : '/login')}
                   className="bg-yellow-400 hover:bg-yellow-500 text-black text-lg px-8 py-6 shadow-lg"
                 >
                   Book Your Service Now
                 </Button>
               </motion.div>
-              
+
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button 
+                <Button
                   size="lg"
                   variant="outline"
-                  onClick={() => router.push('/services')}
+                  onClick={() => router.push('#services')}
                   className="border-2 text-lg px-8 py-6"
                 >
                   View Services
@@ -163,9 +165,9 @@ export default function Hero() {
               </motion.div>
             </motion.div>
           </motion.div>
-          
+
           {/* Right Content - Animated Car */}
-          <motion.div 
+          <motion.div
             className="lg:w-1/2 relative mt-12 lg:mt-0 z-10"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -184,10 +186,10 @@ export default function Hero() {
                   ease: "easeInOut",
                 }}
               >
-                <svg 
-                  viewBox="0 0 24 24" 
+                <svg
+                  viewBox="0 0 24 24"
                   className="h-72 w-72 opacity-80 text-foreground"
-                  fill="none" 
+                  fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <motion.path
@@ -197,15 +199,15 @@ export default function Hero() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{ 
-                      pathLength: 1, 
+                    animate={{
+                      pathLength: 1,
                       opacity: 1,
                       transition: { duration: 2, ease: "easeInOut" }
                     }}
                   />
                 </svg>
-                
-                
+
+
                 {/* Animated particles/sparks around the car */}
                 {[...Array(20)].map((_, i) => (
                   <motion.div
@@ -229,7 +231,7 @@ export default function Hero() {
                   />
                 ))}
               </motion.div>
-              
+
               {/* Circular rings around the car */}
               {[...Array(3)].map((_, i) => (
                 <motion.div
@@ -240,8 +242,8 @@ export default function Hero() {
                     height: `${(i + 1) * 20}%`,
                   }}
                   initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ 
-                    opacity: [0.1, 0.3, 0.1], 
+                  animate={{
+                    opacity: [0.1, 0.3, 0.1],
                     scale: 1,
                   }}
                   transition={{
@@ -253,11 +255,22 @@ export default function Hero() {
               ))}
             </div>
           </motion.div>
+          {/* Scroll Indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, y: [0, 10, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          >
+            <div className="w-6 h-10 border-3 border-foreground/30  rounded-full flex justify-center">
+              <div className="w-2 h-2 bg-foreground/50 rounded-full mt-2" />
+            </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Service Highlights Section */}
-      <div className="bg-muted/50 dark:bg-muted-dark/30 py-16">
+      <div id="services" className="bg-muted/50 dark:bg-muted-dark/30 py-16">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -268,7 +281,7 @@ export default function Hero() {
             <h2 className="text-3xl font-bold mb-2">Premium Renault Services</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">Our certified technicians provide comprehensive care for your vehicle</p>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
@@ -298,7 +311,8 @@ export default function Hero() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2zM9 9h6v6H9V9z" />
                   </svg>
                 )
-              }
+              },
+
             ].map((service, index) => (
               <motion.div
                 key={index}
@@ -307,7 +321,7 @@ export default function Hero() {
                 transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
               >
                 <Card className="p-6 h-full border-foreground/10 hover:border-yellow-400/50 transition-colors duration-300 bg-background/50 backdrop-blur-sm dark:bg-background-dark/50">
-                  <motion.div 
+                  <motion.div
                     className="mb-4"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -347,8 +361,8 @@ export default function Hero() {
             ))}
           </svg>
         </div>
-        
-        <div className="container mx-auto px-4 relative z-10">
+
+        <div className="container mx-auto px-4 relative z-10 py-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
@@ -364,9 +378,9 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
               className="inline-block"
             >
-              <Button 
+              <Button
                 size="lg"
-                onClick={() => router.push('/booking')}
+                onClick={() => router.push(userId ? '/services' : '/login')}
                 className="bg-yellow-400 hover:bg-yellow-500 text-black text-lg px-10 py-6 shadow-lg"
               >
                 Book Your Service Now
@@ -376,17 +390,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 10, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <div className="w-6 h-10 border-2 border-foreground/30 rounded-full flex justify-center">
-          <div className="w-2 h-2 bg-foreground/50 rounded-full mt-2" />
-        </div>
-      </motion.div>
+
     </section>
   );
 }

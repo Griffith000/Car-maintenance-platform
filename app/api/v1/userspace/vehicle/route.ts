@@ -1,8 +1,8 @@
-import { PrismaClient, Vehicle, RegTypes } from "@/app/generated/prisma/client";
-import { withAccelerate } from '@prisma/extension-accelerate'
+import { Vehicle } from "@prisma/client";
 import { NextResponse, NextRequest } from "next/server";
 import { CreateVehicleDto } from "@/app/helpers/userspace/vehicle/create-vehicle.dto";
 import { validate } from "@/app/helpers/shared/validate";
+import prisma from "@/lib/prisma"
 
 export const dynamic = 'force-static'
 
@@ -66,8 +66,6 @@ export const dynamic = 'force-static'
  *               success: true
  */
 
-const prisma = new PrismaClient().$extends(withAccelerate())
-
 export async function GET() {
   let listOfVehicles: Vehicle[];
   try {
@@ -87,18 +85,21 @@ export async function POST(request: NextRequest) {
   let prismaOutput;
   try {
     let validatedResponse = validate(CreateVehicleDto, await request.json());
-    if (validatedResponse.local === true) {
+    if (!validatedResponse.local) {
       validatedResponse.registration = undefined;
       validatedResponse.registrationType = undefined;
-    } else if (validatedResponse.local === false) {
+    } else if (validatedResponse.local) {
       validatedResponse.location = undefined;
     }
+
+    console.log(validatedResponse.registrationType);
 
     prismaOutput = await prisma.vehicle.create({
       data: {
         vin: validatedResponse.vin as string,
         local: validatedResponse.local,
         registration: validatedResponse.registration ?? "",
+        registrationType: validatedResponse.registrationType,
         location: validatedResponse.location ?? "",
         reservation: {}
       }

@@ -16,7 +16,7 @@ export default function Footer() {
             className="col-span-1"
           >
             <Image
-              src="/images/renault-logo.jpg"
+              src="/images/renault-logo.png"
               alt="Realut Logo"
               width={120}
               height={40}

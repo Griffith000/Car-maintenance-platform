@@ -1,10 +1,11 @@
 // to set up auth js
-import { PrismaClient, Vehicle } from "@/app/generated/prisma/client";
-import { PrismaClientKnownRequestError } from "@/app/generated/prisma/client/runtime/library";
+import { Vehicle } from "@prisma/client";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { validate } from "@/app/helpers/shared/validate";
 import { UpdateVehicleDto } from "@/app/helpers/userspace/vehicle/dto/update-vehicle.dto";
-import { withAccelerate } from "@prisma/extension-accelerate"
 import { NextRequest, NextResponse } from "next/server";
+
+import prisma from "@/lib/prisma"
 
 // to test swagger documentation
 /**
@@ -128,15 +129,15 @@ import { NextRequest, NextResponse } from "next/server";
  *               error: "Error details"
  */
 
-const prisma = new PrismaClient().$extends(withAccelerate())
-
-export async function GET( { params }: { params: { id: string } }) {
+export async function GET(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   // this is where the authentication is needed
-  let searchedVehicle : Vehicle | null;
+  let searchedVehicle: Vehicle | null;
+  const { id } = await params
+  // console.log(params.id)
   try {
     searchedVehicle = await prisma.vehicle.findFirstOrThrow({
       where: {
-        vin: params.id
+        vin: decodeURIComponent(id)
       }
     })
   } catch (error) {
@@ -148,7 +149,9 @@ export async function GET( { params }: { params: { id: string } }) {
           }, { status: 404 });
       }
     }
-    console.log("Internal Server Error");
+
+    console.log(error);
+
     return NextResponse.json({
       Message: "Internal Server Error",
       error: error
@@ -159,15 +162,17 @@ export async function GET( { params }: { params: { id: string } }) {
   return NextResponse.json(searchedVehicle)
 }
 
-export async function DELETE({ params }: { params: { id: string } }) {
+export async function DELETE(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   let vehicleToDelete: Vehicle | null;
+  const { id } = await params;
   try {
-    vehicleToDelete = await prisma.vehicle.findFirstOrThrow({
+    vehicleToDelete = await prisma.vehicle.delete({
       where: {
-        vin: params.id
+        vin: decodeURIComponent(id)
       }
     })
   } catch (error) {
+    console.log(error)
     if (error instanceof PrismaClientKnownRequestError) {
       if (error.code === "P2025") {
         return NextResponse.json(
@@ -188,13 +193,14 @@ export async function DELETE({ params }: { params: { id: string } }) {
 }
 
 
-export async function PATCH(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   let vehicle: Vehicle | null = null;
+  const { id } = await params; 
   try {
     const validateData = validate(UpdateVehicleDto, await request.json())
     vehicle = await prisma.vehicle.update({
       where: {
-        vin: params.id
+        vin: decodeURIComponent(id)
       },
       data: {
         ...validateData

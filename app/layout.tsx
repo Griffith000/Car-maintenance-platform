@@ -3,9 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import QueryClientProvider from "./query-provider";
 import { ThemeProvider } from "@/components/theme-provider";
-import Header from "@/app/_components/ui/Header";
-import Footer from "@/app/_components/ui/Footer";
-
+import { SessionProvider } from "next-auth/react";
+import UserStoreSync from "@/app/_components/UserStoreSync"; 
+import lazy from "next/dynamic";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -19,19 +19,25 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
 
+const Header = lazy(() => import("@/app/_components/ui/Header"));
+const Footer = lazy(() => import("@/app/_components/ui/Footer"));
 
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <meta name="darkreader-lock" />
+        <link rel="icon" href="../public/images/renault-logo.png" sizes="any" />
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <SessionProvider> 
           <QueryClientProvider>
+            <UserStoreSync />
             <Header />
             {children}
             <Footer />
           </QueryClientProvider>
+          </SessionProvider>
         </ThemeProvider>
       </body>
     </html>
