@@ -39,10 +39,4 @@ Pull requests are welcome! For major changes or feature requests, please open an
 
 This project is for educational purposes and does not currently have a license.
 
-## Authors
-
-GitHub: [Griffith000](https://github.com/Griffith000)
-Github : [SlamZDank](https://github.com/SlamZDank)
----
-
 *This project was created as a school assignment. For any questions, please contact the project author via GitHub.*
