@@ -29,15 +29,15 @@ export const ThemeToggle = () => {
   }
   if (!isMounted) {
     return (
-      <Button 
-        variant="outline" 
-        size="icon" 
+      <Button
+        variant="outline"
+        size="icon"
         className="bg-background border-border hover:bg-accent hover:text-accent-foreground dark:bg-background dark:border-border dark:hover:bg-accent"
         aria-label="Loading theme"
       />
     )
   }
-  console.log("current theme is ", theme)
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

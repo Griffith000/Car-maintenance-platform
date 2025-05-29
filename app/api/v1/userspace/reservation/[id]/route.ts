@@ -1,9 +1,11 @@
 // to set up auth js
-import { PrismaClient, Reservation } from "@/app/generated/prisma/client";
-import { PrismaClientKnownRequestError } from "@/app/generated/prisma/client/runtime/library";
-import { withAccelerate } from "@prisma/extension-accelerate"
+import { Reservation } from "@prisma/client";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { NextRequest, NextResponse } from "next/server";
 
+// import prisma from "@/lib/prisma"
+
+import prisma from "@/lib/prisma"
 /**
  * @openapi
  * /api/v1/userspace/reservation/{id}:
@@ -15,7 +17,7 @@ import { NextRequest, NextResponse } from "next/server";
  *         schema:
  *           type: string
  *         required: true
- *         description: The VIN of a registered vehicle
+ *         description: The registration ID
  *     responses:
  *       200:
  *         description: Reservation Details
@@ -121,18 +123,16 @@ import { NextRequest, NextResponse } from "next/server";
  *               error: "Error details"
  */
 
-
-const prisma = new PrismaClient().$extends(withAccelerate())
-
 export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }) {
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }) {
   // this is where the authentication is needed
   let searchedReservation: Reservation | null;
+  const { id } = await params;
   try {
     searchedReservation = await prisma.reservation.findFirstOrThrow({
       where: {
-        reservationId: parseInt(params.id)
+        reservationId: parseInt(id)
       }
     })
   } catch (error) {
@@ -156,12 +156,13 @@ export async function GET(
   return NextResponse.json(searchedReservation)
 }
 
-export async function DELETE({ params }: { params: { id: string } }) {
+export async function DELETE(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   let reservationToDelete: Reservation | null = null;
+  const { id } = await params;
   try {
     reservationToDelete = await prisma.reservation.delete({
       where: {
-        reservationId: parseInt(params.id)
+        reservationId: parseInt(id)
       }
     })
   } catch (error) {
@@ -185,10 +186,12 @@ export async function DELETE({ params }: { params: { id: string } }) {
 }
 
 
-export async function PATCH(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   let updatedReservation: Reservation | null = null;
+  const { id } = await params
   try {
     const validateData: Reservation | null = await request.json()
+    const { id } = await params;
     if (validateData === null || !validateData.baseFee) {
       return NextResponse.json({
         data: { error: "Missing required fields" }
@@ -196,7 +199,7 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
     }
     updatedReservation = await prisma.reservation.update({
       where: {
-        reservationId: parseInt(params.id)
+        reservationId: parseInt(id)
       },
       data: {
         baseFee: validateData.baseFee

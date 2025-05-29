@@ -4,7 +4,7 @@ export const services = [
     name: 'Oil Change', 
     description: 'Regular oil change service for your vehicle', 
     price: '$49.99',
-    duration: '30 min',
+    duration: '1 hr',
     category: 'Maintenance'
   },
   { 
@@ -12,7 +12,7 @@ export const services = [
     name: 'Brake Service', 
     description: 'Inspection and replacement of brake components', 
     price: '$129.99',
-    duration: '1.5 hrs',
+    duration: '1 hr',
     category: 'Repair'
   },
   { 
@@ -20,7 +20,7 @@ export const services = [
     name: 'Tire Rotation', 
     description: 'Rotate tires to ensure even wear and extend tire life', 
     price: '$39.99',
-    duration: '45 min',
+    duration: '1 hr',
     category: 'Maintenance'
   },
   { 

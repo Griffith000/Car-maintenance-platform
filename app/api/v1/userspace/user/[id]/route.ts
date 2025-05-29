@@ -1,10 +1,12 @@
 // to set up auth js with the user
-import { PrismaClient, User } from "@/app/generated/prisma/client";
-import { PrismaClientKnownRequestError } from "@/app/generated/prisma/client/runtime/library";
+import { User } from "@prisma/client";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { validate } from "@/app/helpers/shared/validate";
 import { UpdateUserDto } from "@/app/helpers/userspace/user/dto/update-user.dto";
 import { withAccelerate } from "@prisma/extension-accelerate"
 import { NextRequest, NextResponse } from "next/server";
+
+import prisma from "@/lib/prisma"
 
 
 // we might use zod for form validation and requestValidation
@@ -133,17 +135,16 @@ import { NextRequest, NextResponse } from "next/server";
 
  */
 
-const prisma = new PrismaClient().$extends(withAccelerate())
-
 export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }) {
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }) {
   // this is where the authentication is needed
   let searchedUser: User | null;
+  const { id } = await params
   try {
     searchedUser = await prisma.user.findFirst({
       where: {
-        userId: parseInt(params.id)
+        userId: parseInt(id)
       }
     })
   } catch {
@@ -165,17 +166,19 @@ export async function GET(
   );
 }
 
-export async function DELETE(
-  { params }: { params: { id: number } }
+export async function DELETE(_request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   let userToDelete: User | null;
+  const { id } = await params
   try {
     userToDelete = await prisma.user.delete({
       where: {
-        userId: params.id
+        userId: parseInt(id)
       }
     })
   } catch (error) {
+    console.log(error)
     console.log("Internal Server Error")
     return NextResponse.json({
       error: "Internal Server Error",
@@ -191,22 +194,28 @@ export async function DELETE(
       status: 404
     })
   }
+  return NextResponse.json({
+    message: "success"
+  }, {
+    status: 200
+  })
 }
 
-export async function PATCH(request: NextRequest, { params }: { params: { id: number } }) {
-
+export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   let user: User | null = null;
+  const { id } = await params
   try {
     const validateData = validate(UpdateUserDto, await request.json())
     user = await prisma.user.update({
       where: {
-        userId: params.id
+        userId: parseInt(id)
       },
       data: {
         ...validateData
       }
     })
   } catch (error) {
+    console.log(error)
     if (error instanceof PrismaClientKnownRequestError) {
       if (error.code === "P2025") {
         console.log("User not found");

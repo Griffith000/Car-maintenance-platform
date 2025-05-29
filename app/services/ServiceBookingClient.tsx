@@ -1,16 +1,23 @@
 'use client';
 
-import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ContactFormValues } from './schemas';
 import { useBookingStore } from '@/app/stores/bookingStore';
 import ServiceCard from '@/app/_components/ui/ServiceCard';
-import ServiceSelection from '@/app/_components/booking/ServiceSelection';
-import VehicleVerification from '@/app/_components/booking/VehicleVerification';
-import DateSelection from '@/app/_components/DateSelection';
-import ContactForm from '@/app/_components/forms/ContactForm';
-import BookingConfirmation from '@/app/_components/booking/BookingConfirmation';
-import { CheckCircle, Circle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
+import { useState } from 'react';
+import { toast } from 'sonner';
+import axios from 'axios';
+import lazy from 'next/dynamic';
+
+const ServiceSelection = lazy(() => import('../_components/booking/ServiceSelection'));
+const VehicleVerification = lazy(() => import('../_components/booking/VehicleVerification'));
+const DateSelection = lazy(() => import('../_components/ui/calendar/DateSelection'));
+const ContactForm = lazy(() => import('../_components/forms/ContactForm'));
+const OtpVerification = lazy(() => import('../_components/forms/OtpVerification'));
+const FinalConfirmation = lazy(() => import('../_components/booking/FinalConfirmation'));
+const BookingSummary = lazy(() => import('../_components/booking/BookingSummary'));
+
 
 export default function ServiceBookingClient() {
   const {
@@ -18,8 +25,6 @@ export default function ServiceBookingClient() {
     selectedService,
     vehicleData,
     selectedDate,
-    isLoading,
-    formSubmitted,
     contactDetails,
     setStep,
     setSelectedService,
@@ -30,23 +35,65 @@ export default function ServiceBookingClient() {
     setContactDetails,
     resetStore,
   } = useBookingStore();
+  
+  const [phoneVerified, setPhoneVerified] = useState(false);
 
   const handleContactSubmit = (data: ContactFormValues) => {
     setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
-      setContactDetails(data);
-      setFormSubmitted(true);
-      setIsLoading(false);
-      setStep(5); // Move to confirmation step
-    }, 1500);
+    
+    setContactDetails(data);
+    setFormSubmitted(true);
+    setStep(6);
+
+    // ADD OTP in an update
+    
+    // axios.post('/api/v1/send-otp', {
+    //   phoneNumber: data.phone,
+    //   })
+    //   .then((response) => response.data)
+    //   .then((result) => {
+    //     if (result.success) {
+    //       toast.success('Verification code sent to your phone');
+    //       setFormSubmitted(true);
+    //       setStep(5);
+    //     } else {
+    //       toast.error(result.message || 'Failed to send verification code');
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     toast.error('Failed to send verification code. Please try again.');
+    //     console.error('Error sending OTP:', error);
+    //   })
+    //   .finally(() => {
+    //     setIsLoading(false);
+    //   });
+  };
+  
+  const handleOtpVerificationSuccess = () => {
+    setPhoneVerified(true);
+    setStep(6);
+  };
+  
+  const handleResendOtp = async () => {
+    if (!contactDetails) return Promise.reject('No contact details found');
+    
+    return axios.post('/api/v1/send-otp', {
+      phoneNumber: contactDetails.phone,
+    })
+      .then((response) => response.data)
+      .then((result) => {
+        if (result.success) {
+          return Promise.resolve();
+        } else {
+          return Promise.reject(result.message || 'Failed to send verification code');
+        }
+      });
   };
 
   const resetForm = () => {
     resetStore();
   };
 
-  // Animation variants for smooth page transitions
   const pageVariants = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
@@ -59,16 +106,16 @@ export default function ServiceBookingClient() {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 container mx-auto px-4 w-full h-full">
       {/* Step Indicator */}
       <motion.div 
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
-        className="flex justify-center mb-8"
+        className="flex justify-center mb-8 w-full overflow-x-auto py-4"
       >
-        <div className="flex items-center">
-          {[1, 2, 3, 4, 5].map((stepNumber) => (
+        <div className="flex items-center justify-center min-w-max">
+          {[1, 2, 3, 4, 5, 6, 7].map((stepNumber) => (
             <div key={stepNumber} className="flex items-center">
               <motion.div
                 initial={false}
@@ -96,9 +143,9 @@ export default function ServiceBookingClient() {
                 </button>
               </motion.div>
               
-              {stepNumber < 5 && (
+              {stepNumber < 7 && (
                 <div 
-                  className={`w-16 h-1 mx-1 ${
+                  className={`w-12 h-1 mx-2 ${
                     stepNumber < step ? 'bg-primary' : 'bg-muted'
                   }`}
                 />
@@ -122,7 +169,7 @@ export default function ServiceBookingClient() {
       {/* Service Card */}
       <motion.div
         layout
-        className="w-full max-w-4xl mx-auto"
+        className="w-full max-w-4xl mx-auto px-4"
       >
         <ServiceCard>
           <AnimatePresence mode="wait">
@@ -133,7 +180,7 @@ export default function ServiceBookingClient() {
               exit="exit"
               variants={pageVariants}
               transition={transition}
-              className="py-2"
+              className="py-4"
             >
               {step === 1 && (
                 <VehicleVerification />
@@ -147,15 +194,27 @@ export default function ServiceBookingClient() {
                 <DateSelection />
               )}
 
+
               {step === 4 && (
                 <ContactForm
                   onSubmit={handleContactSubmit}
-                  isLoading={isLoading}
                 />
               )}
 
               {step === 5 && contactDetails && (
-                <BookingConfirmation
+                <OtpVerification
+                  phoneNumber={contactDetails.phone}
+                  onVerificationSuccess={handleOtpVerificationSuccess}
+                  onResendOtp={handleResendOtp}
+                />
+              )}
+
+              {step === 6 && (
+                <FinalConfirmation />
+              )}
+
+              {step === 7 && contactDetails && (
+                <BookingSummary
                   selectedService={selectedService}
                   vehicleData={vehicleData}
                   selectedDate={selectedDate}
@@ -182,7 +241,11 @@ function getStepTitle(step: number): string {
     case 4:
       return 'Contact Information';
     case 5:
+      return 'Phone Verification';
+    case 6:
       return 'Booking Confirmation';
+    case 7:
+      return 'Booking Summary';
     default:
       return 'Book Your Service';
   }
@@ -199,6 +262,10 @@ function getStepDescription(step: number): string | undefined {
     case 4:
       return 'Provide your contact information to complete the booking';
     case 5:
+      return 'Enter the verification code sent to your phone';
+    case 6:
+      return 'Confirm your service appointment details';
+    case 7:
       return 'Your service appointment has been confirmed';
     default:
       return undefined;
