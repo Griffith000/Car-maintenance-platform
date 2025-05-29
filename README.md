@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Car Maintenance Platform
+
+This repository contains a school project titled **Car Maintenance Platform**, designed to help users manage car maintenance schedules, appointments, and records. Built using **TypeScript** and the **Next.js** framework, the platform is modern, responsive, and extensible.
+
+## Features
+
+- **User Authentication:** Secure login for users to manage their vehicles and maintenance tasks.
+- **Car Profiles:** Add, edit, and track multiple vehicles per user.
+- **Maintenance Scheduling:** Schedule and receive reminders for upcoming maintenance.
+- **Appointment Management:** Book, view, and manage service appointments.
+- **Calendar Integration:** Interactive calendar view using FullCalendar for all maintenance and appointment events.
+- **Form Validation:** Robust form validation and error handling using React Hook Form and Zod.
+- **API Documentation:** Swagger UI integration for API exploration and testing.
+
+## Tech Stack
+
+- **Frontend:** [Next.js](https://nextjs.org/), [React](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/)
+- **Backend:** [Prisma ORM](https://www.prisma.io/) (with PostgreSQL or another relational DB)
+- **State Management:** [Zustand](https://zustand-demo.pmnd.rs/), [TanStack React Query](https://tanstack.com/query/v5)
+- **Calendar:** [FullCalendar](https://fullcalendar.io/) (for scheduling)
+- **API Docs:** [Swagger UI React](https://www.npmjs.com/package/swagger-ui-react)
+- **Validation:** [React Hook Form](https://react-hook-form.com/), [Zod](https://zod.dev/)
 
 ## Getting Started
 
-First, run the development server:
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Griffith000/Car-maintenance-platform.git
+cd Car-maintenance-platform
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Contributing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Pull requests are welcome! For major changes or feature requests, please open an issue first to discuss what you would like to change.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## License
 
-## Learn More
+This project is for educational purposes and does not currently have a license.
 
-To learn more about Next.js, take a look at the following resources:
+## Authors
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+GitHub: [Griffith000](https://github.com/Griffith000)
+Github : [SlamZDank](https://github.com/SlamZDank)
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*This project was created as a school assignment. For any questions, please contact the project author via GitHub.*
